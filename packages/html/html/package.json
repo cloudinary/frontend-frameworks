@@ -1,0 +1,19 @@
+{
+  "name": "@cloudinary/html-layer",
+  "version": "1.0.0",
+  "description": "Can log \"hello world\" and \"goodbye world\" to the console!",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare-build": "cp package.json ./dist"
+  },
+  "devDependencies": {
+    "@cloudinary/base": "^1.0.0-alpha.6"
+  },
+  "dependencies": {
+    "@types/lodash.clonedeep": "^4.5.6",
+    "@types/node": "^14.14.10",
+    "lodash.clonedeep": "^4.5.0"
+  }
+}
