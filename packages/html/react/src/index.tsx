@@ -3,6 +3,8 @@ import {
   HtmlLayer,
   placeholder,
   accessibility,
+  lazyload,
+  responsive,
   cancelCurrentlyRunningPlugins,
   isBrowser,
   serverSideSrc
@@ -17,7 +19,7 @@ export class CldImg extends React.Component {
     this.myRef = React.createRef();
     this.state = {
       transformation: props.transformation,
-      plugins: [accessibility, placeholder]
+      plugins: props.plugins
     }
   }
 
@@ -75,3 +77,6 @@ export class CldImg extends React.Component {
     }
   }
 }
+
+export {placeholder, accessibility, lazyload, responsive};
+
