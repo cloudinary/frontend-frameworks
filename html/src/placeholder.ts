@@ -3,7 +3,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import {isBrowser} from "./isBrowser";
 import TransformableImage from "@cloudinary/base/transformation/TransformableImage";
 
-export function placeholder(element: any, transformableImage: TransformableImage, toBeCanceled: any) {
+export function placeholder(element: any, transformableImage: TransformableImage, toBeCanceled: any): Promise<void | string> | string  {
   if(isBrowser()){
     const clonedObject = cloneDeep(transformableImage);
     const plObject = clonedObject.effect(Effect.pixelate(50));

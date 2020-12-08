@@ -10,8 +10,7 @@ Since this library is not on npm, we will install/pack this repo locally and ins
 1. clone repo
 2. npm install (make sure that the html library has been built)
 3. npm run build
-4. cd into /dist
-5. npm link/pack to use build in external angular library
+4. npm link/pack to use build in external react library
 
 ##Note
 This repo contains a temporary user sample for testing.

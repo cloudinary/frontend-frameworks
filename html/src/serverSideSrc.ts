@@ -7,7 +7,7 @@
  */
 import TransformableImage from "@cloudinary/base/transformation/TransformableImage";
 
-export  function serverSideSrc(src: string, plugins: any, transformableImage: TransformableImage){
+export  function serverSideSrc(src: string, plugins: any, transformableImage: TransformableImage): Promise<void | string> | string {
   for(let i = 0; i < plugins.length; i++){
     const response = plugins[i](src, transformableImage);
     if(!response){ //lazyload

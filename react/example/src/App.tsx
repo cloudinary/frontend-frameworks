@@ -1,5 +1,5 @@
 import React from 'react'
-import { CldImg } from '@cloudinary/react';
+import { CldImg, accessibility } from '@cloudinary/react';
 import {TransformableImage} from '@cloudinary/base';
 
 let img = new TransformableImage()
@@ -15,7 +15,7 @@ let img = new TransformableImage()
 
 const App = () => {
   // @ts-ignore
-  return <CldImg transformation={img}/>
+  return <CldImg transformation={img} plugins={[accessibility]}/>
 };
 
 export default App

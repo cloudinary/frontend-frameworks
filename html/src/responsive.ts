@@ -2,7 +2,7 @@ import * as Resize from '@cloudinary/base/actions/resize/Resize';
 import {isBrowser} from "./isBrowser";
 import TransformableImage from "@cloudinary/base/transformation/TransformableImage";
 
-export function responsive(element: any, transformableImage: TransformableImage, toBeCanceled: any){
+export function responsive(element: any, transformableImage: TransformableImage, toBeCanceled: any): Promise<void | string> | string {
   if(!isBrowser()){
     return;
   }
