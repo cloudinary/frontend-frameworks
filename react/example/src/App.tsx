@@ -1,21 +1,91 @@
-import React from 'react'
-import { CldImg, accessibility } from '@cloudinary/react';
-import {TransformableImage} from '@cloudinary/base';
+import React, {Fragment, useState} from 'react'
+import { CldImg, accessibility, responsive, lazyload } from '@cloudinary/react';
+import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+// import {Effect} from "@cloudinary/base/actions/effect";
+// import {Resize} from "@cloudinary/base/actions/resize";
+//
+//
+// import {sepia} from "@cloudinary/base/actions/effect";
 
-let img = new TransformableImage()
-  .setConfig({
-    cloud: {
-      cloudName: 'demo'
-    },
-    url: {
-      secure: true,
-    }
-  })
-  .setPublicID('sample');
 
 const App = () => {
+  let imgInit = new CloudinaryImage();
+  imgInit
+    .setConfig({
+      cloud: {
+        cloudName: 'demo'
+      },
+      url: {
+        secure: true,
+      }
+    })
+    .setPublicID('sample');
+
+  // let imgSepia = new CloudinaryImage();
+  // imgSepia
+  //   .setConfig({
+  //     cloud: {
+  //       cloudName: 'demo'
+  //     },
+  //     url: {
+  //       secure: true,
+  //     }
+  //   })
+  //   .effect(Effect.sepia())
+  //   .resize(Resize.crop(400))
+  //   .setPublicID('sample');
+  //
+  // let bearImg = new CloudinaryImage()
+  //   .setConfig({
+  //     cloud: {
+  //       cloudName: 'rcstraus'
+  //     },
+  //     url: {
+  //       secure: true,
+  //     }
+  //   })
+  //   .effect(Effect.sepia())
+  //   .resize(Resize.crop(400))
+  //   .setPublicID('bear');
+
+  let [img, setImg] = React.useState(imgInit);
+  let [isSepia, SetIsSepia] = React.useState(false);
+
+  function onClickMe(){
+    if (isSepia) {
+      setImg(Object.assign(img, imgInit))
+      SetIsSepia(isSepia = false);
+    } else {
+      setImg(Object.assign(img, imgInit))
+      SetIsSepia(isSepia = true);
+    }
+  }
+
+  let [show, setShow] = React.useState(true);
+
+  function handleClick() {
+    setShow(false);
+  }
+  const [plug, setPlug] = useState({opacity: "0.5"});
+
   // @ts-ignore
-  return <CldImg transformation={img} plugins={[accessibility]}/>
+  return (
+    <Fragment>
+      {/*<div style={{height: "500px"}}>*/}
+      {/*  /!*@ts-ignore*!/*/}
+      {/*  <CldImg style={plug} transformation={img} plugins={[]}/>*/}
+      {/*  <button onClick={onClickMe}>Change State</button>*/}
+      {/*</div>*/}
+      {/*<button onClick={() => setPlug({opacity: "1.5"})}>*/}
+      {/*  Click me*/}
+      {/*</button>*/}
+      <div>
+        {/*@ts-ignore*/}
+        { show ? <CldImg transformation={img} plugins={[lazyload]}/> : null }
+        <button onClick={handleClick}>Click to unmount</button>
+      </div>
+    </Fragment>
+  )
 };
 
 export default App

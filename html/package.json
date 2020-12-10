@@ -9,7 +9,7 @@
     "prepare-build": "cp package.json ./dist"
   },
   "devDependencies": {
-    "@cloudinary/base": "^1.0.0-alpha.6"
+    "@cloudinary/base": "^1.0.0-alpha.8"
   },
   "dependencies": {
     "@types/lodash.clonedeep": "^4.5.6",
