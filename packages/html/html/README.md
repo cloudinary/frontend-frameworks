@@ -9,4 +9,5 @@ Angular, React and Vue all use the html library to render images.
  
  1. Clone this repo
  2. cd into html
- 3. npm run build
+ 3. npm install
+ 4. npm run build
