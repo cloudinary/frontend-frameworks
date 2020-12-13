@@ -1,4 +1,4 @@
-import { CldImg } from './index'
+import { CldImg } from '../src'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import CloudinaryConfig from "@cloudinary/base/config/CloudinaryConfig";
 import {mount} from 'enzyme';
@@ -24,12 +24,12 @@ describe('CldImg', () => {
   });
 
   it("should create an img tag", async function() {
-    let tag = await mount(<CldImg transformation={cl}/>);
-    expect(tag.html()).toBe('<img src="https://res.cloudinary.com/demo/image/upload/sample">');
+    let component = await mount(<CldImg transformation={cl}/>);
+    expect(component.html()).toBe('<img src="https://res.cloudinary.com/demo/image/upload/sample">');
   });
 
-  // it("should pass style", async function() {
-  //   let tag = await mount(<CldImg style={{height: "500px"}} transformation={cl}/>);
-  //   expect(tag.html()).toBe('<img src="https://res.cloudinary.com/demo/image/upload/sample">');
-  // });
+  it("should add style to img component", async function() {
+    let component = await mount(<CldImg style={{opacity: "0.5"}} transformation={cl}/>);
+    expect(component.find('img').prop('style')).toStrictEqual({"opacity": "0.5"});
+  });
 });
