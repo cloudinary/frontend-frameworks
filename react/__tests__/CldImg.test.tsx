@@ -1,4 +1,4 @@
-import { CldImg } from './index'
+import { CldImg } from '../src'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import CloudinaryConfig from "@cloudinary/base/config/CloudinaryConfig";
 import {mount} from 'enzyme';
