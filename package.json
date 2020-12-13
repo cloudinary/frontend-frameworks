@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "install": "npm install --prefix ./html && npm install --prefix ./react",
+    "build": "npm run build --prefix ./html && npm run build --prefix ./react",
+    "quickstart": "npm run install && npm run build"
+  }
+}

@@ -1,7 +1,7 @@
 import {isBrowser} from "./isBrowser";
-import TransformableImage from "@cloudinary/base/transformation/TransformableImage";
+import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 
-export function lazyload(element: any, transformableImage: TransformableImage, toBeCanceled: any): Promise<void | string> | string | boolean {
+export function lazyload(element: any, transformableImage: CloudinaryImage, toBeCanceled: any): Promise<void | string> | string | boolean {
   if(!isBrowser()){
     return false;
   }
