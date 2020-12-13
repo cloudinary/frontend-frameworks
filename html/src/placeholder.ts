@@ -1,12 +1,12 @@
-import * as Effect from '@cloudinary/base/actions/effect/Effect';
+// import * as Effect from '@cloudinary/base/actions/effect/Effect';
 import cloneDeep from 'lodash/cloneDeep'
 import {isBrowser} from "./isBrowser";
-import TransformableImage from "@cloudinary/base/transformation/TransformableImage";
+import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 
-export function placeholder(element: any, transformableImage: TransformableImage, toBeCanceled: any): Promise<void | string> | string  {
+export function placeholder(element: any, transformableImage: CloudinaryImage, toBeCanceled: any): Promise<void | string> | string  {
   if(isBrowser()){
     const clonedObject = cloneDeep(transformableImage);
-    const plObject = clonedObject.effect(Effect.pixelate(50));
+    const plObject = clonedObject;
     element.src = plObject.toURL();
     console.log('placeholder loaded');
 
@@ -22,6 +22,6 @@ export function placeholder(element: any, transformableImage: TransformableImage
       }, 5000); // arbitrary time
     });
   }else{
-    transformableImage.effect(Effect.pixelate(50));
+    //transformableImage.effect(Effect.pixelate(50));
   }
 }

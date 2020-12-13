@@ -8,7 +8,7 @@ library to render an image.
 Since this library is not on npm, we will install/pack this repo locally and install it on a sample angular app.
 
 1. clone repo
-2. npm install (make sure that the html library has been built)
+2. npm install
 3. npm run build
 4. npm link/pack to use build in external react library
 
@@ -25,9 +25,9 @@ To use the sample project-
 import React, { Component } from 'react'
 
 import { CldImg } from '@cloudinary/react'
-import {TransformableImage} from '@cloudinary/base';
+import {CloudinaryImage} from '@cloudinary/base';
 
-let img = new TransformableImage()
+let img = new CloudinaryImage()
   .setConfig({
     cloud: {
       cloudName: 'demo'
