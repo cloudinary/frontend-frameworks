@@ -4,3 +4,4 @@ dist
 example/package-lock.json
 example/node_modules
 package-lock.json
+coverage
