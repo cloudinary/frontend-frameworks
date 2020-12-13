@@ -1,10 +1,10 @@
-#React-library
+# React-library
 
-##Overview
+## Overview
 This is our react library. The objective of this layer is to use our html
 library to render an image.
 
-##Install
+## Install
 Since this library is not on npm, we will install/pack this repo locally and install it on a sample angular app.
 
 1. clone repo
@@ -12,7 +12,7 @@ Since this library is not on npm, we will install/pack this repo locally and ins
 3. npm run build
 4. npm link/pack to use build in external react library
 
-##Note
+## Note
 This repo contains a temporary user sample for testing.
 To use the sample project-
 1. npm start to trigger build and live reload
