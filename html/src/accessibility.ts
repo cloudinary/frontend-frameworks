@@ -2,10 +2,10 @@
 import {isBrowser} from "./isBrowser";
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 
-export function accessibility(element: HTMLImageElement, cloudinaryImage: CloudinaryImage, toBeCanceled: Array<any>): Promise<void | string> | string {
+export function accessibility(element: HTMLImageElement, cloudinaryImage: CloudinaryImage, runningPlugins: Function[]): Promise<void | string> | string {
   if(isBrowser()){
     return new Promise((resolve) => {
-      toBeCanceled.push(()=>{
+      runningPlugins.push(()=>{
         resolve('canceled');
       });
       //transformableImage.effect(Effect.grayscale());

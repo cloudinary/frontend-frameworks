@@ -1,6 +1,6 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 
-export type plugins = ((element: HTMLImageElement, cloudinaryImage: CloudinaryImage, toBeCanceled: any[]) => string | Promise<string | void>)[];
+export type plugins = ((element: HTMLImageElement, cloudinaryImage: CloudinaryImage, runningPlugins: Function[]) => string | Promise<string | void>)[];
 
 export class HtmlLayer{
   private img: any;
@@ -8,9 +8,9 @@ export class HtmlLayer{
   constructor(element: HTMLImageElement | null, cloudinaryImage: CloudinaryImage, plugins?: plugins){
     this.img = element;
     this.runningPlugins = []; // holds running plugins
-    this.removeAttributes();
     this.render(element, cloudinaryImage, plugins)
         .then(()=>{ // when resolved updates the src
+          this.removeAttributes();
           this.img.setAttribute('src', cloudinaryImage.toURL());
           //console.log('here', cloudinaryImage.toURL());
         });
@@ -51,6 +51,7 @@ export class HtmlLayer{
    */
   removeAttributes(){
     this.img.removeAttribute('transformation');
+    this.img.removeAttribute('plugins');
   }
 
   /**

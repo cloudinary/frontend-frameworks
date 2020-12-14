@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react'
-import { CldImg, accessibility, responsive, lazyload } from '@cloudinary/react';
+import { CldImg, accessibility, responsive, lazyload} from '@cloudinary/react';
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 // import {Effect} from "@cloudinary/base/actions/effect";
 // import {Resize} from "@cloudinary/base/actions/resize";
@@ -72,6 +72,9 @@ const App = () => {
   return (
     <Fragment>
       {/*<div style={{height: "500px"}}>*/}
+      <div style={{height: "4000px"}}/>
+      <img src="https://res.cloudinary.com/rcstraus/image/upload/bear" loading="lazy"/>
+      <CldImg transformation={img} plugins={[lazyload]}/>
       {/*  /!*@ts-ignore*!/*/}
       {/*  <CldImg style={plug} transformation={img} plugins={[]}/>*/}
       {/*  <button onClick={onClickMe}>Change State</button>*/}
@@ -79,11 +82,11 @@ const App = () => {
       {/*<button onClick={() => setPlug({opacity: "1.5"})}>*/}
       {/*  Click me*/}
       {/*</button>*/}
-      <div>
-        {/*@ts-ignore*/}
-        { show ? <CldImg transformation={img} /> : null }
-        <button onClick={handleClick}>Click to unmount</button>
-      </div>
+      {/*<div>*/}
+      {/*  /!*@ts-ignore*!/*/}
+      {/*  { show ? <CldImg transformation={img} /> : null }*/}
+      {/*  <button onClick={handleClick}>Click to unmount</button>*/}
+      {/*</div>*/}
     </Fragment>
   )
 };
