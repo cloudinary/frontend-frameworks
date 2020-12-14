@@ -13,12 +13,12 @@ interface ImgProps {
 }
 
 export class CldImg extends React.Component <ImgProps> {
-  myRef: React.RefObject<HTMLImageElement>;
+  imageRef: React.RefObject<HTMLImageElement>;
   imageInstance: HtmlLayer;
 
   constructor(props: ImgProps) {
     super(props);
-    this.myRef = React.createRef();
+    this.imageRef = React.createRef();
   }
 
   /**
@@ -27,7 +27,7 @@ export class CldImg extends React.Component <ImgProps> {
    */
   componentDidMount() {
     this.imageInstance = new HtmlLayer(
-      this.myRef.current,
+      this.imageRef.current,
       this.props.transformation,
       this.props.plugins,
     )
@@ -57,6 +57,6 @@ export class CldImg extends React.Component <ImgProps> {
       plugins,
       ...otherProps // Assume any other props are for the base element
     } = this.props;
-    return <img {...otherProps} ref={this.myRef} />
+    return <img {...otherProps} ref={this.imageRef} />
   }
 }
