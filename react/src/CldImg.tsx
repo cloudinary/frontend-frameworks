@@ -39,7 +39,7 @@ export class CldImg extends React.Component <ImgProps> {
    */
   componentDidUpdate() {
     this.imageInstance.cancelCurrentlyRunningPlugins();
-    // call render again with plugins and reset toBeCanceled
+    // call html layer to update the dom again with plugins and reset toBeCanceled
     this.imageInstance.update(this.props.transformation, this.props.plugins)
   }
 
