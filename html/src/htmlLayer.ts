@@ -1,13 +1,10 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-
-// export type plugins = ((element: HTMLImageElement, cloudinaryImage: CloudinaryImage, runningPlugins: Function[]) => string | Promise<string | void>)[];
-
-export type plugins = (element: HTMLImageElement, cloudinaryImage: CloudinaryImage, runningPlugins: Function[]) => string | Promise<string | void>
+import {plugins} from './types'
 
 export class HtmlLayer{
   private img: any;
   runningPlugins: [];
-  constructor(element: HTMLImageElement | null, cloudinaryImage: CloudinaryImage, plugins?: any){
+  constructor(element: HTMLImageElement | null, cloudinaryImage: CloudinaryImage, plugins?: plugins){
     this.img = element;
     this.runningPlugins = []; // holds running plugins
     this.render(element, cloudinaryImage, plugins)

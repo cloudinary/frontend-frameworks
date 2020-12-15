@@ -1,7 +1,7 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugins} from './htmlLayer'
+import {plugin} from './types'
 
-export function lazyload(rootMargin?: string, threshold?: number | number[]): any {
+export function lazyload(rootMargin?: string, threshold?: number | number[]): plugin{
   return plugin.bind(null, rootMargin, threshold);
 }
 

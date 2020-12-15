@@ -6,5 +6,5 @@ export {placeholder} from './placeholder';
 export {isBrowser} from './isBrowser';
 export {serverSideSrc} from './serverSideSrc';
 export {html} from './html'
-export {plugins} from './htmlLayer';
+export {plugins} from './types';
 
