@@ -1,11 +1,17 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-export function lazyload(element: HTMLImageElement, cloudinaryImage: CloudinaryImage, runningPlugins: Function[]): Promise<void | string> | string {
+import {plugins} from './htmlLayer'
+
+export function lazyload(rootMargin?: string, threshold?: number | number[]): any {
+  return plugin.bind(null, rootMargin, threshold);
+}
+
+function plugin(rootMargin?: string, threshold?: number | number[] , element?: HTMLImageElement, cloudinaryImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
   return new Promise((resolve) => {
     runningPlugins.push(()=>{
       resolve('canceled');
     });
     const onIntersect = () => (resolve());
-    detectIntersection(element, onIntersect);
+    detectIntersection(element, onIntersect, rootMargin, threshold);
   });
 }
 
@@ -15,7 +21,7 @@ export function lazyload(element: HTMLImageElement, cloudinaryImage: CloudinaryI
  */
 function isIntersectionObserverSupported() {
   // Check that 'IntersectionObserver' property is defined on window
-  return typeof window === "object" && window.IntersectionObserver;
+  return window && 'IntersectionObserver' in window;
 }
 
 /**
@@ -23,8 +29,10 @@ function isIntersectionObserverSupported() {
  * no native lazy loading or when IntersectionObserver isn't supported.
  * @param {Element} el - the element to observe
  * @param {function} onIntersect - called when the given element is in view
+ * @param rootMargin
+ * @param threshold
  */
-function detectIntersection(el: HTMLImageElement, onIntersect: Function) {
+function detectIntersection(el: HTMLImageElement, onIntersect: Function, rootMargin?: string, threshold?: number | number[]) {
   try {
     if (!isIntersectionObserverSupported()) {
       // Return if there's no need or possibility to detect intersection
@@ -40,7 +48,7 @@ function detectIntersection(el: HTMLImageElement, onIntersect: Function) {
               onIntersect();
             }
           });
-        }, {threshold: [0, 0.01]});
+        }, {rootMargin: rootMargin ? rootMargin : '0px', threshold: threshold ? threshold : 1.0});
     observer.observe(el);
   } catch (e) {
     onIntersect();

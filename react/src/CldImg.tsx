@@ -8,7 +8,7 @@ import {
 
 interface ImgProps {
   transformation: CloudinaryImage,
-  plugins?:  plugins,
+  plugins?:  any,
   [x: string]: any
 }
 
