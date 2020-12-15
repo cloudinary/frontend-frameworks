@@ -13,21 +13,21 @@ interface ImgProps {
 }
 
 export class CldImg extends React.Component <ImgProps> {
-  myRef: React.RefObject<HTMLImageElement>;
-  imageInstance: HtmlLayer;
+  imageRef: React.RefObject<HTMLImageElement>;
+  htmlLayerInstance: HtmlLayer;
 
   constructor(props: ImgProps) {
     super(props);
-    this.myRef = React.createRef();
+    this.imageRef = React.createRef();
   }
 
   /**
    * On mount creates a new HTMLLayer instance and initialises with ref to img element,
-   * user generated transformableImg and the plugins to be used
+   * user generated cloudinaryImage and the plugins to be used
    */
   componentDidMount() {
-    this.imageInstance = new HtmlLayer(
-      this.myRef.current,
+    this.htmlLayerInstance = new HtmlLayer(
+      this.imageRef.current,
       this.props.transformation,
       this.props.plugins,
     )
@@ -35,12 +35,12 @@ export class CldImg extends React.Component <ImgProps> {
 
   /**
    * On update we cancel running plugins and update image instance with the state of user
-   * transformableImg and the state of plugins
+   * cloudinaryImage and the state of plugins
    */
   componentDidUpdate() {
-    this.imageInstance.cancelCurrentlyRunningPlugins();
-    // call render again with plugins and reset toBeCanceled
-    this.imageInstance.update(this.props.transformation, this.props.plugins)
+    this.htmlLayerInstance.cancelCurrentlyRunningPlugins();
+    // call html layer to update the dom again with plugins and reset toBeCanceled
+    this.htmlLayerInstance.update(this.props.transformation, this.props.plugins)
   }
 
   /**
@@ -48,7 +48,7 @@ export class CldImg extends React.Component <ImgProps> {
    */
   componentWillUnmount() {
     // safely cancel running events on unmount
-    this.imageInstance.cancelCurrentlyRunningPlugins()
+    this.htmlLayerInstance.cancelCurrentlyRunningPlugins()
   }
 
   render() {
@@ -57,6 +57,6 @@ export class CldImg extends React.Component <ImgProps> {
       plugins,
       ...otherProps // Assume any other props are for the base element
     } = this.props;
-    return <img {...otherProps} ref={this.myRef} />
+    return <img {...otherProps} ref={this.imageRef} />
   }
 }
