@@ -1,19 +1,17 @@
-// import * as Effect from '@cloudinary/base/actions/effect/Effect';
-import {isBrowser} from "./isBrowser";
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+import {plugin, accessibilityMode} from "./types";
+import {ACCESSIBILITY_MODES} from './constants';
 
-export function accessibility(element: HTMLImageElement, cloudinaryImage: CloudinaryImage, toBeCanceled: Array<any>): Promise<void | string> | string {
-  if(isBrowser()){
-    return new Promise((resolve) => {
-      toBeCanceled.push(()=>{
-        resolve('canceled');
-      });
-      //transformableImage.effect(Effect.grayscale());
-      console.log('accessibility done');
-      resolve();
+export function accessibility(mode?: string): plugin{
+  return accessibilityPlugin.bind(null, mode);
+}
+
+export function accessibilityPlugin(mode: accessibilityMode="darkmode", element?: HTMLImageElement, cloudinaryImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
+  return new Promise((resolve) => {
+    runningPlugins.push(()=>{
+      resolve('canceled');
     });
-  }else {
-    //transformableImage.effect(Effect.grayscale());
-  }
-
+    cloudinaryImage.effect(ACCESSIBILITY_MODES[mode]);
+    resolve();
+  });
 }
