@@ -6,3 +6,4 @@ example/package-lock.json
 example/node_modules
 package-lock.json
 coverage
+src/react-app-env.d.ts

@@ -8,9 +8,6 @@
   "transform": {
     "^.+\\.tsx?$": "ts-jest"
   },
-  "setupFilesAfterEnv": [
-    "<rootDir>/setupTests.js"
-  ],
   "moduleFileExtensions": [
     "ts",
     "tsx",
@@ -35,5 +32,11 @@
     "ts-jest": {
       "diagnostics": false
     }
-  }
+  },
+  "transformIgnorePatterns": [
+    "node_modules/(?!(@cloudinary/base)).*\\.js$"
+  ],
+  "setupFilesAfterEnv": [
+    "./src/setupTests.js"
+  ]
 }
