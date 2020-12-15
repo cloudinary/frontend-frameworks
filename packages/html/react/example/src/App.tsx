@@ -1,21 +1,13 @@
 import React from 'react'
-import { CldImg, accessibility } from '@cloudinary/react';
-import {TransformableImage} from '@cloudinary/base';
+import { CldImg, accessibility, responsive, lazyload } from '@cloudinary/react';
+import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 
-let img = new TransformableImage()
-  .setConfig({
-    cloud: {
-      cloudName: 'demo'
-    },
-    url: {
-      secure: true,
-    }
-  })
-  .setPublicID('sample');
 
+//This is our playground and can be used to test library
 const App = () => {
-  // @ts-ignore
-  return <CldImg transformation={img} plugins={[accessibility]}/>
+  return (
+    <div></div>
+  )
 };
 
 export default App

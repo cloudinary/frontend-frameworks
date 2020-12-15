@@ -12,26 +12,22 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "build": "npm run build --prefix ../html && microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
-    "test": "run-s test:unit test:lint test:build",
-    "test:build": "run-s build",
-    "test:lint": "eslint .",
-    "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom",
-    "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "peerDependencies": {
     "react": "^16.0.0"
   },
   "devDependencies": {
-    "@cloudinary/base": "^1.0.0-alpha.6",
+    "@babel/preset-env": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "@cloudinary/base": "^1.0.0-alpha.8",
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^25.1.4",
+    "@types/enzyme": "^3.10.8",
+    "@types/jest": "^25.2.3",
     "@types/node": "^12.12.38",
     "@types/react": "^16.9.27",
     "@types/react-dom": "^16.9.7",
@@ -39,6 +35,9 @@
     "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.6.1",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
@@ -56,9 +55,19 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
+    "ts-jest": "^26.4.4",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "typescript": "^3.7.5"
   },
   "files": [
     "dist"
-  ]
+  ],
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@cloudinary/base)).*\\.js$"
+    ],
+    "setupFilesAfterEnv": [
+      "./src/setupTests.js"
+    ]
+  }
 }
