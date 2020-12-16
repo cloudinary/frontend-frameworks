@@ -5,3 +5,5 @@ export type plugins = ((element: HTMLImageElement, cloudinaryImage: CloudinaryIm
 export type plugin = (element: HTMLImageElement, cloudinaryImage: CloudinaryImage, runningPlugins: Function[]) => string | Promise<string | void>;
 
 export type accessibilityMode = 'darkmode' | 'brightmode' | 'monochrome' | 'colorblind';
+
+export type placeholderMode = 'vectorize' | 'pixelate' | 'blur' | 'predominant-color';
