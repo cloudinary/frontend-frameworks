@@ -5,13 +5,15 @@ export function lazyload(rootMargin?: string, threshold?: number | number[]): pl
   return plugin.bind(null, rootMargin, threshold);
 }
 
-function plugin(rootMargin?: string, threshold?: number | number[] , element?: HTMLImageElement, cloudinaryImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
+function plugin(rootMargin='0px', threshold=0.1 , element?: HTMLImageElement, cloudinaryImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
   return new Promise((resolve) => {
+    const onIntersect = () => (resolve());
+    const unobserve = detectIntersection(element, onIntersect, rootMargin, threshold);
+
     runningPlugins.push(()=>{
+      unobserve();
       resolve('canceled');
     });
-    const onIntersect = () => (resolve());
-    detectIntersection(element, onIntersect, rootMargin, threshold);
   });
 }
 
@@ -29,6 +31,7 @@ function isIntersectionObserverSupported() {
  * no native lazy loading or when IntersectionObserver isn't supported.
  * @param {Element} el - the element to observe
  * @param {function} onIntersect - called when the given element is in view
+ * @param onCancel
  * @param rootMargin
  * @param threshold
  */
@@ -48,8 +51,10 @@ function detectIntersection(el: HTMLImageElement, onIntersect: Function, rootMar
               onIntersect();
             }
           });
-        }, {rootMargin: rootMargin ? rootMargin : '0px', threshold: threshold ? threshold : 1.0});
+        }, {rootMargin: rootMargin, threshold: threshold});
     observer.observe(el);
+
+    return ()=>{el && observer.observe(el)};
   } catch (e) {
     onIntersect();
   }

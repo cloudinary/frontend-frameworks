@@ -9,7 +9,6 @@ export class HtmlLayer{
     this.runningPlugins = []; // holds running plugins
     this.render(element, cloudinaryImage, plugins)
         .then(()=>{ // when resolved updates the src
-          this.removeAttributes();
           this.img.setAttribute('src', cloudinaryImage.toURL());
         });
   }
@@ -42,14 +41,6 @@ export class HtmlLayer{
         .then(()=>{
           this.img.setAttribute('src', cloudinaryImage.toURL());
         });
-  }
-
-  /**
-   * Removes non HTML attributes
-   */
-  removeAttributes(){
-    this.img.removeAttribute('transformation');
-    this.img.removeAttribute('plugins');
   }
 
   /**
