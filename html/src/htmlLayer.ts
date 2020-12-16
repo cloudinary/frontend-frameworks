@@ -1,5 +1,6 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugins} from './types'
+import cloneDeep from 'lodash/cloneDeep'
 
 export class HtmlLayer{
   private img: any;
@@ -7,10 +8,10 @@ export class HtmlLayer{
   constructor(element: HTMLImageElement | null, cloudinaryImage: CloudinaryImage, plugins?: plugins){
     this.img = element;
     this.runningPlugins = []; // holds running plugins
-    this.render(element, cloudinaryImage, plugins)
+    const clone  = cloneDeep(cloudinaryImage);
+    this.render(element, clone, plugins)
         .then(()=>{ // when resolved updates the src
-          this.removeAttributes();
-          this.img.setAttribute('src', cloudinaryImage.toURL());
+          this.img.setAttribute('src', clone.toURL());
         });
   }
 
@@ -38,18 +39,11 @@ export class HtmlLayer{
    * @param plugins
    */
   update(cloudinaryImage: CloudinaryImage, plugins: any){
-    this.render(this.img, cloudinaryImage, plugins)
+    const clone  = cloneDeep(cloudinaryImage);
+    this.render(this.img, clone, plugins)
         .then(()=>{
-          this.img.setAttribute('src', cloudinaryImage.toURL());
+          this.img.setAttribute('src', clone.toURL());
         });
-  }
-
-  /**
-   * Removes non HTML attributes
-   */
-  removeAttributes(){
-    this.img.removeAttribute('transformation');
-    this.img.removeAttribute('plugins');
   }
 
   /**

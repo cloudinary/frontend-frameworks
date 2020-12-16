@@ -1,5 +1,4 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {ACCESSIBILITY_MODES} from './constants';
 
 export type plugins = ((element: HTMLImageElement, cloudinaryImage: CloudinaryImage, runningPlugins: Function[]) => string | Promise<string | void>)[];
 

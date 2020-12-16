@@ -1,13 +1,12 @@
-// @ts-ignore
-function testWithMockedIntersectionObserver(cb) {
-  let intersectCallback = () => {}; // will be populated later
+function testWithMockedIntersectionObserver(cb: (...args:any) => void) {
+  let intersectCallback: (root?: Element, rootMargin?: string, thresholds?: number) => void = () => {}; // will be
+  // populated later
   let nativeIntersectionObserver = global.IntersectionObserver;
 
   // Mock IntersectionObserver
   // @ts-ignore
   global.IntersectionObserver = class {
-    // @ts-ignore
-    constructor(cb) {
+    constructor(cb: (root?: Element, rootMargin?: string, thresholds?: number) => any) {
       // This is the callback that notifies when an intersection occurs
       // We'll store it to use it later
       intersectCallback = cb;
@@ -15,10 +14,8 @@ function testWithMockedIntersectionObserver(cb) {
     observe() {}
     unobserve() {}
   };
-  // @ts-ignore
-  cb((...args) => {
-    // @ts-ignore
-    intersectCallback(...args);
+  cb((root?: Element, rootMargin?: string, thresholds?: number) => {
+    intersectCallback(root, rootMargin, thresholds);
   });
 
   // restore
