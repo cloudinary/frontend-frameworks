@@ -54,5 +54,14 @@ describe('placeholder', () => {
       done();
     }, 0);// one tick
   });
+
+  it("should default if supplied with incorrect mode",  function (done) {
+    let component = mount(<CldImg transformation={cl} plugins={[placeholder('ddd')]}/>);
+    setTimeout(()=>{
+      expect(component.html()).toBe("<img" +
+        " src=\"https://res.cloudinary.com/demo/image/upload/e_vectorize/f_svg/sample\">");
+      done();
+    }, 0);// one tick
+  });
 });
 
