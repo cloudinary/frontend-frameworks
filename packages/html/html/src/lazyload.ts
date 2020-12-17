@@ -31,7 +31,6 @@ function isIntersectionObserverSupported() {
  * no native lazy loading or when IntersectionObserver isn't supported.
  * @param {Element} el - the element to observe
  * @param {function} onIntersect - called when the given element is in view
- * @param onCancel
  * @param rootMargin
  * @param threshold
  */
