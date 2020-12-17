@@ -1,11 +1,11 @@
-import {Effect} from "@cloudinary/base/actions/effect";
+import {colorize, grayscale, assistColorBlind} from "@cloudinary/base/actions/effect";
 /**
  * Predefined accessibility transformations
  * @const {Object} Cloudinary.ACCESSIBILITY_MODES
  */
 export const ACCESSIBILITY_MODES = {
-    'darkmode': Effect.colorize(70).color('black'),
-    'brightmode': Effect.colorize(40).color('white'),
-    'monochrome': Effect.grayscale(),
-    'colorblind': Effect.assistColorBlind()
+    'darkmode': colorize(70).color('black'),
+    'brightmode': colorize(40).color('white'),
+    'monochrome': grayscale(),
+    'colorblind': assistColorBlind()
 };

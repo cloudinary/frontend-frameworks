@@ -55,4 +55,14 @@ describe('accessibility', () => {
       done();
     }, 0);// one tick
   });
+
+  it("should default if supplied with incorrect mode",  function (done) {
+    let component = mount(<CldImg transformation={cl} plugins={[accessibility('ddd')]}/>);
+    setTimeout(()=>{
+      expect(component.html()).toBe("<img" +
+        " src=\"https://res.cloudinary.com/demo/image/upload/co_black,e_colorize:70/sample\">");
+      done();
+    }, 0);// one tick
+  });
+
 });
