@@ -1,7 +1,9 @@
+// import * as Effect from '@cloudinary/base/actions/effect/Effect';
 import cloneDeep from 'lodash/cloneDeep'
+import {isBrowser} from "./isBrowser";
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin} from "./types";
-import {PLACEHOLDER_IMAGE_OPTIONS} from './constants';
+import {PLACEHOLDER_IMAGE_OPTIONS} from './internalConstnats';
 import {placeholderMode} from './types';
 
 /**
@@ -16,11 +18,11 @@ export function placeholder(mode='vectorize'): plugin{
  * Displays a placeholder image until the original image loads
  * @param mode Placeholder mode 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
  * @param element HTMLImageElement The image element
- * @param cloudinaryImage
+ * @param pluginCloudinaryImage
  * @param runningPlugins holds running plugins to be canceled
  */
-export function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageElement, cloudinaryImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string  {
-  const placeholderTransformation = preparePlaceholderTransformation(mode, cloudinaryImage);
+function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageElement, pluginCloudinaryImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string  {
+  const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
   element.src = placeholderTransformation.toURL();
 
   return new Promise((resolve: any) => {
@@ -30,7 +32,7 @@ export function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageEle
     });
 
     const largeImage = new Image();
-    largeImage.src = cloudinaryImage.toURL();
+    largeImage.src = pluginCloudinaryImage.toURL();
     largeImage.onload = () => {
       resolve();
     };
@@ -40,11 +42,16 @@ export function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageEle
 /**
  * Prepares placeholder transformation by appending a placeholder-type transformation to the end of the URL
  * @param mode Placeholder mode 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
- * @param cloudinaryImage
+ * @param pluginCloudinaryImage
  */
-function preparePlaceholderTransformation(mode: placeholderMode, cloudinaryImage?: CloudinaryImage){
-  const clone = cloneDeep(cloudinaryImage);
-  PLACEHOLDER_IMAGE_OPTIONS[mode].actions.forEach(transformation => clone.addAction(transformation));
+function preparePlaceholderTransformation(mode?: placeholderMode, pluginCloudinaryImage?: CloudinaryImage){
+  const placeholderClonedImage = cloneDeep(pluginCloudinaryImage);
 
-  return clone;
+  if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
+    mode = 'vectorize'
+  }
+  //appends a placeholder transformation on placeholderClonedImage
+  PLACEHOLDER_IMAGE_OPTIONS[mode].actions.forEach(transformation => placeholderClonedImage.addAction(transformation));
+
+  return placeholderClonedImage;
 }

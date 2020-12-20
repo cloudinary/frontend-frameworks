@@ -1,6 +1,6 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin, accessibilityMode} from "./types";
-import {ACCESSIBILITY_MODES} from './constants';
+import {ACCESSIBILITY_MODES} from './internalConstnats';
 
 /**
  * Returns the accessibility plugin
