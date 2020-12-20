@@ -1,4 +1,5 @@
-import {Effect, vectorize, pixelate, blur} from "@cloudinary/base/actions/effect";
+import {colorize, grayscale, assistColorBlind} from "@cloudinary/base/actions/effect";
+import {vectorize, pixelate, blur} from "@cloudinary/base/actions/effect";
 import {Transformation} from "@cloudinary/base/transformation/Transformation";
 import {pad, crop, fill} from "@cloudinary/base/actions/resize";
 import {Background} from "@cloudinary/base/values/background";
@@ -12,10 +13,10 @@ import {auto, svg} from "@cloudinary/base/values/format";
  * @const {Object} Cloudinary.ACCESSIBILITY_MODES
  */
 export const ACCESSIBILITY_MODES = {
-    'darkmode': Effect.colorize(70).color('black'),
-    'brightmode': Effect.colorize(40).color('white'),
-    'monochrome': Effect.grayscale(),
-    'colorblind': Effect.assistColorBlind()
+    'darkmode': colorize(70).color('black'),
+    'brightmode': colorize(40).color('white'),
+    'monochrome': grayscale(),
+    'colorblind': assistColorBlind()
 };
 
 /**

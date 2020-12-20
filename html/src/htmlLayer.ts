@@ -5,13 +5,13 @@ import cloneDeep from 'lodash/cloneDeep'
 export class HtmlLayer{
   private img: any;
   runningPlugins: [];
-  constructor(element: HTMLImageElement | null, cloudinaryImage: CloudinaryImage, plugins?: plugins){
+  constructor(element: HTMLImageElement | null, userCloudinaryImage: CloudinaryImage, plugins?: plugins){
     this.img = element;
     this.runningPlugins = []; // holds running plugins
-    const clone  = cloneDeep(cloudinaryImage);
-    this.render(element, clone, plugins)
+    const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
+    this.render(element, pluginCloudinaryImage, plugins)
         .then(()=>{ // when resolved updates the src
-          this.img.setAttribute('src', clone.toURL());
+          this.img.setAttribute('src', pluginCloudinaryImage.toURL());
         });
   }
 
@@ -19,14 +19,14 @@ export class HtmlLayer{
    * Iterate through plugins and break in cases where the response is canceled. The
    * response is canceled if component is updated or unmounted
    * @param element Image element
-   * @param cloudinaryImage
+   * @param pluginCloudinaryImage
    * @param plugins array of plugins passed in by the user
    * @return {Promise<void>}
    */
-  async render(element: HTMLImageElement, cloudinaryImage: CloudinaryImage, plugins: any) {
+  async render(element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, plugins: any) {
     if(plugins === undefined) return;
     for(let i = 0; i < plugins.length; i++){
-      const response = await plugins[i](element, cloudinaryImage, this.runningPlugins);
+      const response = await plugins[i](element, pluginCloudinaryImage, this.runningPlugins);
       if(response === 'canceled'){
         break;
       }
@@ -35,11 +35,11 @@ export class HtmlLayer{
 
   /**
    * Called when component is updated and re-triggers render
-   * @param cloudinaryImage
+   * @param userCloudinaryImage
    * @param plugins
    */
-  update(cloudinaryImage: CloudinaryImage, plugins: any){
-    const clone  = cloneDeep(cloudinaryImage);
+  update(userCloudinaryImage: CloudinaryImage, plugins: any){
+    const clone  = cloneDeep(userCloudinaryImage);
     this.render(this.img, clone, plugins)
         .then(()=>{
           this.img.setAttribute('src', clone.toURL());
