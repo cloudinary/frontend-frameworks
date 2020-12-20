@@ -39,10 +39,10 @@ export class HtmlLayer{
    * @param plugins
    */
   update(userCloudinaryImage: CloudinaryImage, plugins: any){
-    const clone  = cloneDeep(userCloudinaryImage);
-    this.render(this.img, clone, plugins)
+    const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
+    this.render(this.img, pluginCloudinaryImage, plugins)
         .then(()=>{
-          this.img.setAttribute('src', clone.toURL());
+          this.img.setAttribute('src', pluginCloudinaryImage.toURL());
         });
   }
 
