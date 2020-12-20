@@ -5,47 +5,63 @@ import debounce from 'lodash.debounce';
 
 /**
  * Returns the responsive plugin
+ * @param steps The size step used to update responsive image number | number[]
  */
 export function responsive(steps?: number | number[]): plugin{
   return responsivePlugin.bind(null, steps);
 }
 
-function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, cloudinaryImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
+/**
+ * Updates the src with size of the parent Element and triggers a resize event for
+ * subsequent resizing
+ * @param steps steps The size step used to update responsive image number | number[]
+ * @param element HTMLImageElement The image element
+ * @param responsiveImage
+ * @param runningPlugins holds running plugins to be canceled
+ */
+function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
   return new Promise((resolve)=>{
     runningPlugins.push(()=>{
-      //window.removeEventListener('resize', resizeEvent);
       resolve('canceled');
     });
+
     const containerSize = element.parentElement.clientWidth;
-    //cloudinaryImage.resize(scale().width(containerSize).setActionTag('responsive'));
-
-    cloudinaryImage.resize(scale().width(containerSize));
-
+    responsiveImage.resize(scale().width(containerSize).setActionTag('responsive'));
 
     window.addEventListener('resize', debounce(()=>{
-      let resizeValue = element.parentElement.clientWidth;
-
-      if(typeof steps === 'number'){
-        resizeValue = Math.ceil(resizeValue/steps)*steps;
-      }
-
-      if(typeof steps === 'object'){
-
-      }
-
-      element.src = cloudinaryImage.resize(scale().width(resizeValue)).toURL();
-
+      updateByContainerWidth(steps, element, responsiveImage);
+      element.src = responsiveImage.toURL();
     }, 100));
 
     resolve();
   });
 }
 
-
-
-/*
-  step 100px
-
-    60 then round 100
-    150 round 200
+/**
+ * Updates the responsiveImage by container width.
+ * @param steps The size step used to update responsive image number | number[]
+ * @param element HTMLImageElement The image element
+ * @param responsiveImage
  */
+function updateByContainerWidth(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage){
+  let resizeValue = element.parentElement.clientWidth;
+
+  //by a step
+  if(typeof steps === 'number'){
+    resizeValue = Math.ceil(resizeValue/steps)*steps;
+  }
+
+  //by breakpoints
+  if(typeof steps === 'object'){
+    resizeValue = steps.reduce((prev, curr) =>{
+      return (Math.abs(curr - resizeValue) < Math.abs(prev - resizeValue) ? curr : prev);
+    });
+  }
+
+  responsiveImage.transformation.actions.forEach((plugin, index) => {
+    if (plugin.getActionTag() === 'responsive') {
+      responsiveImage.transformation.actions[index]  = scale(resizeValue).setActionTag('responsive');
+    }
+  });
+}
+
