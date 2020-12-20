@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash/cloneDeep'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin} from "./types";
-import {PLACEHOLDER_IMAGE_OPTIONS} from './constants';
+import {PLACEHOLDER_IMAGE_OPTIONS} from './internalConstnats';
 import {placeholderMode} from './types';
 
 /**
@@ -43,12 +43,13 @@ function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageElement, p
  * @param pluginCloudinaryImage
  */
 function preparePlaceholderTransformation(mode?: placeholderMode, pluginCloudinaryImage?: CloudinaryImage){
-  const clone = cloneDeep(pluginCloudinaryImage);
+  const placeholderClonedImage = cloneDeep(pluginCloudinaryImage);
 
   if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
     mode = 'vectorize'
   }
-  PLACEHOLDER_IMAGE_OPTIONS[mode].actions.forEach(transformation => clone.addAction(transformation));
+  //appends a placeholder transformation on placeholderClonedImage
+  PLACEHOLDER_IMAGE_OPTIONS[mode].actions.forEach(transformation => placeholderClonedImage.addAction(transformation));
 
-  return clone;
+  return placeholderClonedImage;
 }
