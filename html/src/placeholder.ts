@@ -1,6 +1,4 @@
-// import * as Effect from '@cloudinary/base/actions/effect/Effect';
 import cloneDeep from 'lodash/cloneDeep'
-import {isBrowser} from "./isBrowser";
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin} from "./types";
 import {PLACEHOLDER_IMAGE_OPTIONS} from './internalConstnats';
