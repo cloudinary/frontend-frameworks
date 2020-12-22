@@ -3,7 +3,7 @@ import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import CloudinaryConfig from "@cloudinary/base/config/CloudinaryConfig";
 import {mount, shallow, ShallowWrapper} from 'enzyme';
 import React, {Requireable} from "react";
-import testWithMockedIntersectionObserver from "./setupIntersectionObserverMock";
+import testWithMockedIntersectionObserver from "./testUtils/setupIntersectionObserverMock";
 
 
 const CONFIG_INSTANCE = new CloudinaryConfig({
