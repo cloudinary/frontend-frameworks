@@ -24,14 +24,15 @@ export function responsive(steps?: number | number[]): plugin{
 function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
   return new Promise((resolve)=>{
     runningPlugins.push(()=>{
-      window.removeEventListener("resize", this.onResize);
+      window.removeEventListener("resize",resizeRef);
       resolve('canceled');
     });
 
     const containerSize = element.parentElement.clientWidth;
     responsiveImage.resize(scale().width(containerSize).setActionTag('responsive'));
 
-    window.addEventListener('resize', debounce(()=>{
+    let resizeRef: any;
+    window.addEventListener('resize', resizeRef = debounce(()=>{
       onResize(steps, element, responsiveImage);
     }, 100));
 

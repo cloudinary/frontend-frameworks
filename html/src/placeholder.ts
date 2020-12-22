@@ -25,7 +25,7 @@ function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageElement, p
 
   return new Promise((resolve: any) => {
     runningPlugins.push(()=>{
-      element.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEAAAAALAAAAAABAAEAAAI=;';
+      element.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
       resolve('canceled');
     });
 
