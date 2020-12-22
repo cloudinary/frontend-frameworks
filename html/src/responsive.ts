@@ -2,10 +2,12 @@ import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin, runningPlugins} from "./types";
 import {scale} from "@cloudinary/base/actions/resize";
 import debounce from 'lodash.debounce';
+import {isNum} from './utils/internalUtils';
 
 /**
  * Returns the responsive plugin
- * @param steps The size step used to update responsive image number | number[]
+ * @param steps The size step used to update responsive image number
+ * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered
  */
 export function responsive(steps?: number | number[]): plugin{
   return responsivePlugin.bind(null, steps);
@@ -19,26 +21,21 @@ export function responsive(steps?: number | number[]): plugin{
  * @param responsiveImage
  * @param runningPlugins holds running plugins to be canceled
  */
-function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, runningPlugins?: runningPlugins): Promise<void | string> | string {
+function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
   return new Promise((resolve)=>{
-    runningPlugins.holdCanceled.push(()=>{
-      window.removeEventListener("resize", this.onResize);
+    runningPlugins.push(()=>{
+      window.removeEventListener("resize",resizeRef);
       resolve('canceled');
     });
 
     const containerSize = element.parentElement.clientWidth;
     responsiveImage.resize(scale().width(containerSize).setActionTag('responsive'));
 
-    runningPlugins.isDone = () =>{
-      window.addEventListener('resize', debounce(()=>{
-        onResize(steps, element, responsiveImage);
-      }, 100));
-    };
-    // if(runningPlugins.isDone()){
-    //   window.addEventListener('resize', debounce(()=>{
-    //     onResize(steps, element, responsiveImage);
-    //   }, 100));
-    // }
+    let resizeRef: any;
+    window.addEventListener('resize', resizeRef = debounce(()=>{
+      onResize(steps, element, responsiveImage);
+    }, 100));
+
     resolve();
   });
 }
@@ -63,13 +60,9 @@ function onResize(steps?: number | number[], element?:HTMLImageElement, responsi
 function updateByContainerWidth(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage){
   let resizeValue = element.parentElement.clientWidth;
 
-  //by a step
-  if(typeof steps === "number"){
-    resizeValue = Math.ceil(resizeValue/steps)*steps;
-  }
-
-  //by breakpoint
-  if(typeof steps === "object"){
+  if(isNum(steps)){
+    resizeValue = Math.ceil(resizeValue/<number>steps)*<number>steps;
+  } else if(Array.isArray(steps)){
     resizeValue = steps.reduce((prev, curr) =>{
       return (Math.abs(curr - resizeValue) < Math.abs(prev - resizeValue) ? curr : prev);
     });
