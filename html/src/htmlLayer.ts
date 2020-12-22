@@ -1,20 +1,21 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugins} from './types'
+import {plugins, runningPlugins} from './types'
 import cloneDeep from 'lodash/cloneDeep'
 
 export class HtmlLayer{
   private img: any;
-  runningPlugins: [];
+  runningPlugins: runningPlugins;
   constructor(element: HTMLImageElement | null, userCloudinaryImage: CloudinaryImage, plugins?: plugins){
     this.img = element;
-    this.runningPlugins = []; // holds running plugins
+    this.runningPlugins = {holdCanceled:[], isDone: ()=>{return false}};
+    this.runningPlugins.holdCanceled = []; // holds running plugins
     const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
     this.render(element, pluginCloudinaryImage, plugins)
         .then(()=>{ // when resolved updates the src
+          this.runningPlugins.isDone();
           this.img.setAttribute('src', pluginCloudinaryImage.toURL());
         });
   }
-
   /**
    * Iterate through plugins and break in cases where the response is canceled. The
    * response is canceled if component is updated or unmounted
@@ -50,7 +51,7 @@ export class HtmlLayer{
    * Cancels currently running plugins. This is called from unmount or update
    */
   cancelCurrentlyRunningPlugins(): void{
-    this.runningPlugins.forEach((fn: any) => {
+    this.runningPlugins.holdCanceled.forEach((fn: any) => {
       fn();// resolve each promise with 'canceled'
     })
   }

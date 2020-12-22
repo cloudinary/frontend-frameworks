@@ -1,5 +1,5 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin} from "./types";
+import {plugin, runningPlugins} from "./types";
 import {scale} from "@cloudinary/base/actions/resize";
 import debounce from 'lodash.debounce';
 
@@ -19,9 +19,9 @@ export function responsive(steps?: number | number[]): plugin{
  * @param responsiveImage
  * @param runningPlugins holds running plugins to be canceled
  */
-function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
+function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, runningPlugins?: runningPlugins): Promise<void | string> | string {
   return new Promise((resolve)=>{
-    runningPlugins.push(()=>{
+    runningPlugins.holdCanceled.push(()=>{
       window.removeEventListener("resize", this.onResize);
       resolve('canceled');
     });
@@ -29,10 +29,16 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
     const containerSize = element.parentElement.clientWidth;
     responsiveImage.resize(scale().width(containerSize).setActionTag('responsive'));
 
-    window.addEventListener('resize', debounce(()=>{
-      onResize(steps, element, responsiveImage);
-    }, 100));
-
+    runningPlugins.isDone = () =>{
+      window.addEventListener('resize', debounce(()=>{
+        onResize(steps, element, responsiveImage);
+      }, 100));
+    };
+    // if(runningPlugins.isDone()){
+    //   window.addEventListener('resize', debounce(()=>{
+    //     onResize(steps, element, responsiveImage);
+    //   }, 100));
+    // }
     resolve();
   });
 }

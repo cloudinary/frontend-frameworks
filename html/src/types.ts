@@ -7,3 +7,5 @@ export type plugin = (element: HTMLImageElement, cloudinaryImage: CloudinaryImag
 export type accessibilityMode = 'darkmode' | 'brightmode' | 'monochrome' | 'colorblind';
 
 export type placeholderMode = 'vectorize' | 'pixelate' | 'blur' | 'predominant-color';
+
+export type runningPlugins = { holdCanceled: Function[], isDone: Function; }
