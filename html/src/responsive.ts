@@ -2,10 +2,12 @@ import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin} from "./types";
 import {scale} from "@cloudinary/base/actions/resize";
 import debounce from 'lodash.debounce';
+import {isNum} from './utils/internalUtils';
 
 /**
  * Returns the responsive plugin
- * @param steps The size step used to update responsive image number | number[]
+ * @param steps The size step used to update responsive image number
+ * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered
  */
 export function responsive(steps?: number | number[]): plugin{
   return responsivePlugin.bind(null, steps);
@@ -57,13 +59,9 @@ function onResize(steps?: number | number[], element?:HTMLImageElement, responsi
 function updateByContainerWidth(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage){
   let resizeValue = element.parentElement.clientWidth;
 
-  //by a step
-  if(typeof steps === "number"){
-    resizeValue = Math.ceil(resizeValue/steps)*steps;
-  }
-
-  //by breakpoint
-  if(typeof steps === "object"){
+  if(isNum(steps)){
+    resizeValue = Math.ceil(resizeValue/<number>steps)*<number>steps;
+  } else if(Array.isArray(steps)){
     resizeValue = steps.reduce((prev, curr) =>{
       return (Math.abs(curr - resizeValue) < Math.abs(prev - resizeValue) ? curr : prev);
     });
