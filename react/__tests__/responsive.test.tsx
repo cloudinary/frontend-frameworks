@@ -5,6 +5,7 @@ import {mount} from 'enzyme';
 import React  from "react";
 import {ResponsiveHelper} from './testUtils/responsiveHelperWrapper';
 import {crop} from "@cloudinary/base/actions/resize";
+import {dispatchResize} from "./testUtils/dispatchResize";
 
 const CONFIG_INSTANCE = new CloudinaryConfig({
   cloud: {
@@ -22,10 +23,10 @@ describe('responsive', () => {
       </ResponsiveHelper>);
 
     setTimeout(() => {
-      const el = component.find('#id').getDOMNode();
+      const el = component.find('#wrapper').getDOMNode();
       expect(el.clientWidth).toBe(250);
       done();
-    }, 1000);
+    }, 0);
   });
 
   it("should append to existing transformation", function () {
@@ -39,7 +40,7 @@ describe('responsive', () => {
 
     setTimeout(() => {
       expect(component.html()).toBe("<div id=\"id\"><img src=\"https://res.cloudinary.com/demo/image/upload/c_crop,w_500/c_scale,w_250/sample\"></div>");
-    }, 1000);
+    }, 0);
   });
 
   it("should update container width on window resize", function () {
@@ -49,13 +50,11 @@ describe('responsive', () => {
         <CldImg transformation={cl} plugins={[responsive()]}/>
       </ResponsiveHelper>);
 
-    const el = component.find('#id').getDOMNode();
-    Object.defineProperty(el, 'clientWidth', {value: 1000, configurable: true});
-    window.dispatchEvent(new Event('resize'));
+    const el = dispatchResize(component, 0);
 
     setTimeout(() => {
-      expect(el.clientWidth).toBe(1000);
-    }, 1000);
+      expect(el.clientWidth).toBe(0);
+    }, 0);
   });
 
   it("should step by the 100th", function () {
@@ -68,8 +67,9 @@ describe('responsive', () => {
     window.dispatchEvent(new Event('resize'));
 
     setTimeout(() => {
+      // result is w_300 since default is 250
       expect(component.html()).toBe("<div id=\"id\"><img src=\"https://res.cloudinary.com/demo/image/upload/c_scale,w_300/sample\"></div>");
-    }, 1000);
+    }, 0);
   });
 
   it("should step by breakpoints", function () {
@@ -83,16 +83,14 @@ describe('responsive', () => {
     setTimeout(() => {
       expect(component.html()).toBe("<div id=\"id\"><img" +
         " src=\"https://res.cloudinary.com/demo/image/upload/c_scale,w_800/sample\"></div>");
-    }, 100);
+    }, 0);
 
     //simulate resize to 975
     setTimeout(() => {
-      const el = component.find('#id').getDOMNode();
-      Object.defineProperty(el, 'clientWidth', {value: 975, configurable: true});
-      window.dispatchEvent(new Event('resize'));
+      dispatchResize(component, 975);
       expect(component.html()).toBe("<div id=\"id\"><img" +
         " src=\"https://res.cloudinary.com/demo/image/upload/c_scale,w_1000/sample\"></div>");
-    }, 50);
+    }, 0);
   });
 
   it("should not resize to larger than provided breakpoints", function () {
@@ -102,15 +100,11 @@ describe('responsive', () => {
         <CldImg transformation={cl} plugins={[responsive([800, 1000, 1200, 3000])]}/>
       </ResponsiveHelper>);
 
-    //simulate resize to 975
     setTimeout(() => {
-      const el = component.find('#id').getDOMNode();
-      Object.defineProperty(el, 'clientWidth', {value: 4000, configurable: true});
-      window.dispatchEvent(new Event('resize'));
-
+      dispatchResize(component, 4000);
       expect(component.html()).toBe("<div id=\"id\"><img" +
         " src=\"https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample\"></div>");
-    }, 50);
+    }, 0);
   });
 
   it("should handle unordered breakpoints", function () {
@@ -120,13 +114,10 @@ describe('responsive', () => {
         <CldImg transformation={cl} plugins={[responsive([1000, 800, 3000, 1200])]}/>
       </ResponsiveHelper>);
 
-    //simulate resize to 975
     setTimeout(() => {
-      const el = component.find('#id').getDOMNode();
-      Object.defineProperty(el, 'clientWidth', {value: 5000, configurable: true});
-      window.dispatchEvent(new Event('resize'));
+      dispatchResize(component, 5000);
       expect(component.html()).toBe("<div id=\"id\"><img" +
         " src=\"https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample\"></div>");
-    }, 50);
+    }, 0);
   });
 });

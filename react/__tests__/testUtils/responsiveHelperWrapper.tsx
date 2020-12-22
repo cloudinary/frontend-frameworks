@@ -14,7 +14,7 @@ export function ResponsiveHelper(props: { children: React.ReactNode }) {
     setRefElement(ref.current);
   }, []);
   return <div
-    id='id'
+    id='wrapper'
     ref={ref}
   >
     {refElement && props.children}

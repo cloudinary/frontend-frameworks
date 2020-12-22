@@ -22,6 +22,7 @@ export function responsive(steps?: number | number[]): plugin{
 function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
   return new Promise((resolve)=>{
     runningPlugins.push(()=>{
+      window.removeEventListener("resize", this.onResize);
       resolve('canceled');
     });
 
@@ -29,12 +30,22 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
     responsiveImage.resize(scale().width(containerSize).setActionTag('responsive'));
 
     window.addEventListener('resize', debounce(()=>{
-      updateByContainerWidth(steps, element, responsiveImage);
-      element.src = responsiveImage.toURL();
+      onResize(steps, element, responsiveImage);
     }, 100));
 
     resolve();
   });
+}
+
+/**
+ * On resize updates image src
+ * @param steps
+ * @param element
+ * @param responsiveImage
+ */
+function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage){
+  updateByContainerWidth(steps, element, responsiveImage);
+  element.src = responsiveImage.toURL();
 }
 
 /**
@@ -47,19 +58,19 @@ function updateByContainerWidth(steps?: number | number[], element?:HTMLImageEle
   let resizeValue = element.parentElement.clientWidth;
 
   //by a step
-  if(typeof steps === 'number'){
+  if(typeof steps === "number"){
     resizeValue = Math.ceil(resizeValue/steps)*steps;
   }
 
-  //by breakpoints
-  if(typeof steps === 'object'){
+  //by breakpoint
+  if(typeof steps === "object"){
     resizeValue = steps.reduce((prev, curr) =>{
       return (Math.abs(curr - resizeValue) < Math.abs(prev - resizeValue) ? curr : prev);
     });
   }
 
-  responsiveImage.transformation.actions.forEach((plugin, index) => {
-    if (plugin.getActionTag() === 'responsive') {
+  responsiveImage.transformation.actions.forEach((action, index) => {
+    if (action.getActionTag() === 'responsive') {
       responsiveImage.transformation.actions[index]  = scale(resizeValue).setActionTag('responsive');
     }
   });
