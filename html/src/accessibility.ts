@@ -1,5 +1,5 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin, accessibilityMode} from "./types";
+import {plugin, accessibilityMode, htmlPluginState} from "./types";
 import {ACCESSIBILITY_MODES} from './internalConstnats';
 
 /**
@@ -15,11 +15,11 @@ export function accessibility(mode='darkmode'): plugin{
  * @param mode Accessbility mode 'darkmode' | 'brightmode' | 'monochrome' | 'colorblind'
  * @param element The image element
  * @param pluginCloudinaryImage
- * @param runningPlugins holds running plugins to be canceled
+ * @param htmlPluginState holds cleanup callbacks and event subscriptions
  */
-export function accessibilityPlugin(mode?: accessibilityMode, element?: HTMLImageElement, pluginCloudinaryImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
+export function accessibilityPlugin(mode: accessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string {
   return new Promise((resolve) => {
-    runningPlugins.push(()=>{
+    htmlPluginState.cleanupCallbacks.push(()=>{
       resolve('canceled');
     });
 
