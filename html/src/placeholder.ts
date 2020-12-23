@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin, runningPlugins} from "./types";
+import {plugin, htmlPluginState} from "./types";
 import {PLACEHOLDER_IMAGE_OPTIONS} from './internalConstnats';
 import {placeholderMode} from './types';
 
@@ -17,14 +17,14 @@ export function placeholder(mode='vectorize'): plugin{
  * @param mode Placeholder mode 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
  * @param element HTMLImageElement The image element
  * @param pluginCloudinaryImage
- * @param runningPlugins holds running plugins to be canceled
+ * @param htmlPluginState holds cleanup callbacks and event subscriptions
  */
-function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageElement, pluginCloudinaryImage?: CloudinaryImage, runningPlugins?: runningPlugins): Promise<void | string> | string  {
+function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageElement, pluginCloudinaryImage?: CloudinaryImage, htmlPluginState?: htmlPluginState): Promise<void | string> | string  {
   const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
   element.src = placeholderTransformation.toURL();
 
   return new Promise((resolve: any) => {
-    runningPlugins.holdCanceled.push(()=>{
+    htmlPluginState.cleanupCallbacks.push(()=>{
       element.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
       resolve('canceled');
     });
