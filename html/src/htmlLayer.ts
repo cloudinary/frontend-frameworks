@@ -7,7 +7,7 @@ export class HtmlLayer{
   htmlPluginState: htmlPluginState;
   constructor(element: HTMLImageElement | null, userCloudinaryImage: CloudinaryImage, plugins?: plugins){
     this.img = element;
-    this.htmlPluginState = {cleanupCallbacks:[()=>{}], pluginEventSubscription: [()=>{}]};
+    this.htmlPluginState = {cleanupCallbacks:[], pluginEventSubscription: []};
     const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
     this.render(element, pluginCloudinaryImage, plugins)
         .then(()=>{ // when resolved updates the src

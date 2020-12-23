@@ -8,4 +8,4 @@ export type accessibilityMode = 'darkmode' | 'brightmode' | 'monochrome' | 'colo
 
 export type placeholderMode = 'vectorize' | 'pixelate' | 'blur' | 'predominant-color';
 
-export type htmlPluginState = { cleanupCallbacks: [()=>void], pluginEventSubscription: [()=>void] };
+export type htmlPluginState = { cleanupCallbacks: Function[], pluginEventSubscription: Function[] };
