@@ -11,9 +11,7 @@ export class HtmlLayer{
     const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
     this.render(element, pluginCloudinaryImage, plugins)
         .then(()=>{ // when resolved updates the src
-          if(this.htmlPluginState.pluginEventSubscription[0]){
-            this.htmlPluginState.pluginEventSubscription[0]();
-          }
+          this.htmlPluginState.pluginEventSubscription.forEach(fn=>{fn()});
           this.img.setAttribute('src', pluginCloudinaryImage.toURL());
         });
   }

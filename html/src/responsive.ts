@@ -33,7 +33,6 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
 
     let resizeRef: any;
     htmlPluginState.pluginEventSubscription.push(()=>{
-
       window.addEventListener('resize', resizeRef = debounce(()=>{
         onResize(steps, element, responsiveImage);
       }, 100));
