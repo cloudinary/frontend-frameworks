@@ -1,5 +1,5 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin} from './types'
+import {plugin, htmlPluginState} from './types'
 
 /**
  * @namespace
@@ -8,15 +8,15 @@ import {plugin} from './types'
  * @param threshold
  */
 export function lazyload(rootMargin?: string, threshold?: number | number[]): plugin{
-  return plugin.bind(null, rootMargin, threshold);
+  return lazyloadPlugin.bind(null, rootMargin, threshold);
 }
 
-function plugin(rootMargin='0px', threshold=0.1 , element?: HTMLImageElement, cloudinaryImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string {
+function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement, cloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string {
   return new Promise((resolve) => {
     const onIntersect = () => (resolve());
     const unobserve = detectIntersection(element, onIntersect, rootMargin, threshold);
 
-    runningPlugins.push(()=>{
+    htmlPluginState.cleanupCallbacks.push(()=>{
       unobserve();
       resolve('canceled');
     });
@@ -40,7 +40,7 @@ function isIntersectionObserverSupported() {
  * @param rootMargin
  * @param threshold
  */
-function detectIntersection(el: HTMLImageElement, onIntersect: Function, rootMargin?: string, threshold?: number | number[]) {
+function detectIntersection(el: HTMLImageElement, onIntersect: Function, rootMargin: string, threshold: number | number[]) {
   try {
     if (!isIntersectionObserverSupported()) {
       // Return if there's no need or possibility to detect intersection

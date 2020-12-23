@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash/cloneDeep'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin} from "./types";
-import {PLACEHOLDER_IMAGE_OPTIONS} from './internalConstnats';
+import {plugin, htmlPluginState} from "./types";
+import {PLACEHOLDER_IMAGE_OPTIONS, emptyImage} from './internalConstnats';
 import {placeholderMode} from './types';
 
 /**
@@ -18,15 +18,15 @@ export function placeholder(mode='vectorize'): plugin{
  * @param mode Placeholder mode 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
  * @param element HTMLImageElement The image element
  * @param pluginCloudinaryImage
- * @param runningPlugins holds running plugins to be canceled
+ * @param htmlPluginState holds cleanup callbacks and event subscriptions
  */
-function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageElement, pluginCloudinaryImage?: CloudinaryImage, runningPlugins?: Function[]): Promise<void | string> | string  {
+function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string  {
   const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
   element.src = placeholderTransformation.toURL();
 
   return new Promise((resolve: any) => {
-    runningPlugins.push(()=>{
-      element.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+    htmlPluginState.cleanupCallbacks.push(()=>{
+      element.src = emptyImage;
       resolve('canceled');
     });
 
@@ -43,7 +43,7 @@ function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageElement, p
  * @param mode Placeholder mode 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
  * @param pluginCloudinaryImage
  */
-function preparePlaceholderTransformation(mode?: placeholderMode, pluginCloudinaryImage?: CloudinaryImage){
+function preparePlaceholderTransformation(mode: placeholderMode, pluginCloudinaryImage: CloudinaryImage){
   const placeholderClonedImage = cloneDeep(pluginCloudinaryImage);
 
   if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
