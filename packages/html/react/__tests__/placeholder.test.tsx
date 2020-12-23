@@ -41,7 +41,7 @@ describe('placeholder', () => {
   it("should apply blur",  function (done) {
     let component = mount(<CldImg transformation={cl} plugins={[placeholder('blur')]}/>);
     setTimeout(()=>{
-      expect(component.html()).toBe(`<img src=\"https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.pixelate}/sample\">`);
+      expect(component.html()).toBe(`<img src=\"https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.blur}/sample\">`);
       done();
     }, 0);// one tick
   });
