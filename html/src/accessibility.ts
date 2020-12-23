@@ -17,7 +17,7 @@ export function accessibility(mode='darkmode'): plugin{
  * @param pluginCloudinaryImage
  * @param htmlPluginState holds cleanup callbacks and event subscriptions
  */
-export function accessibilityPlugin(mode?: accessibilityMode, element?: HTMLImageElement, pluginCloudinaryImage?: CloudinaryImage, htmlPluginState?: htmlPluginState): Promise<void | string> | string {
+export function accessibilityPlugin(mode: accessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string {
   return new Promise((resolve) => {
     htmlPluginState.cleanupCallbacks.push(()=>{
       resolve('canceled');

@@ -19,7 +19,7 @@ export function placeholder(mode='vectorize'): plugin{
  * @param pluginCloudinaryImage
  * @param htmlPluginState holds cleanup callbacks and event subscriptions
  */
-function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageElement, pluginCloudinaryImage?: CloudinaryImage, htmlPluginState?: htmlPluginState): Promise<void | string> | string  {
+function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string  {
   const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
   element.src = placeholderTransformation.toURL();
 
@@ -42,7 +42,7 @@ function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageElement, p
  * @param mode Placeholder mode 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
  * @param pluginCloudinaryImage
  */
-function preparePlaceholderTransformation(mode?: placeholderMode, pluginCloudinaryImage?: CloudinaryImage){
+function preparePlaceholderTransformation(mode: placeholderMode, pluginCloudinaryImage: CloudinaryImage){
   const placeholderClonedImage = cloneDeep(pluginCloudinaryImage);
 
   if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){

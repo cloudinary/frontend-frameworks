@@ -5,7 +5,7 @@ export function lazyload(rootMargin?: string, threshold?: number | number[]): pl
   return lazyloadPlugin.bind(null, rootMargin, threshold);
 }
 
-function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element?: HTMLImageElement, cloudinaryImage?: CloudinaryImage, htmlPluginState?: htmlPluginState): Promise<void | string> | string {
+function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement, cloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string {
   return new Promise((resolve) => {
     const onIntersect = () => (resolve());
     const unobserve = detectIntersection(element, onIntersect, rootMargin, threshold);
@@ -34,7 +34,7 @@ function isIntersectionObserverSupported() {
  * @param rootMargin
  * @param threshold
  */
-function detectIntersection(el: HTMLImageElement, onIntersect: Function, rootMargin?: string, threshold?: number | number[]) {
+function detectIntersection(el: HTMLImageElement, onIntersect: Function, rootMargin: string, threshold: number | number[]) {
   try {
     if (!isIntersectionObserverSupported()) {
       // Return if there's no need or possibility to detect intersection
