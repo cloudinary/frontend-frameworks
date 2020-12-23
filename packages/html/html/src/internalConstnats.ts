@@ -64,3 +64,8 @@ export const PLACEHOLDER_IMAGE_OPTIONS = {
     'blur': BLUR,
     'predominant-color': PREDOMINANT_COLOR_TRANSFORM
 };
+
+/**
+ * transparent gif
+ */
+export const emptyImage = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
