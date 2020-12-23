@@ -1,6 +1,12 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin} from './types'
 
+/**
+ * @namespace
+ * @description Image loads once it is in a certain margin in the viewport. This includes vertical and horizontal scrolling.
+ * @param rootMargin {string} optional The root element's bounding box before the intersection test is performed
+ * @param threshold
+ */
 export function lazyload(rootMargin?: string, threshold?: number | number[]): plugin{
   return plugin.bind(null, rootMargin, threshold);
 }

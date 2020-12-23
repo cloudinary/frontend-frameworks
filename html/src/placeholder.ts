@@ -5,7 +5,8 @@ import {PLACEHOLDER_IMAGE_OPTIONS} from './internalConstnats';
 import {placeholderMode} from './types';
 
 /**
- * Returns the placeholder plugin
+ * @namespace
+ * @description Returns the placeholder plugin
  * @param mode Placeholder mode 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
  */
 export function placeholder(mode='vectorize'): plugin{

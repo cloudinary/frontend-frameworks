@@ -12,6 +12,15 @@ interface ImgProps {
   [x: string]: any
 }
 
+/**
+ * @namespace ReactSDK
+ */
+
+
+/**
+ * @memberOf ReactSDK
+ * @description this is sdk
+ */
 export class CldImg extends React.Component <ImgProps> {
   imageRef: React.RefObject<HTMLImageElement>;
   htmlLayerInstance: HtmlLayer;

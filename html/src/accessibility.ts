@@ -3,16 +3,20 @@ import {plugin, accessibilityMode} from "./types";
 import {ACCESSIBILITY_MODES} from './internalConstnats';
 
 /**
- * Returns the accessibility plugin
- * @param mode 'darkmode' | 'brightmode' | 'monochrome' | 'colorblind'
+ * @namespace
+ * @description Accessibility transformations are appended to the original image.
+ * @param mode {accessibilityMode} Accessibility mode darkmode | brightmode | monochrome | colorblind
+ * @return {plugin}
+ * @example
+ * plugins=[(accessibility())]
  */
 export function accessibility(mode='darkmode'): plugin{
   return accessibilityPlugin.bind(null, mode);
 }
 
 /**
- * Accessibility transformations are appended to the original image.
- * @param mode Accessbility mode 'darkmode' | 'brightmode' | 'monochrome' | 'colorblind'
+ * @description Accessibility plugin
+ * @param mode {accessibilityMode} Accessibility mode darkmode | brightmode | monochrome | colorblind
  * @param element The image element
  * @param pluginCloudinaryImage
  * @param runningPlugins holds running plugins to be canceled

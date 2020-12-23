@@ -1,0 +1,40 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc","closure"]
+  },
+  "source": {
+    "include": ["html/src", "react/src"],
+    "includePattern": ".+\\.ts(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": [
+    "plugins/markdown",
+    "node_modules/better-docs/typescript"
+  ],
+  "typescript": {
+    "moduleRoot": "src"
+  },
+  "templates": {
+    "cleverLinks": true,
+    "navMembers" : [
+      {"kind": "namespace", "title": "Plugins", "summary": "All documented namespaces."}
+    ],
+    "stylesheets" : [
+      "./customStyles.css"
+    ],
+    "search": false,
+    "monospaceLinks": true,
+    "systemColor": "#3448C5",
+    "systemName": "Cloudinary HTML SDK",
+    "systemLogo": "__DOC_RESOURCES__/cloudinaryicon.png",
+    "systemSummary": "client side frameworks & plugins",
+    "favicon": "__DOC_RESOURCES__/cloudinary_icon_solid.png",
+    "copyright": "Copyright © 2020 Cloudinary.com"
+  },
+  "opts": {
+    "recurse": true,
+    "readme": "README.md",
+    "template": "./node_modules/foodoc/template"
+  }
+}

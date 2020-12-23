@@ -5,7 +5,8 @@ import debounce from 'lodash.debounce';
 import {isNum} from './utils/internalUtils';
 
 /**
- * Returns the responsive plugin
+ * @namespace
+ * @description Returns the responsive plugin
  * @param steps The size step used to update responsive image number
  * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered
  */
@@ -14,7 +15,7 @@ export function responsive(steps?: number | number[]): plugin{
 }
 
 /**
- * Updates the src with size of the parent Element and triggers a resize event for
+ * @description Updates the src with size of the parent Element and triggers a resize event for
  * subsequent resizing
  * @param steps steps The size step used to update responsive image number | number[]
  * @param element HTMLImageElement The image element

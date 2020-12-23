@@ -1,0 +1,191 @@
+<!-- start:readme.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+		<title>Cloudinary HTML SDK</title>
+		<link rel="icon" type="image/png" href="favicon.png"/>
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/prism.min.css">
+		<link type="text/css" rel="stylesheet" href="css/template.min.css">
+			<link type="text/css" rel="stylesheet" href="./customStyles.css">
+			<style>
+				.page-header,
+				pre.code-toolbar > .toolbar:hover {
+					background-color: #3448C5;
+				}
+				.callout-primary,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus,
+				pre.code-toolbar > .toolbar:hover {
+					border-left-color: #3448C5;
+				}
+				pre.code-toolbar > .toolbar:hover {
+					border-bottom-color: #3448C5;
+				}
+				.callout-primary h5,
+				.symbol-title.collapsible-symbol .toggle-icon,
+				.breadcrumb li a,
+				.toc .nav > li > a:hover,
+				.toc .nav > li > a:focus,
+				.toc .nav > li.active > a,
+				.toc .nav > li.active > a:hover,
+				.toc .nav > li.active > a:focus {
+					color: #3448C5;
+				}
+			</style>
+		<script type="text/javascript">
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Cloudinary HTML SDK","systemSummary":"client side frameworks & plugins","systemLogo":"img/cloudinaryicon.png","systemColor":"#3448C5","navMembers":[{"kind":"namespace","title":"Plugins","summary":"All documented namespaces."}],"footer":"","copyright":"Copyright © 2020 Cloudinary.com","linenums":true,"collapseSymbols":true,"inverseNav":true,"inlineNav":false,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":true,"sort":"linenum, longname, version, since","search":false,"favicon":"favicon.png","stylesheets":["./customStyles.css"],"scripts":[],"monospaceLinks":true,"cleverLinks":true};
+			window.DOCLET_TOC_ENABLED = true;
+			window.DOCLET_AFILTER_ENABLED = false;
+		</script>
+</head>
+<body>
+	<!-- start:navbar.hbs -->
+	<header class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand branding-logo" href="index.html" style="background-image: url(img/cloudinaryicon.png);">
+					Cloudinary HTML SDK
+				</a>
+				<!-- displayed on small devices -->
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="navbar-collapse collapse" id="topNavigation">
+				<ul class="nav navbar-nav">
+								<li class="dropdown">
+									<a href="list_namespace.html" class="dropdown-toggle" data-toggle="dropdown">Plugins<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+											<li><a href="accessibility.html">accessibility</a></li>
+											<li><a href="lazyload.html">lazyload</a></li>
+											<li><a href="placeholder.html">placeholder</a></li>
+											<li><a href="ReactSDK.html">ReactSDK</a></li>
+											<li><a href="responsive.html">responsive</a></li>
+									</ul>
+								</li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<!-- end:navbar.hbs -->		<div class="page-header">
+			<div class="container">
+				<span class="kind">readme</span>
+				<h1><span class="name">Cloudinary HTML SDK</span></h1>
+				<div class="summary"><p>client side frameworks &amp; plugins</p></div>			</div>
+		</div>
+	<div class="container content">
+		<div class="row">
+			<div class="col-md-9 main-content">
+		<section class="readme-section">
+			<article><h1>Welcome</h1>
+<h2>About this project</h2>
+<p>This project enables you to create Cloudinary URLs for your images and videos.
+Using this SDK, you can apply advanced transformations to your images and videos.</p>
+<h2>Help &amp; Examples</h2>
+<ul>
+<li>gettingStarted</li>
+<li>annotatedExamples</li>
+<li>configuration</li>
+</ul>
+<h2>Installation</h2>
+<pre class="prettyprint source lang-bash"><code>npm install @cloudinary/base 
+</code></pre>
+<h2>Simple usage</h2>
+<pre class="prettyprint source lang-javascript"><code>
+// Import the cloudinary class, and the assets you want to use
+// In this case, we import a ImageTransformation type.
+import Cloudinary, {ImageTransformation} from '@cloudinary/base';
+
+// Create your instance
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'demo'
+  },
+  url: {
+    secure: true // force https, set to false to force http
+  }
+});
+
+// Plug the image type into your instance
+cld.useImage(ImageTransformation);
+
+// Lets create a new image
+const myImage = cld.image('sample');
+import Resize from '@cloudinary/base/actions/resize';
+myImage.resize(Resize.scale().width(100).height(100));
+
+// When we're done, we can apply all our changes and create a URL.
+const myURL = myImage.toURL();
+// https://res.cloudinary.com/demo/image/upload/c_scale,w_100,h_100/sample
+</code></pre>
+<h2>Passing values to Actions</h2>
+<div>
+We've just seen an example of how to scale our image.<br/>
+This example used width and height, and passed some numeric values as parameters.<br/><br/>
+In the SDK world, we refer to methods on an Action as Qualifiers.<br/><br/>
+The ResizeScale action has a width and height Qualifier.<br/>
+Qualifiers receive QualifierValues as parameters.
+</div>
+<br/><br/>
+<div>
+The scale Action has intuitive qualifiers, width and height, which receive intuitive values.<br/> 
+Lets see a more complex example and how the SDK helps you in those cases.
+</div>
+<pre class="prettyprint source lang-javascript"><code>import Cloudinary, {ImageTransformation} from '@cloudinary/base';
+
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'demo'
+  },
+  url: {
+    secure: true // force https, set to false to force http
+  }
+});
+
+// Plug the image type into your instance
+cld.useImage(ImageTransformation);
+
+// Import the RotationModeAction
+import {mode} from '@cloudinary/base/actions/rotate';
+
+// Import the RotationModeAction
+import * as ResizeMode from '@cloudinary/base/values/rotate';
+
+const myImage = cld.image('sample');
+
+myImage.rotate(mode(ResizeMode.verticalFlip()));
+
+const myURL = myImage.toURL();
+</code></pre></article>
+		</section>
+			</div>
+				<div class="col-md-3 side-content">
+					<nav class="toc hidden-print hidden-sm hidden-xs"></nav>
+				</div>
+		</div>
+	</div>
+	<footer>
+				<div class="copyright">Copyright © 2020 Cloudinary.com</div>
+			<div class="generated-by">Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on 23rd Dec 2020 using the <a href="https://github.com/steveush/foodoc">FooDoc template</a>.</div>
+	</footer>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script src="js/prism.min.js"></script>
+	<script src="js/template.min.js"></script>
+	
+</body>
+</html>
+<!-- end:readme.hbs -->
