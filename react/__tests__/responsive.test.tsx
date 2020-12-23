@@ -33,7 +33,7 @@ describe('responsive', () => {
       </ResponsiveHelper>);
 
     window.dispatchEvent(new Event('resize'));
-    clock.tick(100);
+    clock.tick(100); //timeout for debounce
 
     const el = component.find('#wrapper').getDOMNode();
     expect(el.clientWidth).toBe(250);
@@ -48,7 +48,7 @@ describe('responsive', () => {
       </ResponsiveHelper>);
 
     const el = dispatchResize(component, 100);
-    clock.tick(100);
+    clock.tick(100); //timeout for debounce
     expect(el.clientWidth).toBe(100);
   });
 
@@ -59,9 +59,9 @@ describe('responsive', () => {
         <CldImg transformation={cl} plugins={[responsive(100)]}/>
       </ResponsiveHelper>);
 
-    await clock.tickAsync(0);
+    await clock.tickAsync(0); //one tick
     window.dispatchEvent(new Event('resize'));
-    await clock.tickAsync(100);
+    await clock.tickAsync(100); //timeout for debounce
     expect(component.html()).toBe("<div id=\"wrapper\"><img" +
       " src=\"https://res.cloudinary.com/demo/image/upload/c_scale,w_300/sample\"></div>");
   });
@@ -72,17 +72,17 @@ describe('responsive', () => {
         <CldImg transformation={cl} plugins={[responsive([800, 1000, 1200, 3000])]}/>
       </ResponsiveHelper>);
 
-    await clock.tickAsync(0);
+    await clock.tickAsync(0); //one tick
     window.dispatchEvent(new Event('resize'));
-    await clock.tickAsync(100);
+    await clock.tickAsync(100); //timeout for debounce
 
     expect(component.html()).toBe("<div id=\"wrapper\"><img" +
       " src=\"https://res.cloudinary.com/demo/image/upload/c_scale,w_800/sample\"></div>");
 
     //simulate resize to 975
-    await clock.tickAsync(0);
+    await clock.tickAsync(0); //one tick
     dispatchResize(component, 975);
-    await clock.tickAsync(100);
+    await clock.tickAsync(100); //timeout for debounce
 
     expect(component.html()).toBe("<div id=\"wrapper\"><img" +
       " src=\"https://res.cloudinary.com/demo/image/upload/c_scale,w_1000/sample\"></div>");
@@ -95,9 +95,9 @@ describe('responsive', () => {
         <CldImg transformation={cl} plugins={[responsive([800, 1000, 1200, 3000])]}/>
       </ResponsiveHelper>);
 
-    await clock.tickAsync(0);
+    await clock.tickAsync(0); //one tick
     dispatchResize(component, 4000);
-    await clock.tickAsync(100);
+    await clock.tickAsync(100); //timeout for debounce
 
     expect(component.html()).toBe("<div id=\"wrapper\"><img" +
       " src=\"https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample\"></div>");
@@ -109,9 +109,9 @@ describe('responsive', () => {
         <CldImg transformation={cl} plugins={[responsive([1000, 800, 3000, 1200])]}/>
       </ResponsiveHelper>);
 
-    await clock.tickAsync(0);
+    await clock.tickAsync(0); //one tick
     dispatchResize(component, 5000);
-    await clock.tickAsync(100);
+    await clock.tickAsync(100); //timeout for debounce
 
     expect(component.html()).toBe("<div id=\"wrapper\"><img" +
       " src=\"https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample\"></div>");
@@ -125,9 +125,9 @@ describe('responsive', () => {
         <CldImg transformation={cl} plugins={[responsive()]}/>
       </ResponsiveHelper>);
 
-    await clock.tickAsync(0);
+    await clock.tickAsync(0); //one tick
     window.dispatchEvent(new Event('resize'));
-    await clock.tickAsync(100);
+    await clock.tickAsync(100); //timeout for debounce
 
     expect(component.html()).toBe("<div id=\"wrapper\"><img" +
       " src=\"https://res.cloudinary.com/demo/image/upload/c_crop,w_500/c_scale,w_250/sample\"></div>");

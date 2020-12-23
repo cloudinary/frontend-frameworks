@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash/cloneDeep'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin, htmlPluginState} from "./types";
-import {PLACEHOLDER_IMAGE_OPTIONS} from './internalConstnats';
+import {PLACEHOLDER_IMAGE_OPTIONS, emptyImage} from './internalConstnats';
 import {placeholderMode} from './types';
 
 /**
@@ -25,7 +25,7 @@ function placeholderPlugin(mode?: placeholderMode, element?: HTMLImageElement, p
 
   return new Promise((resolve: any) => {
     htmlPluginState.cleanupCallbacks.push(()=>{
-      element.src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+      element.src = emptyImage;
       resolve('canceled');
     });
 
