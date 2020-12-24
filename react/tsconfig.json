@@ -37,5 +37,6 @@
     "node_modules",
     "dist",
     "example",
+    "__tests__"
   ]
 }
