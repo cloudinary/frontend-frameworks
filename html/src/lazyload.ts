@@ -4,13 +4,26 @@ import {plugin, htmlPluginState} from './types'
 /**
  * @namespace
  * @description Image loads once it is in a certain margin in the viewport. This includes vertical and horizontal scrolling.
- * @param rootMargin {string} optional The root element's bounding box before the intersection test is performed
- * @param threshold
+ * @param rootMargin {string} The root element's bounding box before the intersection test is performed defaults to 0px
+ * @param threshold {number} A number which indicate at what percentage of the images's visibility the image should
+ * load. The default is 0.1 which indicated 100%
+ * @return {plugin}
+ * @example
+ * plugins=[(lazyload('0px', 0.25))]
  */
-export function lazyload(rootMargin?: string, threshold?: number | number[]): plugin{
+export function lazyload(rootMargin?: string, threshold?: number): plugin{
   return lazyloadPlugin.bind(null, rootMargin, threshold);
 }
 
+/**
+ * @description lazyload plugin
+ * @param rootMargin {string} The root element's bounding box before the intersection test is performed defaults to 0px
+ * @param threshold {number} A number which indicate at what percentage of the images's visibility the image should
+ * load. The default is 0.1 which indicated 100% * @param element The image element
+ * @param element The image element
+ * @param cloudinaryImage
+ * @param htmlPluginState holds cleanup callbacks and event subscriptions
+ */
 function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement, cloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string {
   return new Promise((resolve) => {
     const onIntersect = () => (resolve());

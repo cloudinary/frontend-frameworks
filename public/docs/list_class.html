@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-		<title>ReactSDK</title>
+		<title>Frameworks</title>
 		<link rel="icon" type="image/png" href="favicon.png"/>
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -42,7 +42,7 @@
 				}
 			</style>
 		<script type="text/javascript">
-			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Cloudinary HTML SDK","systemSummary":"client side frameworks & plugins","systemLogo":"img/cloudinaryicon.png","systemColor":"#3448C5","navMembers":[{"kind":"namespace","title":"Plugins","summary":"All documented namespaces."},{"kind":"mixin","title":"Frameworks","summary":"All documented frameworks."}],"footer":"","copyright":"Copyright © 2020 Cloudinary.com","linenums":true,"collapseSymbols":true,"inverseNav":true,"inlineNav":false,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":true,"sort":"linenum, longname, version, since","search":false,"favicon":"favicon.png","stylesheets":["./customStyles.css"],"scripts":[],"monospaceLinks":true,"cleverLinks":true};
+			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Cloudinary HTML SDK","systemSummary":"client side frameworks & plugins","systemLogo":"img/cloudinaryicon.png","systemColor":"#3448C5","navMembers":[{"kind":"namespace","title":"Plugins","summary":"All documented namespaces."},{"kind":"class","title":"Frameworks","summary":"All documented classes."}],"footer":"","copyright":"Copyright © 2020 Cloudinary.com","linenums":true,"collapseSymbols":true,"inverseNav":true,"inlineNav":false,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":true,"sort":"linenum, longname, version, since","search":false,"favicon":"favicon.png","stylesheets":["./customStyles.css"],"scripts":[],"monospaceLinks":true,"cleverLinks":true};
 			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
@@ -65,9 +65,10 @@
 			<div class="navbar-collapse collapse" id="topNavigation">
 				<ul class="nav navbar-nav">
 								<li class="dropdown">
-									<a href="list_mixin.html" class="dropdown-toggle" data-toggle="dropdown">Frameworks<b class="caret"></b></a>
+									<a href="list_class.html" class="dropdown-toggle" data-toggle="dropdown">Frameworks<b class="caret"></b></a>
 									<ul class="dropdown-menu">
 											<li><a href="ReactSDK.html">ReactSDK</a></li>
+											<li><a href="ReactSdk.exports.CldImg.html">ReactSdk.exports.CldImg</a></li>
 									</ul>
 								</li>
 								<li class="dropdown">
@@ -85,92 +86,39 @@
 	</header>
 	<!-- end:navbar.hbs -->		<div class="page-header">
 			<div class="container">
-				<span class="kind">mixin</span>
-				<h1><span class="name">ReactSDK</span></h1>
-			</div>
+				<span class="kind">list</span>
+				<h1><span class="name">Frameworks</span></h1>
+				<div class="summary"><p>All documented classes.</p></div>			</div>
 		</div>
 	<div class="container content">
 		<div class="row">
 			<div class="col-md-9 main-content">
 						<ol class="breadcrumb">
 							<li><a href="index.html">Home</a></li>
-							<li><a href="list_mixin.html">Frameworks</a></li>
-							<li class="active">ReactSDK</li>
+							<li class="active">Frameworks</li>
 						</ol>
 					<section>
-							<dl class="symbol primary">
-								<dt class="symbol-title mixin collapsible-symbol expanded">
-			<h2 class="mixin"><span class="name">ReactSDK</span></h2>
+		<h2><span class="name">Frameworks</span></h2>
+		<article class="secondary">
+				<dl class="symbol">
+						
+						<dt class="symbol-title class public">
+			<h4 id="ReactSDK" class="class public"><a href="ReactSDK.html"><span class="signature-new">new&nbsp;</span><span class="name">ReactSDK</span><span class="signature-params">()</span><span class="signature-type"></span></a></h4>
 </dt>
-<dd class="symbol-details mixin  collapsible-symbol expanded" style="max-height: 9999px;">
-	<div class="symbol-details-inner">
-			<div class="callout callout-primary"><h5>Description</h5>		<div class="description"><p>This is our React SDK. The objective of this library is to render images
-			as is or with our plugins</p></div>
-			</div>			<div class="callout callout-example"><h5>Examples</h5>		<div class="example-caption"><p>Please note that the order of the plugins is important. See home for more details.</p></div>
-					<div class="example-code">
-						<pre class="prettyprint source language-javascript"><code class="language-javascript">import {CloudinaryImage} from &quot;@cloudinary/base/assets/CloudinaryImage&quot;;
-			 import { CldImg, accessibility, responsive, lazyload, placeholder } from &#x27;@cloudinary/react&#x27;;
-			
-			 const App &#x3D; () &#x3D;&gt; {
-			  let img &#x3D; new CloudinaryImage()
-			    .setConfig({
-			      cloud: {
-			        cloudName: &#x27;demo&#x27;
-			      }})
-			    .setPublicID(&#x27;sample&#x27;);
-			
-			  return (
-			    &lt;div&gt;
-			      &lt;div style&#x3D;{{height: &quot;1000px&quot;}}/&gt;
-			      &lt;CldImg transformation&#x3D;{img} plugins&#x3D;{[lazyload(), responsive(100), placeholder()]}/&gt;
-			    &lt;/div&gt;
-			  )
-			};</code></pre>
-					</div>
-			</div>			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-							<!-- source -->
-							<div class="form-group">
-								<label class="col-sm-3 control-label">Source</label>
-								<div class="col-sm-9">
-									<p class="form-control-static"><a href="react_src_CldImg.tsx.html">react/src/CldImg.tsx</a>, <a href="react_src_CldImg.tsx.html#line-4">line 4</a></p>
-								</div>
-							</div>
-			
-			
-			
-			
-					</form>
-			</div>	</div>
-</dd>
-							</dl>
-							<article class="secondary">
-									<h3>Classes</h3>
-									<dl class="symbol">
-											<hr/>
-											<dt class="symbol-title class public">
-			<h4 id="exports.CldImg" class="class public"><a href="ReactSDK.exports.CldImg.html"><span class="signature-new">new&nbsp;</span><span class="name">exports.CldImg</span><span class="signature-params">()</span><span class="signature-type"></span></a></h4>
-		</dt>
 <dd class="symbol-details class public">
 	<div class="symbol-details-inner">
 	</div>
 </dd>
-									</dl>
-							</article>
+						<hr/>
+						<dt class="symbol-title class public">
+			<h4 id="exports.CldImg" class="class public"><a href="ReactSdk.exports.CldImg.html"><span class="signature-new">new&nbsp;</span><span class="name">exports.CldImg</span><span class="signature-params">()</span><span class="signature-type"></span></a></h4>
+</dt>
+<dd class="symbol-details class public">
+	<div class="symbol-details-inner">
+	</div>
+</dd>
+				</dl>
+		</article>
 					</section>
 			</div>
 				<div class="col-md-3 side-content">

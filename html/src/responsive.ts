@@ -6,17 +6,20 @@ import {isNum} from './utils/internalUtils';
 
 /**
  * @namespace
- * @description Returns the responsive plugin
- * @param steps The size step used to update responsive image number
+ * @description Updates the src with size of the parent Element and triggers a resize event for
+ * subsequent resizing
+ * @param steps {number | number[]} The size step used to update responsive image number
  * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered
+ * @return plugin
+ * @example
+ * plugins=[(responsive(100))] plugins=[(responsive([800, 1000, 1400]))]
  */
 export function responsive(steps?: number | number[]): plugin{
   return responsivePlugin.bind(null, steps);
 }
 
 /**
- * @description Updates the src with size of the parent Element and triggers a resize event for
- * subsequent resizing
+ * @description Responsive plugin
  * @param steps steps The size step used to update responsive image number | number[]
  * @param element HTMLImageElement The image element
  * @param responsiveImage

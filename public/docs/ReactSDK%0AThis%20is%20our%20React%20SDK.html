@@ -1,10 +1,9 @@
-<!-- start:source.tmpl.hbs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-		<title>html/src/placeholder.ts</title>
+		<title>ReactSDK This is our React SDK</title>
 		<link rel="icon" type="image/png" href="favicon.png"/>
 		<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -44,7 +43,7 @@
 			</style>
 		<script type="text/javascript">
 			window.TEMPLATE_OPTIONS = {"includeDate":true,"dateFormat":"Do MMM YYYY","systemName":"Cloudinary HTML SDK","systemSummary":"client side frameworks & plugins","systemLogo":"img/cloudinaryicon.png","systemColor":"#3448C5","navMembers":[{"kind":"namespace","title":"Plugins","summary":"All documented namespaces."},{"kind":"mixin","title":"Frameworks","summary":"All documented frameworks."}],"footer":"","copyright":"Copyright © 2020 Cloudinary.com","linenums":true,"collapseSymbols":true,"inverseNav":true,"inlineNav":false,"outputSourceFiles":true,"sourceRootPath":null,"disablePackagePath":true,"outputSourcePath":false,"showTableOfContents":true,"showAccessFilter":true,"analytics":null,"methodHeadingReturns":true,"sort":"linenum, longname, version, since","search":false,"favicon":"favicon.png","stylesheets":["./customStyles.css"],"scripts":[],"monospaceLinks":true,"cleverLinks":true};
-			window.DOCLET_TOC_ENABLED = false;
+			window.DOCLET_TOC_ENABLED = true;
 			window.DOCLET_AFILTER_ENABLED = false;
 		</script>
 </head>
@@ -68,7 +67,8 @@
 								<li class="dropdown">
 									<a href="list_mixin.html" class="dropdown-toggle" data-toggle="dropdown">Frameworks<b class="caret"></b></a>
 									<ul class="dropdown-menu">
-											<li><a href="ReactSDK.html">ReactSDK</a></li>
+											<li><a href="ReactSDK%250AThis%2520is%2520our%2520React%2520SDK.html">ReactSDK
+	This is our React SDK</a></li>
 									</ul>
 								</li>
 								<li class="dropdown">
@@ -86,77 +86,66 @@
 	</header>
 	<!-- end:navbar.hbs -->		<div class="page-header">
 			<div class="container">
-				<span class="kind">source</span>
-				<h1><span class="name">html/src/placeholder.ts</span></h1>
+				<span class="kind">mixin</span>
+				<h1><span class="name">ReactSDK
+This is our React SDK</span></h1>
 			</div>
 		</div>
 	<div class="container content">
 		<div class="row">
-			<div class="col-md-12 main-content">
-		<section class="source-section">
-			<article></article>
-			<pre class="prettyprint source language-javascript line-numbers"><code class="language-javascript">import cloneDeep from 'lodash/cloneDeep'
-import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin, htmlPluginState} from "./types";
-import {PLACEHOLDER_IMAGE_OPTIONS, emptyImage} from './internalConstnats';
-import {placeholderMode} from './types';
-
-/**
- * @namespace
- * @description Displays a placeholder image until the original image loads
- * @param mode {placeholderMode} placeholder mode vectorize | pixelate | blur | predominant-color
- * @return plugin
- * @example
- * plugins=[(placeholder('blur'))]
- */
-export function placeholder(mode='vectorize'): plugin{
-  return placeholderPlugin.bind(null, mode);
-}
-
-/**
- * @description Placeholder plugin
- * @param mode {placeholderMode} placeholder mode vectorize | pixelate | blur | predominant-color
- * @param element HTMLImageElement The image element
- * @param pluginCloudinaryImage
- * @param htmlPluginState holds cleanup callbacks and event subscriptions
- */
-function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise&lt;void | string> | string  {
-  const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
-  element.src = placeholderTransformation.toURL();
-
-  return new Promise((resolve: any) => {
-    htmlPluginState.cleanupCallbacks.push(()=>{
-      element.src = emptyImage;
-      resolve('canceled');
-    });
-
-    const largeImage = new Image();
-    largeImage.src = pluginCloudinaryImage.toURL();
-    largeImage.onload = () => {
-      resolve();
-    };
-  });
-}
-
-/**
- * Prepares placeholder transformation by appending a placeholder-type transformation to the end of the URL
- * @param mode Placeholder mode 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
- * @param pluginCloudinaryImage
- */
-function preparePlaceholderTransformation(mode: placeholderMode, pluginCloudinaryImage: CloudinaryImage){
-  const placeholderClonedImage = cloneDeep(pluginCloudinaryImage);
-
-  if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
-    mode = 'vectorize'
-  }
-  //appends a placeholder transformation on placeholderClonedImage
-  PLACEHOLDER_IMAGE_OPTIONS[mode].actions.forEach(transformation => placeholderClonedImage.addAction(transformation));
-
-  return placeholderClonedImage;
-}
-</code></pre>
-		</section>
+			<div class="col-md-9 main-content">
+						<ol class="breadcrumb">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="list_mixin.html">Frameworks</a></li>
+							<li class="active">ReactSDK
+This is our React SDK</li>
+						</ol>
+					<section>
+							<dl class="symbol primary">
+								<dt class="symbol-title mixin collapsible-symbol expanded">
+			<h2 class="mixin"><span class="name">ReactSDK
+This is our React SDK</span></h2>
+</dt>
+<dd class="symbol-details mixin  collapsible-symbol expanded" style="max-height: 9999px;">
+	<div class="symbol-details-inner">
+			<div class="callout callout-default"><h5>Details</h5>		<form class="form-horizontal details">
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+							<!-- source -->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Source</label>
+								<div class="col-sm-9">
+									<p class="form-control-static"><a href="react_src_CldImg.tsx.html">react/src/CldImg.tsx</a>, <a href="react_src_CldImg.tsx.html#line-4">line 4</a></p>
+								</div>
+							</div>
+			
+			
+			
+			
+					</form>
+			</div>	</div>
+</dd>
+							</dl>
+							<article class="secondary">
+							</article>
+					</section>
 			</div>
+				<div class="col-md-3 side-content">
+					<nav class="toc hidden-print hidden-sm hidden-xs"></nav>
+				</div>
 		</div>
 	</div>
 	<footer>
@@ -171,4 +160,3 @@ function preparePlaceholderTransformation(mode: placeholderMode, pluginCloudinar
 	
 </body>
 </html>
-<!-- end:source.tmpl.hbs -->

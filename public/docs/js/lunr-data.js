@@ -62,16 +62,39 @@ window.lunrData = {
           "namespac",
           "plugin"
         ],
+        "list_mixin.html": [
+          "document",
+          "framework",
+          "list",
+          "list:mixin"
+        ],
         "ReactSDK.exports.CldImg.html": [
           "class",
           "cldimg",
+          "cloudinari",
+          "compon",
           "exports.cldimg",
-          "reactsdk.exports.cldimg",
-          "sdk"
+          "imag",
+          "reactsdk.exports.cldimg"
         ],
         "ReactSDK.html": [
+          "imag",
+          "librari",
+          "mixin",
+          "object",
+          "plugin",
+          "react",
+          "reactsdk",
+          "render",
+          "sdk"
+        ],
+        "accessibility.html": [
+          "access",
+          "append",
+          "imag",
           "namespac",
-          "reactsdk"
+          "origin",
+          "transform"
         ],
         "lazyload.html": [
           "certain",
@@ -88,27 +111,29 @@ window.lunrData = {
           "viewport"
         ],
         "placeholder.html": [
-          "namespac",
-          "placehold",
-          "plugin",
-          "return"
-        ],
-        "accessibility.html": [
-          "access",
-          "append",
+          "display",
           "imag",
+          "load",
           "namespac",
           "origin",
-          "transform"
+          "placehold",
+          "until"
         ],
         "responsive.html": [
+          "element",
+          "event",
           "namespac",
-          "plugin",
+          "parent",
+          "resiz",
           "respons",
-          "return"
+          "size",
+          "src",
+          "subsequ",
+          "trigger",
+          "updat"
         ]
       },
-      "length": 9
+      "length": 10
     },
     "tokenStore": {
       "root": {
@@ -207,6 +232,10 @@ window.lunrData = {
                               "index.html": {
                                 "ref": "index.html",
                                 "tf": 200
+                              },
+                              "ReactSDK.exports.CldImg.html": {
+                                "ref": "ReactSDK.exports.CldImg.html",
+                                "tf": 16.666666666666664
                               }
                             }
                           }
@@ -242,6 +271,26 @@ window.lunrData = {
                       "ReactSDK.exports.CldImg.html": {
                         "ref": "ReactSDK.exports.CldImg.html",
                         "tf": 100
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "o": {
+            "docs": {},
+            "m": {
+              "docs": {},
+              "p": {
+                "docs": {},
+                "o": {
+                  "docs": {},
+                  "n": {
+                    "docs": {
+                      "ReactSDK.exports.CldImg.html": {
+                        "ref": "ReactSDK.exports.CldImg.html",
+                        "tf": 16.666666666666664
                       }
                     }
                   }
@@ -294,6 +343,10 @@ window.lunrData = {
                             "index.html": {
                               "ref": "index.html",
                               "tf": 14
+                            },
+                            "list_mixin.html": {
+                              "ref": "list_mixin.html",
+                              "tf": 635
                             }
                           }
                         }
@@ -390,13 +443,25 @@ window.lunrData = {
               "docs": {},
               "g": {
                 "docs": {
-                  "lazyload.html": {
-                    "ref": "lazyload.html",
-                    "tf": 5
+                  "ReactSDK.exports.CldImg.html": {
+                    "ref": "ReactSDK.exports.CldImg.html",
+                    "tf": 16.666666666666664
+                  },
+                  "ReactSDK.html": {
+                    "ref": "ReactSDK.html",
+                    "tf": 7.142857142857142
                   },
                   "accessibility.html": {
                     "ref": "accessibility.html",
                     "tf": 10
+                  },
+                  "lazyload.html": {
+                    "ref": "lazyload.html",
+                    "tf": 5
+                  },
+                  "placeholder.html": {
+                    "ref": "placeholder.html",
+                    "tf": 14.285714285714285
                   }
                 }
               }
@@ -423,13 +488,9 @@ window.lunrData = {
                         "ref": "list_namespace.html",
                         "tf": 600
                       },
-                      "placeholder.html": {
-                        "ref": "placeholder.html",
-                        "tf": 16.666666666666664
-                      },
-                      "responsive.html": {
-                        "ref": "responsive.html",
-                        "tf": 16.666666666666664
+                      "ReactSDK.html": {
+                        "ref": "ReactSDK.html",
+                        "tf": 7.142857142857142
                       }
                     }
                   }
@@ -452,10 +513,30 @@ window.lunrData = {
                           "docs": {
                             "placeholder.html": {
                               "ref": "placeholder.html",
-                              "tf": 1916.6666666666667
+                              "tf": 1907.142857142857
                             }
                           }
                         }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "a": {
+            "docs": {},
+            "r": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "n": {
+                  "docs": {},
+                  "t": {
+                    "docs": {
+                      "responsive.html": {
+                        "ref": "responsive.html",
+                        "tf": 5
                       }
                     }
                   }
@@ -484,7 +565,12 @@ window.lunrData = {
               "c": {
                 "docs": {},
                 "t": {
-                  "docs": {},
+                  "docs": {
+                    "ReactSDK.html": {
+                      "ref": "ReactSDK.html",
+                      "tf": 7.142857142857142
+                    }
+                  },
                   "s": {
                     "docs": {},
                     "d": {
@@ -552,21 +638,17 @@ window.lunrData = {
                 }
               }
             },
-            "t": {
+            "n": {
               "docs": {},
-              "u": {
+              "d": {
                 "docs": {},
-                "r": {
+                "e": {
                   "docs": {},
-                  "n": {
+                  "r": {
                     "docs": {
-                      "placeholder.html": {
-                        "ref": "placeholder.html",
-                        "tf": 16.666666666666664
-                      },
-                      "responsive.html": {
-                        "ref": "responsive.html",
-                        "tf": 16.666666666666664
+                      "ReactSDK.html": {
+                        "ref": "ReactSDK.html",
+                        "tf": 7.142857142857142
                       }
                     }
                   }
@@ -575,6 +657,17 @@ window.lunrData = {
             },
             "s": {
               "docs": {},
+              "i": {
+                "docs": {},
+                "z": {
+                  "docs": {
+                    "responsive.html": {
+                      "ref": "responsive.html",
+                      "tf": 10
+                    }
+                  }
+                }
+              },
               "p": {
                 "docs": {},
                 "o": {
@@ -585,7 +678,7 @@ window.lunrData = {
                       "docs": {
                         "responsive.html": {
                           "ref": "responsive.html",
-                          "tf": 1916.6666666666667
+                          "tf": 1900
                         }
                       }
                     }
@@ -605,9 +698,9 @@ window.lunrData = {
                   "ref": "index.html",
                   "tf": 200
                 },
-                "ReactSDK.exports.CldImg.html": {
-                  "ref": "ReactSDK.exports.CldImg.html",
-                  "tf": 50
+                "ReactSDK.html": {
+                  "ref": "ReactSDK.html",
+                  "tf": 7.142857142857142
                 }
               }
             }
@@ -621,6 +714,17 @@ window.lunrData = {
                   "index.html": {
                     "ref": "index.html",
                     "tf": 14
+                  }
+                }
+              }
+            },
+            "z": {
+              "docs": {},
+              "e": {
+                "docs": {
+                  "responsive.html": {
+                    "ref": "responsive.html",
+                    "tf": 5
                   }
                 }
               }
@@ -639,6 +743,40 @@ window.lunrData = {
                       "lazyload.html": {
                         "ref": "lazyload.html",
                         "tf": 5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "r": {
+            "docs": {},
+            "c": {
+              "docs": {
+                "responsive.html": {
+                  "ref": "responsive.html",
+                  "tf": 5
+                }
+              }
+            }
+          },
+          "u": {
+            "docs": {},
+            "b": {
+              "docs": {},
+              "s": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "q": {
+                    "docs": {},
+                    "u": {
+                      "docs": {
+                        "responsive.html": {
+                          "ref": "responsive.html",
+                          "tf": 5
+                        }
                       }
                     }
                   }
@@ -670,7 +808,34 @@ window.lunrData = {
                           "list_namespace.html": {
                             "ref": "list_namespace.html",
                             "tf": 35
+                          },
+                          "list_mixin.html": {
+                            "ref": "list_mixin.html",
+                            "tf": 35
                           }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "i": {
+            "docs": {},
+            "s": {
+              "docs": {},
+              "p": {
+                "docs": {},
+                "l": {
+                  "docs": {},
+                  "a": {
+                    "docs": {},
+                    "y": {
+                      "docs": {
+                        "placeholder.html": {
+                          "ref": "placeholder.html",
+                          "tf": 7.142857142857142
                         }
                       }
                     }
@@ -714,6 +879,10 @@ window.lunrData = {
                   "list_namespace.html": {
                     "ref": "list_namespace.html",
                     "tf": 110
+                  },
+                  "list_mixin.html": {
+                    "ref": "list_mixin.html",
+                    "tf": 110
                   }
                 },
                 ":": {
@@ -743,6 +912,46 @@ window.lunrData = {
                               }
                             }
                           }
+                        }
+                      }
+                    }
+                  },
+                  "m": {
+                    "docs": {},
+                    "i": {
+                      "docs": {},
+                      "x": {
+                        "docs": {},
+                        "i": {
+                          "docs": {},
+                          "n": {
+                            "docs": {
+                              "list_mixin.html": {
+                                "ref": "list_mixin.html",
+                                "tf": 1300
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "b": {
+              "docs": {},
+              "r": {
+                "docs": {},
+                "a": {
+                  "docs": {},
+                  "r": {
+                    "docs": {},
+                    "i": {
+                      "docs": {
+                        "ReactSDK.html": {
+                          "ref": "ReactSDK.html",
+                          "tf": 7.142857142857142
                         }
                       }
                     }
@@ -786,6 +995,10 @@ window.lunrData = {
                   "lazyload.html": {
                     "ref": "lazyload.html",
                     "tf": 5
+                  },
+                  "placeholder.html": {
+                    "ref": "placeholder.html",
+                    "tf": 7.142857142857142
                   }
                 }
               }
@@ -812,8 +1025,8 @@ window.lunrData = {
                             "ref": "list_namespace.html",
                             "tf": 35
                           },
-                          "ReactSDK.html": {
-                            "ref": "ReactSDK.html",
+                          "accessibility.html": {
+                            "ref": "accessibility.html",
                             "tf": 110
                           },
                           "lazyload.html": {
@@ -822,10 +1035,6 @@ window.lunrData = {
                           },
                           "placeholder.html": {
                             "ref": "placeholder.html",
-                            "tf": 110
-                          },
-                          "accessibility.html": {
-                            "ref": "accessibility.html",
                             "tf": 110
                           },
                           "responsive.html": {
@@ -886,10 +1095,67 @@ window.lunrData = {
                 }
               }
             }
+          },
+          "l": {
+            "docs": {},
+            "e": {
+              "docs": {},
+              "m": {
+                "docs": {},
+                "e": {
+                  "docs": {},
+                  "n": {
+                    "docs": {},
+                    "t": {
+                      "docs": {
+                        "responsive.html": {
+                          "ref": "responsive.html",
+                          "tf": 5
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "v": {
+            "docs": {},
+            "e": {
+              "docs": {},
+              "n": {
+                "docs": {},
+                "t": {
+                  "docs": {
+                    "responsive.html": {
+                      "ref": "responsive.html",
+                      "tf": 5
+                    }
+                  }
+                }
+              }
+            }
           }
         },
         "m": {
           "docs": {},
+          "i": {
+            "docs": {},
+            "x": {
+              "docs": {},
+              "i": {
+                "docs": {},
+                "n": {
+                  "docs": {
+                    "ReactSDK.html": {
+                      "ref": "ReactSDK.html",
+                      "tf": 110
+                    }
+                  }
+                }
+              }
+            }
+          },
           "a": {
             "docs": {},
             "r": {
@@ -913,13 +1179,22 @@ window.lunrData = {
         },
         "o": {
           "docs": {},
-          "n": {
+          "b": {
             "docs": {},
-            "c": {
-              "docs": {
-                "lazyload.html": {
-                  "ref": "lazyload.html",
-                  "tf": 5
+            "j": {
+              "docs": {},
+              "e": {
+                "docs": {},
+                "c": {
+                  "docs": {},
+                  "t": {
+                    "docs": {
+                      "ReactSDK.html": {
+                        "ref": "ReactSDK.html",
+                        "tf": 7.142857142857142
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -937,6 +1212,73 @@ window.lunrData = {
                       "accessibility.html": {
                         "ref": "accessibility.html",
                         "tf": 10
+                      },
+                      "placeholder.html": {
+                        "ref": "placeholder.html",
+                        "tf": 7.142857142857142
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "n": {
+            "docs": {},
+            "c": {
+              "docs": {
+                "lazyload.html": {
+                  "ref": "lazyload.html",
+                  "tf": 5
+                }
+              }
+            }
+          }
+        },
+        "t": {
+          "docs": {},
+          "r": {
+            "docs": {},
+            "a": {
+              "docs": {},
+              "n": {
+                "docs": {},
+                "s": {
+                  "docs": {},
+                  "f": {
+                    "docs": {},
+                    "o": {
+                      "docs": {},
+                      "r": {
+                        "docs": {},
+                        "m": {
+                          "docs": {
+                            "accessibility.html": {
+                              "ref": "accessibility.html",
+                              "tf": 10
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "i": {
+              "docs": {},
+              "g": {
+                "docs": {},
+                "g": {
+                  "docs": {},
+                  "e": {
+                    "docs": {},
+                    "r": {
+                      "docs": {
+                        "responsive.html": {
+                          "ref": "responsive.html",
+                          "tf": 5
+                        }
                       }
                     }
                   }
@@ -994,31 +1336,36 @@ window.lunrData = {
             }
           }
         },
-        "t": {
+        "u": {
           "docs": {},
-          "r": {
+          "n": {
             "docs": {},
-            "a": {
+            "t": {
               "docs": {},
-              "n": {
+              "i": {
                 "docs": {},
-                "s": {
-                  "docs": {},
-                  "f": {
-                    "docs": {},
-                    "o": {
-                      "docs": {},
-                      "r": {
-                        "docs": {},
-                        "m": {
-                          "docs": {
-                            "accessibility.html": {
-                              "ref": "accessibility.html",
-                              "tf": 10
-                            }
-                          }
-                        }
-                      }
+                "l": {
+                  "docs": {
+                    "placeholder.html": {
+                      "ref": "placeholder.html",
+                      "tf": 7.142857142857142
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "p": {
+            "docs": {},
+            "d": {
+              "docs": {},
+              "a": {
+                "docs": {},
+                "t": {
+                  "docs": {
+                    "responsive.html": {
+                      "ref": "responsive.html",
+                      "tf": 5
                     }
                   }
                 }
@@ -1027,7 +1374,7 @@ window.lunrData = {
           }
         }
       },
-      "length": 50
+      "length": 73
     },
     "corpusTokens": [
       "access",
@@ -1038,7 +1385,11 @@ window.lunrData = {
       "cldimg",
       "client",
       "cloudinari",
+      "compon",
+      "display",
       "document",
+      "element",
+      "event",
       "exports.cldimg",
       "framework",
       "global",
@@ -1048,24 +1399,37 @@ window.lunrData = {
       "includ",
       "index",
       "lazyload",
+      "librari",
       "list",
+      "list:mixin",
       "list:namespac",
       "load",
       "margin",
+      "mixin",
       "namespac",
+      "object",
       "onc",
       "origin",
+      "parent",
       "placehold",
       "plugin",
+      "react",
       "reactsdk",
       "reactsdk.exports.cldimg",
       "readm",
+      "render",
+      "resiz",
       "respons",
-      "return",
       "scroll",
       "sdk",
       "side",
+      "size",
+      "src",
+      "subsequ",
       "transform",
+      "trigger",
+      "until",
+      "updat",
       "vertic",
       "viewport"
     ],
@@ -1109,6 +1473,17 @@ window.lunrData = {
       "description": "",
       "body": ""
     },
+    "list_mixin.html": {
+      "id": "list_mixin.html",
+      "kind": "list",
+      "title": "Frameworks",
+      "longname": "list:mixin",
+      "name": "Frameworks",
+      "tags": "list:mixin",
+      "summary": "All documented frameworks.",
+      "description": "",
+      "body": ""
+    },
     "ReactSDK.exports.CldImg.html": {
       "id": "ReactSDK.exports.CldImg.html",
       "kind": "class",
@@ -1117,18 +1492,29 @@ window.lunrData = {
       "name": "exports.CldImg",
       "tags": "ReactSDK.exports.CldImg exports.CldImg CldImg",
       "summary": "",
-      "description": "this is sdk",
+      "description": "The Cloudinary image component",
       "body": ""
     },
     "ReactSDK.html": {
       "id": "ReactSDK.html",
-      "kind": "namespace",
+      "kind": "mixin",
       "title": "ReactSDK",
       "longname": "ReactSDK",
       "name": "ReactSDK",
       "tags": "ReactSDK",
       "summary": "",
-      "description": "",
+      "description": "This is our React SDK. The objective of this library is to render images as is or with our plugins",
+      "body": ""
+    },
+    "accessibility.html": {
+      "id": "accessibility.html",
+      "kind": "namespace",
+      "title": "accessibility",
+      "longname": "accessibility",
+      "name": "accessibility",
+      "tags": "accessibility",
+      "summary": "",
+      "description": "Accessibility transformations are appended to the original image.",
       "body": ""
     },
     "lazyload.html": {
@@ -1150,18 +1536,7 @@ window.lunrData = {
       "name": "placeholder",
       "tags": "placeholder",
       "summary": "",
-      "description": "Returns the placeholder plugin",
-      "body": ""
-    },
-    "accessibility.html": {
-      "id": "accessibility.html",
-      "kind": "namespace",
-      "title": "accessibility",
-      "longname": "accessibility",
-      "name": "accessibility",
-      "tags": "accessibility",
-      "summary": "",
-      "description": "Accessibility transformations are appended to the original image.",
+      "description": "Displays a placeholder image until the original image loads",
       "body": ""
     },
     "responsive.html": {
@@ -1172,7 +1547,7 @@ window.lunrData = {
       "name": "responsive",
       "tags": "responsive",
       "summary": "",
-      "description": "Returns the responsive plugin",
+      "description": "Updates the src with size of the parent Element and triggers a resize event for subsequent resizing",
       "body": ""
     }
   }

@@ -6,16 +6,19 @@ import {placeholderMode} from './types';
 
 /**
  * @namespace
- * @description Returns the placeholder plugin
- * @param mode Placeholder mode 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
+ * @description Displays a placeholder image until the original image loads
+ * @param mode {placeholderMode} placeholder mode vectorize | pixelate | blur | predominant-color
+ * @return plugin
+ * @example
+ * plugins=[(placeholder('blur'))]
  */
 export function placeholder(mode='vectorize'): plugin{
   return placeholderPlugin.bind(null, mode);
 }
 
 /**
- * Displays a placeholder image until the original image loads
- * @param mode Placeholder mode 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
+ * @description Placeholder plugin
+ * @param mode {placeholderMode} placeholder mode vectorize | pixelate | blur | predominant-color
  * @param element HTMLImageElement The image element
  * @param pluginCloudinaryImage
  * @param htmlPluginState holds cleanup callbacks and event subscriptions

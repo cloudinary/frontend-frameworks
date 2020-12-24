@@ -18,7 +18,8 @@
   "templates": {
     "cleverLinks": true,
     "navMembers" : [
-      {"kind": "namespace", "title": "Plugins", "summary": "All documented namespaces."}
+      {"kind": "namespace", "title": "Plugins", "summary": "All documented namespaces."},
+      {"kind": "mixin", "title": "Frameworks", "summary": "All documented frameworks."}
     ],
     "stylesheets" : [
       "./customStyles.css"
