@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { AngularLibraryComponent } from './angular-library.component';
-import { CldImg } from './cloudinary-img.component';
+import { CloudinaryImageComponent } from './cloudinary-image.component';
 
 @NgModule({
   imports: [
   ],
-  declarations: [AngularLibraryComponent, CldImg],
-  exports: [AngularLibraryComponent, CldImg]
+  declarations: [AngularLibraryComponent, CloudinaryImageComponent],
+  exports: [AngularLibraryComponent, CloudinaryImageComponent]
 })
 export class AngularLibraryModule { }
