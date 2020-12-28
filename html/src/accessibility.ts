@@ -5,7 +5,7 @@ import {ACCESSIBILITY_MODES} from './internalConstnats';
 /**
  * @namespace
  * @description Accessibility transformations are appended to the original image.
- * @param mode {accessibilityMode} can be the following modes darkmode | brightmode | monochrome | colorblind
+ * @param mode {accessibilityMode} can be the following modes 'darkmode' | 'brightmode' | 'monochrome' | 'colorblind'
  * @return {plugin}
  * @example
  * <CldImg transformation={img} plugins={[accessibility()]}/>
@@ -16,7 +16,7 @@ export function accessibility(mode='darkmode'): plugin{
 
 /**
  * @description Accessibility plugin
- * @param mode {accessibilityMode} can be the following modes darkmode | brightmode | monochrome | colorblind
+ * @param mode {accessibilityMode} can be the following modes 'darkmode' | 'brightmode' | 'monochrome' | 'colorblind'
  * @param element {HTMLImageElement} The image element
  * @param pluginCloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
