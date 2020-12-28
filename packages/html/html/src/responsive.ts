@@ -5,21 +5,26 @@ import debounce from 'lodash.debounce';
 import {isNum} from './utils/internalUtils';
 
 /**
- * Returns the responsive plugin
- * @param steps The size step used to update responsive image number
+ * @namespace
+ * @description Updates the src with size of the parent Element and triggers a resize event for
+ * subsequent resizing
+ * @param steps {number | number[]} The size step used to update responsive image number
  * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered
+ * @return plugin
+ * @example
+ * <CldImg transformation={img} plugins=[(responsive(100))] plugins=[(responsive([800, 1000, 1400]))] />
  */
 export function responsive(steps?: number | number[]): plugin{
   return responsivePlugin.bind(null, steps);
 }
 
 /**
- * Updates the src with size of the parent Element and triggers a resize event for
- * subsequent resizing
- * @param steps steps The size step used to update responsive image number | number[]
- * @param element HTMLImageElement The image element
- * @param responsiveImage
- * @param htmlPluginState holds cleanup callbacks and event subscriptions
+ * @description Responsive plugin
+ * @param steps {number | number[]} The size step used to update responsive image number
+ * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered * @param element HTMLImageElement The image element
+ * @param element {HTMLImageElement} The image element
+ * @param responsiveImage {CloudinaryImage}
+ * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
  */
 function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: htmlPluginState): Promise<void | string> | string {
   return new Promise((resolve)=>{
@@ -43,9 +48,10 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
 
 /**
  * On resize updates image src
- * @param steps
- * @param element
- * @param responsiveImage
+ * @param steps {number | number[]} The size step used to update responsive image number
+ * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered * @param element HTMLImageElement The image element
+ * @param element {HTMLImageElement} The image element
+ * @param responsiveImage {CloudinaryImage}
  */
 function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage){
   updateByContainerWidth(steps, element, responsiveImage);
@@ -54,9 +60,10 @@ function onResize(steps?: number | number[], element?:HTMLImageElement, responsi
 
 /**
  * Updates the responsiveImage by container width.
- * @param steps The size step used to update responsive image number | number[]
- * @param element HTMLImageElement The image element
- * @param responsiveImage
+ * @param steps {number | number[]} The size step used to update responsive image number
+ * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered * @param element HTMLImageElement The image element
+ * @param element {HTMLImageElement} The image element
+ * @param responsiveImage {CloudinaryImage}
  */
 function updateByContainerWidth(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage){
   let resizeValue = element.parentElement.clientWidth;
