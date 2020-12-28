@@ -10,7 +10,7 @@ import {placeholderMode} from './types';
  * @param mode {placeholderMode} placeholder mode vectorize | pixelate | blur | predominant-color
  * @return plugin
  * @example
- * plugins=[(placeholder('blur'))]
+ * <CldImg transformation={img} plugins=[(placeholder('blur'))]/>
  */
 export function placeholder(mode='vectorize'): plugin{
   return placeholderPlugin.bind(null, mode);
@@ -18,10 +18,10 @@ export function placeholder(mode='vectorize'): plugin{
 
 /**
  * @description Placeholder plugin
- * @param mode {placeholderMode} placeholder mode vectorize | pixelate | blur | predominant-color
- * @param element HTMLImageElement The image element
- * @param pluginCloudinaryImage
- * @param htmlPluginState holds cleanup callbacks and event subscriptions
+ * @param mode {placeholderMode} can be the following modes vectorize | pixelate | blur | predominant-color
+ * @param element {HTMLImageElement} The image element
+ * @param pluginCloudinaryImage {CloudinaryImage}
+ * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
  */
 function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string  {
   const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
@@ -43,8 +43,8 @@ function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, plu
 
 /**
  * Prepares placeholder transformation by appending a placeholder-type transformation to the end of the URL
- * @param mode Placeholder mode 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
- * @param pluginCloudinaryImage
+ * @param mode {placeholderMode} can be the following modes vectorize | pixelate | blur | predominant-color
+ * @param pluginCloudinaryImage {CloudinaryImage}
  */
 function preparePlaceholderTransformation(mode: placeholderMode, pluginCloudinaryImage: CloudinaryImage){
   const placeholderClonedImage = cloneDeep(pluginCloudinaryImage);
