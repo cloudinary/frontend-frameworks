@@ -2,6 +2,14 @@
   "scripts": {
     "install": "npm install --prefix ./html && npm install --prefix ./react",
     "build": "npm run build --prefix ./html && npm run build --prefix ./react",
-    "quickstart": "npm run install && npm run build"
+    "quickstart": "npm run install && npm run build",
+    "build:docs": "node ./scripts/buildDocs.js"
+  },
+  "dependencies": {
+    "jsdoc": "^3.6.6",
+    "jsdoc-plugin-typescript": "^2.0.5",
+    "better-docs": "^2.3.0",
+    "typedoc": "^0.17.8",
+    "foodoc": "0.0.9"
   }
 }
