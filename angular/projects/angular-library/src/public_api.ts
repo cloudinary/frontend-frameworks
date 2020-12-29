@@ -10,7 +10,4 @@ import {
 } from '../../../../html/dist';
 export {placeholder, accessibility, lazyload, responsive};
 
-
-export * from './lib/angular-library.service';
-export * from './lib/angular-library.component';
 export * from './lib/angular-library.module';
