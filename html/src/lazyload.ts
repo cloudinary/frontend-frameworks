@@ -9,7 +9,7 @@ import {plugin, htmlPluginState} from './types'
  * load. The default is 0.1 which indicated 100%
  * @return {plugin}
  * @example
- * plugins=[(lazyload('0px', 0.25))]
+ * <CldImg transformation={img} plugins=[(lazyload('0px', 0.25))]/>
  */
 export function lazyload(rootMargin?: string, threshold?: number): plugin{
   return lazyloadPlugin.bind(null, rootMargin, threshold);
@@ -20,9 +20,9 @@ export function lazyload(rootMargin?: string, threshold?: number): plugin{
  * @param rootMargin {string} The root element's bounding box before the intersection test is performed defaults to 0px
  * @param threshold {number} A number which indicate at what percentage of the images's visibility the image should
  * load. The default is 0.1 which indicated 100% * @param element The image element
- * @param element The image element
- * @param cloudinaryImage
- * @param htmlPluginState holds cleanup callbacks and event subscriptions
+ * @param element {HTMLImageElement} The image element
+ * @param cloudinaryImage {CloudinaryImage}
+ * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
  */
 function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement, cloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string {
   return new Promise((resolve) => {
@@ -50,8 +50,8 @@ function isIntersectionObserverSupported() {
  * no native lazy loading or when IntersectionObserver isn't supported.
  * @param {Element} el - the element to observe
  * @param {function} onIntersect - called when the given element is in view
- * @param rootMargin
- * @param threshold
+ * @param rootMargin {string} The root element's bounding box before the intersection test is performed defaults to 0px
+ * @param threshold {number} A number which indicate at what percentage of the images's visibility the image should
  */
 function detectIntersection(el: HTMLImageElement, onIntersect: Function, rootMargin: string, threshold: number | number[]) {
   try {

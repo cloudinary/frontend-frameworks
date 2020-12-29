@@ -18,7 +18,7 @@ npm install @cloudinary/react
 ```
 
 ## Simple usage
-```javascript
+```tsx
 
 // Import the cloudinary class, and the plugins you want to use
 // In this case, we import a cloudinary image type and accessibility and responsive.
@@ -49,7 +49,7 @@ import { CldImg, accessibility, responsive } from '@cloudinary/react';
 We recommended the following order when using our plugins to achieve the best results. 
 <br/><br/>
 
-```javascript
+```tsx
 <CldImg plugins={[lazyload(),responsive(), accessibility(), placeholder()]}/>
 ```
 
