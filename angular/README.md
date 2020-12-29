@@ -17,6 +17,17 @@ Since this library is not on npm, we will install/pack this repo locally and ins
 ##Usage
 ```
 import { AngularLibraryModule } from '@cloudinary/angular';
+import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 
-<cld-img></cld-img>
+this.img = new CloudinaryImage().setConfig({
+        cloud: {
+          cloudName: 'demo'
+        },
+        url: {
+          secure: true,
+        }
+      })
+      .setPublicID('sample');
+
+<cld-img [transformation]="this.img"></cld-img>
 ```
