@@ -9,3 +9,7 @@ Custom CSS for the JSDOC template
 body {
   font-size:18px;
 }
+
+code[class*=language-], pre[class*=language-] {
+  tab-size: 1!important;
+}
