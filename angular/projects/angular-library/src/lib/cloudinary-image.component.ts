@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ElementRef} from '@angular/core';
+import {Component, OnInit, Input, ElementRef, Renderer2} from '@angular/core';
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {
   HtmlLayer,
@@ -10,7 +10,8 @@ import {
   selector: 'cld-img',
   template: `
     <img />
-  `
+  `,
+  styleUrls: ['./cloudinary-image.component.css']
 })
 export class CloudinaryImageComponent implements OnInit {
   @Input('transformation') transformation: CloudinaryImage;
