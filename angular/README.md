@@ -13,10 +13,50 @@ Since this library is not on npm, we will install/pack this repo locally and ins
 4. cd into /dist
 5. npm link/pack to use build in external angular library
 
-
 ##Usage
-```
-import { AngularLibraryModule } from '@cloudinary/angular';
 
-<cld-img></cld-img>
+In your app.module.ts inject the library 
+
+```
+import { AngularLibraryModule} from '@cloudinary/angular';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AngularLibraryModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+
+```
+ 
+ In your component.ts use `@cloudinary/base` to generate your transformations 
+ 
+ ```
+import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
+
+...
+  ngOnInit() {
+    this.img = new CloudinaryImage().setConfig({
+        cloud: {
+          cloudName: 'demo'
+        },
+        url: {
+          secure: true,
+        }
+      })
+      .setPublicID('sample');
+  }
+...
+
+
+```
+
+In your view add the component with your transformation
+```
+<cld-img [transformation]="this.img"></cld-img>
 ```
