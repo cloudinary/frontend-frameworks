@@ -56,10 +56,14 @@ describe('lazyload', () => {
     fixture.detectChanges();
 
     let divElement = document.createElement("div");
-    divElement.style.height = '5000px';
-    fixture.nativeElement.insertBefore(divElement, fixture.nativeElement.firstChild);
+    divElement.style.height = '2000px';
 
-    window.scrollTo(0, 6000);
+    let test = document.createElement("div");
+    test.style.height = '1000px';
+
+    fixture.nativeElement.insertBefore(divElement, fixture.nativeElement.firstChild);
+    fixture.nativeElement.appendChild(test)
+    window.scrollTo(0, 2000);
     console.log(window.pageYOffset);
 
 
