@@ -11,12 +11,6 @@ const CONFIG_INSTANCE = new CloudinaryConfig({
 
 let cl = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
 
-describe('CloudinaryImageComponent', () => {
-  it('should create', () => {
-    expect(CloudinaryImageComponent).toBeTruthy();
-  });
-});
-
 describe('CloudinaryImageComponent render', () => {
   let component: CloudinaryImageComponent;
   let fixture: ComponentFixture<CloudinaryImageComponent>;

@@ -11,7 +11,7 @@ const CONFIG_INSTANCE = new CloudinaryConfig({
   }
 });
 
-let cl = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
+let cloudinaryImage = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
 
 describe('placeholder', () => {
   let component: CloudinaryImageComponent;
@@ -26,7 +26,7 @@ describe('placeholder', () => {
   });
 
   it('should apply default', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [placeholder()];
     fixture.detectChanges();
     tick(0);
@@ -36,7 +36,7 @@ describe('placeholder', () => {
   }));
 
   it('should apply vectorize', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [placeholder('vectorize')];
     fixture.detectChanges();
     tick(0);
@@ -46,7 +46,7 @@ describe('placeholder', () => {
   }));
 
   it('should apply pixelate', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [placeholder('pixelate')];
     fixture.detectChanges();
     tick(0);
@@ -56,7 +56,7 @@ describe('placeholder', () => {
   }));
 
   it('should apply blur', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [placeholder('blur')];
     fixture.detectChanges();
     tick(0);
@@ -66,7 +66,7 @@ describe('placeholder', () => {
   }));
 
   it('should apply predominant-color', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [placeholder('predominant-color')];
     fixture.detectChanges();
     tick(0);
@@ -76,7 +76,7 @@ describe('placeholder', () => {
   }));
 
   it('should default if supplied with incorrect mode', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [placeholder('ddd')];
     fixture.detectChanges();
     tick(0);
