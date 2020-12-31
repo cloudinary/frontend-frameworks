@@ -34,7 +34,6 @@ export class CloudinaryImageComponent implements OnInit {
   ngOnChanges() {
     if(this.htmlLayerInstance){
       this.htmlLayerInstance.cancelCurrentlyRunningPlugins();
-      // call html layer to update the dom again with plugins and reset toBeCanceled
       this.htmlLayerInstance.update(this.transformation, this.plugins)
     }
   }
