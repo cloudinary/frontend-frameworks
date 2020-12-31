@@ -24,16 +24,6 @@ describe('lazyload', () => {
     component = fixture.componentInstance;
   });
 
-  // it('should not have src pre-scroll', fakeAsync(()=>{
-  //   component.transformation = cl;
-  //   component.plugins = [lazyload()];
-  //   fixture.detectChanges();
-  //   tick(0);
-  //   const imgElement: HTMLImageElement = fixture.nativeElement;
-  //   const img = imgElement.querySelector('img');
-  //   expect(img.src).toBe('')
-  // }));
-
   it('should not have src pre-scroll', fakeAsync(()=>{
     component.transformation = cl;
     component.plugins = [lazyload()];
