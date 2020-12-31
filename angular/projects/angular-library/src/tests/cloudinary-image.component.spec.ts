@@ -9,7 +9,7 @@ const CONFIG_INSTANCE = new CloudinaryConfig({
   }
 });
 
-let cl = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
+let cloudinaryImage = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
 
 describe('CloudinaryImageComponent render', () => {
   let component: CloudinaryImageComponent;
@@ -24,7 +24,7 @@ describe('CloudinaryImageComponent render', () => {
   });
 
   it('should render image', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
