@@ -60,9 +60,6 @@
     "@sinonjs/fake-timers": "^6.0.1",
     "@types/sinonjs__fake-timers": "^6.0.2"
   },
-  "files": [
-    "dist"
-  ],
   "jest": {
     "transformIgnorePatterns": [
       "node_modules/(?!(@cloudinary/base)).*\\.js$"
