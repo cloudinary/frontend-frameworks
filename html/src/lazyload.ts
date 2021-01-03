@@ -6,7 +6,7 @@ import {plugin, htmlPluginState} from './types'
  * @description Image loads once it is in a certain margin in the viewport. This includes vertical and horizontal scrolling.
  * @param rootMargin {string} The root element's bounding box before the intersection test is performed defaults to 0px
  * @param threshold {number} A number which indicate at what percentage of the images's visibility the image should
- * load. The default is 0.1 which indicated 100%
+ * load. The default is 0.1 which indicates 1%
  * @return {plugin}
  * @example
  * <CldImg transformation={img} plugins=[(lazyload('0px', 0.25))]/>
@@ -19,7 +19,8 @@ export function lazyload(rootMargin?: string, threshold?: number): plugin{
  * @description lazyload plugin
  * @param rootMargin {string} The root element's bounding box before the intersection test is performed defaults to 0px
  * @param threshold {number} A number which indicate at what percentage of the images's visibility the image should
- * load. The default is 0.1 which indicated 100% * @param element The image element
+ * load. The default is 0.1 which indicates 1%
+ * @param element The image element
  * @param element {HTMLImageElement} The image element
  * @param cloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
