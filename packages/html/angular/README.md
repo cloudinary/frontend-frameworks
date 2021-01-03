@@ -17,7 +17,7 @@ Since this library is not on npm, we will install/pack this repo locally and ins
 
 In your app.module.ts inject the library 
 
-```
+```javascript
 import { AngularLibraryModule} from '@cloudinary/angular';
 
 @NgModule({
@@ -36,7 +36,7 @@ import { AngularLibraryModule} from '@cloudinary/angular';
  
  In your component.ts use `@cloudinary/base` to generate your transformations 
  
- ```
+ ```javascript
 import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 
 ...
@@ -57,6 +57,6 @@ import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 ```
 
 In your view add the component with your transformation
-```
+```javascript
 <cld-img [transformation]="this.img"></cld-img>
 ```

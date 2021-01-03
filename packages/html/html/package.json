@@ -1,9 +1,10 @@
 {
   "name": "@cloudinary/html-layer",
-  "version": "1.0.0",
-  "description": "Can log \"hello world\" and \"goodbye world\" to the console!",
+  "version": "1.0.0-alpa.0",
+  "description": "An HTML wrapper for Cloudinary",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": "https://github.com/cloudinary/frontend-frameworks",
   "scripts": {
     "build": "tsc",
     "prepare-build": "cp package.json ./dist"
