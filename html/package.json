@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run prepare-build",
     "prepare-build": "cp package.json ./dist"
   },
   "devDependencies": {
