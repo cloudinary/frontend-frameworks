@@ -14,7 +14,6 @@
   "scripts": {
     "build": "npm run build --prefix ../html && microbundle-crl --no-compress --format modern,cjs && cp package.json ./dist",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
-    "prepare": "run-s build",
     "test": "jest",
     "test-coverage": "jest --coverage"
   },
