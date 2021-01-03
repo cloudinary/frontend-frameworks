@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/react",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "A React component for Cloudinary",
   "author": "cloudinary",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "npm run build --prefix ../html && microbundle-crl --no-compress --format modern,cjs",
+    "build": "npm run build --prefix ../html && microbundle-crl --no-compress --format modern,cjs && cp package.json ./dist",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "jest",
