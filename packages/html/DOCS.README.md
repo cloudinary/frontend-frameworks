@@ -15,6 +15,7 @@ plugins.
 ```bash
 npm install @cloudinary/base 
 npm install @cloudinary/react
+npm install @cloudinary/angular
 ```
 
 ## Simple usage
