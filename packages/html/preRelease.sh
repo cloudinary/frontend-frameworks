@@ -21,3 +21,4 @@ cd ./angular/dist/angular-library && npm publish --access public && cd ../../../
 PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]');
 git commit -am "New prerelease $PACKAGE_VERSION"
 git tag "${PACKAGE_VERSION}" -am "Version ${PACKAGE_VERSION}"
+git push --tags
