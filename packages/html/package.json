@@ -1,4 +1,5 @@
 {
+  "version" : "1.0.0-alpha.3",
   "scripts": {
     "install": "npm install --prefix ./html && npm install --prefix ./react && npm install --prefix ./angular",
     "build": "npm run build --prefix ./html && npm run build --prefix ./react && npm run build --prefix ./angular",
