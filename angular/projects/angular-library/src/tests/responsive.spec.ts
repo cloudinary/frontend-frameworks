@@ -1,17 +1,10 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CloudinaryImageComponent } from "../lib/cloudinary-image.component";
 import { CloudinaryImage } from "@cloudinary/base/assets/CloudinaryImage";
-import CloudinaryConfig from "@cloudinary/base/config/CloudinaryConfig";
 import {responsive} from "../public_api";
 import {dispatchResize} from "../testUtils/dispatchResize";
 
-const CONFIG_INSTANCE = new CloudinaryConfig({
-  cloud: {
-    cloudName: 'demo'
-  }
-});
-
-let cl = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 
 describe('responsive', () => {
   let component: CloudinaryImageComponent;
@@ -26,7 +19,7 @@ describe('responsive', () => {
   });
 
   it('should apply initial container width', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [responsive()];
     fixture.detectChanges();
     tick(0);
@@ -36,7 +29,7 @@ describe('responsive', () => {
   }));
 
   it('should update container width on window resize', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [responsive()];
 
     // Resize
@@ -48,7 +41,7 @@ describe('responsive', () => {
   }));
 
   it('should step by the 100th', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [responsive(100)];
 
     // First resize
@@ -63,7 +56,7 @@ describe('responsive', () => {
   }));
 
   it('should step by breakpoints', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [responsive([800, 1000, 1200, 3000])];
 
     // First resize

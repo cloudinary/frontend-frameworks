@@ -1,6 +1,5 @@
 import { CldImg, responsive} from '../src'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import CloudinaryConfig from "@cloudinary/base/config/CloudinaryConfig";
 import {mount} from 'enzyme';
 import React  from "react";
 import {ResponsiveHelper} from './testUtils/responsiveHelperWrapper';
@@ -8,14 +7,7 @@ import {crop} from "@cloudinary/base/actions/resize";
 import {dispatchResize} from "./testUtils/dispatchResize";
 import FakeTimers from '@sinonjs/fake-timers'
 
-
-const CONFIG_INSTANCE = new CloudinaryConfig({
-  cloud: {
-    cloudName: 'demo'
-  }
-});
-
-let cl = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 
 describe('responsive', () => {
   let clock:any;
@@ -29,7 +21,7 @@ describe('responsive', () => {
   it("should apply initial container width (default 250)", async function () {
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cl} plugins={[responsive()]}/>
+        <CldImg transformation={cloudinaryImage} plugins={[responsive()]}/>
       </ResponsiveHelper>);
 
     window.dispatchEvent(new Event('resize'));
@@ -44,7 +36,7 @@ describe('responsive', () => {
 
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cl} plugins={[responsive()]}/>
+        <CldImg transformation={cloudinaryImage} plugins={[responsive()]}/>
       </ResponsiveHelper>);
 
     const el = dispatchResize(component, 100);
@@ -56,7 +48,7 @@ describe('responsive', () => {
 
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cl} plugins={[responsive(100)]}/>
+        <CldImg transformation={cloudinaryImage} plugins={[responsive(100)]}/>
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); //one tick
@@ -69,7 +61,7 @@ describe('responsive', () => {
   it("should step by breakpoints", async function () {
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cl} plugins={[responsive([800, 1000, 1200, 3000])]}/>
+        <CldImg transformation={cloudinaryImage} plugins={[responsive([800, 1000, 1200, 3000])]}/>
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); //one tick
@@ -92,7 +84,7 @@ describe('responsive', () => {
 
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cl} plugins={[responsive([800, 1000, 1200, 3000])]}/>
+        <CldImg transformation={cloudinaryImage} plugins={[responsive([800, 1000, 1200, 3000])]}/>
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); //one tick
@@ -106,7 +98,7 @@ describe('responsive', () => {
   it("should handle unordered breakpoints", async function () {
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cl} plugins={[responsive([1000, 800, 3000, 1200])]}/>
+        <CldImg transformation={cloudinaryImage} plugins={[responsive([1000, 800, 3000, 1200])]}/>
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); //one tick
@@ -118,11 +110,11 @@ describe('responsive', () => {
   });
 
   it("should append to existing transformation", async function () {
-    cl.resize(crop('500'));
+    cloudinaryImage.resize(crop('500'));
 
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cl} plugins={[responsive()]}/>
+        <CldImg transformation={cloudinaryImage} plugins={[responsive()]}/>
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); //one tick

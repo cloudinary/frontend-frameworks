@@ -1,15 +1,8 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CloudinaryImageComponent } from "../lib/cloudinary-image.component";
 import { CloudinaryImage } from "@cloudinary/base/assets/CloudinaryImage";
-import CloudinaryConfig from "@cloudinary/base/config/CloudinaryConfig";
 
-const CONFIG_INSTANCE = new CloudinaryConfig({
-  cloud: {
-    cloudName: 'demo'
-  }
-});
-
-let cl = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 
 describe('CloudinaryImageComponent render', () => {
   let component: CloudinaryImageComponent;
@@ -24,7 +17,7 @@ describe('CloudinaryImageComponent render', () => {
   });
 
   it('should render image', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
