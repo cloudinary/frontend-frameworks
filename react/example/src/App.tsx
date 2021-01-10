@@ -5,12 +5,7 @@ import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 
 //This is our playground and can be used to test library
 const App = () => {
-  let img = new CloudinaryImage()
-    .setConfig({
-      cloud: {
-        cloudName: 'rcstraus'
-      }})
-    .setPublicID('bear');
+  let img = new CloudinaryImage('sample', { cloudName: 'demo'});
 
   return (
     <div>
