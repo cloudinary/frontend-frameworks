@@ -1,17 +1,10 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CloudinaryImageComponent } from "../lib/cloudinary-image.component";
 import { CloudinaryImage } from "@cloudinary/base/assets/CloudinaryImage";
-import CloudinaryConfig from "@cloudinary/base/config/CloudinaryConfig";
 import {placeholder} from "../public_api";
 import  {PLACEHOLDER_IMAGE_OPTIONS} from '../../../../../html/src/internalConstnats';
 
-const CONFIG_INSTANCE = new CloudinaryConfig({
-  cloud: {
-    cloudName: 'demo'
-  }
-});
-
-let cloudinaryImage = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 
 describe('placeholder', () => {
   let component: CloudinaryImageComponent;
@@ -35,7 +28,7 @@ describe('placeholder', () => {
     expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample`)
   }));
 
-  it('should apply vectorize', fakeAsync(()=>{
+  it('should apply vectorize', fakeAsync(()=> {
     component.transformation = cloudinaryImage;
     component.plugins = [placeholder('vectorize')];
     fixture.detectChanges();

@@ -1,25 +1,17 @@
 import { CldImg, lazyload } from '../src'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import CloudinaryConfig from "@cloudinary/base/config/CloudinaryConfig";
 import {mount, shallow, ShallowWrapper} from 'enzyme';
 import React, {Requireable} from "react";
 import testWithMockedIntersectionObserver from "./testUtils/setupIntersectionObserverMock";
 
-
-const CONFIG_INSTANCE = new CloudinaryConfig({
-  cloud: {
-    cloudName: 'demo'
-  }
-});
-
-let cl = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 
 describe('lazy-load', () => {
   it("should not have src pre-scroll", async function() {
     let component = await mount(
       <div>
         <div style={{height: "1000px"}}/>
-        <CldImg transformation={cl} plugins={[lazyload()]}/>
+        <CldImg transformation={cloudinaryImage} plugins={[lazyload()]}/>
       </div>
       );
     //no src pre scroll
@@ -29,7 +21,7 @@ describe('lazy-load', () => {
   it("should have src when in view",  function(done) {
     const elm = document.createElement('img');
     testWithMockedIntersectionObserver((mockIntersectionEvent: ({}) => void)=>{
-      let component = mount(<CldImg transformation={cl} plugins={[lazyload()]}/>);
+      let component = mount(<CldImg transformation={cloudinaryImage} plugins={[lazyload()]}/>);
       mockIntersectionEvent([{isIntersecting: true, target: component.getDOMNode()}]);
       setTimeout(()=>{
         expect(component.html()).toBe("<img src=\"https://res.cloudinary.com/demo/image/upload/sample\">");
@@ -42,7 +34,7 @@ describe('lazy-load', () => {
     const elm = document.createElement('img');
     testWithMockedIntersectionObserver((mockIntersectionEvent: ({}) => void)=>{
       //@ts-ignore
-      let component = mount(<CldImg transformation={cl} plugins={[(lazyload('10px', 0.5))]}/>);
+      let component = mount(<CldImg transformation={cloudinaryImage} plugins={[(lazyload('10px', 0.5))]}/>);
       mockIntersectionEvent([{isIntersecting: true, target: component.getDOMNode()}]);
       setTimeout(()=>{
         expect(component.html()).toBe("<img src=\"https://res.cloudinary.com/demo/image/upload/sample\">");

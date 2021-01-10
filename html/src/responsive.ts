@@ -77,7 +77,7 @@ function updateByContainerWidth(steps?: number | number[], element?:HTMLImageEle
   }
 
   responsiveImage.transformation.actions.forEach((action, index) => {
-    if (action.getActionTag() === 'responsive') {
+    if (typeof action !== 'string' && action.getActionTag() === 'responsive') {
       responsiveImage.transformation.actions[index]  = scale(resizeValue).setActionTag('responsive');
     }
   });
