@@ -4,7 +4,8 @@
     "install": "npm install --prefix ./html && npm install --prefix ./react && npm install --prefix ./angular",
     "build": "npm run build --prefix ./html && npm run build --prefix ./react && npm run build --prefix ./angular",
     "quickstart": "npm run install && npm run build",
-    "build:docs": "node ./scripts/buildDocs.js"
+    "build:docs": "node ./scripts/buildDocs.js",
+    "update:cloudinary/base": "npm install @cloudinary/base@latest --prefix ./html && npm install @cloudinary/base@latest --prefix ./react && npm install @cloudinary/base@latest --prefix ./angular && npm install @cloudinary/base@latest --prefix ./angular/projects/angular-library"
   },
   "dependencies": {
     "jsdoc": "^3.6.6",

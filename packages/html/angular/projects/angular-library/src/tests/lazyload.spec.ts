@@ -1,16 +1,9 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CloudinaryImageComponent } from "../lib/cloudinary-image.component";
 import { CloudinaryImage } from "@cloudinary/base/assets/CloudinaryImage";
-import CloudinaryConfig from "@cloudinary/base/config/CloudinaryConfig";
 import {lazyload} from "../public_api";
 
-const CONFIG_INSTANCE = new CloudinaryConfig({
-  cloud: {
-    cloudName: 'demo'
-  }
-});
-
-let cl = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 
 describe('lazyload', () => {
   let component: CloudinaryImageComponent;
@@ -25,7 +18,7 @@ describe('lazyload', () => {
   });
 
   it('should not have src pre-scroll', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [lazyload()];
     fixture.detectChanges();
 

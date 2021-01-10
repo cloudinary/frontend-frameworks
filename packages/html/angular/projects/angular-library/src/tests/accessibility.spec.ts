@@ -1,16 +1,9 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CloudinaryImageComponent } from "../lib/cloudinary-image.component";
 import { CloudinaryImage } from "@cloudinary/base/assets/CloudinaryImage";
-import CloudinaryConfig from "@cloudinary/base/config/CloudinaryConfig";
 import {accessibility} from "../public_api";
 
-const CONFIG_INSTANCE = new CloudinaryConfig({
-  cloud: {
-    cloudName: 'demo'
-  }
-});
-
-let cl = new CloudinaryImage('sample').setConfig(CONFIG_INSTANCE);
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 
 describe('accessibility', () => {
   let component: CloudinaryImageComponent;
@@ -25,7 +18,7 @@ describe('accessibility', () => {
   });
 
   it('should apply default', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [accessibility()];
     fixture.detectChanges();
     tick(0);
@@ -35,7 +28,7 @@ describe('accessibility', () => {
   }));
 
   it('should apply darkmode', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [accessibility('darkmode')];
     fixture.detectChanges();
     tick(0);
@@ -45,7 +38,7 @@ describe('accessibility', () => {
   }));
 
   it('should apply brightmode', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [accessibility('brightmode')];
     fixture.detectChanges();
     tick(0);
@@ -55,7 +48,7 @@ describe('accessibility', () => {
   }));
 
   it('should apply monochrome', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [accessibility('monochrome')];
     fixture.detectChanges();
     tick(0);
@@ -65,7 +58,7 @@ describe('accessibility', () => {
   }));
 
   it('should apply colorblind', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [accessibility('colorblind')];
     fixture.detectChanges();
     tick(0);
@@ -75,7 +68,7 @@ describe('accessibility', () => {
   }));
 
   it('should default if supplied with incorrect mode', fakeAsync(()=>{
-    component.transformation = cl;
+    component.transformation = cloudinaryImage;
     component.plugins = [accessibility('ddd')];
     fixture.detectChanges();
     tick(0);
