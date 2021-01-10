@@ -3,13 +3,11 @@
   "extends": [
     "standard",
     "standard-react",
-    "plugin:prettier/recommended",
-    "prettier/standard",
-    "prettier/react",
     "plugin:@typescript-eslint/eslint-recommended"
   ],
   "env": {
-    "node": true
+    "node": true,
+    "jest": true
   },
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -29,6 +27,8 @@
     "react/jsx-handler-names": 0,
     "react/jsx-fragments": 0,
     "react/no-unused-prop-types": 0,
-    "import/export": 0
+    "import/export": 0,
+    "no-unused-vars": "off",
+    "semi": "off"
   }
 }
