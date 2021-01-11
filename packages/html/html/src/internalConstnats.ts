@@ -5,7 +5,7 @@ import {pad, crop, fill} from "@cloudinary/base/actions/resize";
 import {Background} from "@cloudinary/base/values/background";
 import {compass} from "@cloudinary/base/values/gravity";
 import {northEast} from "@cloudinary/base/values/gravity/qualifiers/compass/Compass";
-import {format} from "@cloudinary/base/actions/delivery";
+import {format, quality} from "@cloudinary/base/actions/delivery";
 import {auto, svg} from "@cloudinary/base/values/format";
 
 /**
@@ -25,6 +25,7 @@ export const ACCESSIBILITY_MODES = {
 export const VECTORIZE =
     new Transformation()
         .effect(vectorize())
+        .delivery(quality('auto'))
         .delivery(format(svg()));
 
 /**
@@ -32,8 +33,8 @@ export const VECTORIZE =
  */
 export const PIXELATE =
     new Transformation()
-        //@ts-ignore
         .effect(pixelate())
+        .delivery(quality('auto'))
         .delivery(format(auto()));
 
 /**
@@ -41,8 +42,8 @@ export const PIXELATE =
  */
 export const BLUR =
     new Transformation()
-        //@ts-ignore
         .effect(blur(2000))
+        .delivery(quality('auto'))
         .delivery(format(auto()));
 
 /**
@@ -53,6 +54,7 @@ export const PREDOMINANT_COLOR_TRANSFORM =
         .resize(pad('iw_div_2').aspectRatio(1).background(Background.auto()))
         .resize(crop(1,1).gravity(compass(northEast())))
         .resize(fill().height('ih').width('iw'))
+        .delivery(quality('auto'))
         .delivery(format(auto()));
 
 /**
