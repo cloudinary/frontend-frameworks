@@ -21,7 +21,7 @@ To learn more about our plugins, navigate to the plugins tab.
 
 ## Installation
 To get started, install the npm client package of your choice along with our base package.
-For example, to use Cloudinary in a React environment, the following packages should be installed.
+For example, to use Cloudinary in a React environment, the following packages should be installed:
    
 ```bash
 npm install @cloudinary/base 
