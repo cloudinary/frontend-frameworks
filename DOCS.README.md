@@ -33,7 +33,7 @@ npm install @cloudinary/react
 For more information on our supported frameworks, navigate to the frameworks tab.
 
 ## Simple usage
-To following is a simple example using React, for more information on React and other 
+To following is a simple example using React. For more information on React and other 
 frameworks, please navigate to the frameworks tabs. 
 ```tsx
 // Import the cloudinary class, and the plugins you want to use
