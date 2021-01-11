@@ -30,7 +30,7 @@ npm install @cloudinary/react
 
 **Note**: To use Angular install `@cloudinary/angular` 
 
-For more information on our supported frameworks please navigate to the frameworks tab.
+For more information on our supported frameworks, navigate to the frameworks tab.
 
 ## Simple usage
 To following is a simple example using React, for more information on React and other 
