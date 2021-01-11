@@ -144,6 +144,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/angular-library/src/test.ts",
+            "codeCoverage": true,
             "tsConfig": "projects/angular-library/tsconfig.spec.json",
             "karmaConfig": "projects/angular-library/karma.conf.js"
           }
