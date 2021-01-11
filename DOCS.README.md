@@ -10,7 +10,7 @@ Our library includes advanced functionality that adds additional features and ca
 default image component. 
                                                  
 
-The following are the available plugins-
+The following plugins are available:
 
 - accessibility.
 - lazyload
