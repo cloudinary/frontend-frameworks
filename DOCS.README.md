@@ -34,7 +34,7 @@ For more information on our supported frameworks, navigate to the frameworks tab
 
 ## Simple usage
 To following is a simple example using React. For more information on React and other 
-frameworks, please navigate to the frameworks tabs. 
+frameworks, navigate to the frameworks tab. 
 ```tsx
 // Import the cloudinary class, and the plugins you want to use
 // In this case, we import a cloudinary image type and accessibility and responsive.
