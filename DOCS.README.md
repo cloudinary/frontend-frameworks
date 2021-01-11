@@ -17,7 +17,7 @@ The following are the available plugins-
 - placeholder.  
 - responsive.
 
-To learn more about our plugins please navigate to the plugins tab.
+To learn more about our plugins, navigate to the plugins tab.
 
 ## Installation
 To get started, install the npm client package of your choice along with our base package.
