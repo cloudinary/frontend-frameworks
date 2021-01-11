@@ -6,10 +6,10 @@ import {isNum} from './utils/internalUtils';
 
 /**
  * @namespace
- * @description Updates the src with size of the parent Element and triggers a resize event for
- * subsequent resizing
- * @param steps {number | number[]} The size step used to update responsive image number
- * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered
+ * @description Updates the src with the size of the parent element and triggers a resize event for
+ * subsequent resizing.
+ * @param steps {number | number[]} The step size in pixels.
+ * | number[] A set of image sizes in pixels.
  * @return plugin
  * @example
  * <CldImg transformation={img} plugins=[(responsive(100))] plugins=[(responsive([800, 1000, 1400]))] />
@@ -20,8 +20,8 @@ export function responsive(steps?: number | number[]): plugin{
 
 /**
  * @description Responsive plugin
- * @param steps {number | number[]} The size step used to update responsive image number
- * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered * @param element HTMLImageElement The image element
+ * @param steps {number | number[]} The step size in pixels.
+ * | number[] A set of image sizes in pixels. 
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
@@ -48,8 +48,8 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
 
 /**
  * On resize updates image src
- * @param steps {number | number[]} The size step used to update responsive image number
- * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered * @param element HTMLImageElement The image element
+ * @param steps {number | number[]} The step size in pixels.
+ * | number[] A set of image sizes in pixels.  
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
  */
@@ -60,8 +60,8 @@ function onResize(steps?: number | number[], element?:HTMLImageElement, responsi
 
 /**
  * Updates the responsiveImage by container width.
- * @param steps {number | number[]} The size step used to update responsive image number
- * | number[] The set of values to be used when resizing the browser window and a larger image needs to be delivered * @param element HTMLImageElement The image element
+ * @param steps {number | number[]} The step size in pixels.
+ * | number[] A set of image sizes in pixels. 
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
  */
