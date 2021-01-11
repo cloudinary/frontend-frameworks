@@ -14,7 +14,7 @@ The following are the available plugins-
 
 - accessibility.
 - lazyload
-- placeholder.  
+- placeholder
 - responsive.
 
 To learn more about our plugins, navigate to the plugins tab.
