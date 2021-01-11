@@ -1,5 +1,5 @@
-import {Component, OnInit, Input, ElementRef, Renderer2} from '@angular/core';
-import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+import {Component, OnInit, Input, ElementRef, OnDestroy, OnChanges} from '@angular/core';
+import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 import {
   HtmlLayer,
   plugins
@@ -63,7 +63,7 @@ import {
   `,
   styleUrls: ['./cloudinary-image.component.css']
 })
-export class CloudinaryImageComponent implements OnInit {
+export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy{
   @Input('transformation') transformation: CloudinaryImage;
   @Input('plugins') plugins: plugins;
   htmlLayerInstance: HtmlLayer;
@@ -82,9 +82,9 @@ export class CloudinaryImageComponent implements OnInit {
    * cloudinaryImage and the state of plugins
    */
   ngOnChanges() {
-    if(this.htmlLayerInstance){
+    if (this.htmlLayerInstance) {
       this.htmlLayerInstance.cancelCurrentlyRunningPlugins();
-      this.htmlLayerInstance.update(this.transformation, this.plugins)
+      this.htmlLayerInstance.update(this.transformation, this.plugins);
     }
   }
 
@@ -93,6 +93,6 @@ export class CloudinaryImageComponent implements OnInit {
    */
   ngOnDestroy() {
     // safely cancel running events on destroy
-    this.htmlLayerInstance.cancelCurrentlyRunningPlugins()
+    this.htmlLayerInstance.cancelCurrentlyRunningPlugins();
   }
 }
