@@ -37,7 +37,7 @@ To following is a simple example using React. For more information on React and 
 frameworks, navigate to the frameworks tab. 
 ```tsx
 // Import the cloudinary class, and the plugins you want to use
-// In this case, we import a cloudinary image type and accessibility and responsive.
+// In this case, we import a Cloudinary image type and accessibility and responsive.
 
 import React, { Component } from 'react'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
