@@ -1,5 +1,5 @@
 import React from 'react';
-import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 
 import {
   HtmlLayer,
@@ -56,8 +56,6 @@ interface ImgProps {
  *
  */
 
-
-
 /**
  * @memberOf ReactSDK
  * @type {Component}
@@ -82,7 +80,7 @@ class CldImg extends React.Component <ImgProps> {
     this.htmlLayerInstance = new HtmlLayer(
       this.imageRef.current,
       this.props.transformation,
-      this.props.plugins,
+      this.props.plugins
     )
   }
 
@@ -110,8 +108,8 @@ class CldImg extends React.Component <ImgProps> {
       plugins,
       ...otherProps // Assume any other props are for the base element
     } = this.props;
-    return <img {...otherProps} ref={this.imageRef}/>
+    return <img {...otherProps} ref={this.imageRef} />
   }
 }
 
-export {CldImg};
+export { CldImg };
