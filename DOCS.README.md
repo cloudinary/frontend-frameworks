@@ -13,7 +13,7 @@ default image component.
 The following are the available plugins-
 
 - accessibility.
-- lazyload.
+- lazyload
 - placeholder.  
 - responsive.
 
