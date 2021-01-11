@@ -3,10 +3,9 @@ import {plugin, htmlPluginState} from './types'
 
 /**
  * @namespace
- * @description Image loads once it is in a certain margin in the viewport. This includes vertical and horizontal scrolling.
- * @param rootMargin {string} The root element's bounding box before the intersection test is performed defaults to 0px
- * @param threshold {number} A number which indicate at what percentage of the images's visibility the image should
- * load. The default is 0.1 which indicates 1%
+ * @description Loads an image once it is in a certain margin in the viewport. This includes vertical and horizontal scrolling.
+ * @param rootMargin {string} The root element's bounding box before the intersection test is performed. Default: 0px.
+ * @param threshold {number} The percentage of the image's visibility at which point the image should load. Default: 0.1 (10%).
  * @return {plugin}
  * @example
  * <CldImg transformation={img} plugins=[(lazyload('0px', 0.25))]/>
@@ -17,13 +16,12 @@ export function lazyload(rootMargin?: string, threshold?: number): plugin{
 
 /**
  * @description lazyload plugin
- * @param rootMargin {string} The root element's bounding box before the intersection test is performed defaults to 0px
- * @param threshold {number} A number which indicate at what percentage of the images's visibility the image should
- * load. The default is 0.1 which indicates 1%
- * @param element The image element
- * @param element {HTMLImageElement} The image element
+ * @param rootMargin {string} The root element's bounding box before the intersection test is performed. Default: 0px.
+ * @param threshold {number} The percentage of the image's visibility at which point the image should load. Default: 0.1 (10%).
+ * @param element The image element.
+ * @param element {HTMLImageElement} The image element.
  * @param cloudinaryImage {CloudinaryImage}
- * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
+ * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
 function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement, cloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string {
   return new Promise((resolve) => {
@@ -51,8 +49,8 @@ function isIntersectionObserverSupported() {
  * no native lazy loading or when IntersectionObserver isn't supported.
  * @param {Element} el - the element to observe
  * @param {function} onIntersect - called when the given element is in view
- * @param rootMargin {string} The root element's bounding box before the intersection test is performed defaults to 0px
- * @param threshold {number} A number which indicate at what percentage of the images's visibility the image should
+ * @param rootMargin {string} The root element's bounding box before the intersection test is performed. Default: 0px.
+ * @param threshold {number} The percentage of the image's visibility at which point the image should load. Default: 0.1 (10%).
  */
 function detectIntersection(el: HTMLImageElement, onIntersect: Function, rootMargin: string, threshold: number | number[]) {
   try {
