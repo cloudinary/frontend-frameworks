@@ -6,8 +6,8 @@ import {placeholderMode} from './types';
 
 /**
  * @namespace
- * @description Displays a placeholder image until the original image loads
- * @param mode {placeholderMode} can be the following modes 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
+ * @description Displays a placeholder image until the original image loads.
+ * @param mode {placeholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
  * @return plugin
  * @example
  * <CldImg transformation={img} plugins=[(placeholder('blur'))]/>
@@ -18,10 +18,10 @@ export function placeholder(mode='vectorize'): plugin{
 
 /**
  * @description Placeholder plugin
- * @param mode {placeholderMode} can be the following modes 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
- * @param element {HTMLImageElement} The image element
+ * @param mode {placeholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
+ * @param element {HTMLImageElement} The image element.
  * @param pluginCloudinaryImage {CloudinaryImage}
- * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
+ * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
 function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string  {
   const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
@@ -43,7 +43,7 @@ function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, plu
 
 /**
  * Prepares placeholder transformation by appending a placeholder-type transformation to the end of the URL
- * @param mode {placeholderMode} can be the following modes 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'
+ * @param mode {placeholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
  * @param pluginCloudinaryImage {CloudinaryImage}
  */
 function preparePlaceholderTransformation(mode: placeholderMode, pluginCloudinaryImage: CloudinaryImage){
