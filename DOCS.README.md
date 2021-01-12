@@ -39,7 +39,7 @@ npm install @cloudinary/react
 For more information on our supported frameworks, navigate to the frameworks tab.
 
 ## Simple usage
-To following is a simple example using [React](https://cloudinary.github.io/frontend-frameworks/public/docs/ReactSDK.html).
+The following is a simple example using [React](https://cloudinary.github.io/frontend-frameworks/public/docs/ReactSDK.html).
 For more information on React and other frameworks, navigate to the frameworks tab. 
 ```tsx
 // Import the cloudinary class, and the plugins you want to use
