@@ -21,7 +21,7 @@ To add this extra functionality, you can import one or all of the following plug
 - [accessibility](https://cloudinary.github.io/frontend-frameworks/public/docs/accessibility.html)
 - [lazyload](https://cloudinary.github.io/frontend-frameworks/public/docs/lazyload.html)
 - [placeholder](https://cloudinary.github.io/frontend-frameworks/public/docs/placeholder.html)
-- [responsive](https://cloudinary.github.io/frontend-frameworks/public/docs/responsive.html).
+- [responsive](https://cloudinary.github.io/frontend-frameworks/public/docs/responsive.html)
 
 To learn more about our plugins, navigate to the plugins tab.
 
