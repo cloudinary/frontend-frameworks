@@ -3,6 +3,7 @@ import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin, htmlPluginState} from "./types";
 import {PLACEHOLDER_IMAGE_OPTIONS, emptyImage} from './internalConstnats';
 import {placeholderMode} from './types';
+import {isBrowser} from "./utils/isBrowser";
 
 /**
  * @namespace
@@ -24,6 +25,9 @@ export function placeholder(mode='vectorize'): plugin{
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
 function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string  {
+  if(!isBrowser()){
+    return;
+  }
   const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
   element.src = placeholderTransformation.toURL();
 

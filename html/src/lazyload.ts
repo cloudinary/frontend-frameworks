@@ -1,5 +1,6 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin, htmlPluginState} from './types'
+import {isBrowser} from "./utils/isBrowser";
 
 /**
  * @namespace
@@ -23,7 +24,11 @@ export function lazyload(rootMargin?: string, threshold?: number): plugin{
  * @param cloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
-function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement, cloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string {
+function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement, cloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string | boolean {
+  // if SSR return
+  if(!isBrowser()){
+    return false;
+  }
   return new Promise((resolve) => {
     const onIntersect = () => (resolve());
     const unobserve = detectIntersection(element, onIntersect, rootMargin, threshold);
