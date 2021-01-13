@@ -1,8 +1,8 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin, htmlPluginState} from "./types";
+import {plugin, htmlPluginState} from "../types";
 import {scale} from "@cloudinary/base/actions/resize";
 import debounce from 'lodash.debounce';
-import {isNum} from './utils/internalUtils';
+import {isNum} from '../utils/internalUtils';
 
 /**
  * @namespace
@@ -21,7 +21,7 @@ export function responsive(steps?: number | number[]): plugin{
 /**
  * @description Responsive plugin
  * @param steps {number | number[]} The step size in pixels.
- * | number[] A set of image sizes in pixels. 
+ * | number[] A set of image sizes in pixels.
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
@@ -49,7 +49,7 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
 /**
  * On resize updates image src
  * @param steps {number | number[]} The step size in pixels.
- * | number[] A set of image sizes in pixels.  
+ * | number[] A set of image sizes in pixels.
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
  */
@@ -61,7 +61,7 @@ function onResize(steps?: number | number[], element?:HTMLImageElement, responsi
 /**
  * Updates the responsiveImage by container width.
  * @param steps {number | number[]} The step size in pixels.
- * | number[] A set of image sizes in pixels. 
+ * | number[] A set of image sizes in pixels.
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
  */
