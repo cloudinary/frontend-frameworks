@@ -5,7 +5,7 @@
 This is the home of our Javascript frontend SDKs:
 <br />
 
-- [@cloudinary/html](https://www.npmjs.com/package/@cloudinary/html) - The HTML SDK used to render an html image
+- [@cloudinary/html](https://www.npmjs.com/package/@cloudinary/html) - The HTML SDK used to render an HTML image
  element.
 - [@cloudinary/react](https://www.npmjs.com/package/@cloudinary/react) - The React SDK used to render an image
  component.
