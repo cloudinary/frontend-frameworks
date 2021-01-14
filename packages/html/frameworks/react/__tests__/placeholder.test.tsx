@@ -1,6 +1,6 @@
 import { CldImg, placeholder } from '../src'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import  {PLACEHOLDER_IMAGE_OPTIONS} from '../../html/src/internalConstnats';
+import  {PLACEHOLDER_IMAGE_OPTIONS} from '../../html/src/utils/internalConstnats';
 import {mount} from 'enzyme';
 import React  from "react";
 import {sepia} from "@cloudinary/base/actions/effect";
