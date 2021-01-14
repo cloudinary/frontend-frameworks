@@ -14,8 +14,8 @@ interface ImgProps {
 
 /**
  * @mixin ReactSDK
- * @description This is our React SDK. The objective of this library is to render images
- * as is or with our plugins
+ * @description The Coudinday React SDK contains components like <CldImg> to easily render your media assets from Cloudinary.
+ * The SDK also comes with support for optional js plugins that make the components smart, with features like lazy loading, placeholder, accessibility & responsiveness
  *
  * @example
  * <caption>
