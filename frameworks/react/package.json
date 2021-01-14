@@ -66,6 +66,10 @@
     ],
     "setupFilesAfterEnv": [
       "./src/setupTests.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/testUtils",
+      "<rootDir>/dist"
     ]
   }
 }
