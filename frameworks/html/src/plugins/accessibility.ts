@@ -25,6 +25,7 @@ export function accessibility(mode='darkmode'): plugin{
 export function accessibilityPlugin(mode: accessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string {
   if(isBrowser()){
     return new Promise((resolve) => {
+      // resolved promise when canceled
       htmlPluginState.cleanupCallbacks.push(()=>{
         resolve('canceled');
       });
