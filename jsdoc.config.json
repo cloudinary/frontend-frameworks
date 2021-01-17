@@ -4,7 +4,7 @@
     "dictionaries": ["jsdoc","closure"]
   },
   "source": {
-    "include": ["html/src", "react/src", "angular/projects/angular-library/src"],
+    "include": ["frameworks/html/src", "frameworks/react/src", "frameworks/angular/projects/angular-library/src"],
     "includePattern": ".+\\.ts(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_"
   },
@@ -27,10 +27,10 @@
     "search": false,
     "monospaceLinks": true,
     "systemColor": "#3448C5",
-    "systemName": "Cloudinary HTML SDK",
+    "systemName": "Cloudinary Frontend Frameworks",
     "systemLogo": "__DOC_RESOURCES__/cloudinaryicon.png",
     "systemSummary": "client side frameworks & plugins",
-    "favicon": "__DOC_RESOURCES__/cloudinary_icon_solid.png",
+    "favicon": "__DOC_RESOURCES__/cloudinaryicon.png",
     "copyright": "Copyright © 2020 Cloudinary.com"
   },
   "opts": {

@@ -7,8 +7,9 @@ import {
 
 /**
  * @mixin AngularSDK
- * @description This is our Angular SDK. The objective of this library is to render images
- * as is or with our plugins
+ * @description The Coudinday Angular SDK contains components like <cld-img> to easily render your media assets from
+ * Cloudinary. The SDK also comes with support for optional js plugins that make the components smart, with features
+ * like lazy loading, placeholder, accessibility & responsiveness
  *
  * @example
  * <caption>

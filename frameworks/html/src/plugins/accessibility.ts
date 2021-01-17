@@ -1,6 +1,6 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin, accessibilityMode, htmlPluginState} from "./types";
-import {ACCESSIBILITY_MODES} from './internalConstnats';
+import {plugin, accessibilityMode, htmlPluginState} from "../types";
+import {ACCESSIBILITY_MODES} from '../utils/internalConstnats';
 import {isBrowser} from "./utils/isBrowser";
 
 /**

@@ -1,8 +1,8 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin, htmlPluginState} from "./types";
+import {plugin, htmlPluginState} from "../types";
 import {scale} from "@cloudinary/base/actions/resize";
 import debounce from 'lodash.debounce';
-import {isNum} from './utils/internalUtils';
+import {isNum} from '../utils/internalUtils';
 import {isBrowser} from "./utils/isBrowser";
 
 /**
