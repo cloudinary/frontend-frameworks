@@ -12,7 +12,7 @@ export  function serverSideSrc(plugins?: plugins, serverCloudinaryImage?: Cloudi
   const clonedServerCloudinaryImage  = cloneDeep(serverCloudinaryImage);
   if(plugins){
     for(let i = 0; i < plugins.length; i++){
-      const response = plugins[i]('', clonedServerCloudinaryImage);
+      const response = plugins[i](null, clonedServerCloudinaryImage);
       if(!response){ //lazyload
         break;
       }
