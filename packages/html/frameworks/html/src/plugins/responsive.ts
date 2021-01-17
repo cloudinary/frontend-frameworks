@@ -3,6 +3,7 @@ import {plugin, htmlPluginState} from "../types";
 import {scale} from "@cloudinary/base/actions/resize";
 import debounce from 'lodash.debounce';
 import {isNum} from '../utils/internalUtils';
+import {isBrowser} from "../utils/isBrowser";
 
 /**
  * @namespace
@@ -27,6 +28,9 @@ export function responsive(steps?: number | number[]): plugin{
  * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
  */
 function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: htmlPluginState): Promise<void | string> | string {
+  if(!isBrowser()){
+    return;
+  }
   return new Promise((resolve)=>{
     htmlPluginState.cleanupCallbacks.push(()=>{
       window.removeEventListener("resize", resizeRef);
