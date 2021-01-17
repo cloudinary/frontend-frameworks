@@ -3,7 +3,9 @@ import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 
 import {
   HtmlLayer,
-  plugins
+  plugins,
+  isBrowser,
+  serverSideSrc
 } from '../../html/dist'
 
 interface ImgProps {
@@ -108,7 +110,15 @@ class CldImg extends React.Component <ImgProps> {
       plugins,
       ...otherProps // Assume any other props are for the base element
     } = this.props;
-    return <img {...otherProps} ref={this.imageRef} />
+    if (isBrowser()) { // on client side render
+      return <img suppressHydrationWarning {...otherProps} ref={this.imageRef} />
+    } else { // on server side render
+      const src = serverSideSrc(
+        this.props.plugins,
+        this.props.transformation
+      );
+      return <img {...otherProps} src={src} />
+    }
   }
 }
 

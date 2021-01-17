@@ -1,6 +1,7 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin, accessibilityMode, htmlPluginState} from "../types";
 import {ACCESSIBILITY_MODES} from '../utils/internalConstnats';
+import {isBrowser} from "../utils/isBrowser";
 
 /**
  * @namespace
@@ -22,15 +23,20 @@ export function accessibility(mode='darkmode'): plugin{
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
 export function accessibilityPlugin(mode: accessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string {
-  return new Promise((resolve) => {
-    htmlPluginState.cleanupCallbacks.push(()=>{
-      resolve('canceled');
-    });
+  if(isBrowser()){
+    return new Promise((resolve) => {
+      // resolved promise when canceled
+      htmlPluginState.cleanupCallbacks.push(()=>{
+        resolve('canceled');
+      });
 
-    if(!ACCESSIBILITY_MODES[mode]){
-      mode = 'darkmode';
-    }
+      if(!ACCESSIBILITY_MODES[mode]){
+        mode = 'darkmode';
+      }
+      pluginCloudinaryImage.effect(ACCESSIBILITY_MODES[mode]);
+      resolve();
+    });
+  }else{
     pluginCloudinaryImage.effect(ACCESSIBILITY_MODES[mode]);
-    resolve();
-  });
+  }
 }
