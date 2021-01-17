@@ -2,6 +2,7 @@
   "name": "@cloudinary/angular",
   "version": "1.0.0-alpha.1",
   "repository": "https://github.com/cloudinary/frontend-frameworks",
+  "sideEffects": false,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
