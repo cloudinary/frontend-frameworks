@@ -1,6 +1,6 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin, htmlPluginState} from '../types'
-import {isBrowser} from "./utils/isBrowser";
+import {isBrowser} from "../utils/isBrowser";
 
 /**
  * @namespace

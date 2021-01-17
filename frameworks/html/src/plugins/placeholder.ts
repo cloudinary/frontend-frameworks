@@ -3,7 +3,7 @@ import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin, htmlPluginState} from "../types";
 import {PLACEHOLDER_IMAGE_OPTIONS, emptyImage} from '../utils/internalConstnats';
 import {placeholderMode} from '../types';
-import {isBrowser} from "./utils/isBrowser";
+import {isBrowser} from "../utils/isBrowser";
 
 /**
  * @namespace
