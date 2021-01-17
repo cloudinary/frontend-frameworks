@@ -1,22 +1,73 @@
-# cloudinary-js-frameworks
-Cloudinary JS frontend frameworks SDKs
+# Cloudinary frontend-frameworks
 
+## About this project
 
-## Overview
+This project contains SDKs designed to work with [Cloudinary base](https://github.com/cloudinary/cloudinary-js-base) </br>
+These SDKs will render CloudinaryImage or CloudinaryVideo object into the DOM.
 
-This is the home of our Javascript libraries.
+### Packages contained within this project:
+<br />
+ 
+- The React SDK used to render an image & video component. [NPM](https://www.npmjs.com/package/@cloudinary/react)  |     {@link ReactSDK|Reference} 
+- The Angular SDK used to render an image & video component. [NPM](https://www.npmjs.com/package/@cloudinary/angular) |  {@link AngularSDK|Reference} 
+ 
+                                                
+Each SDK also contains advanced features in the form of plugins, which extend the native HTMLImage and HTMLVideo elements.
 
-Each directory is a Cloudinary Javascript library.
+- {@link accessibility|accessibility} - Used to make your images more accessible to your users with visual disabilities. 
+- {@link lazyload|lazyload} - Used to delay loading images if they are not yet visible on the screen.
+- {@link placeholder|placeholder} - Used to display a lightweight version of an image while the target image is downloading.
+- {@link responsive|responsive} - Used to resize your images automatically based on the viewport size.
 
-Angular, React and Vue all use the html library to render
+## Installation
+To get started, install the npm client package of your choice along with our base package.
+For example, to use Cloudinary in a [React](https://cloudinary.github.io/frontend-frameworks/public/docs/ReactSDK.html) environment, the following packages should be installed:
+   
+```bash
+npm i @cloudinary/react @cloudinary/base
+```
 
-## To use
+**Note**: To use [Angular](https://cloudinary.github.io/frontend-frameworks/public/docs/AngularSDK.html) install `@cloudinary/angular` 
 
-1. clone this repo
-2. cd into each directory angular/react/html
-3. npm install
-3. npm run build
-4. navigate to angular or react to continue
+For more information on our supported frameworks, navigate to the frameworks tab.
 
-## Quick setup
-For quick setup- npm run quickstart
+## Simple usage
+The following is a simple example using [React](https://cloudinary.github.io/frontend-frameworks/public/docs/ReactSDK.html).
+For more information on React and other frameworks, navigate to the frameworks tab. 
+```javascript
+// Import the cloudinary class, and the plugins you want to use
+// In this case, we import a Cloudinary image type and accessibility and responsive.
+
+import React, { Component } from 'react'
+import {Cloudinary} from "@cloudinary/base";
+import { CldImg, accessibility, responsive } from '@cloudinary/react';
+
+// Once per project/app - configure your instance,
+// See the documentation in @cloudinary/base for more information 
+const myCld = new Cloudinary({ cloudName: 'demo'});
+
+// render your component
+ const App = () => {
+    // Create your image
+    // This creates a new image object
+    let img = myCld().image('sample');
+    return (
+        <div>
+            <CldImg transformation={img} plugins={[responsive(), accessibility()]}/>
+        </div>
+    )
+  };
+```
+
+## Plugin Order
+
+<div>
+We recommended the following order when using our plugins to achieve the best results. 
+<br/><br/>
+
+```javascript
+<CldImg plugins={[lazyload(),responsive(), accessibility(), placeholder()]}/>
+```
+
+You can omit any plugin, but the order from above should remain.
+</div>
