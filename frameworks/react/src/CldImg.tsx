@@ -114,7 +114,6 @@ class CldImg extends React.Component <ImgProps> {
       return <img suppressHydrationWarning {...otherProps} ref={this.imageRef} />
     } else { // on server side render
       const src = serverSideSrc(
-        '', // src
         this.props.plugins,
         this.props.transformation
       );
