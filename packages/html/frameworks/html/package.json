@@ -4,6 +4,7 @@
   "description": "An HTML wrapper for Cloudinary",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "sideEffects": false,
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "scripts": {
     "build": "tsc && npm run prepare-build",
