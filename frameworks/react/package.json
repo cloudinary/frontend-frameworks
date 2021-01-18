@@ -6,6 +6,7 @@
   "license": "MIT",
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "main": "dist/index.js",
+  "sideEffects": false,
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
   "engines": {
