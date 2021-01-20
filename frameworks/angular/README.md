@@ -58,5 +58,5 @@ import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 
 In your view add the component with your transformation
 ```javascript
-<cld-img [transformation]="this.img"></cld-img>
+<advanced-image [cldImg]="this.img"></advanced-image>
 ```

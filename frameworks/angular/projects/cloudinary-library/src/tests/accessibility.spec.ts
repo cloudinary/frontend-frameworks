@@ -18,7 +18,7 @@ describe('accessibility', () => {
   });
 
   it('should apply default', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     component.plugins = [accessibility()];
     fixture.detectChanges();
     tick(0);
@@ -28,7 +28,7 @@ describe('accessibility', () => {
   }));
 
   it('should apply darkmode', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     component.plugins = [accessibility('darkmode')];
     fixture.detectChanges();
     tick(0);
@@ -38,7 +38,7 @@ describe('accessibility', () => {
   }));
 
   it('should apply brightmode', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     component.plugins = [accessibility('brightmode')];
     fixture.detectChanges();
     tick(0);
@@ -48,7 +48,7 @@ describe('accessibility', () => {
   }));
 
   it('should apply monochrome', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     component.plugins = [accessibility('monochrome')];
     fixture.detectChanges();
     tick(0);
@@ -58,7 +58,7 @@ describe('accessibility', () => {
   }));
 
   it('should apply colorblind', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     component.plugins = [accessibility('colorblind')];
     fixture.detectChanges();
     tick(0);
@@ -68,7 +68,7 @@ describe('accessibility', () => {
   }));
 
   it('should default if supplied with incorrect mode', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     component.plugins = [accessibility('ddd')];
     fixture.detectChanges();
     tick(0);

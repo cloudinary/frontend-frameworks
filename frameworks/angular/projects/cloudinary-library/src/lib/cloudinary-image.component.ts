@@ -7,7 +7,7 @@ import {
 
 /**
  * @mixin AngularSDK
- * @description The Coudinday Angular SDK contains components like <cld-img> to easily render your media assets from
+ * @description The Coudinday Angular SDK contains components like <advanced-image> to easily render your media assets from
  * Cloudinary. The SDK also comes with support for optional js plugins that make the components smart, with features
  * like lazy loading, placeholder, accessibility & responsiveness
  *
@@ -47,7 +47,7 @@ import {
  * }
  *
  * // In your view add the component with your transformation
- * <cld-img [transformation]="this.img" [plugins]="this.plugins"></cld-img>
+ * <advanced-image [cldImg]="this.img" [plugins]="this.plugins"></cld-img>
  */
 
 /**
@@ -58,14 +58,14 @@ import {
  * @prop {plugins} plugins Advanced image component plugins accessibility(), responsive(), lazyload(), placeholder()
  */
 @Component({
-  selector: 'cld-img',
+  selector: 'advanced-image',
   template: `
     <img />
   `,
   styleUrls: ['./cloudinary-image.component.css']
 })
 export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy{
-  @Input('transformation') transformation: CloudinaryImage;
+  @Input('cldImg') cldImg: CloudinaryImage;
   @Input('plugins') plugins: plugins;
   htmlLayerInstance: HtmlLayer;
   constructor(private el: ElementRef) { }
@@ -75,7 +75,7 @@ export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy{
    * user generated cloudinaryImage and the plugins to be used
    */
   ngOnInit() {
-    this.htmlLayerInstance = new HtmlLayer(this.el.nativeElement.children[0], this.transformation, this.plugins);
+    this.htmlLayerInstance = new HtmlLayer(this.el.nativeElement.children[0], this.cldImg, this.plugins);
   }
 
   /**
@@ -85,7 +85,7 @@ export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy{
   ngOnChanges() {
     if (this.htmlLayerInstance) {
       this.htmlLayerInstance.cancelCurrentlyRunningPlugins();
-      this.htmlLayerInstance.update(this.transformation, this.plugins);
+      this.htmlLayerInstance.update(this.cldImg, this.plugins);
     }
   }
 
