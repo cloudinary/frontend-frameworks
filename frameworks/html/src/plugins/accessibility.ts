@@ -9,7 +9,7 @@ import {isBrowser} from "../utils/isBrowser";
  * @param mode {accessibilityMode} The accessibility mode to use. Possible modes: 'darkmode' | 'brightmode' | 'monochrome' | 'colorblind'. Default: 'darkmode'.
  * @return {plugin}
  * @example
- * <AdvancedImage transformation={img} plugins={[accessibility()]}/>
+ * <AdvancedImage cldImg={img} plugins={[accessibility()]}/>
  */
 export function accessibility(mode='darkmode'): plugin{
   return accessibilityPlugin.bind(null, mode);
