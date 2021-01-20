@@ -1,7 +1,7 @@
 node_modules
 .idea
 dist
-example/src
+#example/src
 example/package-lock.json
 example/node_modules
 package-lock.json

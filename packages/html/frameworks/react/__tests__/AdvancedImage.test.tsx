@@ -1,27 +1,27 @@
-import { CldImg } from '../src'
+import { AdvancedImage } from '../src'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {mount} from 'enzyme';
 import React from "react";
 
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 
-describe('CldImg', () => {
+describe('AdvancedImage', () => {
   it('is truthy', () => {
-    expect(CldImg).toBeTruthy()
+    expect(AdvancedImage).toBeTruthy()
   });
 
-  it('renders CldImg', async () => {
-    const component = await mount(<CldImg transformation={cloudinaryImage}/>);
+  it('renders AdvancedImage', async () => {
+    const component = await mount(<AdvancedImage cldImg={cloudinaryImage}/>);
     expect(component).toMatchSnapshot();
   });
 
   it("should create an img tag", async function() {
-    let component = await mount(<CldImg transformation={cloudinaryImage}/>);
+    let component = await mount(<AdvancedImage cldImg={cloudinaryImage}/>);
     expect(component.html()).toBe('<img src="https://res.cloudinary.com/demo/image/upload/sample">');
   });
 
   it("should add style to img component", async function() {
-    let component = await mount(<CldImg style={{opacity: "0.5"}} transformation={cloudinaryImage}/>);
+    let component = await mount(<AdvancedImage style={{opacity: "0.5"}} cldImg={cloudinaryImage}/>);
     expect(component.find('img').prop('style')).toStrictEqual({"opacity": "0.5"});
   });
 });

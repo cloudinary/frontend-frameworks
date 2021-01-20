@@ -19,7 +19,7 @@ describe('responsive', () => {
   });
 
   it('should apply initial container width', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     component.plugins = [responsive()];
     fixture.detectChanges();
     tick(0);
@@ -29,7 +29,7 @@ describe('responsive', () => {
   }));
 
   it('should update container width on window resize', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     component.plugins = [responsive()];
 
     // Resize
@@ -41,7 +41,7 @@ describe('responsive', () => {
   }));
 
   it('should step by the 100th', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     component.plugins = [responsive(100)];
 
     // First resize
@@ -56,7 +56,7 @@ describe('responsive', () => {
   }));
 
   it('should step by breakpoints', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     component.plugins = [responsive([800, 1000, 1200, 3000])];
 
     // First resize

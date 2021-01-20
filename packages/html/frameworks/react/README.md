@@ -24,7 +24,7 @@ To use the sample project-
 ```tsx
 import React, { Component } from 'react'
 
-import { CldImg } from '@cloudinary/react'
+import { AdvancedImage } from '@cloudinary/react'
 import {CloudinaryImage} from '@cloudinary/base';
 
 let img = new CloudinaryImage()
@@ -39,6 +39,6 @@ let img = new CloudinaryImage()
   .setPublicID('sample');
 
 const App = () => {
-  return <CldImg transformation={img}/>
+  return <AdvancedImage cldImg={img}/>
 };
 ```

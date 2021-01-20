@@ -1,4 +1,4 @@
-import { CldImg, lazyload } from '../src'
+import { AdvancedImage, lazyload } from '../src'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {mount, shallow, ShallowWrapper} from 'enzyme';
 import React, {Requireable} from "react";
@@ -11,7 +11,7 @@ describe('lazy-load', () => {
     let component = await mount(
       <div>
         <div style={{height: "1000px"}}/>
-        <CldImg transformation={cloudinaryImage} plugins={[lazyload()]}/>
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[lazyload()]}/>
       </div>
       );
     //no src pre scroll
@@ -21,7 +21,7 @@ describe('lazy-load', () => {
   it("should have src when in view",  function(done) {
     const elm = document.createElement('img');
     testWithMockedIntersectionObserver((mockIntersectionEvent: ({}) => void)=>{
-      let component = mount(<CldImg transformation={cloudinaryImage} plugins={[lazyload()]}/>);
+      let component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[lazyload()]}/>);
       mockIntersectionEvent([{isIntersecting: true, target: component.getDOMNode()}]);
       setTimeout(()=>{
         expect(component.html()).toBe("<img src=\"https://res.cloudinary.com/demo/image/upload/sample\">");
@@ -34,7 +34,7 @@ describe('lazy-load', () => {
     const elm = document.createElement('img');
     testWithMockedIntersectionObserver((mockIntersectionEvent: ({}) => void)=>{
       //@ts-ignore
-      let component = mount(<CldImg transformation={cloudinaryImage} plugins={[(lazyload('10px', 0.5))]}/>);
+      let component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[(lazyload('10px', 0.5))]}/>);
       mockIntersectionEvent([{isIntersecting: true, target: component.getDOMNode()}]);
       setTimeout(()=>{
         expect(component.html()).toBe("<img src=\"https://res.cloudinary.com/demo/image/upload/sample\">");
