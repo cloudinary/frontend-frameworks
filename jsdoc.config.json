@@ -4,7 +4,7 @@
     "dictionaries": ["jsdoc","closure"]
   },
   "source": {
-    "include": ["frameworks/html/src", "frameworks/react/src", "frameworks/angular/projects/angular-library/src"],
+    "include": ["frameworks/html/src", "frameworks/react/src", "frameworks/angular/projects/cloudinary-library/src"],
     "includePattern": ".+\\.ts(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_"
   },

@@ -17,7 +17,7 @@ describe('CloudinaryImageComponent render', () => {
   });
 
   it('should render image', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;

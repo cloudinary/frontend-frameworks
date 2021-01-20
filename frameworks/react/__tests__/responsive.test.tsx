@@ -1,4 +1,4 @@
-import { CldImg, responsive} from '../src'
+import { AdvancedImage, responsive} from '../src'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {mount} from 'enzyme';
 import React  from "react";
@@ -21,7 +21,7 @@ describe('responsive', () => {
   it("should apply initial container width (default 250)", async function () {
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cloudinaryImage} plugins={[responsive()]}/>
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive()]}/>
       </ResponsiveHelper>);
 
     window.dispatchEvent(new Event('resize'));
@@ -36,7 +36,7 @@ describe('responsive', () => {
 
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cloudinaryImage} plugins={[responsive()]}/>
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive()]}/>
       </ResponsiveHelper>);
 
     const el = dispatchResize(component, 100);
@@ -48,7 +48,7 @@ describe('responsive', () => {
 
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cloudinaryImage} plugins={[responsive(100)]}/>
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive(100)]}/>
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); //one tick
@@ -61,7 +61,7 @@ describe('responsive', () => {
   it("should step by breakpoints", async function () {
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cloudinaryImage} plugins={[responsive([800, 1000, 1200, 3000])]}/>
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive([800, 1000, 1200, 3000])]}/>
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); //one tick
@@ -84,7 +84,7 @@ describe('responsive', () => {
 
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cloudinaryImage} plugins={[responsive([800, 1000, 1200, 3000])]}/>
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive([800, 1000, 1200, 3000])]}/>
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); //one tick
@@ -98,7 +98,7 @@ describe('responsive', () => {
   it("should handle unordered breakpoints", async function () {
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cloudinaryImage} plugins={[responsive([1000, 800, 3000, 1200])]}/>
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive([1000, 800, 3000, 1200])]}/>
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); //one tick
@@ -114,7 +114,7 @@ describe('responsive', () => {
 
     let component = mount(
       <ResponsiveHelper>
-        <CldImg transformation={cloudinaryImage} plugins={[responsive()]}/>
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive()]}/>
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); //one tick

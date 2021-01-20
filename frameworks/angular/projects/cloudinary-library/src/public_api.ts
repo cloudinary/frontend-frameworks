@@ -1,5 +1,5 @@
 /*
- * Public API Surface of angular-library
+ * Public API Surface of cloudinary-library
  */
 
 import {
@@ -10,4 +10,4 @@ import {
 } from '../../../../html/dist';
 export {placeholder, accessibility, lazyload, responsive};
 
-export * from './lib/angular-library.module';
+export * from './lib/cloudinary.module';

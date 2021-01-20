@@ -1,12 +1,11 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CloudinaryImageComponent } from "../lib/cloudinary-image.component";
 import { CloudinaryImage } from "@cloudinary/base/assets/CloudinaryImage";
-import {placeholder} from "../public_api";
-import  {PLACEHOLDER_IMAGE_OPTIONS} from '../../../../../html/src/utils/internalConstnats';
+import {accessibility} from "../public_api";
 
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 
-describe('placeholder', () => {
+describe('accessibility', () => {
   let component: CloudinaryImageComponent;
   let fixture: ComponentFixture<CloudinaryImageComponent>;
 
@@ -19,62 +18,62 @@ describe('placeholder', () => {
   });
 
   it('should apply default', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
-    component.plugins = [placeholder()];
+    component.cldImg = cloudinaryImage;
+    component.plugins = [accessibility()];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample`)
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/co_black,e_colorize:70/sample')
   }));
 
-  it('should apply vectorize', fakeAsync(()=> {
-    component.transformation = cloudinaryImage;
-    component.plugins = [placeholder('vectorize')];
+  it('should apply darkmode', fakeAsync(()=>{
+    component.cldImg = cloudinaryImage;
+    component.plugins = [accessibility('darkmode')];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample`)
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/co_black,e_colorize:70/sample')
   }));
 
-  it('should apply pixelate', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
-    component.plugins = [placeholder('pixelate')];
+  it('should apply brightmode', fakeAsync(()=>{
+    component.cldImg = cloudinaryImage;
+    component.plugins = [accessibility('brightmode')];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.pixelate}/sample`)
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/co_white,e_colorize:40/sample')
   }));
 
-  it('should apply blur', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
-    component.plugins = [placeholder('blur')];
+  it('should apply monochrome', fakeAsync(()=>{
+    component.cldImg = cloudinaryImage;
+    component.plugins = [accessibility('monochrome')];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.blur}/sample`)
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/e_grayscale/sample')
   }));
 
-  it('should apply predominant-color', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
-    component.plugins = [placeholder('predominant-color')];
+  it('should apply colorblind', fakeAsync(()=>{
+    component.cldImg = cloudinaryImage;
+    component.plugins = [accessibility('colorblind')];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS["predominant-color"]}/sample`)
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/e_assist_colorblind/sample')
   }));
 
   it('should default if supplied with incorrect mode', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
-    component.plugins = [placeholder('ddd')];
+    component.cldImg = cloudinaryImage;
+    component.plugins = [accessibility('ddd')];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample`)
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/co_black,e_colorize:70/sample')
   }));
 });

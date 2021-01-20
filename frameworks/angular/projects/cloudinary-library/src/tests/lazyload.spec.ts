@@ -18,7 +18,7 @@ describe('lazyload', () => {
   });
 
   it('should not have src pre-scroll', fakeAsync(()=>{
-    component.transformation = cloudinaryImage;
+    component.cldImg = cloudinaryImage;
     component.plugins = [lazyload()];
     fixture.detectChanges();
 

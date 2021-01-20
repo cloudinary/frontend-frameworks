@@ -7,4 +7,4 @@ import { CloudinaryImageComponent } from './cloudinary-image.component';
   declarations: [CloudinaryImageComponent],
   exports: [CloudinaryImageComponent]
 })
-export class AngularLibraryModule { }
+export class CloudinaryModule { }
