@@ -28,7 +28,7 @@ import { AdvancedImage } from '@cloudinary/react'
 import {CloudinaryImage} from '@cloudinary/base';
 
 let img = new CloudinaryImage()
-  .setConfig({
+  .cldImgfig({
     cloud: {
       cloudName: 'demo'
     },
