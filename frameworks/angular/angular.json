@@ -122,39 +122,39 @@
         }
       }
     },
-    "angular-library": {
-      "root": "projects/angular-library",
-      "sourceRoot": "projects/angular-library/src",
+    "cloudinary-library": {
+      "root": "projects/cloudinary-library",
+      "sourceRoot": "projects/cloudinary-library/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/angular-library/tsconfig.lib.json",
-            "project": "projects/angular-library/ng-package.json"
+            "tsConfig": "projects/cloudinary-library/tsconfig.lib.json",
+            "project": "projects/cloudinary-library/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/angular-library/ng-package.prod.json"
+              "project": "projects/cloudinary-library/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/angular-library/src/test.ts",
+            "main": "projects/cloudinary-library/src/test.ts",
             "codeCoverage": true,
-            "tsConfig": "projects/angular-library/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-library/karma.conf.js"
+            "tsConfig": "projects/cloudinary-library/tsconfig.spec.json",
+            "karmaConfig": "projects/cloudinary-library/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/angular-library/tsconfig.lib.json",
-              "projects/angular-library/tsconfig.spec.json"
+              "projects/cloudinary-library/tsconfig.lib.json",
+              "projects/cloudinary-library/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

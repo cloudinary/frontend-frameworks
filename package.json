@@ -5,7 +5,7 @@
     "build": "npm run build --prefix frameworks/html && npm run build --prefix frameworks/react && npm run build --prefix frameworks/angular",
     "quickstart": "npm run install && npm run build",
     "build:docs": "node ./scripts/buildDocs.js",
-    "update:cloudinary/base": "npm install @cloudinary/base@latest --prefix frameworks/html && npm install @cloudinary/base@latest --prefix frameworks/react && npm install @cloudinary/base@latest --prefix frameworks/angular && npm install @cloudinary/base@latest --prefix ./angular/projects/angular-library"
+    "update:cloudinary/base": "npm install @cloudinary/base@latest --prefix frameworks/html && npm install @cloudinary/base@latest --prefix frameworks/react && npm install @cloudinary/base@latest --prefix frameworks/angular && npm install @cloudinary/base@latest --prefix ./angular/projects/cloudinary-library"
   },
   "dependencies": {
     "jsdoc": "^3.6.6",

@@ -18,11 +18,11 @@
       "dom"
     ],
     "paths": {
-      "angular-library": [
-        "dist/angular-library"
+      "cloudinary-library": [
+        "dist/cloudinary-library"
       ],
-      "angular-library/*": [
-        "dist/angular-library/*"
+      "cloudinary-library/*": [
+        "dist/cloudinary-library/*"
       ]
     }
   }

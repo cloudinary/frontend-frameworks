@@ -4,7 +4,7 @@ npm version prerelease --no-git-tag-version
 npm version prerelease --no-git-tag-version --prefix ./frameworks/html
 npm version prerelease --no-git-tag-version --prefix ./frameworks/react
 npm version prerelease --no-git-tag-version --prefix ./frameworks/angular
-npm version prerelease --no-git-tag-version --prefix ./frameworks/angular/projects/angular-library
+npm version prerelease --no-git-tag-version --prefix ./frameworks/angular/projects/cloudinary-library
 
 # Build all libraries
 npm run build --prefix ./frameworks/html
@@ -14,7 +14,7 @@ npm run build --prefix ./frameworks/angular
 # Release all libraries
 cd ./frameworks/html/dist && npm publish --access public && cd ../../../
 cd ./frameworks/react/dist && npm publish --access public && cd ../../../
-cd ./frameworks/angular/dist/angular-library && npm publish --access public && cd ../../../../
+cd ./frameworks/angular/dist/cloudinary-library && npm publish --access public && cd ../../../../
 
 
 # Add all new package.json's changes to git

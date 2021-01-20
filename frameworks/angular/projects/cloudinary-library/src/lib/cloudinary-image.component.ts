@@ -16,11 +16,11 @@ import {
  *  Please note that the order of the plugins is important. See home for more details.
  * </caption>
  * // In your app.module.ts inject the library
- * import { AngularLibraryModule} from '@cloudinary/angular';
+ * import { CloudinaryModule} from '@cloudinary/angular';
  *
  * imports: [
  *   ...,
- *   AngularLibraryModule,
+ *   CloudinaryModule,
  * ],
  *
  * // In your component.ts use `@cloudinary/base` to generate your transformations
