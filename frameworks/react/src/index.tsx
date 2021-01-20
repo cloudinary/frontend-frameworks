@@ -4,7 +4,7 @@ import {
   lazyload,
   responsive,
 } from '../../html/dist'
-import {CldImg} from "./CldImg";
+import {AdvancedImage} from "./AdvancedImage";
 
 
-export {placeholder, accessibility, lazyload, responsive, CldImg};
+export {placeholder, accessibility, lazyload, responsive, AdvancedImage};

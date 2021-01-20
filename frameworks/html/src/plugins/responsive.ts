@@ -13,7 +13,7 @@ import {isBrowser} from "../utils/isBrowser";
  * | number[] A set of image sizes in pixels.
  * @return plugin
  * @example
- * <CldImg transformation={img} plugins=[(responsive(100))] plugins=[(responsive([800, 1000, 1400]))] />
+ * <AdvancedImage cldImg={img} plugins=[(responsive(100))] plugins=[(responsive([800, 1000, 1400]))] />
  */
 export function responsive(steps?: number | number[]): plugin{
   return responsivePlugin.bind(null, steps);

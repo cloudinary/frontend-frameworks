@@ -28,7 +28,7 @@ import {
  *
  * import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
  * import {
- *  CldImg,
+ *  AdvancedImage,
  *  accessibility,
  *  responsive,
  *  lazyload,

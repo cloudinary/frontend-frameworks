@@ -1,4 +1,4 @@
-import { CldImg, placeholder } from '../src'
+import { AdvancedImage, placeholder } from '../src'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import  {PLACEHOLDER_IMAGE_OPTIONS} from '../../html/src/utils/internalConstnats';
 import {mount} from 'enzyme';
@@ -9,7 +9,7 @@ const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 
 describe('placeholder', () => {
   it("should apply default",  function (done) {
-    let component = mount(<CldImg transformation={cloudinaryImage} plugins={[placeholder()]}/>);
+    let component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder()]}/>);
     setTimeout(()=>{
       expect(component.html()).toBe(`<img src=\"https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample\">`);
       done();
@@ -17,14 +17,14 @@ describe('placeholder', () => {
   });
 
   it("should apply 'vectorize'",  function () {
-    let component = mount(<CldImg transformation={cloudinaryImage} plugins={[placeholder('vectorize')]}/>);
+    let component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder('vectorize')]}/>);
     setTimeout(()=>{
       expect(component.html()).toBe(`<img src=\"https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample\">`);
     }, 0);// one tick
   });
 
   it("should apply pixelate",  function (done) {
-    let component = mount(<CldImg transformation={cloudinaryImage} plugins={[placeholder('pixelate')]}/>);
+    let component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder('pixelate')]}/>);
     setTimeout(()=>{
       expect(component.html()).toBe(`<img src=\"https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.pixelate}/sample\">`);
       done();
@@ -32,7 +32,7 @@ describe('placeholder', () => {
   });
 
   it("should apply blur",  function (done) {
-    let component = mount(<CldImg transformation={cloudinaryImage} plugins={[placeholder('blur')]}/>);
+    let component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder('blur')]}/>);
     setTimeout(()=>{
       expect(component.html()).toBe(`<img src=\"https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.blur}/sample\">`);
       done();
@@ -40,7 +40,7 @@ describe('placeholder', () => {
   });
 
   it("should apply predominant-color",  function (done) {
-    let component = mount(<CldImg transformation={cloudinaryImage} plugins={[placeholder('predominant-color')]}/>);
+    let component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder('predominant-color')]}/>);
     setTimeout(()=>{
       expect(component.html()).toBe(`<img src=\"https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS["predominant-color"]}/sample\">`);
       done();
@@ -48,7 +48,7 @@ describe('placeholder', () => {
   });
 
   it("should default if supplied with incorrect mode",  function (done) {
-    let component = mount(<CldImg transformation={cloudinaryImage} plugins={[placeholder('ddd')]}/>);
+    let component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder('ddd')]}/>);
     setTimeout(()=>{
       expect(component.html()).toBe(`<img src=\"https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample\">`);
       done();
@@ -57,7 +57,7 @@ describe('placeholder', () => {
 
   it("should append placeholder transformation",  function (done) {
     cloudinaryImage.effect(sepia());
-    let component = mount(<CldImg transformation={cloudinaryImage} plugins={[placeholder()]}/>);
+    let component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder()]}/>);
     setTimeout(()=>{
       expect(component.html()).toBe(`<img src=\"https://res.cloudinary.com/demo/image/upload/e_sepia/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample\">`);
       done();

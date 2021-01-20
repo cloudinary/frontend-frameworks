@@ -40,7 +40,7 @@ For more information on React and other frameworks, navigate to the frameworks t
 
 import React, { Component } from 'react'
 import {Cloudinary} from "@cloudinary/base";
-import { CldImg, accessibility, responsive } from '@cloudinary/react';
+import { AdvancedImage, accessibility, responsive } from '@cloudinary/react';
 
 // Once per project/app - configure your instance,
 // See the documentation in @cloudinary/base for more information 
@@ -53,7 +53,7 @@ const myCld = new Cloudinary({ cloudName: 'demo'});
     let img = myCld().image('sample');
     return (
         <div>
-            <CldImg transformation={img} plugins={[responsive(), accessibility()]}/>
+            <AdvancedImage cldImg={img} plugins={[responsive(), accessibility()]}/>
         </div>
     )
   };
@@ -66,7 +66,7 @@ We recommended the following order when using our plugins to achieve the best re
 <br/><br/>
 
 ```javascript
-<CldImg plugins={[lazyload(),responsive(), accessibility(), placeholder()]}/>
+<AdvancedImage plugins={[lazyload(),responsive(), accessibility(), placeholder()]}/>
 ```
 
 You can omit any plugin, but the order from above should remain.
