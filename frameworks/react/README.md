@@ -28,15 +28,8 @@ import { AdvancedImage } from '@cloudinary/react'
 import {CloudinaryImage} from '@cloudinary/base';
 
 let img = new CloudinaryImage()
-  .cldImgfig({
-    cloud: {
-      cloudName: 'demo'
-    },
-    url: {
-      secure: true,
-    }
-  })
-  .setPublicID('sample');
+ * const myCld = new Cloudinary({ cloudName: 'demo'});
+ * let img = myCld().image('sample');
 
 const App = () => {
   return <AdvancedImage cldImg={img}/>
