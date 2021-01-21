@@ -36,12 +36,8 @@ import {
  * } from '@cloudinary/angular';
  *
  * ngOnInit() {
- *   this.img = new CloudinaryImage().setConfig({
- *       cloud: {
- *         cloudName: 'demo'
- *       }
- *     })
- *     .setPublicID('sample');
+ *   const myCld = new Cloudinary({ cloudName: 'demo'});
+ *   this.img = myCld().image('sample');
  *
  *   this.plugins = [lazyload(), placeholder()]
  * }
