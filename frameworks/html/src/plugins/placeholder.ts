@@ -24,7 +24,7 @@ export function placeholder(mode='vectorize'): plugin{
  * @param pluginCloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
-function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string  {
+function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> {
   if(!isBrowser()){
     return;
   }

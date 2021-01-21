@@ -22,7 +22,7 @@ export function accessibility(mode='darkmode'): plugin{
  * @param pluginCloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
-export function accessibilityPlugin(mode: accessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | string {
+export function accessibilityPlugin(mode: accessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> {
   if(isBrowser()){
     return new Promise((resolve) => {
       // resolved promise when canceled
