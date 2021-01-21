@@ -41,15 +41,8 @@ import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 
 ...
   ngOnInit() {
-    this.img = new CloudinaryImage().setConfig({
-        cloud: {
-          cloudName: 'demo'
-        },
-        url: {
-          secure: true,
-        }
-      })
-      .setPublicID('sample');
+    const myCld = new Cloudinary({ cloudName: 'demo'});
+    this.img = myCld().image('sample');
   }
 ...
 
