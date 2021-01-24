@@ -3,7 +3,7 @@ import {
   accessibility,
   lazyload,
   responsive,
-} from '../../html/dist'
+} from './htmlBuild/index'
 import {AdvancedImage} from "./AdvancedImage";
 
 

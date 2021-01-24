@@ -13,7 +13,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "npm run build --prefix ../html && cp -r ../html/dist/. ./htmlBuild && microbundle-crl --no-compress --format modern,cjs && cp package.json ./dist && cp -r ../html/dist ./dist/htmlBuild",
+    "build": "npm run build --prefix ../html && cp -r ../html/dist/. src/htmlBuild && microbundle-crl --no-compress --format modern,cjs && cp package.json ./dist && rm -rf ./dist/htmlBuild && cp -r ../html/dist ./dist/htmlBuild",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "test": "jest",
     "test-coverage": "jest --coverage"
