@@ -35,7 +35,6 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-projects/cloudinary-library/src/htmlBuild
 
 # System Files
 .DS_Store
