@@ -3,7 +3,7 @@ import {
   accessibility,
   lazyload,
   responsive,
-} from './htmlBuild/index'
+} from '@cloudinary/html'
 import {AdvancedImage} from "./AdvancedImage";
 
 

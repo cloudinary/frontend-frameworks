@@ -6,7 +6,7 @@ import {
   plugins,
   isBrowser,
   serverSideSrc
-} from './htmlBuild/index'
+} from '@cloudinary/html'
 
 interface ImgProps {
   cldImg: CloudinaryImage,

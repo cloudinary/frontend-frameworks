@@ -13,7 +13,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "npm run build --prefix ../html && cp -r ../html/dist/. src/htmlBuild && microbundle-crl --no-compress --format modern,cjs && cp package.json ./dist && rm -rf ./dist/htmlBuild && cp -r ../html/dist ./dist/htmlBuild",
+    "build": "npm run build --prefix ../html && microbundle-crl --no-compress --format modern,cjs && cp package.json ./dist",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "test": "jest",
     "test-coverage": "jest --coverage"
@@ -24,7 +24,8 @@
   "devDependencies": {
     "@babel/preset-env": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
-    "@cloudinary/base": "^1.0.0-alpha.10",
+    "@cloudinary/base": "^1.0.0-alpha.11",
+    "@sinonjs/fake-timers": "^6.0.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
@@ -32,6 +33,7 @@
     "@types/node": "^12.12.38",
     "@types/react": "^16.9.27",
     "@types/react-dom": "^16.9.7",
+    "@types/sinonjs__fake-timers": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
@@ -57,9 +59,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
     "ts-jest": "^26.4.4",
-    "typescript": "^3.7.5",
-    "@sinonjs/fake-timers": "^6.0.1",
-    "@types/sinonjs__fake-timers": "^6.0.2"
+    "typescript": "^3.7.5"
   },
   "jest": {
     "transformIgnorePatterns": [
@@ -72,5 +72,8 @@
       "<rootDir>/__tests__/testUtils",
       "<rootDir>/dist"
     ]
+  },
+  "dependencies": {
+    "@cloudinary/html": "file:cloudinary-html-1.0.0-alpa.2.tgz"
   }
 }
