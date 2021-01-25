@@ -14,13 +14,13 @@
   },
   "scripts": {
     "build": "npm install @cloudinary/html@latest && microbundle-crl --no-compress --format modern,cjs && cp package.json ./dist",
-    "build-dev": "bash ./scripts/buildDev.sh",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "test": "jest",
     "test-coverage": "jest --coverage"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "@cloudinary/html": "^1.0.0-alpa.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.10",
@@ -73,8 +73,5 @@
       "<rootDir>/__tests__/testUtils",
       "<rootDir>/dist"
     ]
-  },
-  "dependencies": {
-    "@cloudinary/html": "^1.0.0-alpa.2"
   }
 }

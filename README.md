@@ -24,7 +24,7 @@ To get started, install the npm client package of your choice along with our bas
 For example, to use Cloudinary in a [React](https://cloudinary.github.io/frontend-frameworks/public/docs/ReactSDK.html) environment, the following packages should be installed:
    
 ```bash
-npm i @cloudinary/react @cloudinary/base
+npm i @cloudinary/react @cloudinary/base @cloudinary/html
 ```
 
 **Note**: To use [Angular](https://cloudinary.github.io/frontend-frameworks/public/docs/AngularSDK.html) install `@cloudinary/angular` 
