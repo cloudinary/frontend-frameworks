@@ -28,9 +28,9 @@
     "monospaceLinks": true,
     "systemColor": "#3448C5",
     "systemName": "Cloudinary Frontend Frameworks",
-    "systemLogo": "__DOC_RESOURCES__/cloudinaryicon.png",
+    "systemLogo": "__DOC_RESOURCES__/navLogo.png",
     "systemSummary": "client side frameworks & plugins",
-    "favicon": "__DOC_RESOURCES__/cloudinaryicon.png",
+    "favicon": "__DOC_RESOURCES__/favico.png",
     "copyright": "Copyright © 2020 Cloudinary.com"
   },
   "opts": {
