@@ -23,6 +23,9 @@
       ],
       "cloudinary-library/*": [
         "dist/cloudinary-library/*"
+      ],
+      "html/*": [
+        "projects/cloudinary-library/src/htmlBuild"
       ]
     }
   }
