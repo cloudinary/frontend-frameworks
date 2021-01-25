@@ -3,7 +3,7 @@ import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 import {
   HtmlLayer,
   plugins
-} from 'html/*';
+} from '@cloudinary/html';
 
 /**
  * @mixin AngularSDK

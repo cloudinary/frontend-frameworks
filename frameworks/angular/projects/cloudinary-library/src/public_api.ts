@@ -7,7 +7,7 @@ import {
   accessibility,
   lazyload,
   responsive,
-} from 'html/*';
+} from '@cloudinary/html';
 export {placeholder, accessibility, lazyload, responsive};
 
 export * from './lib/cloudinary.module';

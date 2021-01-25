@@ -13,7 +13,8 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "npm run build --prefix ../html && microbundle-crl --no-compress --format modern,cjs && cp package.json ./dist",
+    "build": "npm install @cloudinary/html@latest && microbundle-crl --no-compress --format modern,cjs && cp package.json ./dist",
+    "build-dev": "bash ./scripts/buildDev.sh",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "test": "jest",
     "test-coverage": "jest --coverage"
@@ -74,6 +75,6 @@
     ]
   },
   "dependencies": {
-    "@cloudinary/html": "file:cloudinary-html-1.0.0-alpa.2.tgz"
+    "@cloudinary/html": "^1.0.0-alpa.2"
   }
 }

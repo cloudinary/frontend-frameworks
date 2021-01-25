@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run build --prefix ../html &&  cp -r ../html/dist/. projects/cloudinary-library/src/htmlBuild && ng build cloudinary-library",
+    "build": "npm install @cloudinary/html@latest && ng build cloudinary-library",
     "test": "ng test cloudinary-library --tsConfig=projects/cloudinary-library/tsconfig.spec.json",
     "bundlewatch": "bundlewatch --config bundlewatch.config.js",
     "lint": "ng lint",
@@ -14,15 +14,16 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^6.0.3",
-    "@angular/core": "^6.0.3",
-    "@angular/compiler": "^6.0.3",
     "@angular/animations": "^6.0.3",
+    "@angular/common": "^6.0.3",
+    "@angular/compiler": "^6.0.3",
+    "@angular/core": "^6.0.3",
     "@angular/forms": "^6.0.3",
     "@angular/http": "^6.0.3",
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@cloudinary/html": "^1.0.0-alpa.2",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
