@@ -8,7 +8,6 @@
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "scripts": {
     "build": "tsc && npm run prepare-build",
-    "prepare-build": "cp package.json ./dist",
     "pack": "npm pack"
   },
   "devDependencies": {
