@@ -9,7 +9,7 @@ import {isBrowser} from "../utils/isBrowser";
  * @param threshold {number} The percentage of the image's visibility at which point the image should load. Default: 0.1 (10%).
  * @return {plugin}
  * @example
- * <AdvancedImage transformation={img} plugins=[(lazyload('0px', 0.25))]/>
+ * <AdvancedImage cldImg={img} plugins=[(lazyload('0px', 0.25))]/>
  */
 export function lazyload(rootMargin?: string, threshold?: number): plugin{
   return lazyloadPlugin.bind(null, rootMargin, threshold);

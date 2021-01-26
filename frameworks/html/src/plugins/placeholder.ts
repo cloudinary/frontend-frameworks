@@ -11,7 +11,7 @@ import {isBrowser} from "../utils/isBrowser";
  * @param mode {placeholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
  * @return plugin
  * @example
- * <AdvancedImage transformation={img} plugins=[(placeholder('blur'))]/>
+ * <AdvancedImage cldImg={img} plugins=[(placeholder('blur'))]/>
  */
 export function placeholder(mode='vectorize'): plugin{
   return placeholderPlugin.bind(null, mode);

@@ -34,12 +34,9 @@ interface ImgProps {
  * } from '@cloudinary/react';
  *
  * const App = () => {
- *   let img = new CloudinaryImage()
- *     .setConfig({
- *        cloud: {
- *          cloudName: 'demo'
- *        }})
- *     .setPublicID('sample');
+ *
+ * const myCld = new Cloudinary({ cloudName: 'demo'});
+ * let img = myCld().image('sample');
  *
  *   return (
  *      <div>
