@@ -4,10 +4,12 @@
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
-    "@cloudinary/html": "^1.0.0-alpa.2"
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
   },
   "devDependencies": {
     "@cloudinary/base": "^1.0.0-alpha.10"
+  },
+  "whitelistedNonPeerDependencies": {
+    "@cloudinary/html": "^1.0.0-alpa.2"
   }
 }

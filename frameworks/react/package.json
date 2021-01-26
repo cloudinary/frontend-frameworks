@@ -20,8 +20,7 @@
     "test-coverage": "jest --coverage"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "@cloudinary/html": "^1.0.0-alpa.2"
+    "react": "^16.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.10",
