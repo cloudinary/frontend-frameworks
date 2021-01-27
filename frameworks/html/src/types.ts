@@ -1,6 +1,6 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 
-export type plugin = (element: HTMLImageElement, cloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState) => Promise<string | void>;
+export type plugin = (element: HTMLImageElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: htmlPluginState) => Promise<string | void>;
 
 export type plugins = plugin[];
 
