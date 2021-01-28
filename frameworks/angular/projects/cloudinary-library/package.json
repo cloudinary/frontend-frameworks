@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "@cloudinary/base": "^1.0.0-alpha.10"
+  },
+  "dependencies": {
+    "@cloudinary/html": "^1.0.0-alpha.2"
   }
 }
