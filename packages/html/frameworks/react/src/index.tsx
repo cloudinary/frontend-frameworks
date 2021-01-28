@@ -3,7 +3,7 @@ import {
   accessibility,
   lazyload,
   responsive,
-} from '../../html/dist'
+} from '@cloudinary/html'
 import {AdvancedImage} from "./AdvancedImage";
 
 
