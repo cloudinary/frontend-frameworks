@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { CloudinaryImageComponent } from "../lib/cloudinary-image.component";
-import { CloudinaryImage } from "@cloudinary/base/assets/CloudinaryImage";
-import {responsive} from "../public_api";
-import {dispatchResize} from "../testUtils/dispatchResize";
+import { CloudinaryImageComponent } from '../lib/cloudinary-image.component';
+import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
+import {responsive} from '../public_api';
+import {dispatchResize} from '../testUtils/dispatchResize';
 
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 
@@ -18,17 +18,17 @@ describe('responsive', () => {
     component = fixture.componentInstance;
   });
 
-  it('should apply initial container width', fakeAsync(()=>{
+  it('should apply initial container width', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
     component.plugins = [responsive()];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_1190/sample')
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_1190/sample');
   }));
 
-  it('should update container width on window resize', fakeAsync(()=>{
+  it('should update container width on window resize', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
     component.plugins = [responsive()];
 
@@ -37,10 +37,10 @@ describe('responsive', () => {
 
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_60/sample')
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_60/sample');
   }));
 
-  it('should step by the 100th', fakeAsync(()=>{
+  it('should step by the 100th', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
     component.plugins = [responsive(100)];
 
@@ -52,10 +52,10 @@ describe('responsive', () => {
 
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_200/sample')
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_200/sample');
   }));
 
-  it('should step by breakpoints', fakeAsync(()=>{
+  it('should step by breakpoints', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
     component.plugins = [responsive([800, 1000, 1200, 3000])];
 
@@ -67,7 +67,7 @@ describe('responsive', () => {
 
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_800/sample')
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_800/sample');
   }));
 
 });
