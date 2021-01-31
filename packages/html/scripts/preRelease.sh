@@ -12,9 +12,9 @@ npm run build --prefix ./frameworks/react
 npm run build --prefix ./frameworks/angular
 
 # Release all libraries
-cd ./frameworks/html/dist && npm publish --access public && cd ../../../
-cd ./frameworks/react/dist && npm publish --access public && cd ../../../
-cd ./frameworks/angular/dist/cloudinary-library && npm publish --access public && cd ../../../../
+(cd ./frameworks/html/dist && npm publish --access public)
+(cd ./frameworks/react/dist && npm publish --access public)
+(cd ./frameworks/angular/dist/cloudinary-library && npm publish --access public)
 
 
 # Add all new package.json's changes to git
