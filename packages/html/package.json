@@ -1,6 +1,6 @@
 {
   "name": "frontend-frameworks-monorepo",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.3",
   "scripts": {
     "quickstart": "bash ./scripts/setup.sh",
     "build:docs": "node ./scripts/buildDocs.js",
