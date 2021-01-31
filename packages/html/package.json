@@ -1,18 +1,13 @@
 {
   "name": "frontend-frameworks-monorepo",
-  "workspaces":
-  [
-    "./frameworks/html/*"
-  ],
   "version": "1.0.0-alpha.4",
   "scripts": {
-    "install": "npm install --prefix frameworks/html && npm install --prefix frameworks/react && npm install --prefix frameworks/angular",
-    "build": "npm run build --prefix frameworks/html && npm run build --prefix frameworks/react && npm run build --prefix frameworks/angular",
-    "quickstart": "npm run install && npm run build",
+    "quickstart": "bash ./scripts/setup.sh",
     "build:docs": "node ./scripts/buildDocs.js",
     "update:cloudinary/base": "npm install @cloudinary/base@latest --prefix frameworks/html && npm install @cloudinary/base@latest --prefix frameworks/react && npm install @cloudinary/base@latest --prefix frameworks/angular && npm install @cloudinary/base@latest --prefix ./angular/projects/cloudinary-library"
   },
   "dependencies": {
+    "@cloudinary/html": "file:frameworks/html/dist",
     "better-docs": "^2.3.0",
     "foodoc": "0.0.9",
     "jsdoc": "^3.6.6",
