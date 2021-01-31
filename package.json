@@ -1,7 +1,6 @@
 {
   "name": "frontend-frameworks-monorepo",
-  "workspaces":
-  [
+  "workspaces": [
     "./frameworks/html/*"
   ],
   "version": "1.0.0-alpha.4",
