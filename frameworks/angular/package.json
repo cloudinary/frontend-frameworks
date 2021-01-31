@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/angular",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "sideEffects": false,
   "scripts": {
