@@ -75,6 +75,6 @@
     ]
   },
   "dependencies": {
-    "@cloudinary/html": "^1.0.0-alpa.2"
+    "@cloudinary/html": "^1.0.0-alpha.4"
   }
 }
