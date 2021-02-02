@@ -25,7 +25,7 @@ describe('responsive', () => {
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_1190/sample');
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_790/sample');
   }));
 
   it('should update container width on window resize', fakeAsync(() => {
