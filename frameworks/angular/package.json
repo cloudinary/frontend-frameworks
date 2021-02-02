@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "npm run build --prefix ../html && ng build cloudinary-library",
-    "test": "ng test --watch=false cloudinary-library --tsConfig=projects/cloudinary-library/tsconfig.spec.json",
+    "test": "ng test cloudinary-library --watch=false --tsConfig=projects/cloudinary-library/tsconfig.spec.json --browsers ChromeHeadless",
     "bundlewatch": "bundlewatch --config bundlewatch.config.js",
     "lint": "ng lint",
     "e2e": "ng e2e"
