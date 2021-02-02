@@ -1,4 +1,5 @@
-import { AdvancedImage, accessibility } from '../src'
+import { AdvancedImage, accessibility } from '../src';
+import * as dependency from '../src';
 import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 import { mount } from 'enzyme';
 import React from 'react';
@@ -68,13 +69,14 @@ describe('accessibility', () => {
     }, 0);// one tick
   });
 
-  it('should unmount', function (done) {
+  it('should unmount', async function (done) {
+    accessibility = jest.fn();
     const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[accessibility()]} />);
 
     component.unmount();
 
     setTimeout(() => {
-      expect(component.html()).toBe('<img src="https://res.cloudinary.com/demo/image/upload/co_black,e_colorize:70/sample">');
+      expect(mockFn).toHaveBeenCalled();
       done();
     }, 0);// one tick
   });
