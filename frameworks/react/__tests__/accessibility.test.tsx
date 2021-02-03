@@ -1,5 +1,4 @@
 import { AdvancedImage, accessibility } from '../src';
-import * as dependency from '../src';
 import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 import { mount } from 'enzyme';
 import React from 'react';
