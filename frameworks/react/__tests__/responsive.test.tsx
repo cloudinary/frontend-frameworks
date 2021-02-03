@@ -120,22 +120,4 @@ describe('responsive', () => {
     expect(component.html()).toBe('<div id="wrapper"><img' +
       ' src="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/c_scale,w_250/sample"></div>');
   });
-
-  it('should update without errors', async function () {
-    cloudinaryImage.resize(crop('500'));
-
-    const component = mount(
-      <ResponsiveHelper>
-        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive()]} />
-      </ResponsiveHelper>);
-
-    await clock.tickAsync(0); // one tick
-    window.dispatchEvent(new Event('resize'));
-    await clock.tickAsync(100); // timeout for debounce
-
-    component.update();
-
-    expect(component.html()).toBe('<div id="wrapper"><img' +
-      ' src="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/c_scale,w_250/sample"></div>');
-  });
 });

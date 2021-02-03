@@ -2,7 +2,6 @@ import { AdvancedImage } from '../src'
 import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 import { mount } from 'enzyme';
 import React from 'react';
-import { ACCESSIBILITY_MODES } from '../../html/src/utils/internalConstnats';
 
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' });
 
