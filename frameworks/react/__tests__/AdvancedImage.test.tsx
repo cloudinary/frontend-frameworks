@@ -25,7 +25,7 @@ describe('AdvancedImage', () => {
     expect(component.find('img').prop('style')).toStrictEqual({ opacity: '0.5' });
   });
 
-  it('should resolve with a cancel on unmount', function() {
+  it('should resolve with a cancel on unmount', function(done) {
     const component = mount(
       <AdvancedImage
         cldImg={cloudinaryImage}
@@ -35,7 +35,8 @@ describe('AdvancedImage', () => {
               resolve('canceled');
             });
           }).then((res) => {
-            expect(res).toBe('canceled')
+            expect(res).toBe('canceled');
+            done();
           });
         }]}
       />);
@@ -46,6 +47,9 @@ describe('AdvancedImage', () => {
   it('componentDidUpdate should trigger plugin rerun', function() {
     const mock = jest.fn();
     const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[mock]} />);
+
+    // plugins called once
+    expect(mock).toHaveBeenCalledTimes(1);
 
     // trigger componentDidUpdate
     component.setProps('');
