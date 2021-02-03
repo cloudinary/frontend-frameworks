@@ -1,8 +1,9 @@
 {
   "name": "frontend-frameworks-monorepo",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-beta.0",
   "scripts": {
     "quickstart": "bash ./scripts/setup.sh",
+    "test": "bash ./scripts/test.sh",
     "build:docs": "node ./scripts/buildDocs.js",
     "update:cloudinary/base": "npm install @cloudinary/base@latest --prefix frameworks/html && npm install @cloudinary/base@latest --prefix frameworks/react && npm install @cloudinary/base@latest --prefix frameworks/angular && npm install @cloudinary/base@latest --prefix ./angular/projects/cloudinary-library"
   },
