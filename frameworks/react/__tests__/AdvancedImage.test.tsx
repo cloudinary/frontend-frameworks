@@ -17,7 +17,7 @@ describe('AdvancedImage', () => {
 
   it('should create an img tag', async function() {
     const component = await mount(<AdvancedImage cldImg={cloudinaryImage} />);
-    expect(component.html()).toBe('<img src="https://res.cloudinary.com/demo/image/upload/sample">');
+    expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/sample"');
   });
 
   it('should add style to img component', async function() {

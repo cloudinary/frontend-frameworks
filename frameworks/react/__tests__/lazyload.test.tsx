@@ -24,7 +24,7 @@ describe('lazy-load', () => {
       const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[lazyload()]} />);
       mockIntersectionEvent([{ isIntersecting: true, target: component.getDOMNode() }]);
       setTimeout(() => {
-        expect(component.html()).toBe('<img src="https://res.cloudinary.com/demo/image/upload/sample">');
+        expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/sample"');
         done();
       }, 0);// one tick
     });
@@ -37,7 +37,7 @@ describe('lazy-load', () => {
       const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[(lazyload('10px', 0.5))]} />);
       mockIntersectionEvent([{ isIntersecting: true, target: component.getDOMNode() }]);
       setTimeout(() => {
-        expect(component.html()).toBe('<img src="https://res.cloudinary.com/demo/image/upload/sample">');
+        expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/sample"');
         done();
       }, 0);// one tick
     });

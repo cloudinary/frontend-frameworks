@@ -51,8 +51,7 @@ describe('responsive', () => {
     await clock.tickAsync(0); // one tick
     window.dispatchEvent(new Event('resize'));
     await clock.tickAsync(100); // timeout for debounce
-    expect(component.html())
-      .toBe('<div id="wrapper"><img src="https://res.cloudinary.com/demo/image/upload/c_scale,w_300/sample"></div>');
+    expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_300/sample"');
   });
 
   it('should step by breakpoints', async function () {
@@ -65,16 +64,14 @@ describe('responsive', () => {
     window.dispatchEvent(new Event('resize'));
     await clock.tickAsync(100); // timeout for debounce
 
-    expect(component.html())
-      .toBe('<div id="wrapper"><img src="https://res.cloudinary.com/demo/image/upload/c_scale,w_800/sample"></div>');
+    expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_800/sample"');
 
     // simulate resize to 975
     await clock.tickAsync(0); // one tick
     dispatchResize(component, 975);
     await clock.tickAsync(100); // timeout for debounce
 
-    expect(component.html())
-      .toBe('<div id="wrapper"><img src="https://res.cloudinary.com/demo/image/upload/c_scale,w_1000/sample"></div>');
+    expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_1000/sample"');
   });
 
   it('should not resize to larger than provided breakpoints', async function () {
@@ -87,8 +84,7 @@ describe('responsive', () => {
     dispatchResize(component, 4000);
     await clock.tickAsync(100); // timeout for debounce
 
-    expect(component.html())
-      .toBe('<div id="wrapper"><img src="https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample"></div>');
+    expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample"');
   });
 
   it('should handle unordered breakpoints', async function () {
@@ -101,8 +97,7 @@ describe('responsive', () => {
     dispatchResize(component, 5000);
     await clock.tickAsync(100); // timeout for debounce
 
-    expect(component.html())
-      .toBe('<div id="wrapper"><img src="https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample"></div>');
+    expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample"');
   });
 
   it('should append to existing transformation', async function () {
@@ -117,8 +112,6 @@ describe('responsive', () => {
     window.dispatchEvent(new Event('resize'));
     await clock.tickAsync(100); // timeout for debounce
 
-    expect(component.html())
-      .toBe('<div id="wrapper"><img' +
-      ' src="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/c_scale,w_250/sample"></div>');
+    expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/c_scale,w_250/sample"');
   });
 });
