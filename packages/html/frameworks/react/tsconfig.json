@@ -27,11 +27,11 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "types": ["jest", "node"]
   },
   "include": [
-    "src",
-    "__tests__"
+    "src"
   ],
   "exclude": [
     "node_modules",
