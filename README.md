@@ -1,4 +1,4 @@
-# Cloudinary frontend-frameworks
+# Cloudinary Frontend Frameworks
 
 ## About this project
 
