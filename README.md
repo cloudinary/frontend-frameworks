@@ -1,4 +1,4 @@
-# Cloudinary frontend-frameworks
+# Cloudinary Frontend Frameworks
 
 ## About this project
 
@@ -21,18 +21,18 @@ Each SDK also contains advanced features in the form of plugins, which extend th
 
 ## Installation
 To get started, install the npm client package of your choice along with our base package.
-For example, to use Cloudinary in a [React](https://cloudinary.github.io/frontend-frameworks/public/docs/ReactSDK.html) environment, the following packages should be installed:
+For example, to use Cloudinary in a [React](https://cloudinary.com/documentation/react2_integration) environment, the following packages should be installed:
    
 ```bash
 npm i @cloudinary/react @cloudinary/base
 ```
 
-**Note**: To use [Angular](https://cloudinary.github.io/frontend-frameworks/public/docs/AngularSDK.html) install `@cloudinary/angular` 
+**Note**: To use [Angular](https://cloudinary.com/documentation/angular2_integration) install `@cloudinary/angular` 
 
 For more information on our supported frameworks, navigate to the frameworks tab.
 
 ## Simple usage
-The following is a simple example using [React](https://cloudinary.github.io/frontend-frameworks/public/docs/ReactSDK.html).
+The following is a simple example using [React](https://cloudinary.com/documentation/react2_integration).
 For more information on React and other frameworks, navigate to the frameworks tab. 
 ```javascript
 // Import the cloudinary class, and the plugins you want to use

@@ -43,7 +43,7 @@ import {
  * }
  *
  * // In your view add the component with your transformation
- * <advanced-image [cldImg]="this.img" [plugins]="this.plugins"></cld-img>
+ * <advanced-image [cldImg]="this.img" [plugins]="this.plugins"></advanced-image>
  */
 
 /**
