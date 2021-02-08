@@ -30,7 +30,9 @@ function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, plu
   }
   const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
   element.src = placeholderTransformation.toURL();
-
+  element.onerror = () => {
+    element.src = emptyImage;
+  };
   return new Promise((resolve: any) => {
     htmlPluginState.cleanupCallbacks.push(()=>{
       element.src = emptyImage;
@@ -40,6 +42,10 @@ function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, plu
     const largeImage = new Image();
     largeImage.src = pluginCloudinaryImage.toURL();
     largeImage.onload = () => {
+      resolve();
+    };
+
+    largeImage.onerror = () => {
       resolve();
     };
   });
