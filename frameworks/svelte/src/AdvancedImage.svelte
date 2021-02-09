@@ -27,9 +27,13 @@
 
   /**
    * On unmount we cancel the currently running plugins
+   * This is the only lifecycle method that runs on the server,
+   * so we must check for existence of htmlLayerInstance
    */
   onDestroy(() => {
-    htmlLayerInstance.cancelCurrentlyRunningPlugins();
+    if (htmlLayerInstance) {
+      htmlLayerInstance.cancelCurrentlyRunningPlugins();
+    }
   });
 </script>
 
