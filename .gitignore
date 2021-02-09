@@ -4,3 +4,5 @@ public
 node_modules
 docs
 package-lock.json
+# This file is dynamically generated and should not be part of the repo
+__DOC_RESOURCES__/injectVersionSemver.js

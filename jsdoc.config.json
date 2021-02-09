@@ -24,6 +24,9 @@
     "stylesheets" : [
       "./customStyles.css"
     ],
+    "scripts" : [
+      "./injectVersionSemver.js"
+    ],
     "search": false,
     "monospaceLinks": true,
     "systemColor": "#3448C5",
