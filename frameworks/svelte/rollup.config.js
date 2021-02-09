@@ -8,7 +8,8 @@ import autoExternal from 'rollup-plugin-auto-external';
 
 import pkg from './package.json';
 
-const production = !process.env.ROLLUP_WATCH;
+// we're in production env when not using rollup watch. see dev script in package.json
+const isProductionEnv = !process.env.ROLLUP_WATCH;
 const name = pkg.name
   .replace(/^(@\S+\/)?(svelte-)?(\S+)/, '$3')
   .replace(/^\w/, m => m.toUpperCase())
@@ -20,18 +21,13 @@ export default {
     {
       file: pkg.main,
       format: 'es',
-      sourcemap: production,
-    },
-    {
-      file: pkg.cjs,
-      format: 'cjs',
-      sourcemap: production,
+      sourcemap: isProductionEnv,
     },
     {
       file: pkg.umd,
       format: 'umd',
       name,
-      sourcemap: production,
+      sourcemap: isProductionEnv,
       globals: {'@cloudinary/html': 'CloudinaryHtml'}
     },
   ],
@@ -40,10 +36,10 @@ export default {
     commonjs(),
     typescript(),
     svelte({
-      dev: !production,
+      dev: !isProductionEnv,
       /*
       css: css => {
-        css.write('dist/index.css', production);
+        css.write('dist/index.css', isProductionEnv);
       },
        */
       preprocess: autoPreprocess(),
@@ -60,7 +56,7 @@ export default {
         'svelte'
       ],
     }),
-    production && terser(),
+    isProductionEnv && terser(),
   ],
   watch: {
     clearScreen: false,

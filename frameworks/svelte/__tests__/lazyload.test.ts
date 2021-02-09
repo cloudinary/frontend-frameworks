@@ -21,7 +21,6 @@ describe('lazy-load', () => {
   });
 
   it('should have src when in view', async () => {
-    // @ts-ignore
     testWithMockedIntersectionObserver(async (mockIntersectionEvent: ({}) => void) => {
       const {container} = await mount(AdvancedImage, {cldImg: cloudinaryImage, plugins: [lazyload()]});
       mockIntersectionEvent([{ isIntersecting: true, target: container.firstChild }]);
@@ -32,7 +31,6 @@ describe('lazy-load', () => {
   });
 
   it('should set lazyload root margin and threshold', async () => {
-    // @ts-ignore
     testWithMockedIntersectionObserver(async (mockIntersectionEvent: ({}) => void) => {
       const {container} = await mount(AdvancedImage, {cldImg: cloudinaryImage, plugins: [lazyload('10px', 0.5)]});
       mockIntersectionEvent([{ isIntersecting: true, target: container.firstChild }]);
@@ -43,7 +41,6 @@ describe('lazy-load', () => {
   });
 
   it('should set lazyload root margin and threshold', async () => {
-    // @ts-ignore
     testWithMockedIntersectionObserver(async (mockIntersectionEvent: ({}) => void) => {
       const {container} = await mount(AdvancedImage, {cldImg: cloudinaryImage, plugins: [lazyload('10px', 0.5)]});
       mockIntersectionEvent([{ isIntersecting: false, target: container.firstChild }]);

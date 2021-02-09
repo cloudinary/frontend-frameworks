@@ -18,9 +18,7 @@ describe('AdvancedImage', () => {
   it('src attribute should include cloud_name & public_id', async () => {
     const {container} = await mount(AdvancedImage, {cldImg: cloudinaryImage});
     const src = getImageAttr(container, 'src')
-    expect(src).toBe(
-      'https://res.cloudinary.com/demo/image/upload/sample'
-    );
+    expect(src).toBe('https://res.cloudinary.com/demo/image/upload/sample');
   });
 
   it('should add style to img component', async () => {
@@ -55,7 +53,7 @@ describe('AdvancedImage', () => {
     expect(mock).toHaveBeenCalledTimes(1);
 
     // Update props to trigger component.afterUpdate
-    await component.$set({a:'b'});
+    await component.$set({a: 'b'});
 
     expect(mock).toHaveBeenCalledTimes(2);
   });

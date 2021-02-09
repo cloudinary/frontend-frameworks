@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/svelte",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-beta.0",
   "description": "A Svelte component library for Cloudinary",
   "author": "Cloudinary",
   "homepage": "http://cloudinary.com",
@@ -12,7 +12,6 @@
   "svelte": "src/index.ts",
   "main": "dist/index.js",
   "umd": "./dist/index.umd.js",
-  "cjs": "./dist/index.cjs.js",
   "sideEffects": false,
   "engines": {
     "node": ">=10"
@@ -36,6 +35,7 @@
   "types": "dist/index.d.ts",
   "devDependencies": {
     "@babel/preset-env": "^7.12.13",
+    "@babel/preset-typescript": "^7.12.13",
     "@cloudinary/base": "1.0.0-alpha.11",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^11.1.1",

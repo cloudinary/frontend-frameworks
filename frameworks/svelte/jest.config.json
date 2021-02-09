@@ -35,6 +35,14 @@
   "coverageReporters": [
     "lcov","text"
   ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 40,
+      "functions": 80,
+      "lines": 95,
+      "statements": 95
+    }
+  },
   "globals": {
     "ts-jest": {
       "diagnostics": false
