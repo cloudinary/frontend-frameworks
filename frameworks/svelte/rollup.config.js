@@ -37,11 +37,6 @@ export default {
     typescript(),
     svelte({
       dev: !isProductionEnv,
-      /*
-      css: css => {
-        css.write('dist/index.css', isProductionEnv);
-      },
-       */
       preprocess,
       onwarn: (warning, handler) => {
         // Don't warn on A11y issues (img missing alt attribute, etc)
