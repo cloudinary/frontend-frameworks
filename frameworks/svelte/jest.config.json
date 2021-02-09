@@ -1,0 +1,46 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "jsdom",
+  "bail": true,
+  "transform": {
+    "^.+\\.svelte$": [
+      "svelte-jester",
+      {
+        "preprocess": true
+      }
+    ],
+    "^.+\\.js$": "babel-jest",
+    "^.+\\.ts$": "ts-jest"
+  },
+  "moduleFileExtensions": [
+    "js",
+    "ts",
+    "svelte"
+  ],
+  "testMatch": [
+    "**/__tests__/**/*.test.+(ts|js)"
+  ],
+  "setupFilesAfterEnv": [
+    "@testing-library/jest-dom/extend-expect"
+  ],
+  "modulePaths": [
+    "<rootDir>/src"
+  ],
+  "collectCoverage": false,
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.ts",
+    "<rootDir>/src/**/*.svelte"
+  ],
+  "coverageDirectory": "<rootDir>/coverage",
+  "coverageReporters": [
+    "lcov","text"
+  ],
+  "globals": {
+    "ts-jest": {
+      "diagnostics": false
+    }
+  },
+  "transformIgnorePatterns": [
+    "node_modules/(?!@cloudinary/base|@cloudinary/html)"
+  ]
+}

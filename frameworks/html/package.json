@@ -11,7 +11,7 @@
     "prepare-build": "cp package.json ./dist"
   },
   "devDependencies": {
-    "@cloudinary/base": "^1.0.0-alpha.10"
+    "@cloudinary/base": "1.0.0-alpha.11"
   },
   "dependencies": {
     "@types/lodash.clonedeep": "^4.5.6",
