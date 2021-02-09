@@ -2,7 +2,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import svelte from 'rollup-plugin-svelte';
-import autoPreprocess from 'svelte-preprocess';
+import {preprocess} from './svelte.config';
 import {terser} from 'rollup-plugin-terser';
 import autoExternal from 'rollup-plugin-auto-external';
 
@@ -42,7 +42,7 @@ export default {
         css.write('dist/index.css', isProductionEnv);
       },
        */
-      preprocess: autoPreprocess(),
+      preprocess,
       onwarn: (warning, handler) => {
         // Don't warn on A11y issues (img missing alt attribute, etc)
         if (warning.code.includes('a11y-')) return;
