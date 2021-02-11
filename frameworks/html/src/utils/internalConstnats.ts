@@ -70,4 +70,4 @@ export const PLACEHOLDER_IMAGE_OPTIONS = {
 /**
  * transparent gif
  */
-export const emptyImage = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+export const singleTransparentPixel = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
