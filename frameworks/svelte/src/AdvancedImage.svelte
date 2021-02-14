@@ -2,7 +2,7 @@
   import type {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
   import {afterUpdate, onDestroy} from 'svelte';
   import {HtmlLayer, isBrowser, serverSideSrc} from '@cloudinary/html';
-  import type {plugins as Plugins} from '@cloudinary/html';
+  import type { plugins as Plugins } from '@cloudinary/html';
 
   // Props passed by user
   export let cldImg: CloudinaryImage; // Required prop
@@ -13,12 +13,20 @@
   let htmlLayerInstance: HtmlLayer; // Updates dom using given cldImg & plugins
 
   /**
+   * Bind imgElement to the underlying <img> element.
+   * @param node - the underlying <img> element's node.
+   */
+  const bindImage = (node) => (imgElement = node);
+
+  /**
    * On mount: Create a new HTMLLayer instance
    * On props change: Cancel running plugins and update image instance
    */
   afterUpdate(() => {
-    if (!htmlLayerInstance && imgElement) {
-      htmlLayerInstance = new HtmlLayer(imgElement, cldImg, plugins);
+    if (!htmlLayerInstance) {
+      if (imgElement) {
+        htmlLayerInstance = new HtmlLayer(imgElement, cldImg, plugins);
+      }
     } else {
       htmlLayerInstance.cancelCurrentlyRunningPlugins();
       htmlLayerInstance.update(cldImg, plugins);
@@ -39,7 +47,7 @@
 
 {#if isBrowser()}
     <!-- svelte-ignore a11y-no-img- -->
-    <img bind:this={imgElement} {...$$restProps}/>
+    <img use:bindImage {...$$restProps}/>
 {:else}
     <img src={serverSideSrc(plugins, cldImg)} {...$$restProps}/>
 {/if}

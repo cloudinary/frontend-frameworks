@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
   import {AdvancedImage, responsive, lazyload, placeholder, accessibility} from '@cloudinary/svelte/dist/';
   import {CloudinaryImage} from "@cloudinary/base";
 
-  export let text;
+  export let text: string;
 
   const img = new CloudinaryImage('sample', {cloudName: 'demo'});
 </script>

@@ -1,4 +1,4 @@
-# Cloudinary Svelte SDK Javascript Example App
+# Cloudinary Svelte SDK Typesctipt Example App
 
 ## Install
 
