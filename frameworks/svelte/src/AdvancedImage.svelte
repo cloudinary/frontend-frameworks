@@ -2,7 +2,7 @@
   import type {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
   import {afterUpdate, onDestroy} from 'svelte';
   import {HtmlLayer, isBrowser, serverSideSrc} from '@cloudinary/html';
-  import type { plugins as Plugins } from '@cloudinary/html';
+  import type {plugins as Plugins} from '@cloudinary/html';
 
   // Props passed by user
   export let cldImg: CloudinaryImage; // Required prop
@@ -17,7 +17,7 @@
    * On props change: Cancel running plugins and update image instance
    */
   afterUpdate(() => {
-    if (!htmlLayerInstance) {
+    if (!htmlLayerInstance && imgElement) {
       htmlLayerInstance = new HtmlLayer(imgElement, cldImg, plugins);
     } else {
       htmlLayerInstance.cancelCurrentlyRunningPlugins();

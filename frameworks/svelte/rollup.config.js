@@ -2,9 +2,10 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import svelte from 'rollup-plugin-svelte';
-import {preprocess} from './svelte.config';
+import sveltePreprocess from 'svelte-preprocess';
 import {terser} from 'rollup-plugin-terser';
 import autoExternal from 'rollup-plugin-auto-external';
+const preprocessOptions = require("./svelte.config").preprocessOptions;
 
 import pkg from './package.json';
 
@@ -37,7 +38,9 @@ export default {
     typescript(),
     svelte({
       dev: !isProductionEnv,
-      preprocess,
+      preprocess: sveltePreprocess({
+        ...preprocessOptions
+      }),
       onwarn: (warning, handler) => {
         // Don't warn on A11y issues (img missing alt attribute, etc)
         if (warning.code.includes('a11y-')) return;
