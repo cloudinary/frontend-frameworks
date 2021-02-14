@@ -2,7 +2,32 @@
   import type {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
   import {afterUpdate, onDestroy} from 'svelte';
   import {HtmlLayer, isBrowser, serverSideSrc} from '@cloudinary/html';
-  import type { plugins as Plugins } from '@cloudinary/html';
+  import type {plugins as Plugins} from '@cloudinary/html';
+
+  /**
+   * @mixin SvelteSDK
+   * @description The Coudinday Svelte SDK contains components like <AdvancedImage> to easily render your media assets from Cloudinary.
+   * The SDK also comes with support for optional js plugins that make the components smart, with features like lazy loading, placeholder, accessibility & responsiveness
+   *
+   * @example
+   * <caption>
+   *  Please note that the order of the plugins is important. See home for more details.
+   * </caption>
+   * // Example
+   *
+   * <script>
+   *
+   * import {CloudinaryImage} from '@cloudinary/base';
+   * import { AdvancedImage, accessibility, responsive, lazyload, placeholder } from '@cloudinary/svelte';
+   *
+   * const img = new CloudinaryImage('sample', {cloudName: 'demo'});
+   *
+   * // Close script tag
+   * </scr\ipt>
+   *
+   * <AdvancedImage cldImg={img} plugins={[lazyload(),responsive(), accessibility(), placeholder()]}/>
+   *
+   */
 
   // Props passed by user
   export let cldImg: CloudinaryImage; // Required prop
