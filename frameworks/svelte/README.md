@@ -1,7 +1,7 @@
 # Cloudinary Svelte SDK
 
 ## Overview
-This sdk includes an AdvancedImage component that renders an image and supports multiple plugins.
+This sdk includes an AdvancedImage component that renders an image and supports multiple [plugins](https://github.com/cloudinary/frontend-frameworks "Cloudinary frontend frameworks on Github").
 
 ## Install
 npm i @cloudinary/svelte
