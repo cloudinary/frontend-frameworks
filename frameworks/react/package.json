@@ -20,7 +20,7 @@
     "test-coverage": "jest --coverage"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.8.3 || ^17.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.10",
