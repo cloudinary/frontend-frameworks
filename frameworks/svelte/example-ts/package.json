@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "cd .. && npm install && npm run build && cd example && npm run build && sirv public",
+    "start": "cd .. && npm install && npm run build && cd example-ts && npm run build && sirv public",
     "validate": "svelte-check"
   },
   "devDependencies": {

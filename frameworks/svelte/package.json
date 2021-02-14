@@ -3,7 +3,7 @@
   "version": "1.0.0-beta.0",
   "description": "A Svelte component library for Cloudinary",
   "author": "Cloudinary",
-  "homepage": "http://cloudinary.com",
+  "homepage": "https://cloudinary.com",
   "license": "MIT",
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "bugs": {

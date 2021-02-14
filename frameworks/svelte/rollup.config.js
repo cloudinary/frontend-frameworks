@@ -11,7 +11,11 @@ import pkg from './package.json';
 
 // we're in production env when not using rollup watch. see dev script in package.json
 const isProductionEnv = !process.env.ROLLUP_WATCH;
-const name = pkg.name
+
+// Generate a UMD module name from the package.json name.
+// See https://github.com/sveltejs/component-template/issues/30
+const umdModuleName = pkg.name
+  // Remove the scoped name @organization and svelte-, $3 means to only take the third capturing group.
   .replace(/^(@\S+\/)?(svelte-)?(\S+)/, '$3')
   .replace(/^\w/, m => m.toUpperCase())
   .replace(/-\w/g, m => m[1].toUpperCase());
@@ -27,7 +31,7 @@ export default {
     {
       file: pkg.umd,
       format: 'umd',
-      name,
+      name: umdModuleName,
       sourcemap: isProductionEnv,
       globals: {'@cloudinary/html': 'CloudinaryHtml'}
     },
