@@ -1,7 +1,7 @@
 <script lang="ts">
   import type {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
   import {afterUpdate, onDestroy} from 'svelte';
-  import {HtmlLayer, isBrowser, serverSideSrc} from '@cloudinary/html';
+  import {HtmlImageLayer, isBrowser, serverSideSrc} from '@cloudinary/html';
   import type {plugins as Plugins} from '@cloudinary/html';
 
   /**
@@ -35,7 +35,7 @@
 
   // Internal variables used by this component
   let imgElement: HTMLImageElement; // Reference to underlying <img> element
-  let htmlLayerInstance: HtmlLayer; // Updates dom using given cldImg & plugins
+  let htmlLayerInstance: HtmlImageLayer; // Updates dom using given cldImg & plugins
 
   /**
    * Bind imgElement to the underlying <img> element.
@@ -50,7 +50,7 @@
   afterUpdate(() => {
     if (!htmlLayerInstance) {
       if (imgElement) {
-        htmlLayerInstance = new HtmlLayer(imgElement, cldImg, plugins);
+        htmlLayerInstance = new HtmlImageLayer(imgElement, cldImg, plugins);
       }
     } else {
       htmlLayerInstance.cancelCurrentlyRunningPlugins();

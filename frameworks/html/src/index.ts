@@ -1,4 +1,4 @@
-export { HtmlLayer } from './htmlLayer';
+export { HtmlImageLayer } from './layers/htmlImageLayer';
 export {responsive} from './plugins/responsive';
 export {lazyload} from './plugins/lazyload';
 export {accessibility} from './plugins/accessibility';

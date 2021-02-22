@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, ElementRef, OnDestroy, OnChanges} from '@angular/core';
 import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 import {
-  HtmlLayer,
+  HtmlImageLayer,
   plugins
 } from '@cloudinary/html';
 
@@ -63,7 +63,7 @@ import {
 export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy{
   @Input('cldImg') cldImg: CloudinaryImage;
   @Input('plugins') plugins: plugins;
-  htmlLayerInstance: HtmlLayer;
+  htmlLayerInstance: HtmlImageLayer;
   constructor(private el: ElementRef) { }
 
   /**
@@ -71,7 +71,7 @@ export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy{
    * user generated cloudinaryImage and the plugins to be used
    */
   ngOnInit() {
-    this.htmlLayerInstance = new HtmlLayer(this.el.nativeElement.children[0], this.cldImg, this.plugins);
+    this.htmlLayerInstance = new HtmlImageLayer(this.el.nativeElement.children[0], this.cldImg, this.plugins);
   }
 
   /**

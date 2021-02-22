@@ -2,7 +2,7 @@ import React from 'react';
 import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 
 import {
-  HtmlLayer,
+  HtmlImageLayer,
   plugins,
   isBrowser,
   serverSideSrc
@@ -64,7 +64,7 @@ interface ImgProps {
  */
 class AdvancedImage extends React.Component <ImgProps> {
   imageRef: React.RefObject<HTMLImageElement>;
-  htmlLayerInstance: HtmlLayer;
+  htmlLayerInstance: HtmlImageLayer;
 
   constructor(props: ImgProps) {
     super(props);
@@ -76,7 +76,7 @@ class AdvancedImage extends React.Component <ImgProps> {
    * user generated cloudinaryImage and the plugins to be used
    */
   componentDidMount() {
-    this.htmlLayerInstance = new HtmlLayer(
+    this.htmlLayerInstance = new HtmlImageLayer(
       this.imageRef.current,
       this.props.cldImg,
       this.props.plugins
