@@ -8,6 +8,15 @@ import { sepia } from '@cloudinary/base/actions/effect';
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' });
 
 describe('placeholder', () => {
+  const mockImage = {
+    src: null,
+    onload: () => {},
+    onerror: () => {}
+  };
+  beforeEach(() => {
+    // @ts-ignore
+    window.Image = function() { return mockImage }
+  });
   it('should apply default', function (done) {
     const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder()]} />);
     setTimeout(() => {
@@ -60,6 +69,15 @@ describe('placeholder', () => {
     const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder()]} />);
     setTimeout(() => {
       expect(component.html()).toContain(`src="https://res.cloudinary.com/demo/image/upload/e_sepia/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample"`);
+      done();
+    }, 0);// one tick
+  });
+
+  it('should not fail error', function (done) {
+    mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder()]} />);
+    mockImage.onerror();
+    setTimeout(() => {
+      expect(mockImage.src).toBe('https://res.cloudinary.com/demo/image/upload/sample');
       done();
     }, 0);// one tick
   });
