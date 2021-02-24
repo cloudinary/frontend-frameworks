@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash/cloneDeep'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin, htmlPluginState} from "../types";
-import {PLACEHOLDER_IMAGE_OPTIONS, emptyImage} from '../utils/internalConstnats';
+import {PLACEHOLDER_IMAGE_OPTIONS, singleTransparentPixel} from '../utils/internalConstnats';
 import {placeholderMode} from '../types';
 import {isBrowser} from "../utils/isBrowser";
 
@@ -30,16 +30,24 @@ function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, plu
   }
   const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
   element.src = placeholderTransformation.toURL();
-
+  //if placeholder does not load, load a single transparent pixel
+  element.onerror = () => {
+    element.src = singleTransparentPixel;
+  };
   return new Promise((resolve: any) => {
     htmlPluginState.cleanupCallbacks.push(()=>{
-      element.src = emptyImage;
+      element.src = singleTransparentPixel;
       resolve('canceled');
     });
 
     const largeImage = new Image();
     largeImage.src = pluginCloudinaryImage.toURL();
     largeImage.onload = () => {
+      resolve();
+    };
+
+    //  image does not load, resolve
+    largeImage.onerror = () => {
       resolve();
     };
   });
