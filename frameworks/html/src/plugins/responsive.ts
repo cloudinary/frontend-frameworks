@@ -4,6 +4,7 @@ import {scale} from "@cloudinary/base/actions/resize";
 import debounce from 'lodash.debounce';
 import {isNum} from '../utils/internalUtils';
 import {isBrowser} from "../utils/isBrowser";
+import {Action} from "@cloudinary/base/internal/Action";
 
 /**
  * @namespace
@@ -81,7 +82,7 @@ function updateByContainerWidth(steps?: number | number[], element?:HTMLImageEle
   }
 
   responsiveImage.transformation.actions.forEach((action, index) => {
-    if (typeof action !== 'string' && action.getActionTag() === 'responsive') {
+    if (action instanceof Action && action.getActionTag() === 'responsive') {
       responsiveImage.transformation.actions[index]  = scale(resizeValue).setActionTag('responsive');
     }
   });
