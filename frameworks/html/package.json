@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/html",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "An HTML wrapper for Cloudinary",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
     "prepare-build": "cp package.json ./dist"
   },
   "devDependencies": {
-    "@cloudinary/base": "1.0.0-alpha.11"
+    "@cloudinary/base": "^1.0.0-beta.1"
   },
   "dependencies": {
     "@types/lodash.clonedeep": "^4.5.6",

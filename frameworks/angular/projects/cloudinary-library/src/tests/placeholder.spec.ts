@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testin
 import { CloudinaryImageComponent } from "../lib/cloudinary-image.component";
 import { CloudinaryImage } from "@cloudinary/base/assets/CloudinaryImage";
 import {placeholder} from '../public_api';
-import {PLACEHOLDER_IMAGE_OPTIONS} from '../../../../../html/src/utils/internalConstnats';
+import {PLACEHOLDER_IMAGE_OPTIONS} from '../../../../../html/src/utils/internalConstants';
 
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
 

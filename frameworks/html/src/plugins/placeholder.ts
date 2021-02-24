@@ -1,9 +1,10 @@
 import cloneDeep from 'lodash/cloneDeep'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin, htmlPluginState} from "../types";
-import {PLACEHOLDER_IMAGE_OPTIONS, emptyImage} from '../utils/internalConstnats';
+import {PLACEHOLDER_IMAGE_OPTIONS, singleTransparentPixel} from '../utils/internalConstants';
 import {placeholderMode} from '../types';
 import {isBrowser} from "../utils/isBrowser";
+import {Action} from "@cloudinary/base/internal/Action";
 
 /**
  * @namespace
@@ -30,16 +31,24 @@ function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, plu
   }
   const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
   element.src = placeholderTransformation.toURL();
-
+  //if placeholder does not load, load a single transparent pixel
+  element.onerror = () => {
+    element.src = singleTransparentPixel;
+  };
   return new Promise((resolve: any) => {
     htmlPluginState.cleanupCallbacks.push(()=>{
-      element.src = emptyImage;
+      element.src = singleTransparentPixel;
       resolve('canceled');
     });
 
     const largeImage = new Image();
     largeImage.src = pluginCloudinaryImage.toURL();
     largeImage.onload = () => {
+      resolve();
+    };
+
+    //  image does not load, resolve
+    largeImage.onerror = () => {
       resolve();
     };
   });
@@ -53,11 +62,14 @@ function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, plu
 function preparePlaceholderTransformation(mode: placeholderMode, pluginCloudinaryImage: CloudinaryImage){
   const placeholderClonedImage = cloneDeep(pluginCloudinaryImage);
 
+
   if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
     mode = 'vectorize'
   }
   //appends a placeholder transformation on placeholderClonedImage
-  PLACEHOLDER_IMAGE_OPTIONS[mode].actions.forEach(transformation => placeholderClonedImage.addAction(transformation));
+  PLACEHOLDER_IMAGE_OPTIONS[mode].actions.forEach(function(transformation:Action){
+    placeholderClonedImage.addAction(transformation);
+  });
 
   return placeholderClonedImage;
 }
