@@ -1,13 +1,13 @@
 import { AdvancedImage, placeholder } from '../src'
 import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
-import { PLACEHOLDER_IMAGE_OPTIONS } from '../../html/src/utils/internalConstnats';
+import { PLACEHOLDER_IMAGE_OPTIONS } from '../../html/src/utils/internalConstants';
 import { mount } from 'enzyme';
 import React from 'react';
 import { sepia } from '@cloudinary/base/actions/effect';
 
-const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' });
-
 describe('placeholder', () => {
+  let cloudinaryImage: CloudinaryImage;
+
   const mockImage = {
     src: null,
     onload: () => {},
@@ -15,7 +15,8 @@ describe('placeholder', () => {
   };
   beforeEach(() => {
     // @ts-ignore
-    window.Image = function() { return mockImage }
+    window.Image = function() { return mockImage };
+    cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' });
   });
   it('should apply default', function (done) {
     const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder()]} />);

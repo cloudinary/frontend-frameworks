@@ -2,11 +2,11 @@ import {colorize, grayscale, assistColorBlind} from "@cloudinary/base/actions/ef
 import {vectorize, pixelate, blur} from "@cloudinary/base/actions/effect";
 import {Transformation} from "@cloudinary/base/transformation/Transformation";
 import {pad, crop, fill} from "@cloudinary/base/actions/resize";
-import {Background} from "@cloudinary/base/values/background";
-import {compass} from "@cloudinary/base/values/gravity";
-import {northEast} from "@cloudinary/base/values/gravity/qualifiers/compass/Compass";
+import {Background} from "@cloudinary/base/qualifiers/background";
+import {compass} from "@cloudinary/base/qualifiers/gravity";
+import {northEast} from "@cloudinary/base/qualifiers/compass";
 import {format, quality} from "@cloudinary/base/actions/delivery";
-import {auto, svg} from "@cloudinary/base/values/format";
+import {auto, svg} from "@cloudinary/base/qualifiers/format";
 
 /**
  * Predefined accessibility transformations
