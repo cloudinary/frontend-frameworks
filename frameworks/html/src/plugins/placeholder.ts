@@ -5,6 +5,7 @@ import {PLACEHOLDER_IMAGE_OPTIONS, singleTransparentPixel} from '../utils/intern
 import {placeholderMode} from '../types';
 import {isBrowser} from "../utils/isBrowser";
 import {Action} from "@cloudinary/base/internal/Action";
+import {isImage} from "../utils/isImage";
 
 /**
  * @namespace
@@ -26,6 +27,8 @@ export function placeholder(mode='vectorize'): plugin{
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
 function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> {
+  if(!isImage(element)) return;
+
   if(!isBrowser()){
     return;
   }

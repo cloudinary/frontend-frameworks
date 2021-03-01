@@ -7,6 +7,8 @@ import {compass} from "@cloudinary/base/qualifiers/gravity";
 import {northEast} from "@cloudinary/base/qualifiers/compass";
 import {format, quality} from "@cloudinary/base/actions/delivery";
 import {auto, svg} from "@cloudinary/base/qualifiers/format";
+import {VideoCodec} from "@cloudinary/base/qualifiers/videoCodec";
+import {videoCodec} from "@cloudinary/base/actions/transcode";
 
 /**
  * Predefined accessibility transformations
@@ -71,3 +73,31 @@ export const PLACEHOLDER_IMAGE_OPTIONS = {
  * transparent gif
  */
 export const singleTransparentPixel = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+
+
+/**
+ * Convert common video file extensions to mime types
+ * Most other common video file extensions have an identical mime type so do not need conversion.
+ */
+export const VIDEO_MIME_TYPES = {
+    'flv': 'x-flv',
+    '3gp': '3gpp',
+    'mov': 'quicktime',
+    'mpg': 'mpeg',
+    'avi': 'x-msvideo',
+    'wmv': 'x-ms-wmv',
+    'ogv': 'ogg'
+};
+
+/**
+ * Video codec types
+ */
+export const VIDEO_CODEC_TYPE = {
+    'auto': videoCodec(VideoCodec.auto()),
+    'h264': videoCodec(VideoCodec.h264()),
+    'h265': videoCodec(VideoCodec.h265()),
+    'proRes': videoCodec(VideoCodec.proRes()),
+    'theora': videoCodec(VideoCodec.theora()),
+    'vp8': videoCodec(VideoCodec.vp8()),
+    'vp9': videoCodec(VideoCodec.vp9()),
+};

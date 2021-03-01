@@ -5,6 +5,7 @@ import debounce from 'lodash.debounce';
 import {isNum} from '../utils/internalUtils';
 import {isBrowser} from "../utils/isBrowser";
 import {Action} from "@cloudinary/base/internal/Action";
+import {isImage} from "../utils/isImage";
 
 /**
  * @namespace
@@ -29,6 +30,8 @@ export function responsive(steps?: number | number[]): plugin{
  * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
  */
 function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: htmlPluginState): Promise<void | string> {
+  if(!isImage(element)) return;
+
   if(!isBrowser()){
     return;
   }
