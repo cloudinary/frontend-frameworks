@@ -108,7 +108,7 @@ export class HtmlVideoLayer{
     /**
      * Iterates through the video attributes and sets to true if passed in by the user.
      * In case of poster, sets the poster.
-     * @param videoAttributes {object} Supported attributes: controls, loop, muted, poster, preload, autoplay
+     * @param videoAttributes {object} Supported attributes: controls, loop, muted, poster, preload, autoplay, playsinline
      */
     setVideoAttributes(videoAttributes: object) {
         for (const [key, value] of Object.entries(videoAttributes)) {

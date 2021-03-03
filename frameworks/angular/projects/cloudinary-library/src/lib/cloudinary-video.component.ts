@@ -33,7 +33,7 @@ import {
         videoCodec: 'auto'
       }];
  *
- * <advanced-video [cldvid]="vid" [sources]="sources" controls></advanced-image>
+ * <advanced-video [cldvid]="vid" [sources]="sources" controls></advanced-video>
  */
 @Component({
   // tslint:disable-next-line:component-selector
@@ -62,7 +62,7 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges {
 
 
   private htmlVideoLayerInstance: HtmlVideoLayer;
-  private videoAttributes: { controls: string; loop: string; muted: string; poster: string; preload: string };
+  private videoAttributes: { controls: string; loop: string; muted: string; poster: string; preload: string, autoplay: string, playsinline: string };
 
 
   /**
@@ -76,7 +76,9 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges {
       loop: this.el.nativeElement.attributes.loop,
       muted: this.el.nativeElement.attributes.muted,
       poster: this.poster,
-      preload: this.el.nativeElement.attributes.preload
+      preload: this.el.nativeElement.attributes.preload,
+      autoplay: this.el.nativeElement.attributes.autoplay,
+      playsinline: this.el.nativeElement.attributes.playsinline
     };
 
     this.htmlVideoLayerInstance = new HtmlVideoLayer(
