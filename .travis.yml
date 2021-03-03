@@ -1,7 +1,6 @@
 language: node_js
 node_js:
   - "12"
-before_script:
-  - npm run quickstart
+install: ./scripts/setup.sh
 script:
   - npm run test
