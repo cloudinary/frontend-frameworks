@@ -70,7 +70,7 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges {
    * user generated cloudinaryVideo and the plugins to be used
    */
   ngOnInit() {
-    // Supported video attributes
+    // Supported video attributes taken from <advanced-video> and stored to be used in the inner <video> element
     this.videoAttributes = {
       controls: this.el.nativeElement.attributes.controls,
       loop: this.el.nativeElement.attributes.loop,

@@ -27,11 +27,11 @@ export function placeholder(mode='vectorize'): plugin{
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
 function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> {
-  if(!isImage(element)) return;
-
   if(!isBrowser()){
     return;
   }
+  if(!isImage(element)) return;
+
   const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
   element.src = placeholderTransformation.toURL();
   //if placeholder does not load, load a single transparent pixel

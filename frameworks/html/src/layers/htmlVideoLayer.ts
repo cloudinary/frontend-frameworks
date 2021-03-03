@@ -1,23 +1,22 @@
 import {plugins, htmlPluginState, videoSources, videoType} from '../types'
 import cloneDeep from 'lodash/cloneDeep'
 import {CloudinaryVideo} from "@cloudinary/base";
-import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {VIDEO_CODEC_TYPE, VIDEO_MIME_TYPES} from "../utils/internalConstants";
 
 export class HtmlVideoLayer{
-    asset: any;
+    videoElement: any;
     originalVideo: CloudinaryVideo;
     htmlPluginState: htmlPluginState;
     mimeType = 'video';
     mimeSubTypes = VIDEO_MIME_TYPES;
 
-    constructor(videoElement: HTMLVideoElement | null, userCloudinaryVideo: CloudinaryVideo, sources: videoSources,  plugins?: plugins, videoAttributes?: object){
-        this.asset = videoElement;
+    constructor(element: HTMLVideoElement | null, userCloudinaryVideo: CloudinaryVideo, sources: videoSources,  plugins?: plugins, videoAttributes?: object){
+        this.videoElement = element;
         this.originalVideo = userCloudinaryVideo;
         this.htmlPluginState = {cleanupCallbacks:[], pluginEventSubscription: []};
         const pluginCloudinaryVideo  = cloneDeep(userCloudinaryVideo);
 
-        this.render(videoElement, userCloudinaryVideo, plugins)
+        this.render(element, userCloudinaryVideo, plugins)
             .then(()=>{ // when resolved updates sources
                 this.htmlPluginState.pluginEventSubscription.forEach(fn=>{fn()});
 
@@ -30,15 +29,15 @@ export class HtmlVideoLayer{
     /**
      * Iterate through plugins and break in cases where the response is canceled. The
      * response is canceled if component is updated or unmounted
-     * @param element Image element
-     * @param pluginCloudinaryImage
+     * @param element Video element
+     * @param pluginCloudinaryVideo
      * @param plugins array of plugins passed in by the user
      * @return {Promise<void>}
      */
-    async render(element: HTMLVideoElement, pluginCloudinaryImage: CloudinaryImage, plugins: any) {
+    async render(element: HTMLVideoElement, pluginCloudinaryVideo: CloudinaryVideo, plugins: any) {
         if(plugins === undefined) return;
         for(let i = 0; i < plugins.length; i++){
-            const response = await plugins[i](element, pluginCloudinaryImage, this.htmlPluginState);
+            const response = await plugins[i](element, pluginCloudinaryVideo, this.htmlPluginState);
             if(response === 'canceled'){
                 break;
             }
@@ -88,7 +87,7 @@ export class HtmlVideoLayer{
         source.src = `${userCloudinaryVideo.toURL()}.${type}`;
         source.type = mimeType ? mimeType :`video/${type}`;
 
-        this.asset.appendChild(source);
+        this.videoElement.appendChild(source);
     }
 
     /**
@@ -114,9 +113,9 @@ export class HtmlVideoLayer{
         for (const [key, value] of Object.entries(videoAttributes)) {
             if(value){
                 if(key === 'poster'){
-                    this.asset.poster = value;
+                    this.videoElement.poster = value;
                 } else {
-                    this.asset[key] = true
+                    this.videoElement[key] = true
                 }
             }
         }
@@ -140,14 +139,14 @@ export class HtmlVideoLayer{
      */
     update(updatedCloudinaryVideo: CloudinaryVideo, sources: videoSources,  plugins?: plugins, videoAttributes?: object){
         if(updatedCloudinaryVideo !== this.originalVideo){
-            const sourcesToDelete = this.asset.getElementsByTagName("SOURCE");
+            const sourcesToDelete = this.videoElement.getElementsByTagName("SOURCE");
             while (sourcesToDelete[0]) sourcesToDelete[0].parentNode.removeChild(sourcesToDelete[0]);
 
-            this.render(this.asset, updatedCloudinaryVideo, plugins)
+            this.render(this.videoElement, updatedCloudinaryVideo, plugins)
                 .then(()=>{ // when resolved updates sources
                     this.setVideoAttributes(videoAttributes);
                     this.handleSourceToVideo(updatedCloudinaryVideo, sources);
-                    this.asset.load();
+                    this.videoElement.load();
                 });
         }
     }
