@@ -25,6 +25,7 @@ export function accessibility(mode='darkmode'): plugin{
  */
 export function accessibilityPlugin(mode: accessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> {
   if(isBrowser()){
+
     if(!isImage(element)) return;
 
     return new Promise((resolve) => {

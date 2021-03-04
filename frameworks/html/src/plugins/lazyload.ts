@@ -26,9 +26,8 @@ export function lazyload(rootMargin?: string, threshold?: number): plugin{
  */
 function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement | HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | boolean {
   // if SSR skip plugin
-  if(!isBrowser()){
-    return false;
-  }
+  if(!isBrowser()) return false;
+
   return new Promise((resolve) => {
     const onIntersect = () => (resolve());
     const unobserve = detectIntersection(element, onIntersect, rootMargin, threshold);

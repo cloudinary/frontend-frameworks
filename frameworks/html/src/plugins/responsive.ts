@@ -30,9 +30,8 @@ export function responsive(steps?: number | number[]): plugin{
  * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
  */
 function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: htmlPluginState): Promise<void | string> {
-  if(!isBrowser()){
-    return;
-  }
+  if(!isBrowser()) return;
+
   if(!isImage(element)) return;
 
   return new Promise((resolve)=>{
