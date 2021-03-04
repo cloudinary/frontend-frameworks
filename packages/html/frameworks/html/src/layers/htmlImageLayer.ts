@@ -1,8 +1,8 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugins, htmlPluginState} from './types'
+import {plugins, htmlPluginState} from '../types'
 import cloneDeep from 'lodash/cloneDeep'
 
-export class HtmlLayer{
+export class HtmlImageLayer{
   private img: any;
   htmlPluginState: htmlPluginState;
   constructor(element: HTMLImageElement | null, userCloudinaryImage: CloudinaryImage, plugins?: plugins){

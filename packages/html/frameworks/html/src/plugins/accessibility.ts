@@ -2,6 +2,7 @@ import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {plugin, accessibilityMode, htmlPluginState} from "../types";
 import {ACCESSIBILITY_MODES} from '../utils/internalConstants';
 import {isBrowser} from "../utils/isBrowser";
+import {isImage} from "../utils/isImage";
 
 /**
  * @namespace
@@ -24,6 +25,9 @@ export function accessibility(mode='darkmode'): plugin{
  */
 export function accessibilityPlugin(mode: accessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> {
   if(isBrowser()){
+
+    if(!isImage(element)) return;
+
     return new Promise((resolve) => {
       // resolved promise when canceled
       htmlPluginState.cleanupCallbacks.push(()=>{
@@ -40,3 +44,4 @@ export function accessibilityPlugin(mode: accessibilityMode, element: HTMLImageE
     pluginCloudinaryImage.effect(ACCESSIBILITY_MODES[mode]);
   }
 }
+
