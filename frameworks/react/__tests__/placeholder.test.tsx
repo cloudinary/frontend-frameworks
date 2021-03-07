@@ -74,6 +74,11 @@ describe('placeholder', () => {
     }, 0);// one tick
   });
 
+  /*
+  This test is built with two setTimouts since the placeholder plugin makes use of two promises.
+  The placeholder image loads first. Once it loads, the promise is resolved and the
+  larger image will load. Once the larger image loads, promised and plugin is resolved.
+   */
   it('should not fail error', function (done) {
     const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder()]} />);
     setTimeout(() => {

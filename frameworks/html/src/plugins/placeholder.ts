@@ -40,7 +40,10 @@ function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, plu
     element.src = singleTransparentPixel;
   };
 
-  //ensure placeholder image loads first
+  /*
+  Placeholder image loads first. Once it loads, the promise is resolved and the
+  larger image will load. Once the larger image loads, promised and plugin is resolved.
+   */
   return new Promise((resolve: any) => {
     element.onload = () => {
       resolve();
