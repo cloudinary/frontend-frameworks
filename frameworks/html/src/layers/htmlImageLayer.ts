@@ -1,11 +1,11 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugins, htmlPluginState} from '../types'
+import {Plugins, HtmlPluginState} from '../types'
 import cloneDeep from 'lodash/cloneDeep'
 
 export class HtmlImageLayer{
   private img: any;
-  htmlPluginState: htmlPluginState;
-  constructor(element: HTMLImageElement | null, userCloudinaryImage: CloudinaryImage, plugins?: plugins){
+  htmlPluginState: HtmlPluginState;
+  constructor(element: HTMLImageElement | null, userCloudinaryImage: CloudinaryImage, plugins?: Plugins){
     this.img = element;
     this.htmlPluginState = {cleanupCallbacks:[], pluginEventSubscription: []};
     const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);

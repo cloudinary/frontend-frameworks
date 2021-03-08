@@ -6,9 +6,9 @@
  */
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import cloneDeep from 'lodash/cloneDeep'
-import {plugins} from "../types";
+import {Plugins} from "../types";
 
-export  function serverSideSrc(plugins?: plugins, serverCloudinaryImage?: CloudinaryImage): string {
+export  function serverSideSrc(plugins?: Plugins, serverCloudinaryImage?: CloudinaryImage): string {
   const clonedServerCloudinaryImage  = cloneDeep(serverCloudinaryImage);
   if(plugins){
     for(let i = 0; i < plugins.length; i++){
