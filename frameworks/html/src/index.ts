@@ -6,5 +6,6 @@ export {accessibility} from './plugins/accessibility';
 export {placeholder} from './plugins/placeholder';
 export {isBrowser} from './utils/isBrowser';
 export {serverSideSrc} from './utils/serverSideSrc';
+export {cancelCurrentlyRunningPlugins} from './utils/cancelCurrentlyRunningPlugins';
 export {plugins, videoSources} from './types';
 

@@ -1,6 +1,7 @@
 import {plugins, htmlPluginState, videoSources, videoType} from '../types'
 import cloneDeep from 'lodash/cloneDeep'
 import {CloudinaryVideo} from "@cloudinary/base";
+import {render} from '../utils/render';
 import {VIDEO_CODEC_TYPE, VIDEO_MIME_TYPES} from "../utils/internalConstants";
 
 export class HtmlVideoLayer{
@@ -16,7 +17,7 @@ export class HtmlVideoLayer{
         this.htmlPluginState = {cleanupCallbacks:[], pluginEventSubscription: []};
         const pluginCloudinaryVideo  = cloneDeep(userCloudinaryVideo);
 
-        this.render(element, userCloudinaryVideo, plugins)
+        render(element, userCloudinaryVideo, plugins, this.htmlPluginState)
             .then(()=>{ // when resolved updates sources
                 this.htmlPluginState.pluginEventSubscription.forEach(fn=>{fn()});
 
@@ -24,24 +25,6 @@ export class HtmlVideoLayer{
                 this.handleSourceToVideo(pluginCloudinaryVideo, sources)
             });
 
-    }
-
-    /**
-     * Iterate through plugins and break in cases where the response is canceled. The
-     * response is canceled if component is updated or unmounted
-     * @param element Video element
-     * @param pluginCloudinaryVideo
-     * @param plugins array of plugins passed in by the user
-     * @return {Promise<void>}
-     */
-    async render(element: HTMLVideoElement, pluginCloudinaryVideo: CloudinaryVideo, plugins: any) {
-        if(plugins === undefined) return;
-        for(let i = 0; i < plugins.length; i++){
-            const response = await plugins[i](element, pluginCloudinaryVideo, this.htmlPluginState);
-            if(response === 'canceled'){
-                break;
-            }
-        }
     }
 
     /**
@@ -122,15 +105,6 @@ export class HtmlVideoLayer{
     }
 
     /**
-     * Cancels currently running plugins. This is called from unmount or update
-     */
-    cancelCurrentlyRunningPlugins(): void{
-        this.htmlPluginState.cleanupCallbacks.forEach((fn: any) => {
-            fn();// resolve each promise with 'canceled'
-        })
-    }
-
-    /**
      * Called when component is updated. If our video source has changed, a video reload is triggered.
      * @param updatedCloudinaryVideo
      * @param sources
@@ -142,7 +116,7 @@ export class HtmlVideoLayer{
             const sourcesToDelete = this.videoElement.getElementsByTagName("SOURCE");
             while (sourcesToDelete[0]) sourcesToDelete[0].parentNode.removeChild(sourcesToDelete[0]);
 
-            this.render(this.videoElement, updatedCloudinaryVideo, plugins)
+            render(this.videoElement, updatedCloudinaryVideo, plugins, this.htmlPluginState)
                 .then(()=>{ // when resolved updates sources
                     this.setVideoAttributes(videoAttributes);
                     this.handleSourceToVideo(updatedCloudinaryVideo, sources);
