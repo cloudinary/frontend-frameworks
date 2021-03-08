@@ -12,7 +12,9 @@ $('.branding-logo').html(content + ' - ${pkg.version}');
 fs.writeFileSync('__DOC_RESOURCES__/injectVersionSemver.js', data);
 
 execSync(`
-  jsdoc --configure jsdoc.config.json --verbose --destination public/docs/ && 
+  jsdoc --configure jsdoc.config.json --verbose --destination public/docs/ &&
+  cp frameworks/svelte/docs/*.* public/docs/ && 
+  rm public/docs/svelte*.tsx.* &&
   cp __DOC_RESOURCES__/customStyles.css public/docs/ && 
   cp __DOC_RESOURCES__/injectVersionSemver.js public/docs/
 `, {stdio: 'inherit'});
