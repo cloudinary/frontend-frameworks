@@ -71,17 +71,19 @@ function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, plu
 
 /**
  * Prepares placeholder transformation by appending a placeholder-type transformation to the end of the URL
- * @param mode {placeholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
+ * @param mode {PlaceholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
  * @param pluginCloudinaryImage {CloudinaryImage}
  */
-function preparePlaceholderTransformation(mode: placeholderMode, pluginCloudinaryImage: CloudinaryImage){
+function preparePlaceholderTransformation(mode: PlaceholderMode, pluginCloudinaryImage: CloudinaryImage){
   const placeholderClonedImage = cloneDeep(pluginCloudinaryImage);
 
 
+  // @ts-ignore
   if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
     mode = 'vectorize'
   }
   //appends a placeholder transformation on placeholderClonedImage
+  // @ts-ignore
   PLACEHOLDER_IMAGE_OPTIONS[mode].actions.forEach(function(transformation:Action){
     placeholderClonedImage.addAction(transformation);
   });
