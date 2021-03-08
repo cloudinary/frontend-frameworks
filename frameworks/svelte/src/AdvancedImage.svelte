@@ -1,7 +1,7 @@
 <script lang="ts">
   import type {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
   import {afterUpdate, onDestroy} from 'svelte';
-  import {HtmlImageLayer, isBrowser, serverSideSrc} from '@cloudinary/html';
+  import {HtmlImageLayer, isBrowser, serverSideSrc, cancelCurrentlyRunningPlugins} from '@cloudinary/html';
   import type {plugins as Plugins} from '@cloudinary/html';
 
   /**
@@ -53,7 +53,7 @@
         htmlLayerInstance = new HtmlImageLayer(imgElement, cldImg, plugins);
       }
     } else {
-      htmlLayerInstance.cancelCurrentlyRunningPlugins();
+      cancelCurrentlyRunningPlugins(htmlLayerInstance.htmlPluginState);
       htmlLayerInstance.update(cldImg, plugins);
     }
   });
@@ -65,7 +65,7 @@
    */
   onDestroy(() => {
     if (htmlLayerInstance) {
-      htmlLayerInstance.cancelCurrentlyRunningPlugins();
+      cancelCurrentlyRunningPlugins(htmlLayerInstance.htmlPluginState);
     }
   });
 </script>
