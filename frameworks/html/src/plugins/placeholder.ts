@@ -32,27 +32,40 @@ function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, plu
   if(!isImage(element)) return;
 
   const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
+
   element.src = placeholderTransformation.toURL();
+
   //if placeholder does not load, load a single transparent pixel
   element.onerror = () => {
     element.src = singleTransparentPixel;
   };
+
+  /*
+  Placeholder image loads first. Once it loads, the promise is resolved and the
+  larger image will load. Once the larger image loads, promised and plugin is resolved.
+   */
   return new Promise((resolve: any) => {
-    htmlPluginState.cleanupCallbacks.push(()=>{
-      element.src = singleTransparentPixel;
-      resolve('canceled');
+    element.onload = () => {
+      resolve();
+    };
+  }).then(()=>{
+    return new Promise((resolve: any) => {
+      htmlPluginState.cleanupCallbacks.push(()=>{
+        element.src = singleTransparentPixel;
+        resolve('canceled');
+      });
+      // load image once placeholder is done loading
+      const largeImage = new Image();
+      largeImage.src = pluginCloudinaryImage.toURL();
+      largeImage.onload = () => {
+        resolve();
+      };
+
+      // image does not load, resolve
+      largeImage.onerror = () => {
+        resolve();
+      };
     });
-
-    const largeImage = new Image();
-    largeImage.src = pluginCloudinaryImage.toURL();
-    largeImage.onload = () => {
-      resolve();
-    };
-
-    //  image does not load, resolve
-    largeImage.onerror = () => {
-      resolve();
-    };
   });
 }
 
