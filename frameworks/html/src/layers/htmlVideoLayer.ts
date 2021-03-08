@@ -1,4 +1,4 @@
-import {plugins, htmlPluginState, videoSources, videoType} from '../types'
+import {Plugins, HtmlPluginState, VideoSources, VideoType} from '../types'
 import cloneDeep from 'lodash/cloneDeep'
 import {CloudinaryVideo} from "@cloudinary/base";
 import {render} from '../utils/render';
@@ -7,11 +7,11 @@ import {VIDEO_CODEC_TYPE, VIDEO_MIME_TYPES} from "../utils/internalConstants";
 export class HtmlVideoLayer{
     videoElement: any;
     originalVideo: CloudinaryVideo;
-    htmlPluginState: htmlPluginState;
+    htmlPluginState: HtmlPluginState;
     mimeType = 'video';
     mimeSubTypes = VIDEO_MIME_TYPES;
 
-    constructor(element: HTMLVideoElement | null, userCloudinaryVideo: CloudinaryVideo, sources: videoSources,  plugins?: plugins, videoAttributes?: object){
+    constructor(element: HTMLVideoElement | null, userCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object){
         this.videoElement = element;
         this.originalVideo = userCloudinaryVideo;
         this.htmlPluginState = {cleanupCallbacks:[], pluginEventSubscription: []};
@@ -32,7 +32,7 @@ export class HtmlVideoLayer{
      * @param userCloudinaryVideo {CloudinaryVideo}
      * @param sources
      */
-    handleSourceToVideo(userCloudinaryVideo: CloudinaryVideo, sources: videoSources) {
+    handleSourceToVideo(userCloudinaryVideo: CloudinaryVideo, sources: VideoSources) {
         // checks if user supplied sources
         if(sources){
            this.generateUserSources(userCloudinaryVideo, sources)
@@ -49,7 +49,7 @@ export class HtmlVideoLayer{
      * @param userCloudinaryVideo {CloudinaryVideo}
      * @param sources
      */
-    generateUserSources(userCloudinaryVideo: CloudinaryVideo, sources: videoSources) {
+    generateUserSources(userCloudinaryVideo: CloudinaryVideo, sources: VideoSources) {
         sources.map(({type, codecs , videoCodec}) => (
             this.appendSourceTag(
                 cloneDeep(userCloudinaryVideo)
@@ -78,7 +78,7 @@ export class HtmlVideoLayer{
      * @param type - format of the video
      * @param codecs - optional information about codecs of the video
      */
-    buildMimeType(type: videoType, codecs: string[]){
+    buildMimeType(type: VideoType, codecs: string[]){
         let mimeType = `${this.mimeType}/${this.mimeSubTypes[type] || type}`;
 
         if(codecs) {
@@ -111,7 +111,7 @@ export class HtmlVideoLayer{
      * @param plugins
      * @param videoAttributes
      */
-    update(updatedCloudinaryVideo: CloudinaryVideo, sources: videoSources,  plugins?: plugins, videoAttributes?: object){
+    update(updatedCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object){
         if(updatedCloudinaryVideo !== this.originalVideo){
             const sourcesToDelete = this.videoElement.getElementsByTagName("SOURCE");
             while (sourcesToDelete[0]) sourcesToDelete[0].parentNode.removeChild(sourcesToDelete[0]);

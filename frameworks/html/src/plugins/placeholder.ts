@@ -1,8 +1,8 @@
 import cloneDeep from 'lodash/cloneDeep'
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin, htmlPluginState} from "../types";
+import {Plugin, HtmlPluginState} from "../types";
 import {PLACEHOLDER_IMAGE_OPTIONS, singleTransparentPixel} from '../utils/internalConstants';
-import {placeholderMode} from '../types';
+import {PlaceholderMode} from '../types';
 import {isBrowser} from "../utils/isBrowser";
 import {Action} from "@cloudinary/base/internal/Action";
 import {isImage} from "../utils/isImage";
@@ -10,12 +10,12 @@ import {isImage} from "../utils/isImage";
 /**
  * @namespace
  * @description Displays a placeholder image until the original image loads.
- * @param mode {placeholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
- * @return plugin
+ * @param mode {PlaceholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
+ * @return {Plugin}
  * @example
  * <AdvancedImage cldImg={img} plugins=[(placeholder('blur'))]/>
  */
-export function placeholder(mode='vectorize'): plugin{
+export function placeholder(mode='vectorize'): Plugin{
   return placeholderPlugin.bind(null, mode);
 }
 
@@ -26,7 +26,7 @@ export function placeholder(mode='vectorize'): plugin{
  * @param pluginCloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
-function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> {
+function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<void | string> {
   if(!isBrowser())  return;
 
   if(!isImage(element)) return;
@@ -71,17 +71,19 @@ function placeholderPlugin(mode: placeholderMode, element: HTMLImageElement, plu
 
 /**
  * Prepares placeholder transformation by appending a placeholder-type transformation to the end of the URL
- * @param mode {placeholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
+ * @param mode {PlaceholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
  * @param pluginCloudinaryImage {CloudinaryImage}
  */
-function preparePlaceholderTransformation(mode: placeholderMode, pluginCloudinaryImage: CloudinaryImage){
+function preparePlaceholderTransformation(mode: PlaceholderMode, pluginCloudinaryImage: CloudinaryImage){
   const placeholderClonedImage = cloneDeep(pluginCloudinaryImage);
 
 
+  // @ts-ignore
   if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
     mode = 'vectorize'
   }
   //appends a placeholder transformation on placeholderClonedImage
+  // @ts-ignore
   PLACEHOLDER_IMAGE_OPTIONS[mode].actions.forEach(function(transformation:Action){
     placeholderClonedImage.addAction(transformation);
   });

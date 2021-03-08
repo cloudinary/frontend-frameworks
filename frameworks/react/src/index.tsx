@@ -2,9 +2,8 @@ import {
   placeholder,
   accessibility,
   lazyload,
-  responsive,
+  responsive
 } from '@cloudinary/html'
-import {AdvancedImage} from "./AdvancedImage";
+import { AdvancedImage } from './AdvancedImage';
 
-
-export {placeholder, accessibility, lazyload, responsive, AdvancedImage};
+export { placeholder, accessibility, lazyload, responsive, AdvancedImage };

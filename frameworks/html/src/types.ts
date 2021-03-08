@@ -1,17 +1,17 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 
-export type plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: htmlPluginState) => Promise<string | void>;
+export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState) => Promise<string | void>;
 
-export type plugins = plugin[];
+export type Plugins = Plugin[];
 
-export type accessibilityMode = 'darkmode'|'brightmode'|'monochrome'|'colorblind';
+export type AccessibilityMode = 'darkmode'|'brightmode'|'monochrome'|'colorblind';
 
-export type placeholderMode = 'vectorize' | 'pixelate' | 'blur' | 'predominant-color';
+export type PlaceholderMode = 'vectorize' | 'pixelate' | 'blur' | 'predominant-color';
 
-export type htmlPluginState = { cleanupCallbacks: Function[], pluginEventSubscription: Function[] };
+export type HtmlPluginState = { cleanupCallbacks: Function[], pluginEventSubscription: Function[] };
 
-export type videoCodecType = 'auto'|'h264'|'h265'|'proRes'|'theora'|'vp8'|'vp9';
+export type VideoCodecType = 'auto'|'h264'|'h265'|'proRes'|'theora'|'vp8'|'vp9';
 
-export type videoSources = {type: videoType, codecs: Array<string>, videoCodec: videoCodecType}[];
+export type VideoSources = {type: VideoType, codecs: Array<string>, videoCodec: VideoCodecType}[];
 
-export type videoType = 'flv'|'3gp'|'mov'|'mpg'|'avi'|'wmv'|'ogv';
+export type VideoType = 'flv'|'3gp'|'mov'|'mpg'|'avi'|'wmv'|'ogv';
