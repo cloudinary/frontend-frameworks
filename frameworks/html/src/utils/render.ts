@@ -1,4 +1,4 @@
-import {plugins, htmlPluginState} from '../types'
+import {Plugins, HtmlPluginState} from '../types'
 import {CloudinaryVideo, CloudinaryImage} from "@cloudinary/base";
 
 /**
@@ -9,7 +9,7 @@ import {CloudinaryVideo, CloudinaryImage} from "@cloudinary/base";
  * @param plugins {plugins} array of plugins passed in by the user
  * @param pluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions
  */
-export async function render(element: HTMLImageElement | HTMLVideoElement, pluginCloudinaryAsset: CloudinaryImage | CloudinaryVideo, plugins: plugins, pluginState: htmlPluginState) {
+export async function render(element: HTMLImageElement | HTMLVideoElement, pluginCloudinaryAsset: CloudinaryImage | CloudinaryVideo, plugins: Plugins, pluginState: HtmlPluginState) {
     if(plugins === undefined) return;
     for(let i = 0; i < plugins.length; i++){
         const response = await plugins[i](element, pluginCloudinaryAsset, pluginState);
