@@ -1,5 +1,5 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin, htmlPluginState} from "../types";
+import {Plugin, HtmlPluginState} from "../types";
 import {scale} from "@cloudinary/base/actions/resize";
 import debounce from 'lodash.debounce';
 import {isNum} from '../utils/internalUtils';
@@ -13,11 +13,11 @@ import {isImage} from "../utils/isImage";
  * subsequent resizing.
  * @param steps {number | number[]} The step size in pixels.
  * | number[] A set of image sizes in pixels.
- * @return plugin
+ * @return {Plugin}
  * @example
  * <AdvancedImage cldImg={img} plugins=[(responsive(100))] plugins=[(responsive([800, 1000, 1400]))] />
  */
-export function responsive(steps?: number | number[]): plugin{
+export function responsive(steps?: number | number[]): Plugin{
   return responsivePlugin.bind(null, steps);
 }
 
@@ -27,9 +27,9 @@ export function responsive(steps?: number | number[]): plugin{
  * | number[] A set of image sizes in pixels.
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
- * @param htmlPluginState {htmlPluginState} holds cleanup callbacks and event subscriptions
+ * @param htmlPluginState {HtmlPluginState} holds cleanup callbacks and event subscriptions
  */
-function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: htmlPluginState): Promise<void | string> {
+function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState): Promise<void | string> {
   if(!isBrowser()) return;
 
   if(!isImage(element)) return;
