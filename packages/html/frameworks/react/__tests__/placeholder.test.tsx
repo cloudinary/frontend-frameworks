@@ -74,12 +74,21 @@ describe('placeholder', () => {
     }, 0);// one tick
   });
 
+  /*
+  This test is built with two setTimouts since the placeholder plugin makes use of two promises.
+  The placeholder image loads first. Once it loads, the promise is resolved and the
+  larger image will load. Once the larger image loads, promised and plugin is resolved.
+   */
   it('should not fail error', function (done) {
-    mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder()]} />);
-    mockImage.onerror();
+    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder()]} />);
     setTimeout(() => {
-      expect(mockImage.src).toBe('https://res.cloudinary.com/demo/image/upload/sample');
-      done();
-    }, 0);// one tick
+      // @ts-ignore
+      component.getDOMNode().onload(); // simulate element onload
+      setTimeout(() => {
+        mockImage.onerror(); // simulate image onerror
+        expect(mockImage.src).toBe('https://res.cloudinary.com/demo/image/upload/sample');
+        done();
+      })
+    }, 5);// one tick
   });
 });
