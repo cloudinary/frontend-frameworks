@@ -1,5 +1,5 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {plugin, htmlPluginState} from '../types'
+import {Plugin, HtmlPluginState} from '../types'
 import {isBrowser} from "../utils/isBrowser";
 
 /**
@@ -7,11 +7,11 @@ import {isBrowser} from "../utils/isBrowser";
  * @description Loads an image once it is in a certain margin in the viewport. This includes vertical and horizontal scrolling.
  * @param rootMargin {string} The root element's bounding box before the intersection test is performed. Default: 0px.
  * @param threshold {number} The percentage of the image's visibility at which point the image should load. Default: 0.1 (10%).
- * @return {plugin}
+ * @return {Plugin}
  * @example
  * <AdvancedImage cldImg={img} plugins=[(lazyload('0px', 0.25))]/>
  */
-export function lazyload(rootMargin?: string, threshold?: number): plugin{
+export function lazyload(rootMargin?: string, threshold?: number): Plugin{
   return lazyloadPlugin.bind(null, rootMargin, threshold);
 }
 
@@ -22,9 +22,9 @@ export function lazyload(rootMargin?: string, threshold?: number): plugin{
  * @param element The image element.
  * @param element {HTMLImageElement} The image element.
  * @param cloudinaryImage {CloudinaryImage}
- * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
+ * @param htmlPluginState {HtmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
-function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement | HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState: htmlPluginState): Promise<void | string> | boolean {
+function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement | HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<void | string> | boolean {
   // if SSR skip plugin
   if(!isBrowser()) return false;
 

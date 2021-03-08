@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
-  import {afterUpdate, onDestroy} from 'svelte';
-  import {HtmlImageLayer, isBrowser, serverSideSrc} from '@cloudinary/html';
-  import type {plugins as Plugins} from '@cloudinary/html';
+  import type { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
+  import { afterUpdate, onDestroy } from 'svelte';
+  import { HtmlImageLayer, isBrowser, serverSideSrc } from '@cloudinary/html';
+  import type { Plugins } from '@cloudinary/html';
 
   /**
    * @mixin SvelteSDK
