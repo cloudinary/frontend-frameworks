@@ -1,0 +1,44 @@
+import React, {Fragment, useState} from 'react'
+import {AdvancedImage, accessibility, responsive, lazyload, placeholder} from '@cloudinary/react';
+import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+
+const tests = [
+  'responsive',
+  'placeholder',
+  'lazy',
+  'lazyPlaceholder',
+  'lazyResponsive',
+  'responsivePlaceholder'
+];
+
+const App = () => {
+  let img = new CloudinaryImage('sample', {cloudName: 'demo'});
+  const [test, setTest]: [any, any] = useState(0);
+
+  const Buttons = () => (
+    <Fragment>
+      {
+        tests.map((t, i) =>
+          <button key={"btn-" + i} id={t + 'Btn'} onClick={() => setTest(t)}>{t + ' test'}</button>
+        )
+      }
+    </Fragment>
+  );
+
+  return (
+    <div id="top">
+      <Buttons/>
+      {test === 'responsive' &&
+      <Fragment>
+        <h1>Responsive Image</h1>
+        <div style={{width: "330px"}}>
+          <AdvancedImage cldImg={img} plugins={[responsive(100)]}/>
+        </div>
+      </Fragment>
+      }
+    </div>
+  );
+}
+
+export default App;
+
