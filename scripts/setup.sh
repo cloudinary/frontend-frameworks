@@ -4,7 +4,6 @@ rm -rf frameworks/html/node_modules
 rm -rf frameworks/angular/node_modules
 rm -rf frameworks/react/test-app/node_modules
 
-
 npm install --prefix frameworks/html #install html
 npm run build --prefix frameworks/html #install html
 npm install . #install root, which also links html/dist
