@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react'
-import {AdvancedImage, accessibility, responsive, lazyload, placeholder} from '@cloudinary/react';
+import {AdvancedImage, responsive, placeholder} from '@cloudinary/react';
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 
 const tests = [
