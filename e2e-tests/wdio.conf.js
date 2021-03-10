@@ -15,9 +15,9 @@ const seleniumStandaloneArgs = {
  *
  */
 exports.config = {
-  specs: ['./specs/**/*Spec.js'],
+  specs: ['./specs/**/*.spec.js'],
   // We can use the suites option if we need different tests for any of the frameworks
-  // suites: { regression: ['./specs/**/*Spec.js'] },
+  // suites: { regression: ['./specs/**/*.spec.js'] },
 
   // Browser capabilities
   capabilities: [

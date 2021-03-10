@@ -32,9 +32,15 @@ const App = () => {
       <Fragment>
         <h1>Responsive Image</h1>
         <div style={{width: "330px"}}>
-          <AdvancedImage cldImg={img} plugins={[responsive(100)]}/>
+          <AdvancedImage id="responsive" cldImg={img} plugins={[responsive(100)]}/>
         </div>
       </Fragment>
+      }
+      {test === 'placeholder' &&
+      <div>
+        <h1>Placeholder</h1>
+        <AdvancedImage id="placeholder" cldImg={img} plugins={[placeholder()]}/>
+      </div>
       }
     </div>
   );

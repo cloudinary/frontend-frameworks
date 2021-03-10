@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - "12"
+sudo: required
+addons:
+  chrome: stable
 install: ./scripts/setup.sh
 script:
   - npm run test

@@ -3,7 +3,7 @@ import { BrowserUtils } from 'wdio-allure-ts';
 /**
  * Holds common methods for tests
  */
-export const sampleAppUrl: string = 'http://localhost:8000';
+export const sampleAppUrl: string = 'http://127.0.0.1:8000';
 /**
  * common describe for specs
  * @param name spec name
@@ -17,7 +17,6 @@ export function describeCommon(name: string, body: () => any): void {
      */
     beforeEach(() => {
       BrowserUtils.navigateToUrl(sampleAppUrl);
-      //BrowserUtils.waitForDisplayed("//*[@id='top']");
       BrowserUtils.waitForDisplayed("//*[@id='top']");
     });
 
