@@ -10,7 +10,7 @@ export type PlaceholderMode = 'vectorize' | 'pixelate' | 'blur' | 'predominant-c
 
 export type HtmlPluginState = { cleanupCallbacks: Function[], pluginEventSubscription: Function[] };
 
-export type VideoCodecType = 'auto'|'h264'|'h265'|'proRes'|'theora'|'vp8'|'vp9';
+export type VideoCodecType = 'auto'|'h264'|'h265'|'proRes'|'theora'|'vp8'|'vp9'|string;
 
 export type VideoSources = {type: VideoType, codecs: Array<string>, videoCodec: VideoCodecType}[] | undefined;
 
