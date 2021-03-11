@@ -5,7 +5,8 @@ import {
   HtmlImageLayer,
   Plugins,
   isBrowser,
-  serverSideSrc
+  serverSideSrc,
+  cancelCurrentlyRunningPlugins
 } from '@cloudinary/html'
 
 interface ImgProps {
@@ -88,7 +89,7 @@ class AdvancedImage extends React.Component <ImgProps> {
    * cloudinaryImage and the state of plugins
    */
   componentDidUpdate() {
-    this.htmlLayerInstance.cancelCurrentlyRunningPlugins();
+    cancelCurrentlyRunningPlugins(this.htmlLayerInstance.htmlPluginState);
     // call html layer to update the dom again with plugins and reset toBeCanceled
     this.htmlLayerInstance.update(this.props.cldImg, this.props.plugins)
   }
@@ -98,7 +99,7 @@ class AdvancedImage extends React.Component <ImgProps> {
    */
   componentWillUnmount() {
     // safely cancel running events on unmount
-    this.htmlLayerInstance.cancelCurrentlyRunningPlugins()
+    cancelCurrentlyRunningPlugins(this.htmlLayerInstance.htmlPluginState);
   }
 
   render() {

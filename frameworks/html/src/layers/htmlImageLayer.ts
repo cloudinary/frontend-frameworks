@@ -1,36 +1,21 @@
 import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
 import {Plugins, HtmlPluginState} from '../types'
 import cloneDeep from 'lodash/cloneDeep'
+import {render} from '../utils/render';
 
 export class HtmlImageLayer{
-  private img: any;
+  private imgElement: any;
   htmlPluginState: HtmlPluginState;
   constructor(element: HTMLImageElement | null, userCloudinaryImage: CloudinaryImage, plugins?: Plugins){
-    this.img = element;
+    this.imgElement = element;
     this.htmlPluginState = {cleanupCallbacks:[], pluginEventSubscription: []};
     const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
-    this.render(element, pluginCloudinaryImage, plugins)
+
+    render(element, pluginCloudinaryImage, plugins, this.htmlPluginState)
         .then(()=>{ // when resolved updates the src
           this.htmlPluginState.pluginEventSubscription.forEach(fn=>{fn()});
-          this.img.setAttribute('src', pluginCloudinaryImage.toURL());
+          this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL());
         });
-  }
-  /**
-   * Iterate through plugins and break in cases where the response is canceled. The
-   * response is canceled if component is updated or unmounted
-   * @param element Image element
-   * @param pluginCloudinaryImage
-   * @param plugins array of plugins passed in by the user
-   * @return {Promise<void>}
-   */
-  async render(element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, plugins: any) {
-    if(plugins === undefined) return;
-    for(let i = 0; i < plugins.length; i++){
-      const response = await plugins[i](element, pluginCloudinaryImage, this.htmlPluginState);
-      if(response === 'canceled'){
-        break;
-      }
-    }
   }
 
   /**
@@ -40,18 +25,9 @@ export class HtmlImageLayer{
    */
   update(userCloudinaryImage: CloudinaryImage, plugins: any){
     const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
-    this.render(this.img, pluginCloudinaryImage, plugins)
+    render(this.imgElement, pluginCloudinaryImage, plugins, this.htmlPluginState)
         .then(()=>{
-          this.img.setAttribute('src', pluginCloudinaryImage.toURL());
+          this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL());
         });
-  }
-
-  /**
-   * Cancels currently running plugins. This is called from unmount or update
-   */
-  cancelCurrentlyRunningPlugins(): void{
-    this.htmlPluginState.cleanupCallbacks.forEach((fn: any) => {
-      fn();// resolve each promise with 'canceled'
-    })
   }
 }

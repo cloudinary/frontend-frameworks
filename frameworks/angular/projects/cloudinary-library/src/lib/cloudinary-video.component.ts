@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, ElementRef, EventEmitter, Output, OnChanges} from '@angular/core';
 import {CloudinaryVideo} from '@cloudinary/base';
 import {
+  cancelCurrentlyRunningPlugins,
   HtmlVideoLayer,
   Plugins,
   VideoSources
@@ -103,7 +104,7 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges {
    */
   ngOnChanges() {
     if (this.htmlVideoLayerInstance) {
-      this.htmlVideoLayerInstance.cancelCurrentlyRunningPlugins();
+      cancelCurrentlyRunningPlugins(this.htmlVideoLayerInstance.htmlPluginState);
       this.htmlVideoLayerInstance.update(this.cldVid, this.sources, this.plugins, this.videoAttributes);
     }
   }
