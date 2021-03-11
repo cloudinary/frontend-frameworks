@@ -5,6 +5,7 @@
     "quickstart": "bash ./scripts/setup.sh",
     "test": "bash ./scripts/test.sh",
     "build:docs": "node ./scripts/buildDocs.js",
+    "start:docs": "live-server --open=public/docs",
     "update:cloudinary/base": "npm install @cloudinary/base@latest --prefix frameworks/html && npm install @cloudinary/base@latest --prefix frameworks/svelte && npm install @cloudinary/base@latest --prefix frameworks/react && npm install @cloudinary/base@latest --prefix frameworks/angular && npm install @cloudinary/base@latest --prefix ./angular/projects/cloudinary-library"
   },
   "dependencies": {
@@ -14,5 +15,8 @@
     "jsdoc": "^3.6.6",
     "jsdoc-plugin-typescript": "^2.0.5",
     "typedoc": "^0.17.8"
+  },
+  "devDependencies": {
+    "replace-in-file": "^6.2.0"
   }
 }
