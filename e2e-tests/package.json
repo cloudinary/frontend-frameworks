@@ -1,0 +1,27 @@
+{
+  "name": "e2e-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wdio.conf.js",
+  "scripts": {
+    "pack:react-sdk": "cd ../frameworks/react && npm run build && npm pack",
+    "cpy-react-sdk": "cpy ../frameworks/react/cloudinary-react-*.tgz ./react-test-app --rename=cloudinary-react.tgz",
+    "build:react-test-app": "cd react-test-app && npm run clean-install && npm run build",
+    "serve:react-test-app": "ws --directory react-test-app/build",
+    "prepare:react": "npm run pack:react-sdk && npm run cpy-react-sdk && npm run build:react-test-app && npm run serve:react-test-app",
+    "setChromeDriverVersion": "./scripts/setChromeDriverVersion.sh",
+    "test": "npm run setChromeDriverVersion && tsc && wdio ./wdio.conf.js",
+    "start-server-and-test:react": "WAIT_ON_TIMEOUT=600000 start-server-and-test prepare:react http://127.0.0.1:8000 test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.3",
+    "cpy-cli": "^3.1.1",
+    "local-web-server": "^4.2.1",
+    "start-server-and-test": "^1.12.0",
+    "typescript": "^4.2.3",
+    "wdio-allure-ts": "^2.1.5"
+  }
+}
