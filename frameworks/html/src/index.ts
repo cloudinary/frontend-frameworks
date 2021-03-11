@@ -7,4 +7,4 @@ export {placeholder} from './plugins/placeholder';
 export {isBrowser} from './utils/isBrowser';
 export {serverSideSrc} from './utils/serverSideSrc';
 export {Plugins, VideoSources} from './types';
-
+export {cancelCurrentlyRunningPlugins} from './utils/cancelCurrentlyRunningPlugins';
