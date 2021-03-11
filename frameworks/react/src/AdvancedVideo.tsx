@@ -4,7 +4,8 @@ import { CloudinaryVideo } from '@cloudinary/base';
 import {
   HtmlVideoLayer,
   Plugins,
-  VideoSources
+  VideoSources,
+  cancelCurrentlyRunningPlugins
 } from '@cloudinary/html';
 
 type ReactEventHandler<T = Element> = EventHandler<SyntheticEvent<T>>;
@@ -70,7 +71,7 @@ class AdvancedVideo extends React.Component <VideoProps> {
    * cloudinaryImage and the state of plugins
    */
   componentDidUpdate() {
-    this.htmlVideoLayerInstance.cancelCurrentlyRunningPlugins();
+    cancelCurrentlyRunningPlugins(this.htmlVideoLayerInstance.htmlPluginState);
     // call html layer to update the dom again with plugins and reset toBeCanceled
     this.htmlVideoLayerInstance.update(this.props.cldvid, this.props.sources, this.props.plugins, this.videoAttributes)
   }
@@ -80,7 +81,7 @@ class AdvancedVideo extends React.Component <VideoProps> {
    */
   componentWillUnmount() {
     // safely cancel running events on unmount
-    this.htmlVideoLayerInstance.cancelCurrentlyRunningPlugins()
+    cancelCurrentlyRunningPlugins(this.htmlVideoLayerInstance.htmlPluginState)
   }
 
   render() {
