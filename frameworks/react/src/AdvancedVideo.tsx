@@ -11,7 +11,7 @@ import {
 type ReactEventHandler<T = Element> = EventHandler<SyntheticEvent<T>>;
 
 interface VideoProps {
-  cldvid: CloudinaryVideo,
+  cldVid: CloudinaryVideo,
   plugins?: Plugins,
   sources?: VideoSources,
 
@@ -45,7 +45,7 @@ interface VideoProps {
  *  <caption>
  *  Using custom defined resources.
  * </caption>
- *   vid = new CloudinaryVideo('dog', {cloudName: 'demo'});
+ *   const vid = new CloudinaryVideo('dog', {cloudName: 'demo'});
  *   sources = [
  {
         type: 'mp4',
@@ -58,12 +58,11 @@ interface VideoProps {
         videoCodec: 'auto'
       }];
  *
- * <AdvancedVideo cldvid={vid} controls sources={sources}/>
+ * <AdvancedVideo cldVid={vid} controls sources={sources}/>
  */
 class AdvancedVideo extends React.Component <VideoProps> {
   videoRef: React.RefObject<HTMLVideoElement>;
   htmlVideoLayerInstance: HtmlVideoLayer;
-  private videoAttributes: object;
 
   constructor(props: VideoProps) {
     super(props);
@@ -75,22 +74,12 @@ class AdvancedVideo extends React.Component <VideoProps> {
    * user generated cloudinaryVideo and the plugins to be used
    */
   componentDidMount() {
-    this.videoAttributes = {
-      controls: this.props.controls,
-      loop: this.props.loop,
-      muted: this.props.muted,
-      poster: this.props.poster,
-      preload: this.props.preload,
-      autoplay: this.props.autoPlay,
-      playsinline: this.props.playsInline
-    };
-
     this.htmlVideoLayerInstance = new HtmlVideoLayer(
       this.videoRef.current,
-      this.props.cldvid,
+      this.props.cldVid,
       this.props.sources,
       this.props.plugins,
-      this.videoAttributes
+      this.getVideoAttributes()
     )
   }
 
@@ -101,7 +90,8 @@ class AdvancedVideo extends React.Component <VideoProps> {
   componentDidUpdate() {
     cancelCurrentlyRunningPlugins(this.htmlVideoLayerInstance.htmlPluginState);
     // call html layer to update the dom again with plugins and reset toBeCanceled
-    this.htmlVideoLayerInstance.update(this.props.cldvid, this.props.sources, this.props.plugins, this.videoAttributes)
+    console.log('this.videoAttributes', this.getVideoAttributes())
+    this.htmlVideoLayerInstance.update(this.props.cldVid, this.props.sources, this.props.plugins, this.getVideoAttributes())
   }
 
   /**
@@ -112,14 +102,29 @@ class AdvancedVideo extends React.Component <VideoProps> {
     cancelCurrentlyRunningPlugins(this.htmlVideoLayerInstance.htmlPluginState)
   }
 
+  /**
+   * returns video attributes
+   */
+  getVideoAttributes() {
+    return {
+      controls: this.props.controls,
+      loop: this.props.loop,
+      muted: this.props.muted,
+      poster: this.props.poster,
+      preload: this.props.preload,
+      autoplay: this.props.autoPlay,
+      playsinline: this.props.playsInline
+    };
+  }
+
   render() {
     const {
-      cldvid,
+      cldVid,
       plugins,
       sources,
-      ...otherProps // Assume any other props are for the base element
+      ...videoEvents // Assume any other props are for the base element
     } = this.props;
-    return <video {...otherProps} ref={this.videoRef} />
+    return <video {...videoEvents} ref={this.videoRef} />
   }
 }
 
