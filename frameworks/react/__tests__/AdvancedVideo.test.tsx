@@ -7,7 +7,7 @@ const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo' });
 
 describe('AdvancedVideo', () => {
   it('should render video with default sources', function (done) {
-    const component = mount(<AdvancedVideo cldvid={cloudinaryVideo} />);
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} />);
     setTimeout(() => {
       expect(component.html()).toContain(
         '<video>' +
@@ -31,7 +31,7 @@ describe('AdvancedVideo', () => {
         videoCodec: 'vp9'
       }];
 
-    const component = mount(<AdvancedVideo cldvid={cloudinaryVideo} sources={sources} />);
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} sources={sources} />);
 
     setTimeout(() => {
       expect(component.html()).toContain(
@@ -43,7 +43,7 @@ describe('AdvancedVideo', () => {
   });
 
   it('should pass video attributes', function (done) {
-    const component = mount(<AdvancedVideo cldvid={cloudinaryVideo} controls autoPlay playsInline loop />);
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} controls autoPlay playsInline loop />);
 
     setTimeout(() => {
       expect(component.html()).toContain('controls="" autoplay="" playsinline="" loop=""');
@@ -52,10 +52,10 @@ describe('AdvancedVideo', () => {
   });
 
   it('should contain poster', function (done) {
-    const component = mount(<AdvancedVideo cldvid={cloudinaryVideo} poster='www.sample.com' />);
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} poster='www.example.com' />);
 
     setTimeout(() => {
-      expect(component.html()).toContain('poster="www.sample.com"');
+      expect(component.html()).toContain('poster="www.example.com"');
       done();
     }, 0);// one tick
   });
@@ -63,7 +63,7 @@ describe('AdvancedVideo', () => {
   it('should simulate onPlay event', function (done) {
     const mockCallBack = jest.fn();
 
-    const component = mount(<AdvancedVideo cldvid={cloudinaryVideo} onPlay={mockCallBack} />);
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} onPlay={mockCallBack} />);
     setTimeout(() => {
       component.find('video').simulate('play');
       expect(mockCallBack.mock.calls.length).toEqual(1);
@@ -74,7 +74,7 @@ describe('AdvancedVideo', () => {
   it('should simulate onLoadStart event', function (done) {
     const mockCallBack = jest.fn();
 
-    const component = mount(<AdvancedVideo cldvid={cloudinaryVideo} onLoadStart={mockCallBack} />);
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} onLoadStart={mockCallBack} />);
     setTimeout(() => {
       component.find('video').simulate('loadstart');
       expect(mockCallBack.mock.calls.length).toEqual(1);
@@ -85,7 +85,7 @@ describe('AdvancedVideo', () => {
   it('should simulate onEnded event', function (done) {
     const mockCallBack = jest.fn();
 
-    const component = mount(<AdvancedVideo cldvid={cloudinaryVideo} onEnded={mockCallBack} />);
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} onEnded={mockCallBack} />);
     setTimeout(() => {
       component.find('video').simulate('ended');
       expect(mockCallBack.mock.calls.length).toEqual(1);
@@ -96,7 +96,7 @@ describe('AdvancedVideo', () => {
   it('should simulate onError event', function (done) {
     const mockCallBack = jest.fn();
 
-    const component = mount(<AdvancedVideo cldvid={cloudinaryVideo} onError={mockCallBack} />);
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} onError={mockCallBack} />);
     setTimeout(() => {
       component.find('video').simulate('error');
       expect(mockCallBack.mock.calls.length).toEqual(1);
@@ -107,7 +107,7 @@ describe('AdvancedVideo', () => {
   it('should simulate onPlaying event', function (done) {
     const mockCallBack = jest.fn();
 
-    const component = mount(<AdvancedVideo cldvid={cloudinaryVideo} onPlaying={mockCallBack} />);
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} onPlaying={mockCallBack} />);
     setTimeout(() => {
       component.find('video').simulate('playing');
       expect(mockCallBack.mock.calls.length).toEqual(1);
