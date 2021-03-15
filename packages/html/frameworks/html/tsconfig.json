@@ -4,6 +4,7 @@
     "outDir": "./dist",
     "target": "ES5",
     "declaration": true,
+    "suppressImplicitAnyIndexErrors": true,
     "module": "ES2015",
     "moduleResolution": "node",
     "baseUrl": "src",

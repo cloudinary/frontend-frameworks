@@ -5,5 +5,6 @@ import {
   responsive
 } from '@cloudinary/html'
 import { AdvancedImage } from './AdvancedImage';
+import { AdvancedVideo } from './AdvancedVideo';
 
-export { placeholder, accessibility, lazyload, responsive, AdvancedImage };
+export { placeholder, accessibility, lazyload, responsive, AdvancedImage, AdvancedVideo };
