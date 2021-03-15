@@ -93,6 +93,8 @@ export class HtmlVideoLayer{
      * @param videoAttributes {object} Supported attributes: controls, loop, muted, poster, preload, autoplay, playsinline
      */
     setVideoAttributes(videoAttributes: object) {
+        if(!videoAttributes) return;
+
         for (const [key, value] of Object.entries(videoAttributes)) {
             if(value){
                 if(key === 'poster'){
