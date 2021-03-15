@@ -21,7 +21,9 @@
     "dev": "rollup -c -w",
     "svelte-check": "svelte-check",
     "build": "npm run build --prefix ../html && rollup -c",
-    "test": "jest",
+    "test": "npm run test:unit && npm run test:ssr",
+    "test:unit": "jest",
+    "test:ssr": "jest -c jest-ssr.config.json",
     "test-coverage": "jest --coverage"
   },
   "keywords": [
