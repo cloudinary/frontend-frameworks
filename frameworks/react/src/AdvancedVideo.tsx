@@ -90,7 +90,6 @@ class AdvancedVideo extends React.Component <VideoProps> {
   componentDidUpdate() {
     cancelCurrentlyRunningPlugins(this.htmlVideoLayerInstance.htmlPluginState);
     // call html layer to update the dom again with plugins and reset toBeCanceled
-    console.log('this.videoAttributes', this.getVideoAttributes())
     this.htmlVideoLayerInstance.update(this.props.cldVid, this.props.sources, this.props.plugins, this.getVideoAttributes())
   }
 
