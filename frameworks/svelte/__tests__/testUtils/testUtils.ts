@@ -2,6 +2,8 @@ import {tick} from "svelte";
 import {render, RenderResult} from '@testing-library/svelte'
 import {testWithMockedIntersectionObserver} from '../../../../testUtils/setupIntersectionObserverMock';
 import type {SvelteComponentDev} from "svelte/internal";
+import {CloudinaryImage} from "@cloudinary/base";
+import {Plugins} from "@cloudinary/html";
 
 /**
  * Get element from container
@@ -50,9 +52,9 @@ const mount = async (cmp?: typeof SvelteComponentDev, props?: any): Promise<Rend
  * @param props
  * @return render result
  */
-const mountSSR = (cmp: any, props: any = {}): string => {
+const mountSSR = (cmp: SvelteComponentDev, props?: {cldImg?: CloudinaryImage; plugins?: Plugins; }): string => {
   if (cmp) {
-    return cmp.render({...props}).html.trim();
+    return cmp.render({...(props || {})}).html.trim();
   }
   return '';
 };
@@ -63,7 +65,7 @@ const mountSSR = (cmp: any, props: any = {}): string => {
  * @param width to set element's clientWidth to
  * @return the modified element
  */
-const resizeElement = (element?: any, width?: number) => {
+const resizeElement = (element?: HTMLElement, width?: number) => {
   if (element) {
     Object.defineProperty(element, 'clientWidth', {value: width, configurable: true});
   }
