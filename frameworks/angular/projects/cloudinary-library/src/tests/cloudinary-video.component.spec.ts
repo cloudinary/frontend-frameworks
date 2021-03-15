@@ -4,7 +4,7 @@ import {CloudinaryVideo} from '@cloudinary/base';
 
 const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo'});
 
-describe('CloudinaryImageComponent render', () => {
+describe('CloudinaryVideoComponent render', () => {
   let component: CloudinaryVideoComponent;
   let fixture: ComponentFixture<CloudinaryVideoComponent>;
 
@@ -31,6 +31,25 @@ describe('CloudinaryImageComponent render', () => {
       expect(video.children[i].attributes.getNamedItem('src').value)
         .toEqual( `https://res.cloudinary.com/demo/video/upload/sample.${defaultVideoTypes[i]}`);
     }
+  }));
+
+  it('changes should trigger plugin rerun', fakeAsync(() => {
+    component.cldVid = cloudinaryVideo;
+    const mockPlugin = jasmine.createSpy('spy');
+    component.plugins = [mockPlugin];
+    fixture.detectChanges();
+    tick(0);
+
+    // plugins called once
+    expect(mockPlugin).toHaveBeenCalledTimes(1);
+
+    // trigger ngOnChanges
+    component.cldVid = new CloudinaryVideo('dog', { cloudName: 'demo'});
+    fixture.detectChanges();
+    component.ngOnChanges();
+
+    // plugins should be called twice after onChange
+    expect(mockPlugin).toHaveBeenCalledTimes(2);
   }));
 
   it('should render video with input sources', fakeAsync(() => {
@@ -81,6 +100,20 @@ describe('CloudinaryImageComponent render', () => {
     fixture.detectChanges();
 
     expect(component.emitPlayingEvent).toHaveBeenCalled();
+  }));
+
+  it('should emit play event', fakeAsync(() => {
+    component.cldVid = cloudinaryVideo;
+    fixture.detectChanges();
+    tick(0);
+    spyOn(component, 'emitPlayEvent');
+    const videoElement: HTMLVideoElement = fixture.nativeElement;
+    const vid = videoElement.querySelector('video');
+
+    vid.dispatchEvent(new Event('play'));
+    fixture.detectChanges();
+
+    expect(component.emitPlayEvent).toHaveBeenCalled();
   }));
 });
 

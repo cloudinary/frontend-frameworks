@@ -16,13 +16,30 @@ describe('CloudinaryImageComponent render', () => {
     component = fixture.componentInstance;
   });
 
-  it('should render image', fakeAsync(()=>{
+  it('should render image', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
     expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/sample')
+  }));
+
+  it('ngOnChanges should trigger plugin rerun', fakeAsync(() => {
+    component.cldImg = cloudinaryImage;
+    const mockPlugin = jasmine.createSpy('spy');
+    component.plugins = [mockPlugin];
+    fixture.detectChanges();
+    tick(0);
+
+    // plugins called once
+    expect(mockPlugin).toHaveBeenCalledTimes(1);
+
+    // trigger ngOnChanges
+    component.ngOnChanges();
+
+    // plugins should be called twice after onChange
+    expect(mockPlugin).toHaveBeenCalledTimes(2);
   }));
 });
 
