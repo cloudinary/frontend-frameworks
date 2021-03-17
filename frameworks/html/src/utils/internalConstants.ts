@@ -88,16 +88,3 @@ export const VIDEO_MIME_TYPES = {
     'wmv': 'x-ms-wmv',
     'ogv': 'ogg'
 };
-
-/**
- * Video codec types
- */
-export const VIDEO_CODEC_TYPE = {
-    'auto': videoCodec(VideoCodec.auto()),
-    'h264': videoCodec(VideoCodec.h264()),
-    'h265': videoCodec(VideoCodec.h265()),
-    'proRes': videoCodec(VideoCodec.proRes()),
-    'theora': videoCodec(VideoCodec.theora()),
-    'vp8': videoCodec(VideoCodec.vp8()),
-    'vp9': videoCodec(VideoCodec.vp9()),
-};

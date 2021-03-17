@@ -50,12 +50,12 @@ interface VideoProps {
  {
         type: 'mp4',
         codecs: ['vp8', 'vorbis'],
-        videoCodec: 'auto'
+        transcode: videoCodec(auto())
       },
  {
         type: 'webm',
         codecs: ['avc1.4D401E', 'mp4a.40.2'],
-        videoCodec: 'auto'
+        videoCodec: videoCodec(auto())
       }];
  *
  * <AdvancedVideo cldVid={vid} controls sources={sources}/>
