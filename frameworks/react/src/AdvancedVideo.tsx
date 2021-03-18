@@ -1,4 +1,4 @@
-import React, { EventHandler, SyntheticEvent } from 'react';
+import React, { EventHandler, SyntheticEvent, MutableRefObject, forwardRef } from 'react';
 import { CloudinaryVideo } from '@cloudinary/base';
 
 import {
@@ -10,7 +10,7 @@ import {
 
 type ReactEventHandler<T = Element> = EventHandler<SyntheticEvent<T>>;
 
-interface VideoProps {
+interface BaseVideoProps {
   cldVid: CloudinaryVideo,
   plugins?: Plugins,
   sources?: VideoSources,
@@ -32,6 +32,10 @@ interface VideoProps {
   onEnded?: ReactEventHandler<any>
 }
 
+interface VideoProps extends BaseVideoProps {
+  innerRef?: ((instance: unknown) => void) | MutableRefObject<unknown> | null
+}
+
 /**
  * @memberOf ReactSDK
  * @type {Component}
@@ -45,28 +49,30 @@ interface VideoProps {
  *  <caption>
  *  Using custom defined resources.
  * </caption>
- *   const vid = new CloudinaryVideo('dog', {cloudName: 'demo'});
- *   sources = [
- {
-        type: 'mp4',
-        codecs: ['vp8', 'vorbis'],
-        transcode: videoCodec(auto())
-      },
- {
-        type: 'webm',
-        codecs: ['avc1.4D401E', 'mp4a.40.2'],
-        videoCodec: videoCodec(auto())
-      }];
+ * const vid = new CloudinaryVideo('dog', {cloudName: 'demo'});
+ * const videoEl = useRef();
+ * const sources = [
+ *  {
+ *    type: 'mp4',
+ *    codecs: ['vp8', 'vorbis'],
+ *    transcode: videoCodec(auto())
+ *  },
+ *  {
+ *    type: 'webm',
+ *    codecs: ['avc1.4D401E', 'mp4a.40.2'],
+ *    videoCodec: videoCodec(auto())
+ *  }];
  *
- * <AdvancedVideo cldVid={vid} controls sources={sources}/>
+ * return <AdvancedVideo cldVid={vid} sources={sources} ref={videoEl} controls />
  */
 class AdvancedVideo extends React.Component <VideoProps> {
-  videoRef: React.RefObject<HTMLVideoElement>;
+  videoRef?: MutableRefObject<HTMLVideoElement | null>
   htmlVideoLayerInstance: HtmlVideoLayer;
 
   constructor(props: VideoProps) {
     super(props);
     this.videoRef = React.createRef();
+    this.attachRef = this.attachRef.bind(this);
   }
 
   /**
@@ -75,7 +81,7 @@ class AdvancedVideo extends React.Component <VideoProps> {
    */
   componentDidMount() {
     this.htmlVideoLayerInstance = new HtmlVideoLayer(
-      this.videoRef.current,
+      this.videoRef && this.videoRef.current,
       this.props.cldVid,
       this.props.sources,
       this.props.plugins,
@@ -116,15 +122,49 @@ class AdvancedVideo extends React.Component <VideoProps> {
     };
   }
 
+  /**
+   * Attach both this.videoRef and props.innerRef as ref to the given element
+   * @param element - the element to attach a ref to
+   */
+  attachRef(element: HTMLVideoElement) {
+    const { props, videoRef } = this;
+    const { innerRef } = props;
+
+    if (videoRef) {
+      videoRef.current = element;
+    }
+
+    if (innerRef) {
+      if (innerRef instanceof Function) {
+        innerRef(element);
+      } else {
+        innerRef.current = element;
+      }
+    }
+  };
+
   render() {
     const {
       cldVid,
       plugins,
       sources,
+      innerRef,
       ...videoEvents // Assume any other props are for the base element
     } = this.props;
-    return <video {...videoEvents} ref={this.videoRef} />
+
+    return <video {...videoEvents} ref={this.attachRef} />
   }
 }
 
-export { AdvancedVideo };
+/**
+ * Wrap AdvancedVideo with React.forwardRef in order to forward ref to the underlying html video element.
+ * React forwardRef Docs:
+ * https://reactjs.org/docs/forwarding-refs.html
+ * How to use forwardRef in a class based component:
+ * https://stackoverflow.com/questions/51526461/how-to-use-react-forwardref-in-a-class-based-component
+ */
+const AdvancedVideoWithRef = forwardRef((props: BaseVideoProps, ref) => (
+  <AdvancedVideo innerRef={ref} {...props} />
+));
+
+export { AdvancedVideoWithRef as AdvancedVideo };

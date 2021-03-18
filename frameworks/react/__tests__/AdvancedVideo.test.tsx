@@ -116,4 +116,14 @@ describe('AdvancedVideo', () => {
       done();
     }, 0);// one tick
   });
+
+  it('Should support forwarding ref to underlying video element', () => {
+    const myRef = React.createRef();
+    mount(<AdvancedVideo cldVid={cloudinaryVideo} ref={myRef} />);
+    const video: any = myRef.current;
+
+    ['play', 'pause', 'canPlayType', 'addTextTrack'].forEach((func) => {
+      expect(typeof video[func]).toBe('function');
+    });
+  });
 });
