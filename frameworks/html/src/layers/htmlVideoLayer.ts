@@ -2,7 +2,7 @@ import {Plugins, HtmlPluginState, VideoSources, VideoType} from '../types'
 import cloneDeep from 'lodash/cloneDeep'
 import {CloudinaryVideo} from "@cloudinary/base";
 import {render} from '../utils/render';
-import {VIDEO_CODEC_TYPE, VIDEO_MIME_TYPES} from "../utils/internalConstants";
+import {VIDEO_MIME_TYPES} from "../utils/internalConstants";
 
 export class HtmlVideoLayer{
     videoElement: any;
@@ -50,10 +50,10 @@ export class HtmlVideoLayer{
      * @param sources
      */
     generateUserSources(userCloudinaryVideo: CloudinaryVideo, sources: VideoSources) {
-        sources.map(({type, codecs , videoCodec}) => (
+        sources.map(({type, codecs , transcode}) => (
             this.appendSourceTag(
                 cloneDeep(userCloudinaryVideo)
-                    .transcode(VIDEO_CODEC_TYPE[videoCodec]),
+                    .transcode(transcode),
                 type,
                 this.buildMimeType(type, codecs))));
     }
