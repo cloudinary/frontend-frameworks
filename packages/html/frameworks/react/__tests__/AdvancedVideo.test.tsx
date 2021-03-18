@@ -2,6 +2,8 @@ import { AdvancedVideo } from '../src';
 import { CloudinaryVideo } from '@cloudinary/base';
 import { mount } from 'enzyme';
 import React from 'react';
+import { auto, vp9 } from '@cloudinary/base/qualifiers/videoCodec';
+import { videoCodec } from '@cloudinary/base/actions/transcode';
 
 const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo' });
 
@@ -23,12 +25,12 @@ describe('AdvancedVideo', () => {
       {
         type: 'mp4',
         codecs: ['vp8', 'vorbis'],
-        videoCodec: 'auto'
+        transcode: videoCodec(auto())
       },
       {
         type: 'webm',
         codecs: ['avc1.4D401E', 'mp4a.40.2'],
-        videoCodec: 'vp9'
+        transcode: videoCodec(vp9())
       }];
 
     const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} sources={sources} />);
