@@ -66,7 +66,7 @@ interface VideoProps extends BaseVideoProps {
  * return <AdvancedVideo cldVid={vid} sources={sources} ref={videoEl} controls />
  */
 class AdvancedVideo extends React.Component <VideoProps> {
-  videoRef?: MutableRefObject<HTMLVideoElement | null>
+  videoRef: MutableRefObject<HTMLVideoElement | null>
   htmlVideoLayerInstance: HtmlVideoLayer;
 
   constructor(props: VideoProps) {
@@ -127,12 +127,8 @@ class AdvancedVideo extends React.Component <VideoProps> {
    * @param element - the element to attach a ref to
    */
   attachRef(element: HTMLVideoElement) {
-    const { props, videoRef } = this;
-    const { innerRef } = props;
-
-    if (videoRef) {
-      videoRef.current = element;
-    }
+    this.videoRef.current = element;
+    const { innerRef } = this.props;
 
     if (innerRef) {
       if (innerRef instanceof Function) {
