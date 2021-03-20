@@ -11,7 +11,7 @@ export class HtmlVideoLayer{
     mimeType = 'video';
     mimeSubTypes = VIDEO_MIME_TYPES;
 
-    constructor(element: HTMLVideoElement | undefined | null, userCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object){
+    constructor(element: HTMLVideoElement | null, userCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object){
         this.videoElement = element;
         this.originalVideo = userCloudinaryVideo;
         this.htmlPluginState = {cleanupCallbacks:[], pluginEventSubscription: []};
