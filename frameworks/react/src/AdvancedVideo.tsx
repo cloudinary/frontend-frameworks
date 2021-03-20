@@ -1,4 +1,5 @@
-import React, { EventHandler, SyntheticEvent, MutableRefObject, forwardRef } from 'react';
+import React, { Component, createRef, forwardRef } from 'react';
+import type { EventHandler, MutableRefObject, SyntheticEvent } from 'react';
 import { CloudinaryVideo } from '@cloudinary/base';
 
 import {
@@ -65,13 +66,13 @@ interface VideoProps extends BaseVideoProps {
  *
  * return <AdvancedVideo cldVid={vid} sources={sources} ref={videoEl} controls />
  */
-class AdvancedVideo extends React.Component <VideoProps> {
+class AdvancedVideo extends Component <VideoProps> {
   videoRef: MutableRefObject<HTMLVideoElement | null>
   htmlVideoLayerInstance: HtmlVideoLayer;
 
   constructor(props: VideoProps) {
     super(props);
-    this.videoRef = React.createRef();
+    this.videoRef = createRef();
     this.attachRef = this.attachRef.bind(this);
   }
 
