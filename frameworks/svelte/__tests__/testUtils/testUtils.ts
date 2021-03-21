@@ -1,9 +1,9 @@
 import {tick} from "svelte";
 import {render, RenderResult} from '@testing-library/svelte'
 import {testWithMockedIntersectionObserver} from '../../../../testUtils/setupIntersectionObserverMock';
-import type {SvelteComponentDev} from "svelte/internal";
-import type {CloudinaryImage} from "@cloudinary/base";
-import type {Plugins} from "@cloudinary/html";
+import { SvelteComponentDev } from "svelte/internal";
+import { CloudinaryImage } from "@cloudinary/base";
+import { Plugins } from "@cloudinary/html";
 
 /**
  * Get element from container

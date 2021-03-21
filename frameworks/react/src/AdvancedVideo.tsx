@@ -1,6 +1,5 @@
-import React, { Component, createRef } from 'react';
-import type { EventHandler, MutableRefObject, SyntheticEvent } from 'react';
-import type { CloudinaryVideo } from '@cloudinary/base';
+import React, { Component, createRef, EventHandler, MutableRefObject, SyntheticEvent } from 'react';
+import { CloudinaryVideo } from '@cloudinary/base';
 
 import {
   HtmlVideoLayer,
