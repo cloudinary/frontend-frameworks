@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CloudinaryVideoComponent } from '../lib/cloudinary-video.component';
 import {CloudinaryVideo} from '@cloudinary/base';
+import { auto, vp9 } from '@cloudinary/base/qualifiers/videoCodec';
+import { videoCodec } from '@cloudinary/base/actions/transcode';
 
 const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo'});
 
@@ -54,17 +56,16 @@ describe('CloudinaryVideoComponent render', () => {
 
   it('should render video with input sources', fakeAsync(() => {
     component.cldVid = cloudinaryVideo;
-    // @ts-ignore
     component.sources = [
       {
         type: 'mp4',
         codecs: ['vp8', 'vorbis'],
-        videoCodec: 'auto'
+        transcode: videoCodec(auto())
       },
       {
         type: 'webm',
         codecs: ['avc1.4D401E', 'mp4a.40.2'],
-        videoCodec: 'vp9'
+        transcode: videoCodec(vp9())
       }];
 
     fixture.detectChanges();
