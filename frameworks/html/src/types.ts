@@ -1,5 +1,5 @@
-import type {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import type {ITranscodeAction} from "@cloudinary/base/actions/transcode";
+import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+import {VideoCodecAction} from "@cloudinary/base/actions/transcode/VideoCodecAction";
 
 export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState) => Promise<string | void>;
 
@@ -11,6 +11,6 @@ export type PlaceholderMode = 'vectorize' | 'pixelate' | 'blur' | 'predominant-c
 
 export type HtmlPluginState = { cleanupCallbacks: Function[], pluginEventSubscription: Function[] };
 
-export type VideoSources = {type: VideoType, codecs: Array<string>, transcode: ITranscodeAction}[] | undefined;
+export type VideoSources = {type: VideoType, codecs: Array<string>, transcode: VideoCodecAction}[] | undefined;
 
 export type VideoType = 'flv'|'3gp'|'mov'|'mpg'|'avi'|'wmv'|'ogv'|string;
