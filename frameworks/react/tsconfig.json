@@ -28,6 +28,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "importsNotUsedAsValues": "remove",        /* Dropping import statements which only reference types. */
     "types": ["jest", "node"]
   },
   "include": [
