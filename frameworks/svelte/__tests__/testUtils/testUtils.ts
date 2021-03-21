@@ -1,9 +1,9 @@
-import {tick} from "svelte";
-import {render, RenderResult} from '@testing-library/svelte'
-import {testWithMockedIntersectionObserver} from '../../../../testUtils/setupIntersectionObserverMock';
-import type {SvelteComponentDev} from "svelte/internal";
-import type {CloudinaryImage} from "@cloudinary/base";
-import type {Plugins} from "@cloudinary/html";
+import { tick } from "svelte";
+import { render, RenderResult } from '@testing-library/svelte'
+import { testWithMockedIntersectionObserver } from '../../../../testUtils/setupIntersectionObserverMock';
+import { SvelteComponentDev } from "svelte/internal";
+import { CloudinaryImage } from "@cloudinary/base";
+import { Plugins } from "@cloudinary/html";
 
 /**
  * Get element from container
@@ -40,7 +40,7 @@ const getImageAttr = (container: HTMLElement, attr: string): any => getElementAt
  * @param props
  * @return render result
  */
-const mount = async (cmp?: SvelteComponentDev, props?: any): Promise<RenderResult> => {
+const mount = async (cmp?: SvelteComponentDev | typeof SvelteComponentDev, props?: any): Promise<RenderResult> => {
   const result = cmp ? render(cmp as any, props) : {};
   await tick();
   return result as RenderResult;
