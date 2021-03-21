@@ -34,7 +34,7 @@ interface BaseVideoProps {
 }
 
 interface VideoProps extends BaseVideoProps {
-  innerRef?: ((instance: unknown) => void) | MutableRefObject<unknown> | null
+  innerRef?: ((instance: any) => void) | MutableRefObject<unknown> | null
 }
 
 /**
