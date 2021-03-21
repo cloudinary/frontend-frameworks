@@ -1,4 +1,4 @@
-import React, { Component, createRef, forwardRef } from 'react';
+import React, { Component, createRef } from 'react';
 import type { EventHandler, MutableRefObject, SyntheticEvent } from 'react';
 import type { CloudinaryVideo } from '@cloudinary/base';
 
@@ -11,10 +11,11 @@ import {
 
 type ReactEventHandler<T = Element> = EventHandler<SyntheticEvent<T>>;
 
-interface BaseVideoProps {
+interface VideoProps {
   cldVid: CloudinaryVideo,
   plugins?: Plugins,
   sources?: VideoSources,
+  innerRef?: ((instance: any) => void) | MutableRefObject<unknown> | null
 
   // supported video attributes
   controls?: boolean
@@ -31,10 +32,6 @@ interface BaseVideoProps {
   onPlaying?: ReactEventHandler<any>,
   onError?: ReactEventHandler<any>,
   onEnded?: ReactEventHandler<any>
-}
-
-interface VideoProps extends BaseVideoProps {
-  innerRef?: ((instance: any) => void) | MutableRefObject<unknown> | null
 }
 
 /**
@@ -153,15 +150,4 @@ class AdvancedVideo extends Component <VideoProps> {
   }
 }
 
-/**
- * Wrap AdvancedVideo with React.forwardRef in order to forward ref to the underlying html video element.
- * React forwardRef Docs:
- * https://reactjs.org/docs/forwarding-refs.html
- * How to use forwardRef in a class based component:
- * https://stackoverflow.com/questions/51526461/how-to-use-react-forwardref-in-a-class-based-component
- */
-const AdvancedVideoWithRef = forwardRef((props: BaseVideoProps, ref) => (
-  <AdvancedVideo innerRef={ref} {...props} />
-));
-
-export { AdvancedVideoWithRef as AdvancedVideo };
+export { AdvancedVideo };

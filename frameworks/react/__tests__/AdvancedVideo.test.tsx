@@ -117,9 +117,9 @@ describe('AdvancedVideo', () => {
     }, 0);// one tick
   });
 
-  it('Should support forwarding ref to underlying video element', () => {
+  it('Should support forwarding innerRef to underlying video element', () => {
     const myRef = React.createRef();
-    mount(<AdvancedVideo cldVid={cloudinaryVideo} ref={myRef} />);
+    mount(<AdvancedVideo cldVid={cloudinaryVideo} innerRef={myRef} />);
     const video: any = myRef.current;
 
     ['play', 'pause', 'canPlayType', 'addTextTrack'].forEach((func) => {
