@@ -26,9 +26,9 @@ describe('responsive', () => {
       advancedImgProps: {plugins: [responsive()]}
     });
 
-    let el = dispatchResize(container, 100);
+    const el = dispatchResize(container, 100);
     await waitForExpect(() => {
-      expect(el.clientWidth).toBe(100);
+      expect(el && el.clientWidth).toBe(100);
     });
   });
 
