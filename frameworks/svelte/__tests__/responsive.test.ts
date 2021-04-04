@@ -3,7 +3,7 @@ import { crop } from '@cloudinary/base/actions/resize';
 import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 import {responsive} from '../src/index';
 import {default as MockWrapper} from './testUtils/ResponsiveHelperWrapper.svelte';
-import {getImageAttr, mount, getElement, dispatchResize} from "./testUtils/testUtils";
+import {getImageAttr, mount, getElement, dispatchResize, resizeContainer} from "./testUtils/testUtils";
 
 const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'});
 
@@ -14,9 +14,8 @@ describe('responsive', () => {
       advancedImgProps: {plugins: [responsive()]}
     });
 
-    const el = getElement(container, '#wrapper');
     await waitForExpect(() => {
-      expect(el.clientWidth).toBe(250);
+      expect(getElement(container, '#wrapper').clientWidth).toBe(250);
     });
   });
 
@@ -26,9 +25,10 @@ describe('responsive', () => {
       advancedImgProps: {plugins: [responsive()]}
     });
 
-    let el = dispatchResize(container, 100);
+    resizeContainer(container, 100);
+
     await waitForExpect(() => {
-      expect(el.clientWidth).toBe(100);
+      expect(getElement(container, '#wrapper').clientWidth).toBe(100);
     });
   });
 
@@ -58,7 +58,7 @@ describe('responsive', () => {
     });
 
     // simulate resize to 975
-    dispatchResize(container, 975);
+    resizeContainer(container, 975);
 
     await waitForExpect(() => {
       expect(getImageAttr(container, 'src')).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_1000/sample');
@@ -71,7 +71,7 @@ describe('responsive', () => {
       advancedImgProps: {plugins: [responsive([800, 1000, 1200, 3000])]}
     });
 
-    dispatchResize(container, 4000);
+    resizeContainer(container, 4000);
 
     await waitForExpect(() => {
       expect(getImageAttr(container, 'src')).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample');
@@ -84,7 +84,7 @@ describe('responsive', () => {
       advancedImgProps: {plugins: [responsive([1000, 800, 3000, 1200])]}
     });
 
-    dispatchResize(container, 5000);
+    resizeContainer(container, 5000);
 
     await waitForExpect(() => {
       expect(getImageAttr(container, 'src')).toBe('https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample');
