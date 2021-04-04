@@ -60,34 +60,30 @@ const mountSSR = (cmp: SvelteComponentDev | typeof SvelteComponentDev, props?: {
 };
 
 /**
+ * Dispatched a window resize event
+ */
+const dispatchResize = () => {
+  window.dispatchEvent(new Event('resize'));
+};
+
+/**
  * Resize given element and dispatch a window resize event
  * @param element to resize
  * @param width to set element's clientWidth to
- * @return the modified element
  */
-const resizeElement = (element?: HTMLElement, width?: number) => {
-  if (element) {
-    Object.defineProperty(element, 'clientWidth', {value: width, configurable: true});
-  }
-  window.dispatchEvent(new Event('resize'));
-
-  return element;
-}
+const resizeElement = (element: HTMLElement, width?: number) => {
+  Object.defineProperty(element, 'clientWidth', {value: width, configurable: true});
+  dispatchResize();
+};
 
 /**
- * Util function used to dispatch a resize event used in the responsive tests
- * Resize #wrapper in given svelte container to given width and dispatch a window resize event.
- * @param container
- * @param width
- * @return the modified element
+ * Resize given container and dispatch a resize event
+ * @param container to resize
+ * @param width to set element's clientWidth to
  */
-const dispatchResize = (container?: any, width?: number) => {
-  if (container) {
-    return resizeElement(getElement(container, '#wrapper'), width);
-  }
-
-  return resizeElement();
-}
+const resizeContainer = (container: any, width?: number) => {
+  resizeElement(getElement(container, '#wrapper'), width);
+};
 
 export {
   testWithMockedIntersectionObserver,
@@ -97,5 +93,6 @@ export {
   getElementAttr,
   mount,
   mountSSR,
-  dispatchResize
+  dispatchResize,
+  resizeContainer
 };
