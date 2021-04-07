@@ -1,7 +1,7 @@
 # React-library
 
 ## Overview
-This is our react library. The objective of this layer is to use our html
+This is our React library. The objective of this layer is to use our html
 library to render an image.
 
 ## Install
@@ -28,8 +28,8 @@ import { AdvancedImage } from '@cloudinary/react'
 import {CloudinaryImage} from '@cloudinary/base';
 
 let img = new CloudinaryImage()
- * const myCld = new Cloudinary({ cloudName: 'demo'});
- * let img = myCld().image('sample');
+const myCld = new Cloudinary({ cloudName: 'demo'});
+let img = myCld().image('sample');
 
 const App = () => {
   return <AdvancedImage cldImg={img}/>
