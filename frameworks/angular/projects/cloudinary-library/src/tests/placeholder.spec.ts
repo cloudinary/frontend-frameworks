@@ -4,7 +4,7 @@ import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 import {placeholder} from '../public_api';
 import {PLACEHOLDER_IMAGE_OPTIONS, singleTransparentPixel} from '../../../../../html/src/utils/internalConstants';
 
-const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'}, { analytics: false });
 
 describe('placeholder', () => {
   const mockImage = {

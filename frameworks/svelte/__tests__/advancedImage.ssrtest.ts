@@ -4,7 +4,7 @@ import {AdvancedImage, accessibility, placeholder, responsive, lazyload} from ".
 import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 import {mountSSR} from "./testUtils/testUtils";
 
-const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'});
+const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'}, { analytics: false });
 
 /**
  * Test server side rendering:
