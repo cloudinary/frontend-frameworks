@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import React from 'react';
 import testWithMockedIntersectionObserver from './testUtils/setupIntersectionObserverMock';
 
-const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' });
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 
 describe('lazy-load', () => {
   it('should not have src pre-scroll', async function() {

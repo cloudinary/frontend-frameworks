@@ -5,7 +5,7 @@ import {responsive} from '../src/index';
 import {default as MockWrapper} from './testUtils/ResponsiveHelperWrapper.svelte';
 import {getImageAttr, mount, getElement, dispatchResize, resizeContainer} from "./testUtils/testUtils";
 
-const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'});
+const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'}, { analytics: false });
 
 describe('responsive', () => {
   it('should apply initial container width (default 250)', async () => {

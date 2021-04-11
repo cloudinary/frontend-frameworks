@@ -5,6 +5,7 @@ import svelte from 'rollup-plugin-svelte';
 import sveltePreprocess from 'svelte-preprocess';
 import {terser} from 'rollup-plugin-terser';
 import autoExternal from 'rollup-plugin-auto-external';
+import pluginJSON from '@rollup/plugin-json';
 const preprocessOptions = require("./svelte.config").preprocessOptions;
 
 import pkg from './package.json';
@@ -37,6 +38,7 @@ export default {
     },
   ],
   plugins: [
+    pluginJSON(),
     autoExternal(),
     commonjs(),
     typescript(),

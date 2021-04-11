@@ -2,7 +2,7 @@ import {AdvancedImage} from '../src/index';
 import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 import {getImageAttr, getImageElement, mount} from "./testUtils/testUtils";
 
-const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'});
+const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'}, { analytics: false });
 
 describe('AdvancedImage', () => {
   it('is truthy', () => {
