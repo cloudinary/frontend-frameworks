@@ -4,7 +4,7 @@ import {getImageAttr, mount} from "./testUtils/testUtils";
 import {PLACEHOLDER_IMAGE_OPTIONS} from '../../html/src/utils/internalConstants';
 import {sepia} from '@cloudinary/base/actions/effect';
 
-const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'});
+const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'}, { analytics: false });
 const {blur, vectorize, pixelate} = PLACEHOLDER_IMAGE_OPTIONS;
 const predominantColor = PLACEHOLDER_IMAGE_OPTIONS['predominant-color'];
 const cldImg = cloudinaryImage;

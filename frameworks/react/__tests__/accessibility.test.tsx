@@ -3,7 +3,7 @@ import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 import { mount } from 'enzyme';
 import React from 'react';
 
-const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' });
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 
 describe('accessibility', () => {
   it('should apply default', function (done) {

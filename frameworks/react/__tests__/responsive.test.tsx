@@ -7,7 +7,7 @@ import { crop } from '@cloudinary/base/actions/resize';
 import { dispatchResize } from './testUtils/dispatchResize';
 import FakeTimers from '@sinonjs/fake-timers'
 
-const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' });
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 
 describe('responsive', () => {
   let clock:any;

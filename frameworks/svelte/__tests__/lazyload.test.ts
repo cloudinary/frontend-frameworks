@@ -4,7 +4,7 @@ import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
 import {getImageAttr, mount, testWithMockedIntersectionObserver} from "./testUtils/testUtils";
 import waitForExpect from 'wait-for-expect';
 
-const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'});
+const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'}, { analytics: false });
 
 
 // Mock the intersectionObserver

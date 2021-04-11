@@ -16,7 +16,7 @@ describe('placeholder', () => {
   beforeEach(() => {
     // @ts-ignore
     window.Image = function() { return mockImage };
-    cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' });
+    cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
   });
   it('should apply default', function (done) {
     const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder()]} />);

@@ -4,7 +4,7 @@ import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 import {responsive} from '../public_api';
 import {dispatchResize} from '../testUtils/dispatchResize';
 
-const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'}, { analytics: false });
 
 describe('responsive', () => {
   let component: CloudinaryImageComponent;

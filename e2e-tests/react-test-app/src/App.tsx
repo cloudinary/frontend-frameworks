@@ -12,7 +12,7 @@ const tests = [
 ];
 
 const App = () => {
-  let img = new CloudinaryImage('sample', {cloudName: 'demo'});
+  let img = new CloudinaryImage('sample', {cloudName: 'demo'}, { analytics: false });
   const [test, setTest]: [any, any] = useState(0);
 
   const Buttons = () => (
