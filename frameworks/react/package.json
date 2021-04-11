@@ -14,7 +14,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "npm run build --prefix ../html && microbundle --format esm,umd,cjs --jsx React.createElement && cp package.json ./dist",
+    "build": "npm run build --prefix ../html && microbundle --format esm,umd,cjs --jsx React.createElement --compress false && cp package.json ./dist",
     "start": "microbundle watch --no-compress --format modern,cjs",
     "test": "jest",
     "test-coverage": "jest --coverage"
