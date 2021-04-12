@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testin
 import { CloudinaryImageComponent } from '../lib/cloudinary-image.component';
 import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 
-const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'}, { analytics: false });
 
 describe('CloudinaryImageComponent render', () => {
   let component: CloudinaryImageComponent;

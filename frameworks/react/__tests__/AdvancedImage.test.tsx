@@ -3,7 +3,7 @@ import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 import { mount } from 'enzyme';
 import React from 'react';
 
-const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' });
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 
 describe('AdvancedImage', () => {
   it('is truthy', () => {
@@ -29,7 +29,7 @@ describe('AdvancedImage', () => {
     const component = mount(
       <AdvancedImage
         cldImg={cloudinaryImage}
-        plugins={[(_element: HTMLImageElement, _cldImage: CloudinaryImage, htmlPluginState: any) => {
+        plugins={[(_element: HTMLImageElement | HTMLVideoElement, _cldImage: CloudinaryImage, htmlPluginState: any) => {
           return new Promise((resolve) => {
             htmlPluginState.cleanupCallbacks.push(() => {
               resolve('canceled');
