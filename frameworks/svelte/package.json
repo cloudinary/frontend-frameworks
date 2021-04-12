@@ -20,7 +20,7 @@
   "scripts": {
     "dev": "rollup -c -w",
     "svelte-check": "svelte-check",
-    "build": "npm run build --prefix ../html && rollup -c",
+    "build": "npm run build --prefix ../html && rollup -c && cp package.json ./dist",
     "test": "npm run test:unit && npm run test:ssr",
     "test:unit": "jest",
     "test:ssr": "jest -c jest-ssr.config.json",
@@ -66,6 +66,6 @@
     "@rollup/plugin-json": "^4.1.0"
   },
   "dependencies": {
-    "@cloudinary/html": "1.0.0-beta.1"
+    "@cloudinary/html": "1.0.0-beta.2"
   }
 }
