@@ -22,7 +22,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "clean-install": "npm uninstall @cloudinary/react && npm install cloudinary-react.tgz && npm install",
-    "postclean-install": "del-cli node_modules/@cloudinary/html",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
