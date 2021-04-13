@@ -27,6 +27,10 @@
     "scripts" : [
       "./injectVersionSemver.js"
     ],
+    "analytics" : {
+      "ua": "UA-25966579-7",
+      "domain" : "cloudinary.com"
+    },
     "search": false,
     "monospaceLinks": true,
     "systemColor": "#3448C5",
