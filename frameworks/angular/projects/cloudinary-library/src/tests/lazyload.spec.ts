@@ -3,7 +3,7 @@ import { CloudinaryImageComponent } from '../lib/cloudinary-image.component';
 import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 import {lazyload} from '../public_api';
 
-const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'});
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo'}, { analytics: false });
 
 describe('lazyload', () => {
   let component: CloudinaryImageComponent;

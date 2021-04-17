@@ -6,7 +6,7 @@ import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 import React from 'react';
 import { renderToString } from 'react-dom/server'
 
-const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' });
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 
 describe('ssr', () => {
   it('should render accessibility transformation with accessibility', function (done) {

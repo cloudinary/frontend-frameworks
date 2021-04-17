@@ -5,7 +5,7 @@ import React from 'react';
 import { auto, vp9 } from '@cloudinary/base/qualifiers/videoCodec';
 import { videoCodec } from '@cloudinary/base/actions/transcode';
 
-const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo' });
+const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo' }, { analytics: false });
 
 describe('AdvancedVideo', () => {
   it('should render video with default sources', function (done) {

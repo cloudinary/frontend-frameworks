@@ -4,7 +4,7 @@ import {CloudinaryVideo} from '@cloudinary/base';
 import { auto, vp9 } from '@cloudinary/base/qualifiers/videoCodec';
 import { videoCodec } from '@cloudinary/base/actions/transcode';
 
-const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo'});
+const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo'}, { analytics: false });
 
 describe('CloudinaryVideoComponent render', () => {
   let component: CloudinaryVideoComponent;

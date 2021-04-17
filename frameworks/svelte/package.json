@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/svelte",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.3",
   "description": "A Svelte component library for Cloudinary",
   "author": "Cloudinary",
   "homepage": "https://cloudinary.com",
@@ -20,7 +20,7 @@
   "scripts": {
     "dev": "rollup -c -w",
     "svelte-check": "svelte-check",
-    "build": "npm run build --prefix ../html && rollup -c",
+    "build": "npm run build --prefix ../html && rollup -c && cp package.json ./dist",
     "test": "npm run test:unit && npm run test:ssr",
     "test:unit": "jest",
     "test:ssr": "jest -c jest-ssr.config.json",
@@ -38,7 +38,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-typescript": "^7.12.13",
-    "@cloudinary/base": "^1.0.0-beta.1",
+    "@cloudinary/base": "^1.0.0-beta.2",
     "@rollup/plugin-commonjs": "^15.1.0",
     "@rollup/plugin-node-resolve": "^11.1.1",
     "@rollup/plugin-typescript": "^6.1.0",
@@ -62,9 +62,10 @@
     "ts-jest": "^26.5.0",
     "tslib": "^2.1.0",
     "typescript": "^3.9.7",
-    "wait-for-expect": "^3.0.2"
+    "wait-for-expect": "^3.0.2",
+    "@rollup/plugin-json": "^4.1.0"
   },
   "dependencies": {
-    "@cloudinary/html": "1.0.0-alpha.4"
+    "@cloudinary/html": "1.0.0-beta.2"
   }
 }
