@@ -4,14 +4,22 @@
   "description": "",
   "main": "wdio.conf.js",
   "scripts": {
+    "test": "npm run setChromeDriverVersion && tsc && wdio ./wdio.conf.js",
+
     "pack:react-sdk": "cd ../frameworks/react && npm run build && npm pack",
     "cpy-react-sdk": "cpy ../frameworks/react/cloudinary-react-*.tgz ./react-test-app --rename=cloudinary-react.tgz",
     "build:react-test-app": "cd react-test-app && npm run clean-install && npm run build",
     "serve:react-test-app": "ws --directory react-test-app/build",
     "prepare:react": "npm run pack:react-sdk && npm run cpy-react-sdk && npm run build:react-test-app && npm run serve:react-test-app",
     "setChromeDriverVersion": "./scripts/setChromeDriverVersion.sh",
-    "test": "npm run setChromeDriverVersion && tsc && wdio ./wdio.conf.js",
-    "start-server-and-test:react": "WAIT_ON_TIMEOUT=600000 start-server-and-test prepare:react http://127.0.0.1:8000 test"
+    "start-server-and-test:react": "WAIT_ON_TIMEOUT=600000 start-server-and-test prepare:react http://127.0.0.1:8000 test",
+
+    "pack:vue-sdk": "cd ../frameworks/vue/vue3 && npm run build && npm pack",
+    "cpy-vue-sdk": "cpy ../frameworks/vue/vue3/cloudinary-vue-*.tgz ./vue3-test-app --rename=cloudinary-vue.tgz",
+    "build:vue-test-app": "cd vue3-test-app && npm run clean-install && npm run build",
+    "serve:vue-test-app": "ws --directory vue3-test-app/dist",
+    "prepare:vue": "npm run pack:vue-sdk && npm run cpy-vue-sdk && npm run build:vue-test-app && npm run serve:vue-test-app",
+    "start-server-and-test:vue": "WAIT_ON_TIMEOUT=600000 start-server-and-test prepare:vue http://127.0.0.1:8000 test"
   },
   "keywords": [],
   "author": "",
