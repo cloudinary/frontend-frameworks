@@ -9,6 +9,8 @@ const data = `
 $('footer').append($('<div/>').html('SDK Version - <b>${pkg.version}</b>'));
 var content = $('.branding-logo').html();
 $('.branding-logo').html(content + ' - ${pkg.version}');
+
+$('.copyright').html('Copyright © ' + new Date().getFullYear()  + ' Cloudinary.com');
 `;
 fs.writeFileSync('__DOC_RESOURCES__/injectVersionSemver.js', data);
 
