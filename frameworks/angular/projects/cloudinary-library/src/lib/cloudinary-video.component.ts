@@ -51,8 +51,8 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges {
 
   @Input('cldVid') cldVid: CloudinaryVideo;
   @Input('sources') sources: VideoSources;
-  @Input('poster') poster: string;
   @Input('plugins') plugins: Plugins;
+  @Input('poster') poster: string;
 
   // Event emitters
   @Output() play: EventEmitter<any> = new EventEmitter();
@@ -61,40 +61,27 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges {
   @Output() error: EventEmitter<any> = new EventEmitter();
   @Output() ended: EventEmitter<any> = new EventEmitter();
 
+  // supported video attributes
+  controls = this.el.nativeElement.attributes.controls;
+  loop = this.el.nativeElement.attributes.loop;
+  muted = this.el.nativeElement.attributes.muted;
+  preload = this.el.nativeElement.attributes.preload;
+  autoPlay = this.el.nativeElement.attributes.autoplay;
+  playsInline = this.el.nativeElement.attributes.playsInline;
 
   private htmlVideoLayerInstance: HtmlVideoLayer;
-  private videoAttributes: {
-    controls: string;
-    loop: string;
-    muted: string;
-    poster: string;
-    preload: string;
-    autoplay: string;
-    playsinline: string;
-  };
 
   /**
    * On init creates a new HTMLVideoLayer instance and initialises with ref to video element,
    * user generated cloudinaryVideo and the plugins to be used
    */
   ngOnInit() {
-    // Supported video attributes taken from <advanced-video> and stored to be used in the inner <video> element
-    this.videoAttributes = {
-      controls: this.el.nativeElement.attributes.controls,
-      loop: this.el.nativeElement.attributes.loop,
-      muted: this.el.nativeElement.attributes.muted,
-      poster: this.poster,
-      preload: this.el.nativeElement.attributes.preload,
-      autoplay: this.el.nativeElement.attributes.autoplay,
-      playsinline: this.el.nativeElement.attributes.playsinline
-    };
-
     this.htmlVideoLayerInstance = new HtmlVideoLayer(
       this.el.nativeElement.children[0],
       this.cldVid,
       this.sources,
       this.plugins,
-      this.videoAttributes
+      this.getVideoAttributes()
       );
   }
 
@@ -105,8 +92,23 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges {
   ngOnChanges() {
     if (this.htmlVideoLayerInstance) {
       cancelCurrentlyRunningPlugins(this.htmlVideoLayerInstance.htmlPluginState);
-      this.htmlVideoLayerInstance.update(this.cldVid, this.sources, this.plugins, this.videoAttributes);
+      this.htmlVideoLayerInstance.update(this.cldVid, this.sources, this.plugins, this.getVideoAttributes());
     }
+  }
+
+  /**
+   * returns video attributes
+   */
+  getVideoAttributes() {
+    return {
+      controls: this.controls,
+      loop: this.loop,
+      muted: this.muted,
+      poster: this.poster,
+      preload: this.preload,
+      autoplay: this.autoPlay,
+      playsinline: this.playsInline
+    };
   }
 
   emitPlayEvent() {
