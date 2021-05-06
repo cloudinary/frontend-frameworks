@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ElementRef, EventEmitter, Output, OnChanges} from '@angular/core';
+import {Component, OnInit, Input, ElementRef, EventEmitter, Output, OnChanges, OnDestroy} from '@angular/core';
 import {CloudinaryVideo} from '@cloudinary/base';
 import {
   cancelCurrentlyRunningPlugins,
@@ -46,7 +46,7 @@ import {
                     (ended)="emitEndedEvent">
             </video>`,
 })
-export class CloudinaryVideoComponent implements OnInit, OnChanges {
+export class CloudinaryVideoComponent implements OnInit, OnChanges, OnDestroy {
   constructor(private el: ElementRef) { }
 
   @Input('cldVid') cldVid: CloudinaryVideo;
@@ -94,6 +94,14 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges {
       cancelCurrentlyRunningPlugins(this.htmlVideoLayerInstance.htmlPluginState);
       this.htmlVideoLayerInstance.update(this.cldVid, this.sources, this.plugins, this.getVideoAttributes());
     }
+  }
+
+  /**
+   * On destroy we cancel the currently running plugins
+   */
+  ngOnDestroy() {
+    // safely cancel running events on destroy
+    cancelCurrentlyRunningPlugins(this.htmlVideoLayerInstance.htmlPluginState);
   }
 
   /**
