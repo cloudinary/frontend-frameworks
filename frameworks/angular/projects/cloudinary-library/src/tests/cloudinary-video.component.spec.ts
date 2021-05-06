@@ -116,6 +116,41 @@ describe('CloudinaryVideoComponent render', () => {
 
     expect(component.emitPlayEvent).toHaveBeenCalled();
   }));
+
+  it('ngOnChanges on video should trigger plugin rerun', fakeAsync(() => {
+    component.cldVid = cloudinaryVideo;
+    const mockPlugin = jasmine.createSpy('spy');
+    component.plugins = [mockPlugin];
+    fixture.detectChanges();
+    tick(0);
+
+    // plugins called once
+    expect(mockPlugin).toHaveBeenCalledTimes(1);
+
+    // trigger ngOnChanges
+    component.cldVid =  new CloudinaryVideo('dog', { cloudName: 'demo'}, { analytics: false });
+    component.ngOnChanges();
+
+    // plugins should be called twice after onChange
+    expect(mockPlugin).toHaveBeenCalledTimes(2);
+  }));
+
+  it('should resolve with a cancel on destroy', fakeAsync(() => {
+    component.cldVid = cloudinaryVideo;
+    component.plugins = [(_element: HTMLImageElement | HTMLVideoElement, _cldImage: CloudinaryVideo, htmlPluginState: any) => {
+      return new Promise((resolve) => {
+        htmlPluginState.cleanupCallbacks.push(() => {
+          resolve('canceled');
+        });
+      }).then((res) => {
+        expect(res).toBe('canceled');
+      });
+    }];
+    fixture.detectChanges();
+    tick(0);
+
+    component.ngOnDestroy();
+  }));
 });
 
 
