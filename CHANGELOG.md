@@ -1,3 +1,18 @@
+1.0.0-beta.4 / 2021-05-09
+==================
+
+New functionality
+-----------------
+  * align video attributes in React and Angular(#77)
+  * Added ondestroy lifecycle hook to video component (#78)
+
+Other changes
+-----------------
+  * Disable package-lock generation by adding .npmrc config
+  * Feature/add vue sdk infrastructure (#74)
+  * Add dynamic copy right date (#76)
+
+
 1.0.0-beta.3 / 2021-04-12
 ==================
 
