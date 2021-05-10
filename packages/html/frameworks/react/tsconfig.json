@@ -36,7 +36,7 @@
   "exclude": [
     "node_modules",
     "dist",
-    "example",
+    "playground",
     "__tests__"
   ]
 }

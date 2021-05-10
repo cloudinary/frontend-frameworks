@@ -1,4 +1,4 @@
-This example was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is our React playground and can be used to test library.
 
 It is linked to the @cloudinary/react package in the parent directory for development purposes.
 
