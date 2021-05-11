@@ -30,10 +30,6 @@
     "svelte",
     "cloudinary"
   ],
-  "files": [
-    "src",
-    "dist"
-  ],
   "types": "dist/index.d.ts",
   "devDependencies": {
     "@babel/preset-env": "^7.12.13",
