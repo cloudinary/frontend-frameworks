@@ -9,10 +9,10 @@
   "bugs": {
     "url": "https://github.com/cloudinary/frontend-frameworks/issues"
   },
-  "svelte": "dist/index.umd.js",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "umd": "./dist/index.umd.js",
+  "svelte": "./index.umd.js",
+  "main": "./index.js",
+  "module": "./index.js",
+  "umd": "./index.umd.js",
   "sideEffects": false,
   "engines": {
     "node": ">=10"
@@ -29,10 +29,6 @@
   "keywords": [
     "svelte",
     "cloudinary"
-  ],
-  "files": [
-    "src",
-    "dist"
   ],
   "types": "dist/index.d.ts",
   "devDependencies": {
