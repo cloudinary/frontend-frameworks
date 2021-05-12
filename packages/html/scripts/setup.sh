@@ -1,4 +1,5 @@
-echo "***** Deleteing all node_modules modules *****"
+set -e
+echo "***** Deleting all node_modules modules *****"
 rm -rf node_modules
 rm -rf frameworks/react/node_modules
 rm -rf frameworks/html/node_modules
