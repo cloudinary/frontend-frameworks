@@ -20,7 +20,7 @@
   "scripts": {
     "dev": "rollup -c -w",
     "svelte-check": "svelte-check",
-    "build": "npm run build --prefix ../html && rollup -c && cp package.json ./dist",
+    "build": "npm run build --prefix ../html && rollup -c",
     "test": "npm run test:unit && npm run test:ssr",
     "test:unit": "jest",
     "test:ssr": "jest -c jest-ssr.config.json",
