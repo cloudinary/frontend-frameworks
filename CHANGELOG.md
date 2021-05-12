@@ -1,3 +1,11 @@
+1.0.0-beta.7 / 2021-05-12
+==================
+
+Other changes
+-----------------
+  * Fix svelte npm package file contents
+
+
 1.0.0-beta.6 / 2021-05-11
 ==================
 
