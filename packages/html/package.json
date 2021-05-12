@@ -1,6 +1,6 @@
 {
   "name": "frontend-frameworks-monorepo",
-  "version": "1.0.0-beta.6",
+  "version": "1.0.0-beta.7",
   "scripts": {
     "quickstart": "bash ./scripts/setup.sh",
     "test": "bash ./scripts/test.sh",
