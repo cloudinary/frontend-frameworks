@@ -14,3 +14,5 @@ export type HtmlPluginState = { cleanupCallbacks: Function[], pluginEventSubscri
 export type VideoSources = {type: VideoType, codecs: Array<string>, transcode: VideoCodecAction}[] | undefined;
 
 export type VideoType = 'flv'|'3gp'|'mov'|'mpg'|'avi'|'wmv'|'ogv'|string;
+
+export type PictureSources = {minWidth?: number, maxWidth?: number, image: CloudinaryImage, sizes?: string}[];
