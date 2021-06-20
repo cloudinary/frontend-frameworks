@@ -15,7 +15,7 @@ describe('AdvancedPicture', () => {
         cldImg={defualtImage} sources={[
           {
             minWidth: 500,
-            maxWidth: 500,
+            maxWidth: 800,
             image: smallImage,
             sizes: '80vw'
           }
@@ -25,7 +25,8 @@ describe('AdvancedPicture', () => {
       expect(component.html()).toContain(
         '<picture>' +
         '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
-        '<source srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog" sizes="80vw" media="(min-width: 500px) and (max-width: 500px)">' +
+        '<source srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog" sizes="80vw"' +
+        ' media="(min-width: 500px) and (max-width: 800px)">' +
         '</picture>');
       done();
     }, 0);// one tick
@@ -42,8 +43,8 @@ describe('AdvancedPicture', () => {
             sizes: '80vw'
           },
           {
-            minWidth: 2000,
-            maxWidth: 1000,
+            minWidth: 1000,
+            maxWidth: 2000,
             image: largeImage,
             sizes: '80vw'
           }
@@ -56,7 +57,7 @@ describe('AdvancedPicture', () => {
         '<source srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog" sizes="80vw"' +
         ' media="(min-width: 500px) and (max-width: 700px)">' +
         '<source srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_1000/woman" sizes="80vw"' +
-        ' media="(min-width: 2000px) and (max-width: 1000px)">' +
+        ' media="(min-width: 1000px) and (max-width: 2000px)">' +
         '</picture>');
       done();
     }, 0);// one tick
