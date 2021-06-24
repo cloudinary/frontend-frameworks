@@ -3,13 +3,13 @@
   "version": "1.0.0-beta.8",
   "description": "An HTML wrapper for Cloudinary",
   "main": "dist/index.js",
-  "umd": "./dist/index.umd.js",
+  "umd": "dist/index.umd.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "scripts": {
-    "build": "npm run prepare-build && rollup -c",
+    "build": "tsc && npm run prepare-build && rollup -c",
     "prepare-build": "cp package.json ./dist"
   },
   "devDependencies": {
