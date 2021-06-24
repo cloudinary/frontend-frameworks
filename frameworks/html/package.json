@@ -9,7 +9,7 @@
   "sideEffects": false,
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm run prepare-build && rollup -c",
     "prepare-build": "cp package.json ./dist"
   },
   "devDependencies": {
