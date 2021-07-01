@@ -154,7 +154,7 @@ export class HtmlPictureLayer {
     }
 
     /**
-     * @description Returns size attribute
+     * @description Returns sizes attribute
      * @param sourceInput {PictureSource} Source input passed in by user.
      * @param relativeWidth {number} Floating point number from: 0 to 1. Default set to 1
      */
