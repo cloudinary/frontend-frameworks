@@ -1,10 +1,12 @@
-import { AdvancedImage, AdvancedPicture } from '../src';
+import { AdvancedPicture } from '../src';
 import { CloudinaryImage } from '@cloudinary/base';
 import { mount } from 'enzyme';
 import React from 'react';
 import { crop } from '@cloudinary/base/actions/resize';
+import { sepia } from '@cloudinary/base/actions/effect';
 
 const defualtImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
+const sepiaImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false }).effect(sepia());
 const smallImage = new CloudinaryImage('dog', { cloudName: 'demo' }, { analytics: false }).resize(crop(500));
 const largeImage = new CloudinaryImage('woman', { cloudName: 'demo' }, { analytics: false }).resize(crop(1000));
 
@@ -25,9 +27,10 @@ describe('AdvancedPicture', () => {
       expect(component.html()).toContain(
         '<picture>' +
         '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
-        '<source srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog" sizes="80vw"' +
-        ' media="(min-width: 500px) and (max-width: 800px)">' +
-        '</picture>');
+        '<source media="(min-width: 500px) and (max-width: 800px)" sizes="80vw" ' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog">' +
+        '</picture>'
+      );
       done();
     }, 0);// one tick
   });
@@ -54,11 +57,12 @@ describe('AdvancedPicture', () => {
       expect(component.html()).toContain(
         '<picture>' +
         '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
-        '<source srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog" sizes="80vw"' +
-        ' media="(min-width: 500px) and (max-width: 700px)">' +
-        '<source srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_1000/woman" sizes="80vw"' +
-        ' media="(min-width: 1000px) and (max-width: 2000px)">' +
-        '</picture>');
+        '<source media="(min-width: 500px) and (max-width: 700px)" sizes="80vw" ' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog">' +
+        '<source media="(min-width: 1000px) and (max-width: 2000px)" sizes="80vw" ' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_1000/woman">' +
+        '</picture>'
+      );
       done();
     }, 0);// one tick
   });
@@ -78,8 +82,7 @@ describe('AdvancedPicture', () => {
       expect(component.html()).toContain(
         '<picture>' +
         '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
-        '<source srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog" sizes="80vw" media="(min-width: 500px)">' +
-        '</picture>');
+        '<source media="(min-width: 500px)" sizes="80vw" srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog"></picture>');
       done();
     }, 0);// one tick
   });
@@ -98,10 +101,183 @@ describe('AdvancedPicture', () => {
     setTimeout(() => {
       expect(component.html()).toContain(
         '<picture>' +
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample"><source media="(max-width: 500px)" sizes="80vw" ' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog"></picture>');
+      done();
+    }, 0);// one tick
+  });
+
+  it('autoOptimalBreakpoints: should generate default srcset when min-width and max-width not provided',
+    function (done) {
+      const component = mount(
+        <AdvancedPicture
+          autoOptimalBreakpoints
+          cldImg={defualtImage}
+          sources={[
+            {
+              image: sepiaImage
+            }
+          ]}
+        />);
+      setTimeout(() => {
+        expect(component.html()).toContain('<picture>' +
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample"><source sizes="100vw" ' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_828/sample 828w,' +
+        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1366/sample 1366w,' +
+        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1536/sample 1536w,' +
+        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1920/sample 1920w,' +
+        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_3840/sample 3840w">' +
+        '</picture>'
+        );
+        done();
+      }, 0);// one tick
+    });
+
+  it('autoOptimalBreakpoints: should generate single src when min-width > max-width', function (done) {
+    const component = mount(
+      <AdvancedPicture
+        cldImg={defualtImage} sources={[
+          {
+            maxWidth: 500,
+            minWidth: 700,
+            image: smallImage
+          }
+        ]}
+      />);
+    setTimeout(() => {
+      expect(component.html()).toContain(
+        '<picture><img src="https://res.cloudinary.com/demo/image/upload/sample">' +
+        '<source media="(min-width: 700px) and (max-width: 500px)" sizes="100vw" ' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog"></picture>'
+      );
+      done();
+    }, 0);// one tick
+  });
+
+  it('autoOptimalBreakpoints: should produce single src when min-width = max-width', function (done) {
+    const component = mount(
+      <AdvancedPicture
+        autoOptimalBreakpoints
+        cldImg={defualtImage}
+        sources={[
+          {
+            minWidth: 2000,
+            maxWidth: 2000,
+            image: sepiaImage
+          }
+        ]}
+      />);
+    setTimeout(() => {
+      expect(component.html()).toContain('<picture>' +
         '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
-        '<source srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog" sizes="80vw"' +
-        ' media="(max-width: 500px)">' +
-        '</picture>');
+        '<source media="(min-width: 2000px) and (max-width: 2000px)" sizes="100vw" ' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_2000/sample 2000w"></picture>'
+      );
+      done();
+    }, 0);// one tick
+  });
+
+  it('autoOptimalBreakpoints: min-width and max-width above 768px', function (done) {
+    const component = mount(
+      <AdvancedPicture
+        autoOptimalBreakpoints
+        cldImg={defualtImage}
+        sources={[
+          {
+            minWidth: 1000,
+            maxWidth: 2000,
+            image: sepiaImage
+          }
+        ]}
+      />);
+    setTimeout(() => {
+      expect(component.html()).toContain('<picture>' +
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
+        '<source media="(min-width: 1000px) and (max-width: 2000px)" sizes="100vw" ' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1280/sample 1280w,' +
+        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1366/sample 1366w,' +
+        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1536/sample 1536w' +
+        ',https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1600/sample 1600w,' +
+        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1920/sample 1920w"></picture>'
+      );
+      done();
+    }, 0);// one tick
+  });
+
+  it('autoOptimalBreakpoints: min-width bellow 768px', function (done) {
+    const component = mount(
+      <AdvancedPicture
+        autoOptimalBreakpoints
+        cldImg={defualtImage}
+        sources={[
+          {
+            minWidth: 360,
+            maxWidth: 1700,
+            image: sepiaImage
+          }
+        ]}
+      />);
+    setTimeout(() => {
+      expect(component.html()).toContain('<picture>' +
+      '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
+      '<source media="(min-width: 360px) and (max-width: 1700px)" sizes="100vw" ' +
+      'srcset="https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_750/sample 750w,' +
+      'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_828/sample 828w,' +
+      'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1280/sample 1280w,' +
+      'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1366/sample 1366w,' +
+      'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1536/sample 1536w"></picture>'
+      );
+      done();
+    }, 0);// one tick
+  });
+
+  it('autoOptimalBreakpoints: should generate srcset using relative width', function (done) {
+    const component = mount(
+      <AdvancedPicture
+        autoOptimalBreakpoints
+        cldImg={defualtImage}
+        relativeWidth={0.2}
+        sources={[
+          {
+            minWidth: 375,
+            maxWidth: 414,
+            image: sepiaImage
+          }
+        ]}
+      />);
+    setTimeout(() => {
+      expect(component.html()).toContain('<picture>' +
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
+        '<source media="(min-width: 375px) and (max-width: 414px)" sizes="20vw" ' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_150/sample 150w,' +
+        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_166/sample 166w"></picture>'
+      );
+      done();
+    }, 0);// one tick
+  });
+
+  it('autoOptimalBreakpoints: replace dimensions when physical-min-width > physical-max-width', function (done) {
+    const component = mount(
+      <AdvancedPicture
+        autoOptimalBreakpoints
+        cldImg={defualtImage}
+        sources={[
+          {
+            minWidth: 750,
+            maxWidth: 1000,
+            image: sepiaImage
+          }
+        ]}
+      />);
+    setTimeout(() => {
+      expect(component.html()).toContain('<picture>' +
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
+        '<source media="(min-width: 750px) and (max-width: 1000px)" sizes="100vw" ' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1280/sample 1280w,' +
+        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1366/sample 1366w,' +
+        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1440/sample 1440w"></picture>'
+
+      );
       done();
     }, 0);// one tick
   });
