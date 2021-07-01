@@ -147,7 +147,7 @@ export class HtmlPictureLayer {
     }
 
     /**
-     * Returns size attribute
+     * Returns sizes attribute
      * @param sourceInput
      * @param relativeWidth
      */
