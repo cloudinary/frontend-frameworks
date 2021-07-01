@@ -2,19 +2,18 @@ import { AdvancedPicture } from '../src';
 import { CloudinaryImage } from '@cloudinary/base';
 import { mount } from 'enzyme';
 import React from 'react';
-import { crop } from '@cloudinary/base/actions/resize';
 import { sepia } from '@cloudinary/base/actions/effect';
 
-const defualtImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
+const defaultImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 const sepiaImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false }).effect(sepia());
-const smallImage = new CloudinaryImage('dog', { cloudName: 'demo' }, { analytics: false }).resize(crop(500));
-const largeImage = new CloudinaryImage('woman', { cloudName: 'demo' }, { analytics: false }).resize(crop(1000));
+const smallImage = new CloudinaryImage('dog', { cloudName: 'demo' }, { analytics: false });
+const largeImage = new CloudinaryImage('woman', { cloudName: 'demo' }, { analytics: false });
 
 describe('AdvancedPicture', () => {
   it('should render picture tag  with source', function (done) {
     const component = mount(
       <AdvancedPicture
-        cldImg={defualtImage} sources={[
+        cldImg={defaultImage} sources={[
           {
             minWidth: 500,
             maxWidth: 800,
@@ -28,7 +27,7 @@ describe('AdvancedPicture', () => {
         '<picture>' +
         '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
         '<source media="(min-width: 500px) and (max-width: 800px)" sizes="80vw" ' +
-        'srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog">' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/dog">' +
         '</picture>'
       );
       done();
@@ -38,7 +37,7 @@ describe('AdvancedPicture', () => {
   it('should render picture tag  with multiple sources', function (done) {
     const component = mount(
       <AdvancedPicture
-        cldImg={defualtImage} sources={[
+        cldImg={defaultImage} sources={[
           {
             minWidth: 500,
             maxWidth: 700,
@@ -58,9 +57,9 @@ describe('AdvancedPicture', () => {
         '<picture>' +
         '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
         '<source media="(min-width: 500px) and (max-width: 700px)" sizes="80vw" ' +
-        'srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog">' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/dog">' +
         '<source media="(min-width: 1000px) and (max-width: 2000px)" sizes="80vw" ' +
-        'srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_1000/woman">' +
+        'srcset="https://res.cloudinary.com/demo/image/upload/woman">' +
         '</picture>'
       );
       done();
@@ -70,7 +69,7 @@ describe('AdvancedPicture', () => {
   it('should render picture tag  with providing only minWidth', function (done) {
     const component = mount(
       <AdvancedPicture
-        cldImg={defualtImage} sources={[
+        cldImg={defaultImage} sources={[
           {
             minWidth: 500,
             image: smallImage,
@@ -82,7 +81,7 @@ describe('AdvancedPicture', () => {
       expect(component.html()).toContain(
         '<picture>' +
         '<img src="https://res.cloudinary.com/demo/image/upload/sample">' +
-        '<source media="(min-width: 500px)" sizes="80vw" srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog"></picture>');
+        '<source media="(min-width: 500px)" sizes="80vw" srcset="https://res.cloudinary.com/demo/image/upload/dog"></picture>');
       done();
     }, 0);// one tick
   });
@@ -90,7 +89,7 @@ describe('AdvancedPicture', () => {
   it('should render picture tag  with providing only maxWidth', function (done) {
     const component = mount(
       <AdvancedPicture
-        cldImg={defualtImage} sources={[
+        cldImg={defaultImage} sources={[
           {
             maxWidth: 500,
             image: smallImage,
@@ -102,7 +101,7 @@ describe('AdvancedPicture', () => {
       expect(component.html()).toContain(
         '<picture>' +
         '<img src="https://res.cloudinary.com/demo/image/upload/sample"><source media="(max-width: 500px)" sizes="80vw" ' +
-        'srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog"></picture>');
+        'srcset="https://res.cloudinary.com/demo/image/upload/dog"></picture>');
       done();
     }, 0);// one tick
   });
@@ -112,7 +111,7 @@ describe('AdvancedPicture', () => {
       const component = mount(
         <AdvancedPicture
           autoOptimalBreakpoints
-          cldImg={defualtImage}
+          cldImg={defaultImage}
           sources={[
             {
               image: sepiaImage
@@ -136,7 +135,7 @@ describe('AdvancedPicture', () => {
   it('autoOptimalBreakpoints: should generate single src when min-width > max-width', function (done) {
     const component = mount(
       <AdvancedPicture
-        cldImg={defualtImage} sources={[
+        cldImg={defaultImage} sources={[
           {
             maxWidth: 500,
             minWidth: 700,
@@ -148,7 +147,7 @@ describe('AdvancedPicture', () => {
       expect(component.html()).toContain(
         '<picture><img src="https://res.cloudinary.com/demo/image/upload/sample">' +
         '<source media="(min-width: 700px) and (max-width: 500px)" sizes="100vw" ' +
-        'srcset="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/dog"></picture>'
+        'srcset="https://res.cloudinary.com/demo/image/upload/dog"></picture>'
       );
       done();
     }, 0);// one tick
@@ -158,7 +157,7 @@ describe('AdvancedPicture', () => {
     const component = mount(
       <AdvancedPicture
         autoOptimalBreakpoints
-        cldImg={defualtImage}
+        cldImg={defaultImage}
         sources={[
           {
             minWidth: 2000,
@@ -181,7 +180,7 @@ describe('AdvancedPicture', () => {
     const component = mount(
       <AdvancedPicture
         autoOptimalBreakpoints
-        cldImg={defualtImage}
+        cldImg={defaultImage}
         sources={[
           {
             minWidth: 1000,
@@ -208,7 +207,7 @@ describe('AdvancedPicture', () => {
     const component = mount(
       <AdvancedPicture
         autoOptimalBreakpoints
-        cldImg={defualtImage}
+        cldImg={defaultImage}
         sources={[
           {
             minWidth: 360,
@@ -235,7 +234,7 @@ describe('AdvancedPicture', () => {
     const component = mount(
       <AdvancedPicture
         autoOptimalBreakpoints
-        cldImg={defualtImage}
+        cldImg={defaultImage}
         relativeWidth={0.2}
         sources={[
           {
@@ -260,7 +259,7 @@ describe('AdvancedPicture', () => {
     const component = mount(
       <AdvancedPicture
         autoOptimalBreakpoints
-        cldImg={defualtImage}
+        cldImg={defaultImage}
         sources={[
           {
             minWidth: 750,

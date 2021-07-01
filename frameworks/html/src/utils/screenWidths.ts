@@ -1,5 +1,5 @@
 /**
- * Predefined screen dimension table
+ * Predefined screen dimension table ordered by ranking
  */
 export const screeWidths = [
   1366,
