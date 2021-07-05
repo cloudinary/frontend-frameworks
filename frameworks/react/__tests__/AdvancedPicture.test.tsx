@@ -3,13 +3,19 @@ import { CloudinaryImage } from '@cloudinary/base';
 import { mount } from 'enzyme';
 import React from 'react';
 import { sepia } from '@cloudinary/base/actions/effect';
-
 const defaultImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 const sepiaImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false }).effect(sepia());
 const smallImage = new CloudinaryImage('dog', { cloudName: 'demo' }, { analytics: false });
 const largeImage = new CloudinaryImage('woman', { cloudName: 'demo' }, { analytics: false });
 
 describe('AdvancedPicture', () => {
+  beforeAll(() => {
+    jest.spyOn(global.console, 'error').mockImplementation(() => {});
+  });
+  afterAll(() => {
+    global.console.error.mockRestore();
+  });
+
   it('should render picture tag  with source', function (done) {
     const component = mount(
       <AdvancedPicture
@@ -106,9 +112,9 @@ describe('AdvancedPicture', () => {
     }, 0);// one tick
   });
 
-  it('autoOptimalBreakpoints: should generate default srcset when min-width and max-width not provided',
+  it('autoOptimalBreakpoints: console log error when min-width and max-width not provided',
     function (done) {
-      const component = mount(
+      mount(
         <AdvancedPicture
           autoOptimalBreakpoints
           cldImg={defaultImage}
@@ -119,22 +125,15 @@ describe('AdvancedPicture', () => {
           ]}
         />);
       setTimeout(() => {
-        expect(component.html()).toContain('<picture>' +
-        '<img src="https://res.cloudinary.com/demo/image/upload/sample"><source sizes="100vw" ' +
-        'srcset="https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_828/sample 828w,' +
-        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1366/sample 1366w,' +
-        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1536/sample 1536w,' +
-        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_1920/sample 1920w,' +
-        'https://res.cloudinary.com/demo/image/upload/e_sepia/c_scale,w_3840/sample 3840w">' +
-        '</picture>'
-        );
+        expect(console.error).toHaveBeenCalled();
         done();
       }, 0);// one tick
     });
 
-  it('autoOptimalBreakpoints: should generate single src when min-width > max-width', function (done) {
-    const component = mount(
+  it('autoOptimalBreakpoints: console log error when min-width > max-width', function (done) {
+    mount(
       <AdvancedPicture
+        autoOptimalBreakpoints
         cldImg={defaultImage} sources={[
           {
             maxWidth: 500,
@@ -144,11 +143,7 @@ describe('AdvancedPicture', () => {
         ]}
       />);
     setTimeout(() => {
-      expect(component.html()).toContain(
-        '<picture><img src="https://res.cloudinary.com/demo/image/upload/sample">' +
-        '<source media="(min-width: 700px) and (max-width: 500px)" sizes="100vw" ' +
-        'srcset="https://res.cloudinary.com/demo/image/upload/dog"></picture>'
-      );
+      expect(console.error).toHaveBeenCalled();
       done();
     }, 0);// one tick
   });

@@ -73,8 +73,11 @@ export class HtmlPictureLayer {
      * @param sourceInput {PictureSource} Source input passed in by user.
      */
     getBreakPoints(sourceInput: PictureSource){
+        if(!sourceInput.minWidth && !sourceInput.maxWidth){
+            console.error(`Invalid input: either maxWidth or minWidth is required`);
+        }
         if(sourceInput.minWidth > sourceInput.maxWidth){
-            return [sourceInput.minWidth];
+            console.error(`Invalid input: maxWidth must be greater than minWidth`);
         }
         const [physicalMinWidth, physicalMaxWidth] = this.getPhysicalDimension(sourceInput);
 
