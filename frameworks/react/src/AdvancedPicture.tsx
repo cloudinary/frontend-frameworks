@@ -8,6 +8,7 @@ import {
 
 interface PictureProps {
   cldImg: CloudinaryImage,
+  breakpoints?: number[],
   sources?: PictureSources,
   autoOptimalBreakpoints?: boolean,
   relativeWidth?: number
@@ -58,6 +59,7 @@ class AdvancedPicture extends React.Component <PictureProps> {
     this.htmlPictureLayerInstance = new HtmlPictureLayer(
       this.pictureRef.current,
       this.props.cldImg,
+      this.props.breakpoints,
       this.props.sources,
       this.props.autoOptimalBreakpoints,
       this.props.relativeWidth
@@ -72,6 +74,7 @@ class AdvancedPicture extends React.Component <PictureProps> {
     // call html layer to update the dom
     this.htmlPictureLayerInstance.update(
       this.props.cldImg,
+      this.props.breakpoints,
       this.props.sources,
       this.props.autoOptimalBreakpoints,
       this.props.relativeWidth
@@ -81,6 +84,7 @@ class AdvancedPicture extends React.Component <PictureProps> {
   render() {
     const {
       cldImg,
+      breakpoints,
       sources,
       autoOptimalBreakpoints,
       relativeWidth,
