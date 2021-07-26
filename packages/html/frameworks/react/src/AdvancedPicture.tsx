@@ -3,12 +3,15 @@ import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
 
 import {
   HtmlPictureLayer,
-  PictureSources,
+  PictureSources
 } from '@cloudinary/html'
 
 interface PictureProps {
   cldImg: CloudinaryImage,
-  sources: PictureSources,
+  breakpoints?: number[],
+  sources?: PictureSources,
+  autoOptimalBreakpoints?: boolean,
+  relativeWidth?: number
   [x: string]: any
 }
 
@@ -56,7 +59,10 @@ class AdvancedPicture extends React.Component <PictureProps> {
     this.htmlPictureLayerInstance = new HtmlPictureLayer(
       this.pictureRef.current,
       this.props.cldImg,
-      this.props.sources
+      this.props.breakpoints,
+      this.props.sources,
+      this.props.autoOptimalBreakpoints,
+      this.props.relativeWidth
     )
   }
 
@@ -66,13 +72,22 @@ class AdvancedPicture extends React.Component <PictureProps> {
    */
   componentDidUpdate() {
     // call html layer to update the dom
-    this.htmlPictureLayerInstance.update(this.props.cldImg, this.props.sources);
+    this.htmlPictureLayerInstance.update(
+      this.props.cldImg,
+      this.props.breakpoints,
+      this.props.sources,
+      this.props.autoOptimalBreakpoints,
+      this.props.relativeWidth
+    );
   }
 
   render() {
     const {
       cldImg,
+      breakpoints,
       sources,
+      autoOptimalBreakpoints,
+      relativeWidth,
       ...otherProps // Assume any other props are for the base element
     } = this.props;
     return <picture {...otherProps} ref={this.pictureRef} />
