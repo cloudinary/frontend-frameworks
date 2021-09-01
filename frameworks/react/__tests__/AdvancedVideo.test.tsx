@@ -1,9 +1,9 @@
 import { AdvancedVideo } from '../src';
-import { CloudinaryVideo } from '@cloudinary/base';
+import { CloudinaryVideo } from '@cloudinary/url-gen';
 import { mount } from 'enzyme';
 import React from 'react';
-import { auto, vp9 } from '@cloudinary/base/qualifiers/videoCodec';
-import { videoCodec } from '@cloudinary/base/actions/transcode';
+import { auto, vp9 } from '@cloudinary/url-gen/qualifiers/videoCodec';
+import { videoCodec } from '@cloudinary/url-gen/actions/transcode';
 
 const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo' }, { analytics: false });
 

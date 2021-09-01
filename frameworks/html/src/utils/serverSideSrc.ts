@@ -4,7 +4,7 @@
  * @param serverCloudinaryImage {CloudinaryImage}
  * @return {string} return the src
  */
-import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import cloneDeep from 'lodash/cloneDeep'
 import {Plugins} from "../types";
 

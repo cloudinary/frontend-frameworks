@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CloudinaryVideoComponent } from '../lib/cloudinary-video.component';
-import {CloudinaryVideo} from '@cloudinary/base';
-import { auto, vp9 } from '@cloudinary/base/qualifiers/videoCodec';
-import { videoCodec } from '@cloudinary/base/actions/transcode';
+import {CloudinaryVideo} from '@cloudinary/url-gen';
+import { auto, vp9 } from '@cloudinary/url-gen/qualifiers/videoCodec';
+import { videoCodec } from '@cloudinary/url-gen/actions/transcode';
 
 const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo'}, { analytics: false });
 

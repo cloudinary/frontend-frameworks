@@ -1,9 +1,9 @@
 import { AdvancedImage, placeholder } from '../src'
-import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
+import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
 import { PLACEHOLDER_IMAGE_OPTIONS } from '../../html/src/utils/internalConstants';
 import { mount } from 'enzyme';
 import React from 'react';
-import { sepia } from '@cloudinary/base/actions/effect';
+import { sepia } from '@cloudinary/url-gen/actions/effect';
 
 describe('placeholder', () => {
   let cloudinaryImage: CloudinaryImage;

@@ -34,10 +34,10 @@ import { CloudinaryModule} from '@cloudinary/angular';
 
 ```
  
- In your component.ts use `@cloudinary/base` to generate your transformations 
+ In your component.ts use `@cloudinary/url-gen` to generate your transformations 
  
  ```javascript
-import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
+import {CloudinaryImage} from '@cloudinary/url-gen/assets/CloudinaryImage';
 
 ...
   ngOnInit() {

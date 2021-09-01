@@ -23,7 +23,7 @@ npm i @cloudinary/vue
 
 <script>
     import {defineComponent} from 'vue';
-    import {CloudinaryImage} from "@cloudinary/base";
+    import {CloudinaryImage} from "@cloudinary/url-gen";
     import {AdvancedImage} from '@cloudinary/vue';
 
     export default defineComponent({

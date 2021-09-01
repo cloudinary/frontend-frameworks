@@ -1,8 +1,8 @@
 import {AdvancedImage, placeholder} from '../src/index';
-import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
+import {CloudinaryImage} from '@cloudinary/url-gen/assets/CloudinaryImage';
 import {getImageAttr, mount} from "./testUtils/testUtils";
 import {PLACEHOLDER_IMAGE_OPTIONS} from '../../html/src/utils/internalConstants';
-import {sepia} from '@cloudinary/base/actions/effect';
+import {sepia} from '@cloudinary/url-gen/actions/effect';
 
 const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'}, { analytics: false });
 const {blur, vectorize, pixelate} = PLACEHOLDER_IMAGE_OPTIONS;

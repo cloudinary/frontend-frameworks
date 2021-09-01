@@ -1,5 +1,5 @@
 import {Plugins, HtmlPluginState} from '../types'
-import {CloudinaryVideo, CloudinaryImage} from "@cloudinary/base";
+import {CloudinaryVideo, CloudinaryImage} from "@cloudinary/url-gen";
 
 /**
  * Iterate through plugins and break in cases where the response is canceled. The

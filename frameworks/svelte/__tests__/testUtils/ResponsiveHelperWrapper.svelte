@@ -4,7 +4,7 @@
   // so we create the AdvancedImage using cldImg & advancedImgProps props
 
   import {AdvancedImage} from '../../src/index';
-  import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
+  import {CloudinaryImage} from '@cloudinary/url-gen/assets/CloudinaryImage';
   import {onMount} from "svelte";
 
   const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'});

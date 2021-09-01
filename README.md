@@ -24,7 +24,7 @@ To get started, install the npm client package of your choice along with our bas
 For example, to use Cloudinary in a [React](https://cloudinary.com/documentation/react2_integration) environment, the following packages should be installed:
    
 ```bash
-npm i @cloudinary/react @cloudinary/base
+npm i @cloudinary/react @cloudinary/url-gen
 ```
 
 **Note**: To use [Angular](https://cloudinary.com/documentation/angular2_integration) install `@cloudinary/angular` 
@@ -39,11 +39,11 @@ For more information on React and other frameworks, navigate to the frameworks t
 // In this case, we import a Cloudinary image type and accessibility and responsive.
 
 import React, { Component } from 'react'
-import {Cloudinary} from "@cloudinary/base";
+import {Cloudinary} from "@cloudinary/url-gen";
 import { AdvancedImage, accessibility, responsive } from '@cloudinary/react';
 
 // Once per project/app - configure your instance,
-// See the documentation in @cloudinary/base for more information 
+// See the documentation in @cloudinary/url-gen for more information 
 const myCld = new Cloudinary({ cloudName: 'demo'});
 
 // render your component

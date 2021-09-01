@@ -14,7 +14,7 @@ npm i @cloudinary/svelte
 
 ```sveltehtml
 <script>
-    import {CloudinaryImage} from '@cloudinary/base';
+    import {CloudinaryImage} from '@cloudinary/url-gen';
     import { AdvancedImage } from '@cloudinary/svelte';
     const img = new CloudinaryImage('sample', {cloudName: 'demo'});
 </script>
