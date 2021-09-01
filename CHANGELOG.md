@@ -30,7 +30,7 @@ Other changes
   * Release pipeline testing
 
 
-1.0.0-beta.4 / 2021-05-09
+1.0.0-beta.5 / 2021-05-09
 ==================
 
 New functionality
