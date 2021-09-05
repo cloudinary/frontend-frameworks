@@ -1,8 +1,8 @@
 import { AdvancedPicture } from '../src';
-import { CloudinaryImage } from '@cloudinary/base';
+import { CloudinaryImage } from '@cloudinary/url-gen';
 import { mount } from 'enzyme';
 import React from 'react';
-import { sepia } from '@cloudinary/base/actions/effect';
+import { sepia } from '@cloudinary/url-gen/actions/effect';
 const defaultImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 const sepiaImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false }).effect(sepia());
 const smallImage = new CloudinaryImage('dog', { cloudName: 'demo' }, { analytics: false });

@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 import { AdvancedImage, placeholder, responsive, accessibility, lazyload } from '../src'
-import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
+import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
 import React from 'react';
 import { renderToString } from 'react-dom/server'
 

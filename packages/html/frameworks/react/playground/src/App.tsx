@@ -1,6 +1,6 @@
 import React from 'react'
 import { AdvancedImage, accessibility, responsive, lazyload, placeholder } from '@cloudinary/react';
-import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 
 
 //This is our playground and can be used to test library

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
+  import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
   import { afterUpdate, onDestroy } from 'svelte';
   import { HtmlImageLayer, isBrowser, serverSideSrc , cancelCurrentlyRunningPlugins} from '@cloudinary/html';
   import { Plugins } from '@cloudinary/html';
@@ -17,7 +17,7 @@
    *
    * <script>
    *
-   * import {CloudinaryImage} from '@cloudinary/base';
+   * import {CloudinaryImage} from '@cloudinary/url-gen';
    * import { AdvancedImage, accessibility, responsive, lazyload, placeholder } from '@cloudinary/svelte';
    *
    * const img = new CloudinaryImage('sample', {cloudName: 'demo'});

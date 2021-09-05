@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CloudinaryImageComponent } from '../lib/cloudinary-image.component';
-import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
+import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
 import {responsive} from '../public_api';
 import {dispatchResize} from '../testUtils/dispatchResize';
 

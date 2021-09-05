@@ -2,7 +2,7 @@
   // Helper wrapper for lazy load tests
 
   import {AdvancedImage, lazyload} from '../../src/index';
-  import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
+  import {CloudinaryImage} from '@cloudinary/url-gen/assets/CloudinaryImage';
 
   const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'});
 </script>

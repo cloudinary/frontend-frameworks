@@ -1,5 +1,5 @@
 import {AdvancedImage} from '../src/index';
-import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
+import {CloudinaryImage} from '@cloudinary/url-gen/assets/CloudinaryImage';
 import {getImageAttr, getImageElement, mount} from "./testUtils/testUtils";
 
 const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'}, { analytics: false });

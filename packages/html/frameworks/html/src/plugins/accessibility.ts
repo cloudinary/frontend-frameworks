@@ -1,4 +1,4 @@
-import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {Plugin, AccessibilityMode, HtmlPluginState} from "../types";
 import {ACCESSIBILITY_MODES} from '../utils/internalConstants';
 import {isBrowser} from "../utils/isBrowser";

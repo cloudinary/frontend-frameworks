@@ -2,7 +2,7 @@ import { tick } from "svelte";
 import { render, RenderResult } from '@testing-library/svelte'
 import { testWithMockedIntersectionObserver } from '../../../../testUtils/setupIntersectionObserverMock';
 import { SvelteComponentDev } from "svelte/internal";
-import { CloudinaryImage } from "@cloudinary/base";
+import { CloudinaryImage } from "@cloudinary/url-gen";
 import { Plugins } from "@cloudinary/html";
 
 /**

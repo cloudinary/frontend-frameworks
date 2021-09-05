@@ -1,6 +1,6 @@
 import React, {Fragment, useState} from 'react'
 import {AdvancedImage, responsive, placeholder} from '@cloudinary/react';
-import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 
 const tests = [
   'responsive',

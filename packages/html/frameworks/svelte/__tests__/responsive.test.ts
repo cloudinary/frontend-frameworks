@@ -1,6 +1,6 @@
 import waitForExpect from 'wait-for-expect';
-import { crop } from '@cloudinary/base/actions/resize';
-import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
+import { crop } from '@cloudinary/url-gen/actions/resize';
+import {CloudinaryImage} from '@cloudinary/url-gen/assets/CloudinaryImage';
 import {responsive} from '../src/index';
 import {default as MockWrapper} from './testUtils/ResponsiveHelperWrapper.svelte';
 import {getImageAttr, mount, getElement, dispatchResize, resizeContainer} from "./testUtils/testUtils";
