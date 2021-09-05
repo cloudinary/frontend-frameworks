@@ -1,6 +1,6 @@
 import {default as MockWrapper} from './testUtils/LazyLoadMockWrapper.svelte';
 import {AdvancedImage, lazyload} from '../src/index';
-import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
+import {CloudinaryImage} from '@cloudinary/url-gen/assets/CloudinaryImage';
 import {getImageAttr, mount, testWithMockedIntersectionObserver} from "./testUtils/testUtils";
 import waitForExpect from 'wait-for-expect';
 

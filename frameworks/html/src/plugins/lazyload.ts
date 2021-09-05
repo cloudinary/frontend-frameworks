@@ -1,4 +1,4 @@
-import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {Plugin, HtmlPluginState} from '../types'
 import {isBrowser} from "../utils/isBrowser";
 

@@ -1,4 +1,4 @@
-import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
+import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {Plugins, HtmlPluginState} from '../types'
 import cloneDeep from 'lodash/cloneDeep'
 import {render} from '../utils/render';

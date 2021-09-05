@@ -1,4 +1,4 @@
-import {CloudinaryImage} from "@cloudinary/base";
+import {CloudinaryImage} from "@cloudinary/url-gen";
 import {PictureSources, PictureSource} from '../types';
 import {HtmlPictureSourceLayer} from "./htmlPictureSourceLayer";
 

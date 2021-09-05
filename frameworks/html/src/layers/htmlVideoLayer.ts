@@ -1,6 +1,6 @@
 import {Plugins, HtmlPluginState, VideoSources, VideoType} from '../types'
 import cloneDeep from 'lodash/cloneDeep'
-import {CloudinaryVideo} from "@cloudinary/base";
+import {CloudinaryVideo} from "@cloudinary/url-gen";
 import {render} from '../utils/render';
 import {VIDEO_MIME_TYPES} from "../utils/internalConstants";
 

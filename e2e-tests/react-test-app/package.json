@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@cloudinary/base": "^1.0.0-beta.2",
+    "@cloudinary/url-gen": "^1.0.0-beta.5",
     "@cloudinary/react": "file:cloudinary-react.tgz",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

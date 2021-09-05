@@ -1,7 +1,7 @@
 require('svelte/register');
 import waitForExpect from 'wait-for-expect';
 import {AdvancedImage, accessibility, placeholder, responsive, lazyload} from "../src/index";
-import {CloudinaryImage} from '@cloudinary/base/assets/CloudinaryImage';
+import {CloudinaryImage} from '@cloudinary/url-gen/assets/CloudinaryImage';
 import {mountSSR} from "./testUtils/testUtils";
 
 const cloudinaryImage = new CloudinaryImage('sample', {cloudName: 'demo'}, { analytics: false });

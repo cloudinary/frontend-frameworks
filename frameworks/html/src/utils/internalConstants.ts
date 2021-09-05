@@ -1,14 +1,14 @@
-import {colorize, grayscale, assistColorBlind} from "@cloudinary/base/actions/effect";
-import {vectorize, pixelate, blur} from "@cloudinary/base/actions/effect";
-import {Transformation} from "@cloudinary/base/transformation/Transformation";
-import {pad, crop, fill} from "@cloudinary/base/actions/resize";
-import {Background} from "@cloudinary/base/qualifiers/background";
-import {compass} from "@cloudinary/base/qualifiers/gravity";
-import {northEast} from "@cloudinary/base/qualifiers/compass";
-import {format, quality} from "@cloudinary/base/actions/delivery";
-import {auto, svg} from "@cloudinary/base/qualifiers/format";
-import {VideoCodec} from "@cloudinary/base/qualifiers/videoCodec";
-import {videoCodec} from "@cloudinary/base/actions/transcode";
+import {colorize, grayscale, assistColorBlind} from "@cloudinary/url-gen/actions/effect";
+import {vectorize, pixelate, blur} from "@cloudinary/url-gen/actions/effect";
+import {Transformation} from "@cloudinary/url-gen/transformation/Transformation";
+import {pad, crop, fill} from "@cloudinary/url-gen/actions/resize";
+import {Background} from "@cloudinary/url-gen/qualifiers/background";
+import {compass} from "@cloudinary/url-gen/qualifiers/gravity";
+import {northEast} from "@cloudinary/url-gen/qualifiers/compass";
+import {format, quality} from "@cloudinary/url-gen/actions/delivery";
+import {auto, svg} from "@cloudinary/url-gen/qualifiers/format";
+import {VideoCodec} from "@cloudinary/url-gen/qualifiers/videoCodec";
+import {videoCodec} from "@cloudinary/url-gen/actions/transcode";
 
 /**
  * Predefined accessibility transformations

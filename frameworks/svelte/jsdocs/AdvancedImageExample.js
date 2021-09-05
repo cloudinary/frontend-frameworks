@@ -7,7 +7,7 @@
  *
  * <script>
  *
- * import {CloudinaryImage} from '@cloudinary/base';
+ * import {CloudinaryImage} from '@cloudinary/url-gen';
  * import { AdvancedImage, accessibility, responsive, lazyload, placeholder } from '@cloudinary/svelte';
  *
  * const img = new CloudinaryImage('sample', {cloudName: 'demo'});

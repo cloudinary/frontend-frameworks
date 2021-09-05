@@ -1,5 +1,5 @@
-import {CloudinaryImage} from "@cloudinary/base/assets/CloudinaryImage";
-import {VideoCodecAction} from "@cloudinary/base/actions/transcode/VideoCodecAction";
+import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
+import {VideoCodecAction} from "@cloudinary/url-gen/actions/transcode/VideoCodecAction";
 
 export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState) => Promise<string | void>;
 

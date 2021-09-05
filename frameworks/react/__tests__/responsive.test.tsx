@@ -1,9 +1,9 @@
 import { AdvancedImage, responsive } from '../src'
-import { CloudinaryImage } from '@cloudinary/base/assets/CloudinaryImage';
+import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
 import { mount } from 'enzyme';
 import React from 'react';
 import { ResponsiveHelper } from './testUtils/responsiveHelperWrapper';
-import { crop } from '@cloudinary/base/actions/resize';
+import { crop } from '@cloudinary/url-gen/actions/resize';
 import { dispatchResize } from './testUtils/dispatchResize';
 import FakeTimers from '@sinonjs/fake-timers'
 
