@@ -1,3 +1,14 @@
+1.0.0-beta.10 / 2021-09-14
+==================
+
+New functionality
+-----------------
+* added autoOptimalBreakpoints to picture tag (#86)
+
+Other changes
+-----------------
+* changed to url-gen package name (#94)
+
 1.0.0-beta.9 / 2021-07-04
 ==================
 
