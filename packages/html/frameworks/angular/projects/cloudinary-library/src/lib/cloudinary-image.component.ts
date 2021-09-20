@@ -8,7 +8,7 @@ import {
 
 /**
  * @mixin AngularSDK
- * @description The Coudinday Angular SDK contains components like <advanced-image> to easily render your media assets from
+ * @description The Cloudinary Angular SDK contains components like <advanced-image> to easily render your media assets from
  * Cloudinary. The SDK also comes with support for optional js plugins that make the components smart, with features
  * like lazy loading, placeholder, accessibility & responsiveness
  *

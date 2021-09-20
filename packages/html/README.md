@@ -2,7 +2,7 @@
 
 ## About this project
 
-This project contains SDKs designed to work with [Cloudinary base](https://github.com/cloudinary/cloudinary-js-base) </br>
+This project contains SDKs designed to work with [Cloudinary url-gen](https://github.com/cloudinary/js-url-gen) </br>
 These SDKs will render CloudinaryImage or CloudinaryVideo object into the DOM.
 
 ### Packages contained within this project:

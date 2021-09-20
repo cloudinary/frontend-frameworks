@@ -6,7 +6,7 @@
 
   /**
    * @mixin SvelteSDK
-   * @description The Coudinday Svelte SDK contains components like <AdvancedImage> to easily render your media assets from Cloudinary.
+   * @description The Cloudinary Svelte SDK contains components like <AdvancedImage> to easily render your media assets from Cloudinary.
    * The SDK also comes with support for optional js plugins that make the components smart, with features like lazy loading, placeholder, accessibility & responsiveness
    *
    * @example
