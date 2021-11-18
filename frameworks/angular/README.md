@@ -53,3 +53,5 @@ In your view add the component with your transformation
 ```javascript
 <advanced-image [cldImg]="this.img"></advanced-image>
 ```
+
+*NOTE*: we currently support Angular versions 10 and 11. 
