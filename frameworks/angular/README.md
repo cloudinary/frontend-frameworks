@@ -54,4 +54,6 @@ In your view add the component with your transformation
 <advanced-image [cldImg]="this.img"></advanced-image>
 ```
 
-*NOTE*: we currently support Angular versions 10 and 11. 
+### Supported Angular Version
+- Angular 11
+- Angular 10
