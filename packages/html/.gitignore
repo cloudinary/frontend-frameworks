@@ -7,3 +7,4 @@ frameworks/svelte/jsdocs
 package-lock.json
 # This file is dynamically generated and should not be part of the repo
 __DOC_RESOURCES__/injectVersionSemver.js
+lerna-debug.log
