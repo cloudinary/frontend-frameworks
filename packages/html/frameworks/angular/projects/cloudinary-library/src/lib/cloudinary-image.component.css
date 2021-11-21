@@ -1,8 +1,0 @@
-/*
-  Default is display: inline
-  The :host pseudo-class selector to target styles in the element that hosts the component
-  (as opposed to targeting elements inside the component's template).
- */
-:host {
-  display: block;
-}

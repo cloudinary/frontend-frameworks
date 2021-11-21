@@ -3,8 +3,8 @@ node_js:
   - "12"
 addons:
   chrome: stable
-install: ./scripts/setup.sh
 script:
+  - npm run quickstart
   - npm run test
 
 notifications:

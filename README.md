@@ -19,6 +19,12 @@ Each SDK also contains advanced features in the form of plugins, which extend th
 - {@link placeholder|placeholder} - Used to display a lightweight version of an image while the target image is downloading.
 - {@link responsive|responsive} - Used to resize your images automatically based on the viewport size.
 
+## Development setup
+To build and link project: 
+- clone project
+- npm run quickstart
+
+
 ## Installation
 To get started, install the npm client package of your choice along with our base package.
 For example, to use Cloudinary in a [React](https://cloudinary.com/documentation/react2_integration) environment, the following packages should be installed:

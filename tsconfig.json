@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "target": "ES2015",
+    "module": "ES2015",
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },  "paths": {
+  "@cloudinary/html": ["html/src"],
+  "@cloudinary/angular": ["angular/projects/cloudinary-library/src"],
+  "@cloudinary/react": ["react/src"],
+  "@cloudinary/*": ["*/src"],
+  "*": ["node_modules"]
+},
+  "exclude": ["node_modules", "**/node_modules", "**/e2e", "**/dist", "**/build", "**/coverage"]
+}
