@@ -1,6 +1,6 @@
 {
   "name": "frontend-frameworks-monorepo",
-  "version": "1.0.0-beta.11",
+  "version": "1.0.0",
   "scripts": {
     "quickstart": "lerna bootstrap --no-ci && lerna run build",
     "test": "lerna run test",
