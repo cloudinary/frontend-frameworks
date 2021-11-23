@@ -1,15 +1,14 @@
 {
   "name": "frontend-frameworks-monorepo",
-  "version": "1.0.0-beta.11",
+  "version": "1.0.0",
   "scripts": {
-    "quickstart": "bash ./scripts/setup.sh",
-    "test": "bash ./scripts/test.sh",
+    "quickstart": "lerna bootstrap --no-ci && lerna run build",
+    "test": "lerna run test",
     "build:docs": "node ./scripts/buildDocs.js",
     "start:docs": "live-server --open=public/docs",
     "update:urlgen": "npm install @cloudinary/url-gen@latest --prefix frameworks/html && npm install @cloudinary/url-gen@latest --prefix frameworks/svelte && npm install @cloudinary/url-gen@latest --prefix frameworks/react && npm install @cloudinary/url-gen@latest --prefix frameworks/angular && npm install @cloudinary/url-gen@latest --prefix ./angular/projects/cloudinary-library"
   },
   "dependencies": {
-    "@cloudinary/html": "file:frameworks/html/dist",
     "better-docs": "^2.3.0",
     "foodoc": "0.0.9",
     "jsdoc": "^3.6.6",
@@ -17,6 +16,7 @@
     "typedoc": "^0.17.8"
   },
   "devDependencies": {
+    "lerna": "^4.0.0",
     "replace-in-file": "^6.2.0"
   }
 }
