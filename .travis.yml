@@ -4,7 +4,7 @@ node_js:
 addons:
   chrome: stable
 script:
-  - npm run install
+  - npm run quickstart
   - npm run test
 
 notifications:
