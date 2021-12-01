@@ -5,20 +5,16 @@ This is our angular library. The objective of this layer is to use our html
 library to render an image. 
 
 ##Install
-Since this library is not on npm, we will install/pack this repo locally and install it on a sample angular app.
-
 1. clone repo
-2. npm install (make sure that the html library has been built)
+2. npm install
 3. npm run build
-4. cd into /dist
-5. npm link/pack to use build in external angular library
 
 ##Usage
 
 In your app.module.ts inject the library 
 
 ```javascript
-import { CloudinaryModule} from '@cloudinary/angular';
+import { CloudinaryModule} from '@cloudinary/ng';
 
 @NgModule({
   declarations: [

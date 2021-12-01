@@ -9,7 +9,8 @@ These SDKs will render CloudinaryImage or CloudinaryVideo object into the DOM.
 <br />
  
 - The React SDK used to render an image & video component. [NPM](https://www.npmjs.com/package/@cloudinary/react)  |     {@link ReactSDK|Reference} 
-- The Angular SDK used to render an image & video component. [NPM](https://www.npmjs.com/package/@cloudinary/angular) |  {@link AngularSDK|Reference} 
+- The Angular SDK used to render an image & video component. [NPM](https://www.npmjs.com/package/@cloudinary/ng
+) |  {@link AngularSDK|Reference} 
  
                                                 
 Each SDK also contains advanced features in the form of plugins, which extend the native HTMLImage and HTMLVideo elements.
