@@ -2,7 +2,7 @@
 
 ##Overview
 This is our angular library. The objective of this layer is to use our html
-library to render an image. 
+library to render an image or video. 
 
 ##Install
 1. clone repo

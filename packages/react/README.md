@@ -2,15 +2,12 @@
 
 ## Overview
 This is our React library. The objective of this layer is to use our html
-library to render an image.
+library to render an image or video.
 
-## Install
-Since this library is not on npm, we will install/pack this repo locally and install it on a sample angular app.
-
+##Install
 1. clone repo
 2. npm install
 3. npm run build
-4. npm link/pack to use build in external react library
 
 ## Note
 This repo contains a temporary user sample for testing.
