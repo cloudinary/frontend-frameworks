@@ -20,10 +20,10 @@
     ],
     "paths": {
       "cloudinary-library": [
-        "dist/cloudinary-library"
+        "projects/cloudinary-library/dist"
       ],
       "cloudinary-library/*": [
-        "dist/cloudinary-library/*"
+        "projects/cloudinary-library/dist/*"
       ]
     }
   }
