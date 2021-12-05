@@ -1,3 +1,12 @@
+1.0.0-beta.14 / 2021-12-5
+==================
+
+* update readme for packages (#108)
+* resolve broken ts imports (#109)
+* rename angular package (#107)
+
+
+
 1.0.0-beta.13 / 2021-11-30
 ==================
 
@@ -8,7 +17,7 @@
 1.0.0-beta.11 / 2021-09-14
 ==================
 
-  * updated to html to latest version (#96)
+ * updated to html to latest version (#96)
 
 
 1.0.0-beta.10 / 2021-09-14

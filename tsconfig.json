@@ -7,12 +7,13 @@
     "baseUrl": "src",
     "esModuleInterop": true,
     "resolveJsonModule": true
-  },  "paths": {
-  "@cloudinary/html": ["html/src"],
-  "@cloudinary/angular": ["angular/projects/cloudinary-library/src"],
-  "@cloudinary/react": ["react/src"],
-  "@cloudinary/*": ["*/src"],
-  "*": ["node_modules"]
+  },
+  "paths": {
+    "@cloudinary/html": ["html/src"],
+    "@cloudinary/ng": ["angular/projects/cloudinary-library/src"],
+    "@cloudinary/react": ["react/src"],
+    "@cloudinary/*": ["*/src"],
+    "*": ["node_modules"]
 },
   "exclude": ["node_modules", "**/node_modules", "**/e2e", "**/dist", "**/build", "**/coverage"]
 }

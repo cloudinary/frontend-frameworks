@@ -34,7 +34,7 @@ For example, to use Cloudinary in a [React](https://cloudinary.com/documentation
 npm i @cloudinary/react @cloudinary/url-gen
 ```
 
-**Note**: To use [Angular](https://cloudinary.com/documentation/angular2_integration) install `@cloudinary/angular` 
+**Note**: To use [Angular](https://cloudinary.com/documentation/angular2_integration) install `@cloudinary/ng` 
 
 For more information on our supported frameworks, navigate to the frameworks tab.
 
