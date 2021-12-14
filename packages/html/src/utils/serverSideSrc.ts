@@ -5,7 +5,7 @@
  * @return {string} return the src
  */
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
-import cloneDeep from 'lodash.cloneDeep'
+import cloneDeep from 'lodash.clonedeep'
 import {Plugins} from "../types";
 
 export  function serverSideSrc(plugins?: Plugins, serverCloudinaryImage?: CloudinaryImage): string {

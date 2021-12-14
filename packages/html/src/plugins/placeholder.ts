@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash.cloneDeep'
+import cloneDeep from 'lodash.clonedeep'
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {Plugin, HtmlPluginState} from "../types";
 import {PLACEHOLDER_IMAGE_OPTIONS, singleTransparentPixel} from '../utils/internalConstants';
