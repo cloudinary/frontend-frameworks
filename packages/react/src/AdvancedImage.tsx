@@ -8,6 +8,7 @@ import {
   serverSideSrc,
   cancelCurrentlyRunningPlugins
 } from '@cloudinary/html'
+import {SDKAnalyticsConstants} from "./internal/SDKAnalyticsConstants";
 
 interface ImgProps {
   cldImg: CloudinaryImage,
@@ -80,7 +81,8 @@ class AdvancedImage extends React.Component <ImgProps> {
     this.htmlLayerInstance = new HtmlImageLayer(
       this.imageRef.current,
       this.props.cldImg,
-      this.props.plugins
+      this.props.plugins,
+      SDKAnalyticsConstants
     )
   }
 
@@ -91,7 +93,7 @@ class AdvancedImage extends React.Component <ImgProps> {
   componentDidUpdate() {
     cancelCurrentlyRunningPlugins(this.htmlLayerInstance.htmlPluginState);
     // call html layer to update the dom again with plugins and reset toBeCanceled
-    this.htmlLayerInstance.update(this.props.cldImg, this.props.plugins)
+    this.htmlLayerInstance.update(this.props.cldImg, this.props.plugins, SDKAnalyticsConstants)
   }
 
   /**

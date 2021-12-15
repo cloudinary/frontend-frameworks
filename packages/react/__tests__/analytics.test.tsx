@@ -18,10 +18,11 @@ describe('analytics', () => {
     SDKAnalyticsConstants.sdkSemver = version;
     SDKAnalyticsConstants.techVersion = React.version;
   });
-  it('creates an img with analytics', function () {
+  it('creates an img with analytics', function (done) {
     const component = mount(<AdvancedImage cldImg={cloudinaryImage} />);
     setTimeout(() => {
-      expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/sample"');
+      expect(component.html()).toEqual('<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=AJAABDS0">');
+      done();
     }, 0);// one tick
   });
 });
