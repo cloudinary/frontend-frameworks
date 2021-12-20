@@ -3,6 +3,7 @@ import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
 import { mount } from 'enzyme';
 import React from 'react';
 
+// test build
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 
 describe('accessibility', () => {
