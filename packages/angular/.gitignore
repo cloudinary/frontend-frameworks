@@ -40,3 +40,4 @@ testem.log
 .DS_Store
 Thumbs.db
 /projects/cloudinary-library/dist/
+/projects/cloudinary-library/src/lib/version.ts

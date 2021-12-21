@@ -18,3 +18,5 @@ export type VideoType = 'flv'|'3gp'|'mov'|'mpg'|'avi'|'wmv'|'ogv'|string;
 export type PictureSources = {minWidth?: number, maxWidth?: number, image: CloudinaryImage, sizes?: string}[];
 
 export type PictureSource  = {minWidth?: number, maxWidth?: number, image: CloudinaryImage, sizes?: string};
+
+export type AnalyticsOptions = {sdkSemver: string, techVersion: string, sdkCode: string};

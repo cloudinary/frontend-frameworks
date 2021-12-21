@@ -5,6 +5,7 @@ import {
   HtmlImageLayer,
   Plugins
 } from '@cloudinary/html';
+import {SDKAnalyticsConstants} from '../internal/SDKAnalyticsConstants';
 
 /**
  * @mixin AngularSDK
@@ -72,7 +73,7 @@ export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy {
    * user generated cloudinaryImage and the plugins to be used
    */
   ngOnInit() {
-    this.htmlLayerInstance = new HtmlImageLayer(this.el.nativeElement.children[0], this.cldImg, this.plugins);
+    this.htmlLayerInstance = new HtmlImageLayer(this.el.nativeElement.children[0], this.cldImg, this.plugins, SDKAnalyticsConstants);
   }
 
   /**
@@ -82,7 +83,7 @@ export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy {
   ngOnChanges() {
     if (this.htmlLayerInstance) {
       cancelCurrentlyRunningPlugins(this.htmlLayerInstance.htmlPluginState);
-      this.htmlLayerInstance.update(this.cldImg, this.plugins);
+      this.htmlLayerInstance.update(this.cldImg, this.plugins, SDKAnalyticsConstants);
     }
   }
 
