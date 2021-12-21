@@ -4,7 +4,7 @@
     "dictionaries": ["jsdoc","closure"]
   },
   "source": {
-    "include": ["frameworks/html/src", "frameworks/react/src", "frameworks/angular/projects/cloudinary-library/src", "frameworks/svelte/jsdocs"],
+    "include": ["packages/html/src", "packages/react/src", "packages/angular/projects/cloudinary-library/src"],
     "includePattern": ".+\\.ts(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_"
   },
@@ -19,7 +19,7 @@
     "cleverLinks": true,
     "navMembers" : [
       {"kind": "namespace", "title": "Plugins", "summary": "All documented namespaces."},
-      {"kind": "mixin", "title": "Frameworks", "summary": "All documented frameworks."}
+      {"kind": "mixin", "title": "packages", "summary": "All documented packages."}
     ],
     "stylesheets" : [
       "./customStyles.css"
@@ -30,9 +30,9 @@
     "search": false,
     "monospaceLinks": true,
     "systemColor": "#3448C5",
-    "systemName": "Cloudinary Frontend Frameworks",
+    "systemName": "Cloudinary Frontend packages",
     "systemLogo": "__DOC_RESOURCES__/navLogo.png",
-    "systemSummary": "client side frameworks & plugins",
+    "systemSummary": "client side packages & plugins",
     "favicon": "__DOC_RESOURCES__/favico.png",
     "copyright": "Copyright © 2020 Cloudinary.com"
   },

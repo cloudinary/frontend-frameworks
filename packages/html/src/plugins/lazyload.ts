@@ -9,7 +9,12 @@ import {isBrowser} from "../utils/isBrowser";
  * @param threshold {number} The percentage of the image's visibility at which point the image should load. Default: 0.1 (10%).
  * @return {Plugin}
  * @example
- * <AdvancedImage cldImg={img} plugins=[(lazyload('0px', 0.25))]/>
+ * <caption>
+ *     NOTE: The following is in React. For further examples, please see the packages tab.
+ *     Moreover, when using the plugin make sure to add dimensions, otherwise the images will load with
+ *     the size of 0X0, meaning the images will be in the viewport and trigger the lazyload plugin.
+ * </caption>
+ * <AdvancedImage style={{width: "400px", height: "400px"}}  cldImg={img} plugins=[(lazyload('0px', 0.25))]/>
  */
 export function lazyload(rootMargin?: string, threshold?: number): Plugin{
   return lazyloadPlugin.bind(null, rootMargin, threshold);

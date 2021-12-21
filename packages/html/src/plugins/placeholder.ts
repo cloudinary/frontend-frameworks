@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep'
+import cloneDeep from 'lodash.clonedeep'
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {Plugin, HtmlPluginState} from "../types";
 import {PLACEHOLDER_IMAGE_OPTIONS, singleTransparentPixel} from '../utils/internalConstants';
@@ -12,7 +12,7 @@ import {isImage} from "../utils/isImage";
  * @description Displays a placeholder image until the original image loads.
  * @param mode {PlaceholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
  * @return {Plugin}
- * @example
+ * @example <caption>NOTE: The following is in React. For further examples, please see the packages tab</caption>
  * <AdvancedImage cldImg={img} plugins=[(placeholder('blur'))]/>
  */
 export function placeholder(mode='vectorize'): Plugin{
@@ -21,7 +21,7 @@ export function placeholder(mode='vectorize'): Plugin{
 
 /**
  * @description Placeholder plugin
- * @param mode {placeholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
+ * @param mode {PlaceholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
  * @param element {HTMLImageElement} The image element.
  * @param pluginCloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.

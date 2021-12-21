@@ -1,6 +1,6 @@
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {Plugins, HtmlPluginState, AnalyticsOptions} from '../types'
-import cloneDeep from 'lodash/cloneDeep'
+import cloneDeep from 'lodash.cloneDeep'
 import {render} from '../utils/render';
 
 export class HtmlImageLayer{
