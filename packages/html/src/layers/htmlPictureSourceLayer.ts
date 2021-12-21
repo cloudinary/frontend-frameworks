@@ -1,7 +1,7 @@
 import {CloudinaryImage} from "@cloudinary/url-gen";
 import {screeWidths} from "../utils/screenWidths";
 // @ts-ignore
-import cloneDeep from "lodash/cloneDeep";
+import cloneDeep from "lodash.clonedeep";
 import {scale} from "@cloudinary/url-gen/actions/resize";
 
 const DEFAULT_MAX_WIDTH = 3840;
