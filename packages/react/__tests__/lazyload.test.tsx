@@ -34,7 +34,7 @@ describe('lazy-load', () => {
     const elm = document.createElement('img');
     testWithMockedIntersectionObserver((mockIntersectionEvent: ({}) => void) => {
       // @ts-ignore
-      const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[(lazyload('10px', 0.5))]} />);
+      const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[(lazyload({ rootMargin: '10px', threshold: 0.5 }))]} />);
       mockIntersectionEvent([{ isIntersecting: true, target: component.getDOMNode() }]);
       setTimeout(() => {
         expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/sample"');

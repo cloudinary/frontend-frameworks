@@ -27,14 +27,14 @@ describe('placeholder', () => {
   });
 
   it("should apply 'vectorize'", function () {
-    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder('vectorize')]} />);
+    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder({ mode: 'vectorize' })]} />);
     setTimeout(() => {
       expect(component.html()).toContain(`src="https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample"`);
     }, 0);// one tick
   });
 
   it('should apply pixelate', function (done) {
-    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder('pixelate')]} />);
+    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder({ mode: 'pixelate' })]} />);
     setTimeout(() => {
       expect(component.html()).toContain(`src="https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.pixelate}/sample"`);
       done();
@@ -42,7 +42,7 @@ describe('placeholder', () => {
   });
 
   it('should apply blur', function (done) {
-    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder('blur')]} />);
+    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder({ mode: 'blur' })]} />);
     setTimeout(() => {
       expect(component.html()).toContain(`src="https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.blur}/sample"`);
       done();
@@ -50,7 +50,7 @@ describe('placeholder', () => {
   });
 
   it('should apply predominant-color', function (done) {
-    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder('predominant-color')]} />);
+    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder({ mode: 'predominant-color' })]} />);
     setTimeout(() => {
       expect(component.html()).toContain(`src="https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS['predominant-color']}/sample"`);
       done();
@@ -58,7 +58,7 @@ describe('placeholder', () => {
   });
 
   it('should default if supplied with incorrect mode', function (done) {
-    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder('ddd')]} />);
+    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder({ mode: 'ddd' })]} />);
     setTimeout(() => {
       expect(component.html()).toContain(`src="https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample"`);
       done();

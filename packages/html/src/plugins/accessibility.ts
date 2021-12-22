@@ -7,12 +7,11 @@ import {isImage} from "../utils/isImage";
 /**
  * @namespace
  * @description Appends accessibility transformations to the original image.
- * @param mode {AccessibilityMode} The accessibility mode to use. Possible modes: 'darkmode' | 'brightmode' | 'monochrome' | 'colorblind'. Default: 'darkmode'.
  * @return {Plugin}
  * @example <caption>NOTE: The following is in React. For further examples, please see the packages tab</caption>
  * <AdvancedImage cldImg={img} plugins={[accessibility()]}/>
  */
-export function accessibility(mode='darkmode'): Plugin{
+export function accessibility({mode = 'darkmode'}: { mode?: string; }={}): Plugin{
   return accessibilityPlugin.bind(null, mode);
 }
 
@@ -44,4 +43,3 @@ export function accessibilityPlugin(mode: AccessibilityMode, element: HTMLImageE
     pluginCloudinaryImage.effect(ACCESSIBILITY_MODES[mode]);
   }
 }
-
