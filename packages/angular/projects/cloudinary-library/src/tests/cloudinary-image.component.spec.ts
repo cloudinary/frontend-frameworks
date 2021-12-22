@@ -41,6 +41,20 @@ describe('CloudinaryImageComponent render', () => {
     // plugins should be called twice after onChange
     expect(mockPlugin).toHaveBeenCalledTimes(2);
   }));
+
+  it('should add attributes to image', fakeAsync(() => {
+    component.cldImg = cloudinaryImage;
+    component.width = '400px';
+    component.alt = 'text text text';
+    component.height = '500px';
+    component.loading = 'eager';
+    fixture.detectChanges();
+    tick(0);
+    const imgElement: HTMLImageElement = fixture.nativeElement;
+    const img = imgElement.querySelector('img');
+    expect(img.outerHTML).toBe('<img _ngcontent-a-c11="" alt="text text text" width="400px" height="500px"' +
+      ' loading="eager" src="https://res.cloudinary.com/demo/image/upload/sample">');
+  }));
 });
 
 
