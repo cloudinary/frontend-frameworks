@@ -25,64 +25,64 @@ describe('placeholder', () => {
     component = fixture.componentInstance;
   });
 
-  it('should apply default', fakeAsync(()=>{
+  it('should apply default', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
     component.plugins = [placeholder()];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample`)
+    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample`);
   }));
 
-  it('should apply vectorize', fakeAsync(()=> {
+  it('should apply vectorize', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [placeholder('vectorize')];
+    component.plugins = [placeholder({mode: 'vectorize'})];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample`)
+    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample`);
   }));
 
-  it('should apply pixelate', fakeAsync(()=>{
+  it('should apply pixelate', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [placeholder('pixelate')];
+    component.plugins = [placeholder({mode: 'pixelate'})];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.pixelate}/sample`)
+    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.pixelate}/sample`);
   }));
 
-  it('should apply blur', fakeAsync(()=>{
+  it('should apply blur', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [placeholder('blur')];
+    component.plugins = [placeholder({mode: 'blur'})];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.blur}/sample`)
+    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.blur}/sample`);
   }));
 
-  it('should apply predominant-color', fakeAsync(()=>{
+  it('should apply predominant-color', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [placeholder('predominant-color')];
+    component.plugins = [placeholder({mode: 'predominant-color'})];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS["predominant-color"]}/sample`)
+    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS['predominant-color']}/sample`);
   }));
 
-  it('should default if supplied with incorrect mode', fakeAsync(()=>{
+  it('should default if supplied with incorrect mode', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [placeholder('ddd')];
+    component.plugins = [placeholder({mode: 'ddd'})];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample`)
+    expect(img.src).toBe(`https://res.cloudinary.com/demo/image/upload/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample`);
   }));
 
   it('should set singleTransparentPixel on error', fakeAsync(() => {

@@ -29,7 +29,7 @@ describe('accessibility', () => {
 
   it('should apply darkmode', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [accessibility('darkmode')];
+    component.plugins = [accessibility({mode: 'darkmode'})];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
@@ -39,7 +39,7 @@ describe('accessibility', () => {
 
   it('should apply brightmode', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [accessibility('brightmode')];
+    component.plugins = [accessibility({mode: 'brightmode'})];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
@@ -49,7 +49,7 @@ describe('accessibility', () => {
 
   it('should apply monochrome', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [accessibility('monochrome')];
+    component.plugins = [accessibility({mode: 'monochrome'})];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
@@ -59,7 +59,7 @@ describe('accessibility', () => {
 
   it('should apply colorblind', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [accessibility('colorblind')];
+    component.plugins = [accessibility({mode: 'colorblind'})];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
@@ -69,7 +69,7 @@ describe('accessibility', () => {
 
   it('should default if supplied with incorrect mode', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [accessibility('ddd')];
+    component.plugins = [accessibility({mode: 'ddd'})];
     fixture.detectChanges();
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;

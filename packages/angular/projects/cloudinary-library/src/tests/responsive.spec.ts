@@ -42,7 +42,7 @@ describe('responsive', () => {
 
   it('should step by the 100th', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [responsive(100)];
+    component.plugins = [responsive({steps: 100})];
 
     // First resize
     dispatchResize('60px', fixture, 0);
@@ -57,7 +57,7 @@ describe('responsive', () => {
 
   it('should step by breakpoints', fakeAsync(() => {
     component.cldImg = cloudinaryImage;
-    component.plugins = [responsive([800, 1000, 1200, 3000])];
+    component.plugins = [responsive({steps: [800, 1000, 1200, 3000]})];
 
     // First resize
     dispatchResize('60px', fixture, 0);

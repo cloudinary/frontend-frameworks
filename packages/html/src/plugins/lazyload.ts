@@ -14,12 +14,12 @@ import {isBrowser} from "../utils/isBrowser";
  *     Moreover, when using the plugin make sure to add dimensions, otherwise the images will load with
  *     the size of 0X0, meaning the images will be in the viewport and trigger the lazyload plugin.
  * </caption>
- * <AdvancedImage style={{width: "400px", height: "400px"}}  cldImg={img} plugins=[(lazyload('0px', 0.25))]/>
+ * <AdvancedImage style={{width: "400px", height: "400px"}}  cldImg={img} plugins=[(lazyload({rootMargin: '0px',
+ * threshold: 0.25}))]/>
  */
-export function lazyload(rootMargin?: string, threshold?: number): Plugin{
+export function lazyload({rootMargin='0px', threshold=0.1}:{rootMargin?: string, threshold?: number}={}): Plugin{
   return lazyloadPlugin.bind(null, rootMargin, threshold);
 }
-
 /**
  * @description lazyload plugin
  * @param rootMargin {string} The root element's bounding box before the intersection test is performed. Default: 0px.

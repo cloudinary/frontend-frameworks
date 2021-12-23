@@ -15,14 +15,14 @@ describe('accessibility', () => {
   });
 
   it('should apply darkmode', function () {
-    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[accessibility('darkmode')]} />);
+    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[accessibility({ mode: 'darkmode' })]} />);
     setTimeout(() => {
       expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/co_black,e_colorize:70/sample"');
     }, 0);// one tick
   });
 
   it('should apply brightmode', function (done) {
-    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[accessibility('brightmode')]} />);
+    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[accessibility({ mode: 'brightmode' })]} />);
     setTimeout(() => {
       expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/co_white,e_colorize:40/sample"');
       done();
@@ -30,7 +30,7 @@ describe('accessibility', () => {
   });
 
   it('should apply monochrome', function (done) {
-    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[accessibility('monochrome')]} />);
+    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[accessibility({ mode: 'monochrome' })]} />);
     setTimeout(() => {
       expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/e_grayscale/sample"');
       done();
@@ -38,7 +38,7 @@ describe('accessibility', () => {
   });
 
   it('should apply colorblind', function (done) {
-    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[accessibility('colorblind')]} />);
+    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[accessibility({ mode: 'colorblind' })]} />);
     setTimeout(() => {
       expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/e_assist_colorblind/sample"');
       done();
@@ -46,7 +46,7 @@ describe('accessibility', () => {
   });
 
   it('should default if supplied with incorrect mode', function (done) {
-    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[accessibility('ddd')]} />);
+    const component = mount(<AdvancedImage cldImg={cloudinaryImage} plugins={[accessibility({ mode: 'ddd' })]} />);
     setTimeout(() => {
       expect(component.html())
         .toBe('<img src="https://res.cloudinary.com/demo/image/upload/co_black,e_colorize:70/sample">');

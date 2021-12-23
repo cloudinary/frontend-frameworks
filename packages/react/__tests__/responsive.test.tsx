@@ -45,7 +45,7 @@ describe('responsive', () => {
   it('should step by the 100th', async function () {
     const component = mount(
       <ResponsiveHelper>
-        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive(100)]} />
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({ steps: 100 })]} />
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); // one tick
@@ -57,7 +57,7 @@ describe('responsive', () => {
   it('should step by breakpoints', async function () {
     const component = mount(
       <ResponsiveHelper>
-        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive([800, 1000, 1200, 3000])]} />
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({ steps: [800, 1000, 1200, 3000] })]} />
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); // one tick
@@ -77,7 +77,7 @@ describe('responsive', () => {
   it('should not resize to larger than provided breakpoints', async function () {
     const component = mount(
       <ResponsiveHelper>
-        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive([800, 1000, 1200, 3000])]} />
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({ steps: [800, 1000, 1200, 3000] })]} />
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); // one tick
@@ -90,7 +90,7 @@ describe('responsive', () => {
   it('should handle unordered breakpoints', async function () {
     const component = mount(
       <ResponsiveHelper>
-        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive([1000, 800, 3000, 1200])]} />
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({ steps: [1000, 800, 3000, 1200] })]} />
       </ResponsiveHelper>);
 
     await clock.tickAsync(0); // one tick
