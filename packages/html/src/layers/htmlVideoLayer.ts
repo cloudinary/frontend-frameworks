@@ -4,6 +4,8 @@ import {CloudinaryVideo} from "@cloudinary/url-gen";
 import {render} from '../utils/render';
 import {VIDEO_MIME_TYPES} from "../utils/internalConstants";
 
+const ANALYTICS_DELIMITER = '?_a=';
+
 export class HtmlVideoLayer{
     videoElement: any;
     originalVideo: CloudinaryVideo;
@@ -66,8 +68,15 @@ export class HtmlVideoLayer{
      */
     appendSourceTag(userCloudinaryVideo: CloudinaryVideo, type: string, mimeType?: string){
         const source = document.createElement('source');
+        const url = userCloudinaryVideo.toURL();
 
-        source.src = `${userCloudinaryVideo.toURL()}.${type}`;
+        // Split url to get analytics string so that we can insert the file extension (type) before it
+        // To simplify this we could add a .getPublicId to CloudinaryVideo and do vid.setPublicId(vid.getPublicId+type)
+        // Another option could be to add a .setExtension, which will allow to do vid.setExtension(type)
+        const srcParts = url.split(ANALYTICS_DELIMITER);
+        const analyticsStr = srcParts[1] ? `${ANALYTICS_DELIMITER}${srcParts[1]}` :  '';
+
+        source.src = `${srcParts[0]}.${type}${analyticsStr}`;
         source.type = mimeType ? mimeType :`video/${type}`;
 
         this.videoElement.appendChild(source);
