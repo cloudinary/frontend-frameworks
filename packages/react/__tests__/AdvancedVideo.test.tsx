@@ -58,12 +58,16 @@ describe('AdvancedVideo', () => {
   });
 
   it('should pass video attributes', function (done) {
-    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} controls autoPlay playsInline loop />);
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} muted controls autoPlay playsInline={false} loop />);
 
     setTimeout(() => {
-      expect(component.html()).toContain('controls="" autoplay="" playsinline="" loop=""');
+      expect(component.html()).toContain('loop=""');
+      expect(component.html()).not.toContain('playsinline');
+      expect(component.html()).toContain('muted=""');
+      expect(component.html()).toContain('autoplay=""');
+      expect(component.html()).toContain('controls=""');
       done();
-    }, 0);// one tick
+    }, 1000);// one tick
   });
 
   it('should contain poster', function (done) {
