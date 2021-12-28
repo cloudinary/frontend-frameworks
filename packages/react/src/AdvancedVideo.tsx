@@ -33,6 +33,8 @@ interface VideoProps {
   onEnded?: ReactEventHandler<any>
 }
 
+const VIDEO_ATTRIBUTES_KEYS: string[] = ['controls', 'loop', 'muted', 'poster', 'preload', 'autoplay', 'playsinline'];
+
 /**
  * @memberOf ReactSDK
  * @type {Component}
@@ -108,15 +110,14 @@ class AdvancedVideo extends Component <VideoProps> {
    * returns video attributes
    */
   getVideoAttributes() {
-    return {
-      controls: this.props.controls,
-      loop: this.props.loop,
-      muted: this.props.muted,
-      poster: this.props.poster,
-      preload: this.props.preload,
-      autoplay: this.props.autoPlay,
-      playsinline: this.props.playsInline
-    };
+    const result = {};
+    VIDEO_ATTRIBUTES_KEYS.forEach((key: string) => {
+      if (key in this.props) {
+        result[key] = this.props[key];
+      }
+    });
+
+    return result;
   }
 
   /**

@@ -102,16 +102,13 @@ export class HtmlVideoLayer{
      * @param videoAttributes {object} Supported attributes: controls, loop, muted, poster, preload, autoplay, playsinline
      */
     setVideoAttributes(videoAttributes: object) {
-        if(!videoAttributes) return;
-
-        for (const [key, value] of Object.entries(videoAttributes)) {
-            if(value){
-                if(key === 'poster'){
-                    this.videoElement.poster = value;
-                } else {
-                    this.videoElement[key] = true
-                }
-            }
+        if (videoAttributes) {
+          for (const [key, value] of Object.entries(videoAttributes)) {
+            // Boolean attributes are considered to be true if they're present on the element at all.
+            // You should set value to the empty string ("") or the attribute's name.
+            // See https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+            value && this.videoElement.setAttribute(key, key === 'poster' ? value : '');
+          }
         }
     }
 
