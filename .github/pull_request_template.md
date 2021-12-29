@@ -10,3 +10,4 @@
 #### Final checklist
 - [ ] Implementation is aligned to Spec.
 - [ ] Tests - Add proper tests to the added code.
+- [ ] Relates to a github issue (link to issue).
