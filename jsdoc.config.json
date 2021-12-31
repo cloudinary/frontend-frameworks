@@ -19,7 +19,7 @@
     "cleverLinks": true,
     "navMembers" : [
       {"kind": "namespace", "title": "Plugins", "summary": "All documented namespaces."},
-      {"kind": "mixin", "title": "packages", "summary": "All documented packages."}
+      {"kind": "mixin", "title": "Packages", "summary": "All documented packages."}
     ],
     "stylesheets" : [
       "./customStyles.css"

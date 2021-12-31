@@ -12,7 +12,7 @@ import {isImage} from "../utils/isImage";
  * @description Displays a placeholder image until the original image loads.
  * @param mode {PlaceholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
  * @return {Plugin}
- * @example <caption>NOTE: The following is in React. For further examples, please see the packages tab</caption>
+ * @example <caption>NOTE: The following is in React. For further examples, see the Packages tab.</caption>
  * <AdvancedImage cldImg={img} plugins=[(placeholder({mode: 'blur'}))]/>
  */
 export function placeholder({mode='vectorize'}:{mode?: string}={}): Plugin{
