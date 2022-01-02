@@ -8,7 +8,7 @@ import {isImage} from "../utils/isImage";
  * @namespace
  * @description Appends accessibility transformations to the original image.
  * @return {Plugin}
- * @example <caption>NOTE: The following is in React. For further examples, please see the packages tab</caption>
+ * @example <caption>NOTE: The following is in React. For further examples, see the Packages tab.</caption>
  * <AdvancedImage cldImg={img} plugins={[accessibility()]}/>
  */
 export function accessibility({mode = 'darkmode'}: { mode?: string; }={}): Plugin{

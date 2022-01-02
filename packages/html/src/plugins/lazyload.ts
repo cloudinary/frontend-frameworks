@@ -10,9 +10,9 @@ import {isBrowser} from "../utils/isBrowser";
  * @return {Plugin}
  * @example
  * <caption>
- *     NOTE: The following is in React. For further examples, please see the packages tab.
- *     Moreover, when using the plugin make sure to add dimensions, otherwise the images will load with
- *     the size of 0X0, meaning the images will be in the viewport and trigger the lazyload plugin.
+ * NOTE: The following is in React. For further examples, see the Packages tab.
+ * When using the plugin make sure to add dimensions, otherwise the images will load with
+ * the size of 0x0, meaning the images will be in the viewport and trigger the lazyload plugin.
  * </caption>
  * <AdvancedImage style={{width: "400px", height: "400px"}}  cldImg={img} plugins=[(lazyload({rootMargin: '0px',
  * threshold: 0.25}))]/>

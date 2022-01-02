@@ -14,7 +14,7 @@ import {isImage} from "../utils/isImage";
  * @param steps {number | number[]} The step size in pixels.
  * | number[] A set of image sizes in pixels.
  * @return {Plugin}
- * @example <caption>NOTE: The following is in React. For further examples, please see the packages tab</caption>
+ * @example <caption>NOTE: The following is in React. For further examples, see the Packages tab.</caption>
  * <AdvancedImage cldImg={img} plugins=[(responsive(100))] plugins=[(responsive({steps: [800, 1000, 1400]}))] />
  */
 export function responsive({steps}:{steps?: number | number[]}={}): Plugin{

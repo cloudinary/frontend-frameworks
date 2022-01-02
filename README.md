@@ -2,8 +2,8 @@
 
 ## About this project
 
-This project contains SDKs designed to work with [Cloudinary url-gen](https://github.com/cloudinary/js-url-gen) </br>
-These SDKs will render CloudinaryImage or CloudinaryVideo object into the DOM.
+This project contains SDKs designed to work with [Cloudinary url-gen](https://github.com/cloudinary/js-url-gen). </br>
+These SDKs render CloudinaryImage or CloudinaryVideo objects into the DOM.
 
 ### Packages contained within this project:
 <br />
@@ -34,29 +34,27 @@ For example, to use Cloudinary in a [React](https://cloudinary.com/documentation
 npm i @cloudinary/react @cloudinary/url-gen
 ```
 
-**Note**: To use [Angular](https://cloudinary.com/documentation/angular2_integration) install `@cloudinary/ng` 
-
-For more information on our supported frameworks, navigate to the frameworks tab.
+**Note**: To use [Angular](https://cloudinary.com/documentation/angular2_integration) install `@cloudinary/ng`. 
 
 ## Simple usage
 The following is a simple example using [React](https://cloudinary.com/documentation/react2_integration).
-For more information on React and other frameworks, navigate to the frameworks tab. 
+For more information on React and other frameworks, navigate to the specific reference using the **Packages** menu. 
 ```javascript
-// Import the cloudinary class, and the plugins you want to use
-// In this case, we import a Cloudinary image type and accessibility and responsive.
+// Import the Cloudinary class, and the plugins you want to use.
+// In this case, we import a Cloudinary image type, accessibility and responsive.
 
 import React, { Component } from 'react'
 import {Cloudinary} from "@cloudinary/url-gen";
 import { AdvancedImage, accessibility, responsive } from '@cloudinary/react';
 
-// Once per project/app - configure your instance,
-// See the documentation in @cloudinary/url-gen for more information 
+// Once per project/app - configure your instance.
+// See the documentation in @cloudinary/url-gen for more information. 
 const myCld = new Cloudinary({ cloudName: 'demo'});
 
-// render your component
+// Render your component.
  const App = () => {
-    // Create your image
-    // This creates a new image object
+    // Create your image.
+    // This creates a new image object:
     let img = myCld().image('sample');
     return (
         <div>
@@ -69,7 +67,7 @@ const myCld = new Cloudinary({ cloudName: 'demo'});
 ## Plugin Order
 
 <div>
-We recommended the following order when using our plugins to achieve the best results. 
+We recommend the following order when using our plugins to achieve the best results: 
 <br/><br/>
 
 ```javascript
