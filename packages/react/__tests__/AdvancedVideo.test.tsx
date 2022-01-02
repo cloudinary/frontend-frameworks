@@ -21,14 +21,15 @@ describe('AdvancedVideo', () => {
     }, 0);// one tick
   });
 
-  it('should render video with analytics with default sources', function (done) {
+  it('should generate url sources with correct placement of extension and url analytics', function (done) {
     const component = mount(<AdvancedVideo cldVid={cloudinaryVideoWithAnalytics} />);
     setTimeout(() => {
       expect(component.html()).toContain(
-        '<video>' +
-        '<source src="https://res.cloudinary.com/demo/video/upload/sample.webm?_a=ATAEtAA0" type="video/webm">' +
-        '<source src="https://res.cloudinary.com/demo/video/upload/sample.mp4?_a=ATAEtAA0" type="video/mp4">' +
-        '<source src="https://res.cloudinary.com/demo/video/upload/sample.ogg?_a=ATAEtAA0" type="video/ogg"></video>');
+        'https://res.cloudinary.com/demo/video/upload/sample.webm?_a=');
+      expect(component.html()).toContain(
+        'https://res.cloudinary.com/demo/video/upload/sample.ogg?_a=');
+      expect(component.html()).toContain(
+        'https://res.cloudinary.com/demo/video/upload/sample.mp4?_a=');
       done();
     }, 0);// one tick
   });
