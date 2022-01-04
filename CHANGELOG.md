@@ -1,3 +1,23 @@
+1.0.0 / 2022-01-04
+==================
+
+ New functionality
+-----------------
+* Feature/add analytics (#114)
+
+Breaking changes
+-----------------
+ * Change plugin input to object instead of string (#119)
+
+Other changes
+-----------------
+  * Update url-gen version 
+  * Update issue templates
+  * Update pull_request_template.md
+  * Add test for muted video (#122)
+  * Fix video src url with analytics (#121)
+  * Add img attributes to angular (#118
+
 1.0.0-beta.14 / 2021-12-5
 ==================
 
