@@ -1,3 +1,6 @@
+/**
+ * Import and export all needed types
+ */
 import {
   placeholder,
   accessibility,

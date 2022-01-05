@@ -1,3 +1,6 @@
+/**
+ * Import and export all needed types
+ */
 export { HtmlImageLayer } from './layers/htmlImageLayer';
 export { HtmlVideoLayer } from './layers/htmlVideoLayer';
 export {responsive} from './plugins/responsive';
