@@ -83,6 +83,12 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges, OnDestroy {
       this.plugins,
       this.getVideoAttributes()
       );
+
+    // check if video should be muted. We need to take care of this here since Angular has a bug with binding the muted
+    // attribute
+    if (this.muted) {
+      this.el.nativeElement.children[0].muted = true;
+    }
   }
 
   /**
