@@ -53,6 +53,7 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges, OnDestroy {
   @Input('sources') sources: VideoSources;
   @Input('plugins') plugins: Plugins;
   @Input('poster') poster: string;
+  @Input('innerRef') innerRef: ElementRef;
 
   // Event emitters
   @Output() play: EventEmitter<any> = new EventEmitter();
@@ -89,6 +90,9 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges, OnDestroy {
     if (this.muted) {
       this.el.nativeElement.children[0].muted = true;
     }
+
+    // attach ref to innerRef input
+    this.attachRef();
   }
 
   /**
@@ -143,5 +147,14 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges, OnDestroy {
 
   emitEndedEvent() {
     this.ended.emit();
+  }
+
+  /**
+   * Attach both this.videoRef and props.innerRef as ref to the given element.
+   */
+  attachRef() {
+    if (this.innerRef) {
+      this.innerRef.nativeElement = this.el.nativeElement.children[0];
+    }
   }
 }
