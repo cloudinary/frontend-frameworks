@@ -3,6 +3,7 @@ import { CloudinaryVideoComponent } from '../lib/cloudinary-video.component';
 import {CloudinaryVideo} from '@cloudinary/url-gen';
 import { auto, vp9 } from '@cloudinary/url-gen/qualifiers/videoCodec';
 import { videoCodec } from '@cloudinary/url-gen/actions/transcode';
+import {ElementRef} from "@angular/core";
 
 const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo'}, { analytics: false });
 
@@ -150,6 +151,23 @@ describe('CloudinaryVideoComponent render', () => {
     tick(0);
 
     component.ngOnDestroy();
+  }));
+
+  it('Should support forwarding innerRef to underlying video element', fakeAsync(() => {
+    component.cldVid = cloudinaryVideo;
+    const ref = new ElementRef<HTMLVideoElement>(null);
+    component.innerRef = ref;
+
+    fixture.detectChanges();
+    tick(0);
+    spyOn(component, 'emitPlayEvent');
+    const videoElement: HTMLVideoElement = fixture.nativeElement;
+    const vid = videoElement.querySelector('video');
+
+    ref.nativeElement.dispatchEvent(new Event('play'));
+    fixture.detectChanges();
+
+    expect(component.emitPlayEvent).toHaveBeenCalled();
   }));
 });
 
