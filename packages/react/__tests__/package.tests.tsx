@@ -2,8 +2,8 @@ import {execSync} from "child_process";
 import fs from 'fs';
 import * as path from "path";
 
-describe('tests for the package', () => {
-  it('works', () => {
+describe('tests for the package output', () => {
+  it('ensures that the pacakge contains the right files', () => {
     execSync('npm run build');
     const dirContents = fs.readdirSync(path.resolve(__dirname, '../dist'));
 
