@@ -1,26 +1,35 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import json from '@rollup/plugin-json';
-// import commonjs from '@rollup/plugin-commonjs';
-// import replace from '@rollup/plugin-replace';
-// import multi from 'rollup-plugin-multi-input';
-// import {version} from './package.json';
+import commonjs from '@rollup/plugin-commonjs';
+import replace from '@rollup/plugin-replace';
+import { version } from './package.json';
 
 export default [
   {
-    input: 'src/index.ts',
+    input: 'src/index.tsx',
     output: [
       {
-        file: 'dist/bundles/umd/base.js',
+        file: 'dist/index.umd.js',
         format: 'umd',
-        name: 'CloudinaryBaseSDK',
+        name: 'CloudinaryBaseSDK'
+      },
+      {
+        file: 'dist/index.js',
+        format: 'esm'
+      },
+      {
+        file: 'dist/index.cjs.js',
+        format: 'cjs'
       }
     ],
     plugins: [
-      json(),
       resolve(),
-      typescript({ target: 'es5' })
-      // commonjs(),
+      replace({
+        PACKAGE_VERSION_INJECTED_DURING_BUILD: version,
+        preventAssignment: false
+      }),
+      typescript({ target: 'es5' }),
+      commonjs()
     ]
   }
 ];

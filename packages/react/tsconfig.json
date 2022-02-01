@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
     "module": "esnext",
+    "declarationDir" : "./dist",
     "lib": [
       "dom",
       "esnext"
@@ -27,12 +27,11 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "types": ["jest", "node"]
+    "emitDeclarationOnly": true,
+    "types": ["jest", "node"],
+    "baseUrl": "src"
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src/index.tsx"],
   "exclude": [
     "node_modules",
     "dist",

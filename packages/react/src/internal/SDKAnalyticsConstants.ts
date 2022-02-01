@@ -1,8 +1,7 @@
 import React from 'react'
-import { version } from '../../package.json';
 
 export const SDKAnalyticsConstants = {
-  sdkSemver: version,
+  sdkSemver: 'PACKAGE_VERSION_INJECTED_DURING_BUILD',
   techVersion: React.version,
   sdkCode: 'J'
 };
