@@ -63,7 +63,8 @@ Effortlessly optimize and transform your cloud's assets.
 
 #### Note
 This Readme provides basic installation and usage information.
-For the complete documentation, see the [React SDK Guide](https://cloudinary.com/documentation/angular_integration).
+For the complete documentation, see the [React SDK Guide](https://cloudinary.com/documentation/angular_integration) 
+and the [Angular SDK Reference](https://cloudinary.com/documentation/sdks/js/frontend-frameworks/AngularSDK).
 
 
 ## Table of Contents
@@ -74,6 +75,7 @@ For the complete documentation, see the [React SDK Guide](https://cloudinary.com
     - [Setup](#Setup)
     - [Transform and Optimize Assets](#Transform-and-Optimize-Assets)
     - [Generate Image and HTML Tags](#Generate-Image-and-Video-HTML-Tags)
+    - [Plugins](#Advanced-Plugin-Features)
 
 ## Key Features
 - [Transform](https://cloudinary.com/documentation/angular_video_manipulation#video_transformation_examples) and
@@ -135,6 +137,33 @@ In your view add the component with your transformation
 ### Generate Image and Video HTML Tags
     - Use <advanced-image> to generate image tags
     - Use <advanced-video> to generate video tags
+
+### Advanced Plugin Features
+- [See full documentation](https://cloudinary.com/documentation/angular_integration#plugins)
+<br/><br/>
+We recommend the following order when using our plugins to achieve the best results: 
+<br/><br/>
+
+```js
+import { CloudinaryImage } from "@cloudinary/url-gen";
+import {
+  lazyload,
+  responsive,
+  accessibility,
+  placeholder
+} from "@cloudinary/ng";
+
+export class AppComponent {
+  cloudinaryImage = new CloudinaryImage("sample", { cloudName: "demo" });
+  plugins = [lazyload(),responsive(), accessibility(), placeholder()];
+}
+```
+
+```html
+<advanced-image [cldImg]="cloudinaryImage" [plugins]="plugins">
+```
+
+You can omit any plugin, but the order from above should remain.
 
 ### File upload
 This SDK does not provide file upload functionality, however there are [several methods of uploading from the client

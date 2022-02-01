@@ -6,7 +6,8 @@ Effortlessly optimize and transform your cloud's assets.
 
 #### Note
 This Readme provides basic installation and usage information.
-For the complete documentation, see the [React SDK Guide](https://cloudinary.com/documentation/react_integration).
+For the complete documentation, see the [React SDK Guide](https://cloudinary.com/documentation/react_integration)
+and the [React SDK Reference](https://cloudinary.com/documentation/sdks/js/frontend-frameworks/ReactSDK.html).
 
 
 ## Table of Contents
@@ -17,6 +18,7 @@ For the complete documentation, see the [React SDK Guide](https://cloudinary.com
     - [Setup](#Setup)
     - [Transform and Optimize Assets](#Transform-and-Optimize-Assets)
     - [Generate Image and HTML Tags](#Generate-Image-and-Video-HTML-Tags)
+    - [Plugins](#Advanced-Plugin-Features)
 
 ## Key Features
 - [Transform](https://cloudinary.com/documentation/react_video_manipulation#video_transformation_examples) and
@@ -69,6 +71,30 @@ const App = () => {
 ### Generate Image and Video HTML Tags
     - Use <AdvancedImage> to generate image tags
     - Use <AdvancedVideo> to generate video tags
+
+### Advanced Plugin Features
+- [See full documentation](https://cloudinary.com/documentation/react_integration#plugins)
+<br/><br/>
+We recommend the following order when using our plugins to achieve the best results:
+<br/><br/>
+
+```tsx
+import { CloudinaryImage } from "@cloudinary/url-gen";
+import {
+  lazyload,
+  responsive,
+  accessibility,
+  placeholder
+} from "@cloudinary/react";
+
+cloudinaryImage = new CloudinaryImage("sample", { cloudName: "demo" });
+
+const App = () => {
+  return <AdvancedImage cldImg={img} plugins = {[lazyload(),responsive(), accessibility(), placeholder()]};/>
+};
+```
+
+You can omit any plugin, but the order from above should remain.
 
 ### File upload
 This SDK does not provide file upload functionality, however there are [several methods of uploading from the client side](https://cloudinary.com/documentation/react_image_and_video_upload).
