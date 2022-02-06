@@ -15,7 +15,7 @@ import {isImage} from "../utils/isImage";
  * | number[] A set of image sizes in pixels.
  * @return {Plugin}
  * @example <caption>NOTE: The following is in React. For further examples, see the Packages tab.</caption>
- * <AdvancedImage cldImg={img} plugins=[(responsive(100))] plugins=[(responsive({steps: [800, 1000, 1400]}))] />
+ * <AdvancedImage cldImg={img} plugins={[responsive({steps: [800, 1000, 1400]})]} />
  */
 export function responsive({steps}:{steps?: number | number[]}={}): Plugin{
   return responsivePlugin.bind(null, steps);

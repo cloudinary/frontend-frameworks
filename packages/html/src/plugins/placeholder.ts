@@ -13,7 +13,7 @@ import {isImage} from "../utils/isImage";
  * @param mode {PlaceholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
  * @return {Plugin}
  * @example <caption>NOTE: The following is in React. For further examples, see the Packages tab.</caption>
- * <AdvancedImage cldImg={img} plugins=[(placeholder({mode: 'blur'}))]/>
+ * <AdvancedImage cldImg={img} plugins={[placeholder({mode: 'blur'})]} />
  */
 export function placeholder({mode='vectorize'}:{mode?: string}={}): Plugin{
   return placeholderPlugin.bind(null, mode);
