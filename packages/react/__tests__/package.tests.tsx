@@ -7,10 +7,10 @@ describe('tests for the package output', () => {
     execSync('npm run build');
     const dirContents = fs.readdirSync(path.resolve(__dirname, '../dist'));
 
-    expect(dirContents.indexOf('index.js')).toBeGreaterThan(-1);
-    expect(dirContents.indexOf('index.umd.js')).toBeGreaterThan(-1);
-    expect(dirContents.indexOf('index.cjs.js')).toBeGreaterThan(-1);
-    expect(dirContents.indexOf('index.d.ts')).toBeGreaterThan(-1);
-    expect(dirContents.indexOf('package.json')).toBeGreaterThan(-1);
+    expect(dirContents.includes('index.js')).toBe(true);
+    expect(dirContents.includes('index.umd.js')).toBe(true);
+    expect(dirContents.includes('index.cjs.js')).toBe(true);
+    expect(dirContents.includes('index.d.ts')).toBe(true);
+    expect(dirContents.includes('package.json')).toBe(true);
   });
 });
