@@ -11,11 +11,10 @@ import {isImage} from "../utils/isImage";
  * @namespace
  * @description Updates the src with the size of the parent element and triggers a resize event for
  * subsequent resizing.
- * @param steps {number | number[]} The step size in pixels.
- * | number[] A set of image sizes in pixels.
+ * @param steps {number | number[]} The step size in pixels or an array of image widths in pixels.
  * @return {Plugin}
  * @example <caption>NOTE: The following is in React. For further examples, see the Packages tab.</caption>
- * <AdvancedImage cldImg={img} plugins=[(responsive(100))] plugins=[(responsive({steps: [800, 1000, 1400]}))] />
+ * <AdvancedImage cldImg={img} plugins={[responsive({steps: [800, 1000, 1400]})]} />
  */
 export function responsive({steps}:{steps?: number | number[]}={}): Plugin{
   return responsivePlugin.bind(null, steps);
@@ -24,7 +23,6 @@ export function responsive({steps}:{steps?: number | number[]}={}): Plugin{
 /**
  * @description Responsive plugin
  * @param steps {number | number[]} The step size in pixels.
- * | number[] A set of image sizes in pixels.
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
  * @param htmlPluginState {HtmlPluginState} holds cleanup callbacks and event subscriptions
