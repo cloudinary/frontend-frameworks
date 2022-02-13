@@ -44,7 +44,7 @@ describe('responsive', () => {
     expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_251/sample"');
   });
 
-  it.only('Should respect steps and ignore default width of 250', async function () {
+  it('Should respect steps and ignore default width of 250', async function () {
     const component = mount(
       <ResponsiveHelper>
         <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({steps: [10, 20, 30]})]} />
