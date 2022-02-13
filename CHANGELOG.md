@@ -1,3 +1,16 @@
+1.1.0 / 2022-02-13
+==================
+
+React
+-------
+ * Replace micro-bundle with rollup (#131)
+
+Angular
+-------
+  * Fix muted attribute on angular video (#126)
+  * Add video reference (#127)
+
+
 1.0.1 / 2022-01-05
 ==================
 
