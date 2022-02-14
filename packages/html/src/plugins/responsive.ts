@@ -38,8 +38,10 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
       resolve('canceled');
     });
 
-    const containerSize = element.parentElement.clientWidth;
-    responsiveImage.resize(scale().width(containerSize).setActionTag('responsive'));
+    // Use a tagged generic action that can be later searched and replaced.
+    responsiveImage.addAction(new Action().setActionTag('responsive'));
+    // Immediately run the resize plugin, ensuring that first render gets an responive image.
+    onResize(steps, element, responsiveImage);
 
     let resizeRef: any;
     htmlPluginState.pluginEventSubscription.push(()=>{
@@ -71,19 +73,23 @@ function onResize(steps?: number | number[], element?:HTMLImageElement, responsi
  * @param responsiveImage {CloudinaryImage}
  */
 function updateByContainerWidth(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage){
-  let resizeValue = element.parentElement.clientWidth;
+  // Default value for responsiveImgWidth, used when no steps are passed.
+  let responsiveImgWidth = element.parentElement.clientWidth;
 
   if(isNum(steps)){
-    resizeValue = Math.ceil(resizeValue/<number>steps)*<number>steps;
+    const WIDTH_INTERVALS = steps as number;
+    // We need to force the container width to be intervals of max width.
+    responsiveImgWidth = Math.ceil(responsiveImgWidth / WIDTH_INTERVALS ) * WIDTH_INTERVALS;
+
   } else if(Array.isArray(steps)){
-    resizeValue = steps.reduce((prev, curr) =>{
-      return (Math.abs(curr - resizeValue) < Math.abs(prev - resizeValue) ? curr : prev);
+    responsiveImgWidth = steps.reduce((prev, curr) =>{
+      return (Math.abs(curr - responsiveImgWidth) < Math.abs(prev - responsiveImgWidth) ? curr : prev);
     });
   }
 
   responsiveImage.transformation.actions.forEach((action, index) => {
     if (action instanceof Action && action.getActionTag() === 'responsive') {
-      responsiveImage.transformation.actions[index]  = scale(resizeValue).setActionTag('responsive');
+      responsiveImage.transformation.actions[index]  = scale(responsiveImgWidth).setActionTag('responsive');
     }
   });
 }

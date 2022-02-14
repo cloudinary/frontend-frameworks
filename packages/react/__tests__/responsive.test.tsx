@@ -31,6 +31,46 @@ describe('responsive', () => {
     expect(el.clientWidth).toBe(250);
   });
 
+
+  it('Should respect single step and ignore default width of 250 (When Step < Width)', async function () {
+    const component = mount(
+      <ResponsiveHelper>
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({steps: 100})]} />
+      </ResponsiveHelper>);
+
+    clock.tick(100); // timeout for debounce
+
+    // Output is exactly 300 due to internal rounding: ROUND_UP(CONTAINER / STEP) * STEP
+    // When STEP < CONTAINER, output is always a multiplication of STEP
+    expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_300/sample"');
+  });
+
+
+  it('Should respect single step and ignore default width of 250 (When Step > Width)', async function () {
+    const component = mount(
+      <ResponsiveHelper>
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({steps: 251})]} />
+      </ResponsiveHelper>);
+
+    clock.tick(100); // timeout for debounce
+
+    // Output is exactly 251 due to internal rounding: ROUND_UP(CONTAINER / STEP) * STEP
+    // When STEP > CONTAINER, output is always STEP.
+    expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_251/sample"');
+  });
+
+  it('Should respect steps and ignore default width of 250', async function () {
+    const component = mount(
+      <ResponsiveHelper>
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({steps: [10, 20, 30]})]} />
+      </ResponsiveHelper>);
+
+    clock.tick(100); // timeout for debounce
+
+    // Output is closest number to parentElement, never exceeding the width of the max step )
+    expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_30/sample"');
+  });
+
   it('should update container width on window resize', function () {
     const component = mount(
       <ResponsiveHelper>
