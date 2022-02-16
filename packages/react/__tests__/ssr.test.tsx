@@ -17,10 +17,10 @@ describe('ssr', () => {
     }, 0);// one tick
   });
 
-  it('should render original image with placeholder', function (done) {
+  it('should render the placeholder image in SSR', function (done) {
     const ElementImageHtml = renderToString(<AdvancedImage cldImg={cloudinaryImage} plugins={[placeholder()]} />);
     setTimeout(() => {
-      expect(ElementImageHtml).toContain('https://res.cloudinary.com/demo/image/upload/sample');
+      expect(ElementImageHtml).toContain('https://res.cloudinary.com/demo/image/upload/e_vectorize/q_auto/f_svg/sample');
       done();
     }, 0);// one tick
   });
