@@ -11,7 +11,7 @@ export default [
       {
         file: 'dist/index.umd.js',
         format: 'umd',
-        name: 'CloudinaryBaseSDK'
+        name: 'CloudinaryReactSDK'
       },
       {
         file: 'dist/index.js',
