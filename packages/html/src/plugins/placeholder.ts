@@ -27,22 +27,51 @@ export function placeholder({mode='vectorize'}:{mode?: string}={}): Plugin{
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
 function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<void | string> {
-  if(!isBrowser())  return;
+  // @ts-ignore
+  // If we're using an invalid mode, we default to vectorize
+  if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
+    mode = 'vectorize'
+  }
 
+  // A placeholder mode maps to an array of transformations
+  const PLACEHOLDER_ACTIONS = PLACEHOLDER_IMAGE_OPTIONS[mode].actions;
+
+  // Before proceeding, clone the original image
+  // We clone because we don't want to pollute the state of the image
+  // Future renders (after the placeholder is loaded) should not load placeholder transformations
+  const placeholderClonedImage = cloneDeep(pluginCloudinaryImage);
+
+  //appends a placeholder transformation on the clone
+  // @ts-ignore
+  PLACEHOLDER_ACTIONS.forEach(function(transformation:Action){
+    placeholderClonedImage.addAction(transformation);
+  });
+
+  if(!isBrowser()) {
+    // in SSR, we copy the transformations of the clone to the user provided CloudinaryImage
+    // We return here, since we don't have HTML elements to work with.
+    pluginCloudinaryImage.transformation = placeholderClonedImage.transformation;
+    return;
+  }
+
+  // Client side rendering, if an image was not provided we don't perform any action
   if(!isImage(element)) return;
 
-  const placeholderTransformation = preparePlaceholderTransformation(mode, pluginCloudinaryImage);
+  // Set the SRC of the imageElement to the URL of the placeholder Image
+  element.src = placeholderClonedImage.toURL();
 
-  element.src = placeholderTransformation.toURL();
-
-  //if placeholder does not load, load a single transparent pixel
+  //Fallback, if placeholder errors, load a single transparent pixel
   element.onerror = () => {
     element.src = singleTransparentPixel;
   };
 
   /*
-  Placeholder image loads first. Once it loads, the promise is resolved and the
-  larger image will load. Once the larger image loads, promised and plugin is resolved.
+   * This plugin loads two images:
+   * - The first image is loaded as a placeholder
+   * - The second image is loaded after the placeholder is loaded
+   *
+   * Placeholder image loads first. Once it loads, the promise is resolved and the
+   * larger image will load. Once the larger image loads, promised and plugin is resolved.
    */
   return new Promise((resolve: any) => {
     element.onload = () => {
@@ -67,26 +96,4 @@ function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, plu
       };
     });
   });
-}
-
-/**
- * Prepares placeholder transformation by appending a placeholder-type transformation to the end of the URL
- * @param mode {PlaceholderMode} The type of placeholder image to display. Possible modes: 'vectorize' | 'pixelate' | 'blur' | 'predominant-color'. Default: 'vectorize'.
- * @param pluginCloudinaryImage {CloudinaryImage}
- */
-function preparePlaceholderTransformation(mode: PlaceholderMode, pluginCloudinaryImage: CloudinaryImage){
-  const placeholderClonedImage = cloneDeep(pluginCloudinaryImage);
-
-
-  // @ts-ignore
-  if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
-    mode = 'vectorize'
-  }
-  //appends a placeholder transformation on placeholderClonedImage
-  // @ts-ignore
-  PLACEHOLDER_IMAGE_OPTIONS[mode].actions.forEach(function(transformation:Action){
-    placeholderClonedImage.addAction(transformation);
-  });
-
-  return placeholderClonedImage;
 }
