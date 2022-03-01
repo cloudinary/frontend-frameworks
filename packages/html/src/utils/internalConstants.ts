@@ -86,5 +86,7 @@ export const VIDEO_MIME_TYPES = {
     'mpg': 'mpeg',
     'avi': 'x-msvideo',
     'wmv': 'x-ms-wmv',
-    'ogv': 'ogg'
+    'ogv': 'ogg',
+    'webm' : 'webm',
+    'mp4' : 'mp4',
 };

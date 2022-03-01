@@ -39,7 +39,7 @@ export class HtmlVideoLayer{
         if(sources){
            this.generateUserSources(userCloudinaryVideo, sources)
         }else {
-            const defaultTypes = ['webm', 'mp4', 'ogg'];
+            const defaultTypes = ['webm', 'mp4', 'ogv'];
             defaultTypes.forEach(type => {
                 this.appendSourceTag(userCloudinaryVideo, type)
             });
@@ -76,8 +76,11 @@ export class HtmlVideoLayer{
         const srcParts = url.split(ANALYTICS_DELIMITER);
         const analyticsStr = srcParts[1] ? `${ANALYTICS_DELIMITER}${srcParts[1]}` :  '';
 
+
         source.src = `${srcParts[0]}.${type}${analyticsStr}`;
-        source.type = mimeType ? mimeType :`video/${type}`;
+        // Ideally, we want to use the VIDEO_MIME_TYPE to detect the mime of the extension
+        // For future proofing of simple formats (say .foo and mimetype of video/foo), we also fallback to the actual type
+        source.type = mimeType ? mimeType :`video/${VIDEO_MIME_TYPES[type] || type}`;
 
         this.videoElement.appendChild(source);
     }
