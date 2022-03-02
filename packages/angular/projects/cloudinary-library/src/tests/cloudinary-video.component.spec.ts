@@ -25,7 +25,7 @@ describe('CloudinaryVideoComponent render', () => {
     tick(0);
     const vidElement: HTMLVideoElement = fixture.nativeElement;
     const video = vidElement.querySelector('video');
-    const defaultVideoTypes = ['webm', 'mp4', 'ogg'];
+    const defaultVideoTypes = ['webm', 'mp4', 'ogv'];
 
     expect(video.childElementCount).toBe(3);
 
@@ -73,7 +73,7 @@ describe('CloudinaryVideoComponent render', () => {
     tick(0);
     const vidElement: HTMLVideoElement = fixture.nativeElement;
     const video = vidElement.querySelector('video');
-    const defaultVideoTypes = ['webm', 'mp4', 'ogg'];
+    const defaultVideoTypes = ['webm', 'mp4', 'ogv'];
 
     expect(video.childElementCount).toBe(2);
 

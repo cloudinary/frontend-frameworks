@@ -16,7 +16,7 @@ describe('AdvancedVideo', () => {
         '<video>' +
         '<source src="https://res.cloudinary.com/demo/video/upload/sample.webm" type="video/webm">' +
         '<source src="https://res.cloudinary.com/demo/video/upload/sample.mp4" type="video/mp4">' +
-        '<source src="https://res.cloudinary.com/demo/video/upload/sample.ogg" type="video/ogg"></video>');
+        '<source src="https://res.cloudinary.com/demo/video/upload/sample.ogv" type="video/ogg"></video>');
       done();
     }, 0);// one tick
   });
@@ -27,7 +27,7 @@ describe('AdvancedVideo', () => {
       expect(component.html()).toContain(
         'https://res.cloudinary.com/demo/video/upload/sample.webm?_a=');
       expect(component.html()).toContain(
-        'https://res.cloudinary.com/demo/video/upload/sample.ogg?_a=');
+        'https://res.cloudinary.com/demo/video/upload/sample.ogv?_a=');
       expect(component.html()).toContain(
         'https://res.cloudinary.com/demo/video/upload/sample.mp4?_a=');
       done();
