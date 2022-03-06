@@ -11,7 +11,7 @@
     "update:urlgen": "npm install @cloudinary/url-gen@latest --prefix packages/html && npm install @cloudinary/url-gen@latest --prefix packages/react && npm install @cloudinary/url-gen@latest --prefix packages/angular && npm install @cloudinary/url-gen@latest --prefix packages/angular/projects/cloudinary-library"
   },
   "dependencies": {
-    "better-docs": "^2.3.0",
+    "better-docs": "2.3.2",
     "foodoc": "0.0.9",
     "jsdoc": "3.6.4",
     "jsdoc-plugin-typescript": "2.0.5",
