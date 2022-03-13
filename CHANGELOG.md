@@ -1,3 +1,19 @@
+1.2.0 / 2022-03-13
+==================
+
+React
+-------
+  * Responsive Plugin will now respect steps to define max width (#133)
+
+Angular
+-------
+   * Responsive Plugin will now respect steps to define max width (#133)
+
+Html
+-------
+  * Update htmlVideo to use the right format for ogg/ogv (#138)
+  * Adjust package.json fields (#136)
+
 1.1.0 / 2022-02-13
 ==================
 
