@@ -1,5 +1,4 @@
-import {colorize, grayscale, assistColorBlind} from "@cloudinary/url-gen/actions/effect";
-import {vectorize, pixelate, blur} from "@cloudinary/url-gen/actions/effect";
+import {colorize, grayscale, assistColorBlind, vectorize, pixelate, blur} from "@cloudinary/url-gen/actions/effect";
 import {Transformation} from "@cloudinary/url-gen/transformation/Transformation";
 import {pad, crop, fill} from "@cloudinary/url-gen/actions/resize";
 import {Background} from "@cloudinary/url-gen/qualifiers/background";

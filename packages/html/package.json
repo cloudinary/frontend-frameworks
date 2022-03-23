@@ -6,6 +6,7 @@
   "umd": "./index.umd.js",
   "module": "./index.esm.js",
   "types": "./index.d.ts",
+  "type": "module",
   "sideEffects": false,
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "scripts": {

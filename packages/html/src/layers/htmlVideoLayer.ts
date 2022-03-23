@@ -1,8 +1,8 @@
-import {Plugins, HtmlPluginState, VideoSources, VideoType} from '../types'
+import {Plugins, HtmlPluginState, VideoSources, VideoType} from '../types.js'
 import cloneDeep from 'lodash.clonedeep'
 import {CloudinaryVideo} from "@cloudinary/url-gen";
-import {render} from '../utils/render';
-import {VIDEO_MIME_TYPES} from "../utils/internalConstants";
+import {render} from '../utils/render.js';
+import {VIDEO_MIME_TYPES} from "../utils/internalConstants.js";
 
 const ANALYTICS_DELIMITER = '?_a=';
 

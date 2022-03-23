@@ -1,11 +1,11 @@
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
-import {Plugin, HtmlPluginState} from "../types";
+import {Plugin, HtmlPluginState} from "../types.js";
 import {scale} from "@cloudinary/url-gen/actions/resize";
 import debounce from 'lodash.debounce';
-import {isNum} from '../utils/isNum';
-import {isBrowser} from "../utils/isBrowser";
+import {isNum} from '../utils/isNum.js';
+import {isBrowser} from "../utils/isBrowser.js";
 import {Action} from "@cloudinary/url-gen/internal/Action";
-import {isImage} from "../utils/isImage";
+import {isImage} from "../utils/isImage.js";
 
 /**
  * @namespace

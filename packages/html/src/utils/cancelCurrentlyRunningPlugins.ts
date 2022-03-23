@@ -1,4 +1,4 @@
-import {HtmlPluginState} from '../types'
+import {HtmlPluginState} from '../types.js'
 
 /**
  * Cancels currently running plugins. This is called from unmount or update

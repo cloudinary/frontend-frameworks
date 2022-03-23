@@ -1,4 +1,4 @@
-import {Plugins, HtmlPluginState} from '../types'
+import {Plugins, HtmlPluginState} from '../types.js'
 import {CloudinaryVideo, CloudinaryImage} from "@cloudinary/url-gen";
 
 /**
