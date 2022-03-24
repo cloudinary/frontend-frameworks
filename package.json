@@ -20,5 +20,12 @@
   "devDependencies": {
     "lerna": "^4.0.0",
     "replace-in-file": "^6.2.0"
+  },
+  "overrides": {
+    "foodoc": {
+      "handlebars": {
+        "minimist": "1.2.6"
+      }
+    }
   }
 }
