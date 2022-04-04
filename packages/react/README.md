@@ -27,9 +27,9 @@ and the [React SDK Reference](https://cloudinary.com/documentation/sdks/js/front
  [video](https://cloudinary.com/documentation/react_video_manipulation#video_element) tags.
 
 ## Version Support
-| SDK Version   | React 16 | React 17 |
-|---------------|------------|--------|
-| 1.0.0 & up    | V          | V      |
+| SDK Version   | React 16   | React 17 | React 18 |
+|---------------|------------|----------|----------|
+| 1.0.0 & up    | V          | V        | V        |
 
 ## Installation
 ### Install using your favorite package manager (yarn, npm)
