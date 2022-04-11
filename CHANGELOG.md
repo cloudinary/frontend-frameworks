@@ -1,3 +1,16 @@
+1.3.0 / 2022-04-11
+==================
+
+React
+-------
+  * Add peer dependency for react 18 (#145)
+
+Angular
+-------
+  * Update README.md (#144)
+  * Remove production mode (#143)
+
+
 1.2.2 / 2022-03-28
 ==================
 
