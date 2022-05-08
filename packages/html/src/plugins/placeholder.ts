@@ -51,11 +51,26 @@ function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, plu
     // in SSR, we copy the transformations of the clone to the user provided CloudinaryImage
     // We return here, since we don't have HTML elements to work with.
     pluginCloudinaryImage.transformation = placeholderClonedImage.transformation;
-    return;
+
+    // @ts-ignore
+    // TODO remove TS Ignore
+    return true;
   }
 
   // Client side rendering, if an image was not provided we don't perform any action
   if(!isImage(element)) return;
+
+  // For the cloned placeholder image, we remove the responsive action.
+  // There's no need to load e_pixelate,w_{responsive} beacuse that image is temporary as-is
+  // and it just causes another image to load.
+
+  // This also means that the de-facto way to use responsive in SSR is WITH placeholder.
+  // This also means that the user must provide dimensions for the responsive plugin on the img tag.
+  placeholderClonedImage.transformation.actions.forEach((action, index) => {
+    if (action instanceof Action && action.getActionTag() === 'responsive') {
+      delete placeholderClonedImage.transformation.actions[index];
+    }
+  });
 
   // Set the SRC of the imageElement to the URL of the placeholder Image
   element.src = placeholderClonedImage.toURL();

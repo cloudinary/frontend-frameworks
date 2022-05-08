@@ -41,5 +41,7 @@ export function accessibilityPlugin(mode: AccessibilityMode, element: HTMLImageE
     });
   }else{
     pluginCloudinaryImage.effect(ACCESSIBILITY_MODES[mode]);
+    // @ts-ignore
+    return true;
   }
 }
