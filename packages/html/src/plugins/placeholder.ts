@@ -26,7 +26,7 @@ export function placeholder({mode='vectorize'}:{mode?: string}={}): Plugin{
  * @param pluginCloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
-function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<void | string> {
+function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<void | string> | boolean {
   // @ts-ignore
   // If we're using an invalid mode, we default to vectorize
   if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
@@ -52,8 +52,6 @@ function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, plu
     // We return here, since we don't have HTML elements to work with.
     pluginCloudinaryImage.transformation = placeholderClonedImage.transformation;
 
-    // @ts-ignore
-    // TODO remove TS Ignore
     return true;
   }
 

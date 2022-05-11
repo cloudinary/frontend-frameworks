@@ -27,9 +27,8 @@ export function responsive({steps}:{steps?: number | number[]}={}): Plugin{
  * @param responsiveImage {CloudinaryImage}
  * @param htmlPluginState {HtmlPluginState} holds cleanup callbacks and event subscriptions
  */
-function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState): Promise<void | string> {
-  // @ts-ignore
-  // TODO remove TS Ignore
+function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState): Promise<void | string> | boolean {
+
   if(!isBrowser()) return true;
 
   if(!isImage(element)) return;
@@ -42,7 +41,7 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
 
     // Use a tagged generic action that can be later searched and replaced.
     responsiveImage.addAction(new Action().setActionTag('responsive'));
-    // Immediately run the resize plugin, ensuring that first render gets an responsive image.
+    // Immediately run the resize plugin, ensuring that first render gets a responsive image.
     onResize(steps, element, responsiveImage);
 
     let resizeRef: any;
