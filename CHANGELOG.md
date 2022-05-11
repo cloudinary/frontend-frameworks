@@ -1,3 +1,17 @@
+1.4.0 / 2022-05-11
+==================
+
+React
+-------
+  * Fix incorrect responsive behavior with SSR responsive (#147)
+
+Angular
+-------
+  * Fix incorrect responsive behavior with SSR responsive (#147)
+  * Add Angular 12 as peer dep (#146)
+
+
+
 1.3.0 / 2022-04-11
 ==================
 
