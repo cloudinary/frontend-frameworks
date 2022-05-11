@@ -22,7 +22,7 @@ export function accessibility({mode = 'darkmode'}: { mode?: string; }={}): Plugi
  * @param pluginCloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
-export function accessibilityPlugin(mode: AccessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<void | string> {
+export function accessibilityPlugin(mode: AccessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<void | string> | boolean {
   if(isBrowser()){
 
     if(!isImage(element)) return;
@@ -41,5 +41,6 @@ export function accessibilityPlugin(mode: AccessibilityMode, element: HTMLImageE
     });
   }else{
     pluginCloudinaryImage.effect(ACCESSIBILITY_MODES[mode]);
+    return true;
   }
 }
