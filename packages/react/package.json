@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/react",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A React component for Cloudinary",
   "author": "cloudinary",
   "license": "MIT",
@@ -79,6 +79,6 @@
     ]
   },
   "dependencies": {
-    "@cloudinary/html": "^1.2.2"
+    "@cloudinary/html": "^1.4.0"
   }
 }
