@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/ng",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "peerDependencies": {
     "@angular/common": "^10.0.0 || ^11.0.0 || ^12.0.0",
@@ -10,7 +10,7 @@
     "@cloudinary/url-gen": "^1.4.0"
   },
   "dependencies": {
-    "@cloudinary/html": "^1.4.0"
+    "@cloudinary/html": "^1.4.1"
   },
   "publishConfig": {
     "access": "public"
