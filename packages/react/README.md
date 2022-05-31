@@ -6,9 +6,7 @@ Effortlessly optimize and transform your cloud's assets.
 
 #### Note
 This Readme provides basic installation and usage information.
-For the complete documentation, see the [React SDK Guide](https://cloudinary.com/documentation/react_integration)
-and the [React SDK Reference](https://cloudinary.com/documentation/sdks/js/frontend-frameworks/ReactSDK.html).
-
+For the complete documentation, see the [React SDK Guide](https://cloudinary.com/documentation/react_integration).
 
 ## Table of Contents
 - [Key Features](#key-features)

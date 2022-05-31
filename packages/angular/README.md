@@ -6,8 +6,7 @@ Effortlessly optimize and transform your cloud's assets.
 
 #### Note
 This Readme provides basic installation and usage information.
-For the complete documentation, see the [React SDK Guide](https://cloudinary.com/documentation/angular_integration) 
-and the [Angular SDK Reference](https://cloudinary.com/documentation/sdks/js/frontend-frameworks/AngularSDK).
+For the complete documentation, see the [Angular SDK Reference](https://cloudinary.com/documentation/sdks/js/frontend-frameworks/AngularSDK).
 
 
 ## Table of Contents
@@ -57,7 +56,7 @@ imports: [
 ```
 
 ### Transform and Optimize Assets
-- [See full documentation](https://cloudinary.com/documentation/react_image_manipulation)
+- [See full documentation](https://cloudinary.com/documentation/angular_image_manipulation)
 
 ```tsx
 import {CloudinaryImage} from '@cloudinary/url-gen/assets/CloudinaryImage';
