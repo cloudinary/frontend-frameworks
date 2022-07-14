@@ -1,11 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import { AdvancedVideo as SrcAdvancedVideo } from "../../src/index";
-import { AdvancedVideo as DistAdvancedVideo } from "../../dist/index.esm";
-
-const AdvancedVideo =
-  process.env.JEST_TEST_SUBJECT === "dist"
-    ? DistAdvancedVideo
-    : SrcAdvancedVideo;
+import { AdvancedVideo } from "../../src/index";
 
 describe("AdvancedVideo.vue", () => {
   it("renders props.url when passed", () => {
