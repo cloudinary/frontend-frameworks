@@ -8,7 +8,9 @@
     "prepublishOnly": "npm run build",
     "serve": "vue-cli-service serve",
     "build:app": "vue-cli-service build",
-    "test": "npm run build && vue-cli-service test:unit && JEST_ENV=DEV vue-cli-service test:unit",
+    "test": "npm run build && vue-cli-service test:unit && JEST_TEST_SUBJECT=dist vue-cli-service test:unit",
+    "coverage": "vue-cli-service test:unit --coverage",
+    "serve:coverage": "http-server coverage/lcov-report",
     "lint": "vue-cli-service lint"
   },
   "devDependencies": {
@@ -28,6 +30,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
+    "http-server": "^14.1.1",
     "jest": "^27.0.5",
     "prettier": "^2.4.1",
     "replace-in-files-cli": "^2.0.0",

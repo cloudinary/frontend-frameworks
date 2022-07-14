@@ -3,7 +3,9 @@ import { AdvancedImage as SrcAdvancedImage } from "../../src/index";
 import { AdvancedImage as DistAdvancedImage } from "../../dist/index.esm";
 
 const AdvancedImage =
-  process.env.JEST_ENV === "DEV" ? SrcAdvancedImage : DistAdvancedImage;
+  process.env.JEST_TEST_SUBJECT === "dist"
+    ? DistAdvancedImage
+    : SrcAdvancedImage;
 
 describe("AdvancedImage.vue", () => {
   it("renders props.url when passed", () => {

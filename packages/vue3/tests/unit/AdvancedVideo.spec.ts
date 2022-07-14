@@ -3,7 +3,9 @@ import { AdvancedVideo as SrcAdvancedVideo } from "../../src/index";
 import { AdvancedVideo as DistAdvancedVideo } from "../../dist/index.esm";
 
 const AdvancedVideo =
-  process.env.JEST_ENV === "DEV" ? SrcAdvancedVideo : DistAdvancedVideo;
+  process.env.JEST_TEST_SUBJECT === "dist"
+    ? DistAdvancedVideo
+    : SrcAdvancedVideo;
 
 describe("AdvancedVideo.vue", () => {
   it("renders props.url when passed", () => {
