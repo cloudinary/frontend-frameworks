@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    /* Set the JavaScript language version for emitted JavaScript and include
+       compatible library declarations. */
+    "target": "esnext",
+    /* Specify what JSX code is generated. */
+    "jsx": "preserve",
+    /* Specify what module code is generated. */
+    "module": "esnext",
+    /* Specify the root folder within your source files. */
+    "rootDir": "src",
+    /* Specify how TypeScript looks up a file from a given module specifier. */
+    "moduleResolution": "node",
+    /* Specify the base directory to resolve non-relative module names. */
+    "baseUrl": "./src",
+    /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
+    "declaration": true,
+    /* Create sourcemaps for d.ts files. */
+    "declarationMap": false,
+    /* Create source map files for emitted JavaScript files. */
+    "sourceMap": true,
+    /* Specify an output folder for all emitted files. */
+    "outDir": "dist",
+    /* Emit additional JavaScript to ease support for importing CommonJS modules.
+       This enables `allowSyntheticDefaultImports` for type compatibility. */
+    "esModuleInterop": true,
+    /* Ensure that casing is correct in imports. */
+    "forceConsistentCasingInFileNames": true,
+    /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+  ],
+  "exclude": [
+    "**/node_modules",
+    "src/App.vue",
+    "src/main.ts",
+    "tests/**/*.*"
+  ]
+}
