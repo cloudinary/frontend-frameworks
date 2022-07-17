@@ -2,7 +2,6 @@
   "name": "@cloudinary/vue3",
   "version": "1.4.1",
   "description": "Cloudinary Vue3 SDK",
-  "private": true,
   "scripts": {
     "build": "rollup -c",
     "prebuild": "rm -rf dist",
