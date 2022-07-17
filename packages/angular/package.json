@@ -1,6 +1,7 @@
 {
   "name": "@cloudinary/angular-workspace",
   "version": "1.4.1",
+  "description": "Cloudinary Angular SDK",
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "sideEffects": false,
   "scripts": {
