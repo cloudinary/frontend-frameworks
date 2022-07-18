@@ -1,10 +1,13 @@
 {
   "name": "@cloudinary/vue3",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.4.1",
+  "description": "Cloudinary Vue3 SDK",
   "scripts": {
-    "build": "rm -rf dist && rollup -c && replace-in-files --string='.vue' --replacement='' dist/index.d.ts && npm run copy:dts",
+    "build": "rollup -c",
+    "prebuild": "rm -rf dist",
+    "postbuild": "replace-in-files --string='.vue' --replacement='' dist/index.d.ts && npm run copy:dts && npm run copy:pkg",
     "copy:dts": "cp dist/index.d.ts dist/index.esm.d.ts && cp dist/index.d.ts dist/index.ssr.d.ts",
+    "copy:pkg": "cp package.json ./dist",
     "prepublishOnly": "npm run build",
     "serve": "vue-cli-service serve",
     "build:app": "vue-cli-service build",
