@@ -1,7 +1,7 @@
 {
   "name": "@cloudinary/react",
   "version": "1.4.1",
-  "description": "A React component for Cloudinary",
+  "description": "Cloudinary React SDK",
   "author": "cloudinary",
   "license": "MIT",
   "repository": "https://github.com/cloudinary/frontend-frameworks",

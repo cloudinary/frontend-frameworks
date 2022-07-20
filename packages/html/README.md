@@ -1,6 +1,5 @@
 ## Overview
 
-This is our html library. The objective of this layer is to hold all logic for our
-React and Angular libraries.
-
-Angular and React use the html library to render images and videos.  
+This is Cloudinary's html library.  
+It acts as a layer that provides all dom manipulation logic used by Cloudinary's
+frontend frameworks SDKs like [@cloudinary/react](https://www.npmjs.com/package/@cloudinary/react) and [@cloudinary/ng](https://www.npmjs.com/package/@cloudinary/ng) for rendering images and videos.
