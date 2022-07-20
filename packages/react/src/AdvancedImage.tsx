@@ -8,12 +8,12 @@ import {
   serverSideSrc,
   cancelCurrentlyRunningPlugins
 } from '@cloudinary/html'
-import {SDKAnalyticsConstants} from "./internal/SDKAnalyticsConstants";
+import { SDKAnalyticsConstants } from './internal/SDKAnalyticsConstants';
 
 interface ImgProps {
-  cldImg: CloudinaryImage,
-  plugins?: Plugins,
-  [x: string]: any
+  cldImg: CloudinaryImage;
+  plugins?: Plugins;
+  [x: string]: any;
 }
 
 /**

@@ -1,8 +1,6 @@
 <template>
   <div>
-    <AdvancedImage
-      url="https://res.cloudinary.com/demo/image/upload/sample.jpg"
-    />
+    <AdvancedImage :cldImg="img" :plugins="[responsive(100)]" />
   </div>
   <div>
     <AdvancedVideo url="https://res.cloudinary.com/demo/video/upload/dog.mp4" />
@@ -11,14 +9,29 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AdvancedImage from "@/components/AdvancedImage.vue";
-import AdvancedVideo from "@/components/AdvancedVideo.vue";
+import {
+  AdvancedImage,
+  AdvancedVideo,
+  accessibility,
+  responsive,
+  lazyload,
+  placeholder,
+} from "./index";
+import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 
 export default defineComponent({
   name: "App",
   components: {
     AdvancedImage,
     AdvancedVideo,
+  },
+  setup(props) {
+    const img = new CloudinaryImage("sample", { cloudName: "demo" });
+
+    return {
+      img,
+      responsive,
+    };
   },
 });
 </script>
