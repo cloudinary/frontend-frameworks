@@ -8,7 +8,7 @@
     "test": "lerna run test",
     "build:docs": "node ./scripts/buildDocs.js",
     "start:docs": "live-server --open=public/docs",
-    "update:urlgen": "npm install @cloudinary/url-gen@latest --prefix packages/html && npm install @cloudinary/url-gen@latest --prefix packages/react && npm install @cloudinary/url-gen@latest --prefix packages/angular && npm install @cloudinary/url-gen@latest --prefix packages/angular/projects/cloudinary-library"
+    "update:urlgen": "npm install @cloudinary/url-gen@latest --prefix packages/html && npm install @cloudinary/url-gen@latest --prefix packages/react && npm install @cloudinary/url-gen@latest --prefix packages/vue3 && npm install @cloudinary/url-gen@latest --prefix packages/angular && npm install @cloudinary/url-gen@latest --prefix packages/angular/projects/cloudinary-library"
   },
   "dependencies": {
     "better-docs": "2.3.2",

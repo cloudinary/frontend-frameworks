@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AdvancedImage :cldImg="img" :plugins="[responsive(100)]" />
+    <AdvancedImage :cldImg="cldImg" :plugins="plugins" />
   </div>
   <div>
     <AdvancedVideo url="https://res.cloudinary.com/demo/video/upload/dog.mp4" />
@@ -26,11 +26,17 @@ export default defineComponent({
     AdvancedVideo,
   },
   setup(props) {
-    const img = new CloudinaryImage("sample", { cloudName: "demo" });
+    const cldImg = new CloudinaryImage(
+      "sample",
+      { cloudName: "demo" },
+      { analytics: false }
+    );
+
+    const plugins = [responsive({ steps: 100 })];
 
     return {
-      img,
-      responsive,
+      cldImg,
+      plugins,
     };
   },
 });
