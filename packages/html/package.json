@@ -19,6 +19,7 @@
     "@cloudinary/url-gen": "^1.8.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
+    "core-js": "^3.23.5",
     "rollup": "^2.52.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.30.0"

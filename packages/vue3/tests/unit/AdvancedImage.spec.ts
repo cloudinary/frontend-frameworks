@@ -1,4 +1,4 @@
-import { shallowMount, mount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import { AdvancedImage } from "../../src/index";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { nextTick } from "vue";
