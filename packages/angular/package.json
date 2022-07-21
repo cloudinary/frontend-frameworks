@@ -33,7 +33,7 @@
     "@angular/cli": "~10.2.3",
     "@angular/compiler-cli": "~10.2.4",
     "@cloudinary/html": "^1.4.1",
-    "@cloudinary/url-gen": "^1.4.0",
+    "@cloudinary/url-gen": "^1.8.0",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",

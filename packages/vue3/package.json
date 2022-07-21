@@ -2,14 +2,15 @@
   "name": "@cloudinary/vue3",
   "version": "1.4.1",
   "description": "Cloudinary Vue3 SDK",
+  "type": "module",
   "scripts": {
     "build": "rollup -c",
-    "prebuild": "rm -rf dist",
+    "prebuild": "rm -rf dist && npm run build --prefix ../html",
     "postbuild": "replace-in-files --string='.vue' --replacement='' dist/index.d.ts && npm run copy:dts && npm run copy:pkg",
     "copy:dts": "cp dist/index.d.ts dist/index.esm.d.ts && cp dist/index.d.ts dist/index.ssr.d.ts",
     "copy:pkg": "cp package.json ./dist",
     "prepublishOnly": "npm run build",
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve sampleApp/main.ts",
     "build:app": "vue-cli-service build",
     "test": "npm run test:dist && npm run test:src",
     "test:src": "vue-cli-service test:unit --coverage",
@@ -20,6 +21,9 @@
     "lint": "vue-cli-service lint"
   },
   "devDependencies": {
+    "@cloudinary/html": "^1.0.1",
+    "@cloudinary/url-gen": "^1.8.0",
+    "@rollup/plugin-replace": "^4.0.0",
     "@types/jest": "^27.0.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
@@ -29,9 +33,10 @@
     "@vue/cli-plugin-unit-jest": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "@vue/eslint-config-typescript": "^9.1.0",
-    "@vue/test-utils": "^2.0.0-0",
+    "@vue/test-utils": "^2.0.2",
     "@vue/vue3-jest": "^27.0.0-alpha.1",
     "babel-jest": "^27.0.6",
+    "core-js": "^3.23.5",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -48,6 +53,9 @@
     "typescript": "^4.7.4",
     "vue": "^3.2.37",
     "vue-tsc": "^0.38.5"
+  },
+  "dependencies": {
+    "@cloudinary/html": "^1.4.1"
   },
   "eslintConfig": {
     "root": true,
@@ -83,6 +91,7 @@
     "not ie 11"
   ],
   "jest": {
-    "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel"
+    "preset": "@vue/cli-plugin-unit-jest/presets/typescript-and-babel",
+    "transformIgnorePatterns": []
   }
 }

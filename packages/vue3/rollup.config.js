@@ -1,5 +1,8 @@
 import typescript from "rollup-plugin-typescript2";
 import vue from "rollup-plugin-vue";
+import replace from "@rollup/plugin-replace";
+import { version, devDependencies } from "./package.json";
+const vueVersion = devDependencies.vue;
 
 export default [
   // ESM build to be used with webpack/rollup.
@@ -11,6 +14,11 @@ export default [
     },
     plugins: [
       vue({ target: "browser" }),
+      replace({
+        SDK_PACKAGE_VERSION_INJECTED_DURING_BUILD: version,
+        VUE_VERSION_INJECTED_DURING_BUILD: vueVersion,
+        preventAssignment: false,
+      }),
       typescript({
         tsconfigOverride: {
           compilerOptions: {
@@ -20,6 +28,7 @@ export default [
         },
       }),
     ],
+    external: ["vue", "@cloudinary/html", "vue/server-renderer"],
   },
   // SSR build.
   {
@@ -30,6 +39,11 @@ export default [
     },
     plugins: [
       vue({ target: "node" }), // use 'node' to compile for SSR
+      replace({
+        SDK_PACKAGE_VERSION_INJECTED_DURING_BUILD: version,
+        VUE_VERSION_INJECTED_DURING_BUILD: vueVersion,
+        preventAssignment: false,
+      }),
       typescript({
         tsconfigOverride: {
           compilerOptions: {
@@ -39,6 +53,7 @@ export default [
         },
       }),
     ],
+    external: ["vue", "@cloudinary/html", "vue/server-renderer"],
   },
   // Browser build.
   {
@@ -49,6 +64,11 @@ export default [
     },
     plugins: [
       vue({ target: "browser" }),
+      replace({
+        SDK_PACKAGE_VERSION_INJECTED_DURING_BUILD: version,
+        VUE_VERSION_INJECTED_DURING_BUILD: vueVersion,
+        preventAssignment: false,
+      }),
       typescript({
         tsconfigOverride: {
           compilerOptions: {
@@ -58,5 +78,6 @@ export default [
         },
       }),
     ],
+    external: ["vue", "@cloudinary/html", "vue/server-renderer"],
   },
 ];
