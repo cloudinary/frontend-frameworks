@@ -10,7 +10,7 @@
     "copy:dts": "cp dist/index.d.ts dist/index.esm.d.ts && cp dist/index.d.ts dist/index.ssr.d.ts",
     "copy:pkg": "cp package.json ./dist",
     "prepublishOnly": "npm run build",
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve sampleApp/main.ts",
     "build:app": "vue-cli-service build",
     "test": "npm run test:dist && npm run test:src",
     "test:src": "vue-cli-service test:unit --coverage",

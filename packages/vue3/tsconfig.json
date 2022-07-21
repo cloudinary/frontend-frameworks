@@ -37,8 +37,8 @@
   ],
   "exclude": [
     "**/node_modules",
-    "src/App.vue",
-    "src/main.ts",
+    "sampleApp/App.vue",
+    "sampleApp/main.ts",
     "tests/**/*.*"
   ]
 }

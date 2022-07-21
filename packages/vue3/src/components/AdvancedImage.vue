@@ -12,7 +12,7 @@
  * @prop {Plugins} plugins Advanced image component plugins accessibility(), responsive(), lazyload(), placeholder()
  */
 
-import { defineProps, ref, onMounted, onUpdated, onUnmounted } from "vue";
+import { ref, onMounted, onUpdated, onUnmounted } from "vue";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {
   HtmlImageLayer,
@@ -30,6 +30,8 @@ interface ImgProps {
   [x: string]: any;
 }
 
+// Disabled linting due to [@vue/compiler-sfc] `defineProps` is a compiler macro and no longer needs to be imported.
+// eslint-disable-next-line no-undef
 const props = defineProps<ImgProps>();
 
 const imageRef = ref(null);

@@ -16,7 +16,7 @@ import {
   responsive,
   lazyload,
   placeholder,
-} from "./index";
+} from "../src";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 
 export default defineComponent({
