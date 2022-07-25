@@ -1,19 +1,13 @@
 import { AdvancedImage, accessibility } from "../../src/index";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { mount } from "@vue/test-utils";
-import { nextTick } from "vue";
+import { waitTicks } from "./utils";
 
 const cloudinaryImage = new CloudinaryImage(
   "sample",
   { cloudName: "demo" },
   { analytics: false }
 );
-
-const waitTicks = async (ticks: number) => {
-  for (let i = 0; i < ticks; i++) {
-    await nextTick();
-  }
-};
 
 describe("accessibility", () => {
   it("should apply default", async () => {
