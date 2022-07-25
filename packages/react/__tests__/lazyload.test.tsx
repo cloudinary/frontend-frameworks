@@ -2,7 +2,7 @@ import { AdvancedImage, lazyload } from '../src'
 import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
 import { mount } from 'enzyme';
 import React from 'react';
-import testWithMockedIntersectionObserver from './testUtils/setupIntersectionObserverMock';
+import { testWithMockedIntersectionObserver } from '../../../testUtils/testWithMockedIntersectionObserver'
 
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 

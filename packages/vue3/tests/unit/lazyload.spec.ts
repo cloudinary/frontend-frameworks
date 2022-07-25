@@ -1,7 +1,8 @@
 import { AdvancedImage, lazyload } from "../../src/index";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { mount } from "@vue/test-utils";
-import { waitTicks, testWithMockedIntersectionObserver } from "./utils";
+import { waitTicks } from "./utils";
+import { testWithMockedIntersectionObserver } from "../../../../testUtils/testWithMockedIntersectionObserver";
 
 const cloudinaryImage = new CloudinaryImage(
   "sample",
@@ -19,6 +20,7 @@ describe("lazy-load", () => {
     document.body.appendChild(rootDiv);
 
     testWithMockedIntersectionObserver(
+      // eslint-disable-next-line no-empty-pattern
       async (mockIntersectionEvent: ({}) => void) => {
         const component = mount(AdvancedImage, {
           props: { cldImg: cloudinaryImage, plugins: [lazyload()] },
@@ -39,6 +41,7 @@ describe("lazy-load", () => {
 
   it("should have src when in view", async () => {
     testWithMockedIntersectionObserver(
+      // eslint-disable-next-line no-empty-pattern
       async (mockIntersectionEvent: ({}) => void) => {
         const component = mount(AdvancedImage, {
           props: { cldImg: cloudinaryImage, plugins: [lazyload()] },
@@ -57,6 +60,7 @@ describe("lazy-load", () => {
 
   it("should set lazyload root margin and threshold", async () => {
     testWithMockedIntersectionObserver(
+      // eslint-disable-next-line no-empty-pattern
       async (mockIntersectionEvent: ({}) => void) => {
         const component = mount(AdvancedImage, {
           props: {
