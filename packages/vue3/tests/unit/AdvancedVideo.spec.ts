@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import { AdvancedVideo } from "../../dist/index.esm";
+import { AdvancedVideo } from "../../src/index";
 
 describe("AdvancedVideo.vue", () => {
   it("renders props.url when passed", () => {

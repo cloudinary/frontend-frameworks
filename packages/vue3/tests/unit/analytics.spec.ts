@@ -1,4 +1,4 @@
-import { AdvancedImage } from "../../dist/index.esm";
+import { AdvancedImage } from "../../src/index";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { mount } from "@vue/test-utils";
 import { waitTicks } from "./utils";
