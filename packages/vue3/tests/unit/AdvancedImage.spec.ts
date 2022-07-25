@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { AdvancedImage } from "../../src/index";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
-import { nextTick } from "vue";
+import { waitTicks } from "./utils";
 
 const cloudinaryImage = new CloudinaryImage(
   "sample",
@@ -20,7 +20,7 @@ describe("AdvancedImage.vue", () => {
     });
 
     // wait because @cloudinary/html takes time to update the img element
-    await nextTick();
+    await waitTicks(1);
 
     expect(component.html()).toContain(
       '<img src="https://res.cloudinary.com/demo/image/upload/sample"'
@@ -36,7 +36,7 @@ describe("AdvancedImage.vue", () => {
     });
 
     // wait because @cloudinary/html takes time to update the img element
-    await nextTick();
+    await waitTicks(1);
 
     expect(component.html()).toContain('style="opacity: 0.5;"');
   });
