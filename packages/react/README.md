@@ -57,7 +57,6 @@ import React, { Component } from 'react'
 import { AdvancedImage } from '@cloudinary/react'
 import {CloudinaryImage} from '@cloudinary/url-gen';
 
-let img = new CloudinaryImage()
 const myCld = new Cloudinary({ cloudName: 'demo'});
 let img = myCld().image('sample');
 
