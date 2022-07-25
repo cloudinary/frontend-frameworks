@@ -105,6 +105,21 @@ describe("placeholder", () => {
     );
   });
 
+  it("should append placeholder transformation", async () => {
+    cloudinaryImage.effect(sepia());
+    const component = mount(AdvancedImage, {
+      props: {
+        cldImg: cloudinaryImage,
+        plugins: [placeholder()],
+      },
+    });
+
+    await waitTicks(2);
+    expect(component.html()).toContain(
+      `src="https://res.cloudinary.com/demo/image/upload/e_sepia/${PLACEHOLDER_IMAGE_OPTIONS.vectorize}/sample"`
+    );
+  });
+
   it("should not fail on error", async () => {
     const component = mount(AdvancedImage, {
       props: { cldImg: cloudinaryImage, plugins: [placeholder()] },
