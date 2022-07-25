@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { AdvancedImage } from "../../src/index";
+import { AdvancedImage } from "../../dist/index.esm";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { nextTick } from "vue";
 

@@ -15,7 +15,7 @@
     "test": "npm run test:dist && npm run test:src",
     "test:src": "vue-cli-service test:unit --coverage",
     "pretest:src": "replace-in-files --string='dist/index.esm' --replacement='src/index' tests/unit/*.spec.ts",
-    "test:dist": "npm run build && vue-cli-service test:unit",
+    "test:dist": "npm run build && VUE3_TEST_ENV=DIST vue-cli-service test:unit",
     "pretest:dist": "replace-in-files --string='src/index' --replacement='dist/index.esm' tests/unit/*.spec.ts",
     "serve:coverage": "http-server coverage/lcov-report",
     "lint": "vue-cli-service lint"

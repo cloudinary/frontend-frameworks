@@ -2,7 +2,7 @@ import typescript from "rollup-plugin-typescript2";
 import vue from "rollup-plugin-vue";
 import replace from "@rollup/plugin-replace";
 import { version, devDependencies } from "./package.json";
-const vueVersion = devDependencies.vue;
+const vueVersion = devDependencies.vue.replace("^", "");
 
 export default [
   // ESM build to be used with webpack/rollup.
