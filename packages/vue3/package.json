@@ -71,12 +71,7 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "rules": {
-      "no-empty-function": "off",
-      "no-empty-pattern": "off",
-      "@typescript-eslint/no-empty-function": ["off"],
-      "@typescript-eslint/ban-ts-comment": ["off"]
-    },
+    "rules": {},
     "overrides": [
       {
         "files": [
