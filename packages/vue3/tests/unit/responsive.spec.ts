@@ -20,7 +20,8 @@ const waitForResize = async (
   await waitTicks(1);
 
   dispatchResize(
-    document.getElementById("wrapper").firstChild as HTMLDivElement,
+    (document.getElementById("wrapper") as HTMLDivElement)
+      .firstChild as HTMLDivElement,
     size
   );
 
