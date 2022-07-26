@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import React from 'react';
 import { ResponsiveHelper } from './testUtils/responsiveHelperWrapper';
 import { crop } from '@cloudinary/url-gen/actions/resize';
-import { reactDispatchResize as dispatchResize } from '../../../testUtils/dispatchResize';
+import { dispatchResize } from './testUtils/dispatchResize';
 import FakeTimers from '@sinonjs/fake-timers'
 
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
