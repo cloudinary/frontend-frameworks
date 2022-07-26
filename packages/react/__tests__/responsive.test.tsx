@@ -1,22 +1,13 @@
 import { AdvancedImage, responsive } from '../src'
 import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
-import { mount, ReactWrapper } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import { ResponsiveHelper } from './testUtils/responsiveHelperWrapper';
 import { crop } from '@cloudinary/url-gen/actions/resize';
-import { dispatchResize } from '../../../testUtils/dispatchResize';
+import { reactDispatchResize as dispatchResize } from '../../../testUtils/dispatchResize';
 import FakeTimers from '@sinonjs/fake-timers'
 
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
-
-const waitForResize = async (clock: any, component: ReactWrapper<any, React.Component['state'], React.Component>, size?: number): Promise<HTMLDivElement> => {
-  await clock.tickAsync(0); // one tick
-  const el = component.find('#wrapper').getDOMNode() as HTMLDivElement;
-  dispatchResize(el, size);
-
-  clock.tick(100); // timeout for debounce
-  return el;
-}
 
 describe('responsive', () => {
   let clock:any;
@@ -40,10 +31,11 @@ describe('responsive', () => {
     expect(el.clientWidth).toBe(250);
   });
 
+
   it('Should respect single step and ignore default width of 250 (When Step < Width)', async function () {
     const component = mount(
       <ResponsiveHelper>
-        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({ steps: 100 })]} />
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({steps: 100})]} />
       </ResponsiveHelper>);
 
     clock.tick(100); // timeout for debounce
@@ -53,10 +45,11 @@ describe('responsive', () => {
     expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_300/sample"');
   });
 
+
   it('Should respect single step and ignore default width of 250 (When Step > Width)', async function () {
     const component = mount(
       <ResponsiveHelper>
-        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({ steps: 251 })]} />
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({steps: 251})]} />
       </ResponsiveHelper>);
 
     clock.tick(100); // timeout for debounce
@@ -69,7 +62,7 @@ describe('responsive', () => {
   it('Should respect steps and ignore default width of 250', async function () {
     const component = mount(
       <ResponsiveHelper>
-        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({ steps: [10, 20, 30] })]} />
+        <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({steps: [10, 20, 30]})]} />
       </ResponsiveHelper>);
 
     clock.tick(100); // timeout for debounce
@@ -78,60 +71,76 @@ describe('responsive', () => {
     expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_30/sample"');
   });
 
-  it('should update container width on window resize', async () => {
+  it('should update container width on window resize', function () {
     const component = mount(
       <ResponsiveHelper>
         <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive()]} />
       </ResponsiveHelper>);
 
-    const el = await waitForResize(clock, component);
+    const el = dispatchResize(component, 100);
+    clock.tick(100); // timeout for debounce
     expect(el.clientWidth).toBe(100);
   });
 
-  it('should step by the 100th', async () => {
+  it('should step by the 100th', async function () {
     const component = mount(
       <ResponsiveHelper>
         <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({ steps: 100 })]} />
       </ResponsiveHelper>);
 
-    await waitForResize(clock, component);
+    await clock.tickAsync(0); // one tick
+    window.dispatchEvent(new Event('resize'));
+    await clock.tickAsync(100); // timeout for debounce
     expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_300/sample"');
   });
 
-  it('should step by breakpoints', async () => {
+  it('should step by breakpoints', async function () {
     const component = mount(
       <ResponsiveHelper>
         <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({ steps: [800, 1000, 1200, 3000] })]} />
       </ResponsiveHelper>);
 
-    await waitForResize(clock, component);
+    await clock.tickAsync(0); // one tick
+    window.dispatchEvent(new Event('resize'));
+    await clock.tickAsync(100); // timeout for debounce
+
     expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_800/sample"');
 
-    await waitForResize(clock, component, 975);
+    // simulate resize to 975
+    await clock.tickAsync(0); // one tick
+    dispatchResize(component, 975);
+    await clock.tickAsync(100); // timeout for debounce
+
     expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_1000/sample"');
   });
 
-  it('should not resize to larger than provided breakpoints', async () => {
+  it('should not resize to larger than provided breakpoints', async function () {
     const component = mount(
       <ResponsiveHelper>
         <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({ steps: [800, 1000, 1200, 3000] })]} />
       </ResponsiveHelper>);
 
-    await waitForResize(clock, component, 4000);
+    await clock.tickAsync(0); // one tick
+    dispatchResize(component, 4000);
+    await clock.tickAsync(100); // timeout for debounce
+
     expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample"');
   });
 
-  it('should handle unordered breakpoints', async () => {
+  it('should handle unordered breakpoints', async function () {
     const component = mount(
       <ResponsiveHelper>
         <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive({ steps: [1000, 800, 3000, 1200] })]} />
       </ResponsiveHelper>);
 
-    await waitForResize(clock, component, 5000);
+    await clock.tickAsync(0); // one tick
+    dispatchResize(component, 5000);
+    await clock.tickAsync(100); // timeout for debounce
+
     expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_scale,w_3000/sample"');
   });
 
-  it('should append to existing transformation', async () => {
+  it('should append to existing transformation', async function () {
     cloudinaryImage.resize(crop('500'));
 
     const component = mount(
@@ -139,7 +148,10 @@ describe('responsive', () => {
         <AdvancedImage cldImg={cloudinaryImage} plugins={[responsive()]} />
       </ResponsiveHelper>);
 
-    await waitForResize(clock, component);
+    await clock.tickAsync(0); // one tick
+    window.dispatchEvent(new Event('resize'));
+    await clock.tickAsync(100); // timeout for debounce
+
     expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/c_crop,w_500/c_scale,w_250/sample"');
   });
 });
