@@ -1,6 +1,6 @@
 {
   "packages": [
-    "packages/**/!(dist|playground)*"
+    "packages/**/!(dist|playground|vue3)*"
   ],
   "version": "1.4.1"
 }
