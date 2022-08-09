@@ -1,3 +1,21 @@
+1.4.2 / 2022-08-09
+==================
+
+Angular
+------------------  
+* Fix angular package version (#150)
+
+VUE3
+------------------
+  * Test vue3 responsive (#160)
+  * Test vue3 placeholder (#159)
+  * Test vue3 lazyload (#158)
+  * Test vue3 analytics (#157)
+  * Test vue3 accessibility tests (#156)
+  * Add vue3 advanced image (#153)
+  * Add vue3 sdk base with a build script (#151)
+
+
 1.4.1 / 2022-05-31
 ==================
 
