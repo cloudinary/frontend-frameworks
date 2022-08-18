@@ -40,28 +40,28 @@ npm i @cloudinary/react @cloudinary/url-gen
 The following is a simple example using [React](https://cloudinary.com/documentation/react2_integration).
 For more information on React and other frameworks, navigate to the specific reference using the **Packages** menu. 
 ```javascript
-// Import the Cloudinary class, and the plugins you want to use.
-// In this case, we import a Cloudinary image type, accessibility and responsive.
-
-import React, { Component } from 'react'
+import React from 'react'
+// Cloudinary is used to configure your account and generate urls for your media assets
 import {Cloudinary} from "@cloudinary/url-gen";
-import { AdvancedImage, accessibility, responsive } from '@cloudinary/react';
+// Import the cloudinary media component (AdvancedImage / AdvancedVideo),
+// and the plugins you want to use.
+import {AdvancedImage, accessibility, responsive} from '@cloudinary/react';
 
 // Once per project/app - configure your instance.
-// See the documentation in @cloudinary/url-gen for more information. 
-const myCld = new Cloudinary({ cloudName: 'demo'});
+// See the documentation of @cloudinary/url-gen for more information.
+const myCld = new Cloudinary({cloud: {cloudName: 'demo'}});
 
-// Render your component.
- const App = () => {
-    // Create your image.
-    // This creates a new image object:
-    let img = myCld().image('sample');
-    return (
-        <div>
-            <AdvancedImage cldImg={img} plugins={[responsive(), accessibility()]}/>
-        </div>
-    )
-  };
+export const App = () => {
+  // Create a new image object:
+  const img = myCld.image('sample');
+
+  // Render your component.
+  return (
+    <div>
+      <AdvancedImage cldImg={img} plugins={[responsive(), accessibility()]}/>
+    </div>
+  )
+};
 ```
 
 ## Plugin Order
