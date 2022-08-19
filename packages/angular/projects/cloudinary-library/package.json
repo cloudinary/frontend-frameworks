@@ -7,7 +7,7 @@
     "@angular/core": ">=10.0.0"
   },
   "devDependencies": {
-    "@cloudinary/url-gen": "^1.8.0"
+    "@cloudinary/url-gen": "^1.8.6"
   },
   "dependencies": {
     "@cloudinary/html": "^1.4.2"
