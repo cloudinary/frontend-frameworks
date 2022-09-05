@@ -1,13 +1,16 @@
 {
   "preset": "ts-jest",
-  "testEnvironment": "node",
   "bail": true,
   "collectCoverageFrom": [
     "<rootDir>/src/**/*.ts"
   ],
   "transform": {
-    "^.+\\.tsx?$": "ts-jest"
+    "^.+\\.(js|ts|tsx)$": "ts-jest",
+    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
+    "node_modules/@cloudinary/html": "babel-jest"
   },
+  "testEnvironment": "jsdom",
+  "resolver": "<rootDir>/src/internal/jest-ts-resolver.cjs",
   "moduleFileExtensions": [
     "ts",
     "tsx",
@@ -18,6 +21,9 @@
   ],
   "modulePaths": [
     "<rootDir>/src"
+  ],
+  "testPathIgnorePatterns": [
+    "./__tests__/testUtils"
   ],
   "snapshotSerializers": ["enzyme-to-json/serializer"],
   "coverageThreshold": {
@@ -34,9 +40,13 @@
     }
   },
   "transformIgnorePatterns": [
-    "node_modules/(?!(@cloudinary/url-gen)).*\\.js$"
+    "!node_modules/",
+    "<rootDir>/node_modules/(?!@cloudinary/url-gen/)",
+    "<rootDir>/node_modules/(?!@cloudinary/html/)"
+
   ],
   "setupFilesAfterEnv": [
     "./src/setupTests.js"
   ]
 }
+
