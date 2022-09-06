@@ -66,18 +66,6 @@
     "ts-jest": "^26.4.4",
     "typescript": "^3.7.5"
   },
-  "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!(@cloudinary/url-gen)).*\\.js$"
-    ],
-    "setupFilesAfterEnv": [
-      "./src/setupTests.js"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/__tests__/testUtils",
-      "<rootDir>/dist"
-    ]
-  },
   "dependencies": {
     "@cloudinary/html": "^1.4.2"
   }

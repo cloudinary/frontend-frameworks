@@ -9,12 +9,6 @@ describe('AdvancedImage', () => {
   it('is truthy', () => {
     expect(AdvancedImage).toBeTruthy()
   });
-
-  it('renders AdvancedImage', async () => {
-    const component = await mount(<AdvancedImage cldImg={cloudinaryImage} />);
-    expect(component).toMatchSnapshot();
-  });
-
   it('should create an img tag', async function() {
     const component = await mount(<AdvancedImage cldImg={cloudinaryImage} />);
     expect(component.html()).toContain('src="https://res.cloudinary.com/demo/image/upload/sample"');
