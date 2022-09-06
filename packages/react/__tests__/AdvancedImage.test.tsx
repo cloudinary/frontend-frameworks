@@ -10,10 +10,10 @@ describe('AdvancedImage', () => {
     expect(AdvancedImage).toBeTruthy()
   });
 
-  it('renders AdvancedImage', async () => {
-    const component = await mount(<AdvancedImage cldImg={cloudinaryImage} />);
-    expect(component).toMatchSnapshot();
-  });
+  // it('renders AdvancedImage', async () => {
+  //   const component = await mount(<AdvancedImage cldImg={cloudinaryImage} />);
+  //   expect(component).toMatchSnapshot();
+  // });
 
   it('should create an img tag', async function() {
     const component = await mount(<AdvancedImage cldImg={cloudinaryImage} />);

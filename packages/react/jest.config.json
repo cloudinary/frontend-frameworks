@@ -5,12 +5,9 @@
     "<rootDir>/src/**/*.ts"
   ],
   "transform": {
-    "^.+\\.(js|ts|tsx)$": "ts-jest",
-    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
-    "node_modules/@cloudinary/html": "babel-jest"
+    "^.+\\.(js|ts|tsx)$": "ts-jest"
   },
   "testEnvironment": "jsdom",
-  "resolver": "<rootDir>/src/internal/jest-ts-resolver.cjs",
   "moduleFileExtensions": [
     "ts",
     "tsx",
@@ -20,6 +17,7 @@
     "node"
   ],
   "modulePaths": [
+    "node_modules",
     "<rootDir>/src"
   ],
   "testPathIgnorePatterns": [
@@ -40,13 +38,9 @@
     }
   },
   "transformIgnorePatterns": [
-    "!node_modules/",
-    "<rootDir>/node_modules/(?!@cloudinary/url-gen/)",
-    "<rootDir>/node_modules/(?!@cloudinary/html/)"
-
+    "/node_modules\/(?!@cloudinary/(html|url-gen|transformation-builder-sdk))(.*)"
   ],
   "setupFilesAfterEnv": [
     "./src/setupTests.js"
   ]
 }
-
