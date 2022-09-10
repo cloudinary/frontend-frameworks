@@ -45,7 +45,7 @@ yarn add @cloudinary/url-gen @cloudinary/react --save
 ```javascript
 import React from 'react';
 import { AdvancedImage } from '@cloudinary/react'
-import {CloudinaryImage} from '@cloudinary/url-gen';
+import { Cloudinary } from '@cloudinary/url-gen';
 ```
 
 ### Transform and Optimize Assets
@@ -55,10 +55,15 @@ import {CloudinaryImage} from '@cloudinary/url-gen';
 import React, { Component } from 'react'
 
 import { AdvancedImage } from '@cloudinary/react'
-import {CloudinaryImage} from '@cloudinary/url-gen';
+import { Cloudinary } from '@cloudinary/url-gen';
 
-const myCld = new Cloudinary({ cloudName: 'demo'});
-let img = myCld().image('sample');
+const myCld = new Cloudinary({
+  cloud: {
+    cloudName: "demo",
+  },
+});
+
+let img = myCld.image('sample');
 
 const App = () => {
   return <AdvancedImage cldImg={img}/>
