@@ -92,7 +92,7 @@ import {
 cloudinaryImage = new CloudinaryImage("sample", { cloudName: "demo" });
 
 const App = () => {
-  return <AdvancedImage cldImg={img} plugins = {[lazyload(),responsive(), accessibility(), placeholder()]};/>
+  return <AdvancedImage cldImg={img} plugins={[lazyload(),responsive(), accessibility(), placeholder()]} />;
 };
 ```
 
