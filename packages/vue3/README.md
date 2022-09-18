@@ -42,39 +42,32 @@ yarn add @cloudinary/url-gen @cloudinary/vue3
 ## Usage Example
 ### Setup
 ```vue
-<template>
-  <div>
-    <AdvancedImage :cldImg="cldImg" :plugins="plugins" />
-  </div>
-</template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-import { AdvancedImage, responsive } from "../src";
+<script type="module">
+import { AdvancedImage, responsive } from "@cloudinary/vue3"
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 
-export default defineComponent({
-  name: "App",
+export default {
   components: {
-    AdvancedImage,
+    AdvancedImage
   },
-  setup(props) {
-    const cldImg = new CloudinaryImage(
-        "sample",
-        { cloudName: "demo" },
-        { analytics: false }
-    );
-
-    const plugins = [responsive({ steps: 100 })];
-
+  data() {
     return {
-      cldImg,
-      plugins,
+      plugins: [responsive({steps: 100})],
+      cldImg: new CloudinaryImage(
+          "sample",
+          {cloudName: "demo"}
+      )
     };
-  },
-});
+  }
+};
 </script>
-```
+
+<template>
+  <div>
+    <p>text</p>
+    <AdvancedImage :cldImg="cldImg" :plugins="plugins" />
+  </div>
+</template>```
 
 ### Generate Image elements
     - Use <AdvancedImage> to generate image tags
