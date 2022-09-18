@@ -11,6 +11,7 @@
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "scripts": {
     "build": "tsc && npm run prepare-build && rollup -c",
+    "postbuild": "cp index.esm.* ./dist && cp index.umd.* ./dist",
     "prepare-build": "cp package.json ./dist"
   },
   "devDependencies": {

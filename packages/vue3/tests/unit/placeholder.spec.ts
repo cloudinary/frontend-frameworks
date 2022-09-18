@@ -1,4 +1,4 @@
-import { AdvancedImage, placeholder } from "../../src/index";
+import { AdvancedImage, placeholder } from "../../src";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { PLACEHOLDER_IMAGE_OPTIONS } from "../../../html/src/utils/internalConstants";
 import { sepia } from "@cloudinary/url-gen/actions/effect";
