@@ -1,3 +1,20 @@
+1.5.0 / 2022-09-18
+==================
+
+Vue 3
+------------------
+* Release first version of @cloudinary/vue3 SDK
+
+React
+------------------  
+* Fix react jest configuration (#173)
+* Update React SDK readme (#175)
+
+Docs:
+------------------  
+* Update README example (#168)
+
+
 1.4.2 / 2022-08-09
 ==================
 

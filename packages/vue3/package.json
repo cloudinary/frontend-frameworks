@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/vue3",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "Cloudinary Vue3 SDK",
   "type": "module",
   "main": "index.js",
@@ -58,7 +58,7 @@
     "vue-tsc": "^0.38.5"
   },
   "dependencies": {
-    "@cloudinary/html": "^1.4.1"
+    "@cloudinary/html": "^1.5.0"
   },
   "eslintConfig": {
     "root": true,
