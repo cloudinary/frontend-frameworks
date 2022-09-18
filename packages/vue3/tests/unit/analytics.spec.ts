@@ -1,4 +1,4 @@
-import { AdvancedImage } from "../../src/index";
+import { AdvancedImage } from "../../src";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { mount } from "@vue/test-utils";
 import { waitTicks } from "./utils";
