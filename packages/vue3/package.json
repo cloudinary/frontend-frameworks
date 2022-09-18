@@ -17,7 +17,7 @@
     "test:src": "vue-cli-service test:unit --coverage",
     "pretest:src": "replace-in-files --string='../../dist' --replacement='../../src' tests/unit/*.spec.ts",
     "test:dist": "npm run build && VUE3_TEST_ENV=DIST vue-cli-service test:unit",
-    "pretest:dist": "replace-in-files --string='../../src' --replacement='../../dist' tests/unit/*.spec.ts",
+    "pretest:dist": "replace-in-files --string='../../src\"' --replacement='../../dist\"' tests/unit/*.spec.ts",
     "serve:coverage": "http-server coverage/lcov-report",
     "lint": "vue-cli-service lint"
   },
