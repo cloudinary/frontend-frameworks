@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { AdvancedImage, responsive } from "../src";
+import { AdvancedImage, responsive } from "../dist";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 
 export default defineComponent({
@@ -16,9 +16,9 @@ export default defineComponent({
   },
   setup(props) {
     const cldImg = new CloudinaryImage(
-        "sample",
-        { cloudName: "demo" },
-        { analytics: false }
+      "sample",
+      { cloudName: "demo" },
+      { analytics: false }
     );
 
     const plugins = [responsive({ steps: 100 })];

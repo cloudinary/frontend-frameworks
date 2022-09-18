@@ -10,7 +10,11 @@ export default [
     input: "src/index.ts",
     output: {
       format: "esm",
-      file: "dist/index.esm.js",
+      file: "dist/index.js",
+      globals: {
+        "@cloudinary/html": "CloudinaryHtml",
+        vue: "Vue",
+      },
     },
     plugins: [
       vue({ target: "browser" }),
@@ -36,6 +40,10 @@ export default [
     output: {
       format: "cjs",
       file: "dist/index.ssr.js",
+      globals: {
+        "@cloudinary/html": "CloudinaryHtml",
+        vue: "Vue",
+      },
     },
     plugins: [
       vue({ target: "node" }), // use 'node' to compile for SSR
@@ -59,8 +67,13 @@ export default [
   {
     input: "src/index.ts",
     output: {
-      format: "iife",
-      file: "dist/index.js",
+      format: "umd",
+      file: "dist/index.umd.js",
+      name: "CloudinaryVue3SDK",
+      globals: {
+        "@cloudinary/html": "CloudinaryHtml",
+        vue: "Vue",
+      },
     },
     plugins: [
       vue({ target: "browser" }),
