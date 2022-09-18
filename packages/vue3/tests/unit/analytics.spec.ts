@@ -44,8 +44,8 @@ describe("analytics", () => {
       });
       await waitTicks(1);
 
-      expect(component.html()).toEqual(
-        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=ALCihDL0">'
+      expect(component.html()).toMatch(
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=AL'
       );
     }
   );
