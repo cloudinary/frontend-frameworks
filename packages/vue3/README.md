@@ -67,7 +67,8 @@ export default {
     <p>text</p>
     <AdvancedImage :cldImg="cldImg" :plugins="plugins" />
   </div>
-</template>```
+</template>
+```
 
 ### Generate Image elements
     - Use <AdvancedImage> to generate image tags
