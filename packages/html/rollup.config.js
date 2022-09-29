@@ -34,7 +34,8 @@ export default {
         "exclude": [
           "tests/**/*.*"
         ]
-      }
+      },
+      clean: true
     }),
     commonjs(),
   ]
