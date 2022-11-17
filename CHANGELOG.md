@@ -1,3 +1,14 @@
+1.6.0 / 2022-11-17
+==================
+
+Html
+-------
+  * Add an optional analytics option to be passed to serverSideSrc
+
+React
+-------
+  * use the same analytics token in react ssr and csr
+
 1.5.0 / 2022-09-18
 ==================
 
