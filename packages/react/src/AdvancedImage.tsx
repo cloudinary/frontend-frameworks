@@ -115,7 +115,8 @@ class AdvancedImage extends React.Component <ImgProps> {
     } else { // on server side render
       const src = serverSideSrc(
         this.props.plugins,
-        this.props.cldImg
+        this.props.cldImg,
+        SDKAnalyticsConstants
       );
       return <img {...otherProps} src={src} />
     }
