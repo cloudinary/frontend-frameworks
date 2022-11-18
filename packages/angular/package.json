@@ -12,6 +12,7 @@
     "bundlewatch": "bundlewatch --config bundlewatch.config.js",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "update": "ng update @angular/animations@11 @angular/common@11 @angular/compiler@11 @angular/core@11 @angular/forms@11 @angular/platform-browser@11 @angular/platform-browser-dynamic@11 @angular/router@11 @angular/cli@11 @angular/compiler-cli@11",
     "prepare-version": "node -e \"console.log('export let APP_VERSION = \\'' + process.env.npm_package_version +'\\';')\" > projects/cloudinary-library/src/lib/version.ts"
   },
   "private": true,
