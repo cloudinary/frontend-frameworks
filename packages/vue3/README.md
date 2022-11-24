@@ -71,7 +71,7 @@ export default {
 ```
 
 ### Generate Image elements
-    - Use <AdvancedImage> to generate image tags
+- Use <AdvancedImage> to generate image tags
 
 ### Advanced Plugin Features
 - [See full documentation](https://cloudinary.com/documentation/react_integration#plugins)
