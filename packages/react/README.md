@@ -52,8 +52,6 @@ import { Cloudinary } from '@cloudinary/url-gen';
 - [See full documentation](https://cloudinary.com/documentation/react_image_manipulation)
 
 ```tsx
-import React, { Component } from 'react'
-
 import { AdvancedImage } from '@cloudinary/react'
 import { Cloudinary } from '@cloudinary/url-gen';
 
@@ -69,7 +67,7 @@ const App = () => {
   return <AdvancedImage cldImg={img}/>
 };
 ```
-    ```
+  
 ### Generate Image and Video HTML Tags
     - Use <AdvancedImage> to generate image tags
     - Use <AdvancedVideo> to generate video tags
