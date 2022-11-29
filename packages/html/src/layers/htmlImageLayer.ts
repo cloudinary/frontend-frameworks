@@ -15,11 +15,11 @@ export class HtmlImageLayer{
         .then(()=>{ // when resolved updates the src
           this.htmlPluginState.pluginEventSubscription.forEach(fn=>{fn()});
             this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL({
-                trackedAnalytics: {
+                ...analyticsOptions && {trackedAnalytics: {
                     sdkCode: analyticsOptions.sdkCode,
                     sdkSemver: analyticsOptions.sdkSemver,
                     techVersion: analyticsOptions.techVersion,
-                }
+                }}
             }));
         });
   }
@@ -35,11 +35,11 @@ export class HtmlImageLayer{
     render(this.imgElement, pluginCloudinaryImage, plugins, this.htmlPluginState)
         .then(()=>{
           this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL({
-              trackedAnalytics: {
+            ...analyticsOptions && {trackedAnalytics: {
                   sdkCode: analyticsOptions.sdkCode,
                   sdkSemver: analyticsOptions.sdkSemver,
                   techVersion: analyticsOptions.techVersion,
-              }
+              }}
           }));
         });
   }
