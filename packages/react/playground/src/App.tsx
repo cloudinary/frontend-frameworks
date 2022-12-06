@@ -6,7 +6,7 @@ import {
   responsive,
   lazyload,
   placeholder
-} from '@cloudinary/react/src';
+} from '@cloudinary/react/src'
 import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage'
 
 // This is our playground and can be used to test library
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div>
-      <AdvancedImage cldImg={img} />
+      <AdvancedImage cldImg={img} plugins={[responsive({ steps: 100 })]} />
     </div>
   )
 }
