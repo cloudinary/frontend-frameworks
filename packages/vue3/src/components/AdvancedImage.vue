@@ -37,7 +37,7 @@ const props = defineProps<ImgProps>();
 const imageRef = ref(null);
 let htmlLayerInstance;
 
-const getSsrSrc = () => serverSideSrc(props.plugins, props.cldImg);
+const getSsrSrc = () => serverSideSrc(props.plugins, props.cldImg, SDKAnalyticsConstants);
 
 /**
  * On mount, creates a new HTMLLayer instance and initializes with ref to img element,
