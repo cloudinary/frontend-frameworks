@@ -1,6 +1,6 @@
 <template>
   <img v-if="isBrowser()" ref="imageRef" />
-  <img v-else src="{{getSsrSrc()}}" />
+  <img v-else :src="getSsrSrc()" />
 </template>
 
 <script setup lang="ts">
