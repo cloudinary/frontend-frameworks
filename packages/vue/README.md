@@ -1,7 +1,7 @@
-Cloudinary Vue 3 SDK
+Cloudinary Vue SDK
 =========================
 ## About
-The Cloudinary Vue 3 SDK allows you to quickly and easily integrate your application with Cloudinary.
+The Cloudinary Vue SDK allows you to quickly and easily integrate your application with Cloudinary.
 Effortlessly optimize and transform your cloud's assets.
 
 #### Note
@@ -41,19 +41,19 @@ This Readme provides basic installation and usage information.
 ## Installation
 ### Install using your favorite package manager (yarn, npm)
 ```bash
-npm i @cloudinary/url-gen @cloudinary/vue3
+npm i @cloudinary/url-gen @cloudinary/vue
 
 ```
 Or
 ```bash
-yarn add @cloudinary/url-gen @cloudinary/vue3
+yarn add @cloudinary/url-gen @cloudinary/vue
 ```
 
 ## Usage Example
 ### Setup
 ```vue
 <script type="module">
-import { AdvancedImage, responsive } from "@cloudinary/vue3"
+import { AdvancedImage, responsive } from "@cloudinary/vue"
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 
 export default {
@@ -88,7 +88,7 @@ export default {
 
 We recommend the following order when using our plugins to achieve the best results:
 ```js
-[lazyload(),responsive(), accessibility(), placeholder()]
+[lazyload(), responsive(), accessibility(), placeholder()]
 ```
 
 You can omit any plugin, but the order from above should remain.

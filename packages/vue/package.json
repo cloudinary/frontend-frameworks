@@ -1,9 +1,16 @@
 {
-  "name": "@cloudinary/vue3",
+  "name": "@cloudinary/vue",
   "version": "1.6.0",
-  "description": "Cloudinary Vue3 SDK",
+  "description": "Cloudinary Vue SDK",
+  "author": "cloudinary",
+  "license": "MIT",
   "type": "module",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudinary/frontend-frameworks.git",
+    "directory": "packages/vue"
+  },
   "scripts": {
     "build": "rollup -c",
     "prebuild": "rm -rf dist && npm run build --prefix ../html",
@@ -16,7 +23,7 @@
     "test": "npm run test:dist && npm run test:src",
     "test:src": "vue-cli-service test:unit --coverage",
     "pretest:src": "replace-in-files --string='../../dist' --replacement='../../src' tests/unit/*.spec.ts",
-    "test:dist": "npm run build && VUE3_TEST_ENV=DIST vue-cli-service test:unit",
+    "test:dist": "npm run build && VUE_TEST_ENV_TEST_ENV=DIST vue-cli-service test:unit",
     "pretest:dist": "replace-in-files --string='../../src\"' --replacement='../../dist\"' tests/unit/*.spec.ts",
     "serve:coverage": "http-server coverage/lcov-report",
     "lint": "vue-cli-service lint"
