@@ -10,14 +10,25 @@ For the complete documentation, see the [Angular SDK Reference](https://cloudina
 
 
 ## Table of Contents
-- [Key Features](#key-features)
-- [Version Support](#Version-Support)
-- [Installation](#installation)
-- [Usage](#usage)
-    - [Setup](#Setup)
-    - [Transform and Optimize Assets](#Transform-and-Optimize-Assets)
-    - [Generate Image and HTML Tags](#Generate-Image-and-Video-HTML-Tags)
-    - [Plugins](#Advanced-Plugin-Features)
+- [Cloudinary Angular SDK](#cloudinary-angular-sdk)
+  - [About](#about)
+      - [Note](#note)
+  - [Table of Contents](#table-of-contents)
+  - [Key Features](#key-features)
+  - [Version Support](#version-support)
+  - [Installation](#installation)
+    - [Install using your favorite package manager (yarn, npm)](#install-using-your-favorite-package-manager-yarn-npm)
+  - [Usage](#usage)
+    - [Setup](#setup)
+    - [Transform and Optimize Assets](#transform-and-optimize-assets)
+    - [Generate Image and Video HTML Tags](#generate-image-and-video-html-tags)
+    - [Advanced Plugin Features](#advanced-plugin-features)
+    - [File upload](#file-upload)
+  - [Contributions](#contributions)
+  - [Get Help](#get-help)
+  - [About Cloudinary](#about-cloudinary)
+  - [Additional Resources](#additional-resources)
+  - [License](#license)
 
 ## Key Features
 - [Transform](https://cloudinary.com/documentation/angular_video_manipulation#video_transformation_examples) and
