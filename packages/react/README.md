@@ -126,5 +126,5 @@ Cloudinary is a powerful media API for websites and mobile apps alike, Cloudinar
 - [Cloudinary Website](https://cloudinary.com): Learn about Cloudinary's products, partners, customers, pricing, and more.
 
 
-## Licence
+## License
 Released under the MIT license.
