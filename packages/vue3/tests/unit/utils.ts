@@ -11,3 +11,12 @@ export const waitTicks = async (ticks: number) => {
     await nextTick();
   }
 };
+
+/**
+ * Run test if condition is true
+ * Otherwise act as passing test
+ * @param condition
+ * @param args
+ */
+export const testIf = (condition: boolean, ...args: [string, () => void]) =>
+    condition ? test(...args) : {};
