@@ -8,14 +8,24 @@ Effortlessly optimize and transform your cloud's assets.
 This Readme provides basic installation and usage information.
 
 ## Table of Contents
-- [Key Features](#key-features)
-- [Version Support](#Version-Support)
-- [Installation](#installation)
-- [Usage](#usage)
-    - [Setup](#Setup)
-    - [Transform and Optimize Assets](#Transform-and-Optimize-Assets)
-    - [Generate Image and HTML Tags](#Generate-Image-and-Video-HTML-Tags)
-    - [Plugins](#Advanced-Plugin-Features)
+- [Cloudinary Vue 3 SDK](#cloudinary-vue-3-sdk)
+  - [About](#about)
+      - [Note](#note)
+  - [Table of Contents](#table-of-contents)
+  - [Key Features](#key-features)
+  - [Version Support](#version-support)
+  - [Installation](#installation)
+    - [Install using your favorite package manager (yarn, npm)](#install-using-your-favorite-package-manager-yarn-npm)
+  - [Usage Example](#usage-example)
+    - [Setup](#setup)
+    - [Generate Image elements](#generate-image-elements)
+    - [Advanced Plugin Features](#advanced-plugin-features)
+    - [File upload](#file-upload)
+  - [Contributions](#contributions)
+  - [Get Help](#get-help)
+  - [About Cloudinary](#about-cloudinary)
+  - [Additional Resources](#additional-resources)
+  - [License](#license)
 
 ## Key Features
 - [Transform](https://cloudinary.com/documentation/react_video_manipulation#video_transformation_examples) and
@@ -111,5 +121,5 @@ Cloudinary is a powerful media API for websites and mobile apps alike, Cloudinar
 - [Cloudinary Website](https://cloudinary.com): Learn about Cloudinary's products, partners, customers, pricing, and more.
 
 
-## Licence
+## License
 Released under the MIT license.
