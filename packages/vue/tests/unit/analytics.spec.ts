@@ -8,7 +8,7 @@ const cloudinaryImage = new CloudinaryImage("sample", { cloudName: "demo" });
 
 describe("analytics", () => {
   testIf(
-    !(process.env.VUE3_TEST_ENV === "DIST"),
+    !(process.env.VUE_TEST_ENV === "DIST"),
     "creates an img with analytics using src",
     async () => {
       // Update src analytics value
@@ -27,7 +27,7 @@ describe("analytics", () => {
   );
 
   testIf(
-    process.env.VUE3_TEST_ENV === "DIST",
+    process.env.VUE_TEST_ENV === "DIST",
     "creates an img with analytics using dist",
     async () => {
       const component = mount(AdvancedImage, {

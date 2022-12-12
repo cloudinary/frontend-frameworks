@@ -12,7 +12,7 @@
     "@cloudinary/html": ["html/src"],
     "@cloudinary/ng": ["angular/projects/cloudinary-library/src"],
     "@cloudinary/react": ["react/src"],
-    "@cloudinary/vue3": ["vue3/src"],
+    "@cloudinary/vue": ["vue/src"],
     "@cloudinary/*": ["*/src"],
     "*": ["node_modules"]
 },

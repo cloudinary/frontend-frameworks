@@ -69,7 +69,7 @@ export default [
     output: {
       format: "umd",
       file: "dist/index.umd.js",
-      name: "CloudinaryVue3SDK",
+      name: "CloudinaryVueSDK",
       globals: {
         "@cloudinary/html": "CloudinaryHtml",
         vue: "Vue",
