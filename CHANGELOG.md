@@ -1,3 +1,20 @@
+Html
+-------
+* fix: guard html image layer analytics options
+
+React
+-------
+* fix: change playground package name
+* fix: use cloudinary favicon in playground
+* fix: use responsive plugin in react playground
+* fix: fix react playground by using vite
+
+Vue
+------------------
+* chore: package @cloudinary/vue3 was renamed to @cloudinary/vue
+* fix: fix analytic token in SSR
+* fix: fix broken src attribute in SSR
+
 1.6.0 / 2022-11-17
 ==================
 

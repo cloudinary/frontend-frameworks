@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/angular-workspace",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Cloudinary Angular SDK",
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "sideEffects": false,
@@ -32,7 +32,7 @@
     "@angular-devkit/build-angular": "~0.1002.3",
     "@angular/cli": "~10.2.3",
     "@angular/compiler-cli": "~10.2.4",
-    "@cloudinary/html": "^1.6.0",
+    "@cloudinary/html": "^1.7.0",
     "@cloudinary/url-gen": "^1.8.6",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
