@@ -9,7 +9,7 @@ import {
 } from "@cloudinary/html";
 
 import AdvancedImage from "./components/AdvancedImage.vue";
-// import AdvancedVideo from "./components/AdvancedVideo.vue";
+import AdvancedVideo from "./components/AdvancedVideo.vue";
 
 export {
   placeholder,
@@ -17,5 +17,5 @@ export {
   lazyload,
   responsive,
   AdvancedImage,
-  // AdvancedVideo,
+  AdvancedVideo,
 };
