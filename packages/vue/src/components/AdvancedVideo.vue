@@ -2,16 +2,7 @@
   <video ref="videoRef" />
 </template>
 
-<script setup lang="ts">
-// import { defineComponent } from "vue";
-
-// export default defineComponent({
-//   name: "AdvancedVideo",
-//   props: {
-//     url: String,
-//   },
-// });
-
+<script lang="ts">
 /**
  * @memberOf CloudinaryVueSDK
  * @type {Component}
@@ -35,12 +26,36 @@ interface VideoProps {
   plugins?: Plugins;
   sources?: VideoSources;
 
-  [x: string]: any;
+  // supported video attributes
+  controls?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  poster?: string;
+  preload?: string;
+  autoPlay?: boolean;
+  playsInline?: boolean;
 }
+</script>
 
+<script setup lang="ts">
 // Disabled linting due to [@vue/compiler-sfc] `defineProps` is a compiler macro and no longer needs to be imported.
 // eslint-disable-next-line no-undef
 const props = defineProps<VideoProps>();
+
+/**
+ * Returns video attributes.
+ */
+function getVideoAttributes(props: VideoProps) {
+  return {
+    controls: props.controls,
+    loop: props.loop,
+    muted: props.muted,
+    poster: props.poster,
+    preload: props.preload,
+    autoplay: props.autoPlay,
+    playsinline: props.playsInline,
+  };
+}
 
 const videoRef = ref(null);
 let htmlLayerInstance;
@@ -54,8 +69,8 @@ onMounted(() => {
     videoRef.value,
     props.cldVid,
     props.sources,
-    props.plugins
-    // SDKAnalyticsConstants
+    props.plugins,
+    getVideoAttributes(props)
   );
 });
 
