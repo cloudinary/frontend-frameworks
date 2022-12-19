@@ -2,7 +2,7 @@
   <video ref="videoRef" />
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 /**
  * @memberOf CloudinaryVueSDK
  * @type {Component}
@@ -19,43 +19,18 @@ import {
   VideoSources,
   cancelCurrentlyRunningPlugins,
 } from "@cloudinary/html";
-import { SDKAnalyticsConstants } from "../internal/SDKAnalyticsConstants";
 
 interface VideoProps {
   cldVid: CloudinaryVideo;
   plugins?: Plugins;
   sources?: VideoSources;
 
-  // supported video attributes
-  controls?: boolean;
-  loop?: boolean;
-  muted?: boolean;
-  poster?: string;
-  preload?: string;
-  autoPlay?: boolean;
-  playsInline?: boolean;
+  [x: string]: any;
 }
-</script>
 
-<script setup lang="ts">
 // Disabled linting due to [@vue/compiler-sfc] `defineProps` is a compiler macro and no longer needs to be imported.
 // eslint-disable-next-line no-undef
 const props = defineProps<VideoProps>();
-
-/**
- * Returns video attributes.
- */
-function getVideoAttributes(props: VideoProps) {
-  return {
-    controls: props.controls,
-    loop: props.loop,
-    muted: props.muted,
-    poster: props.poster,
-    preload: props.preload,
-    autoplay: props.autoPlay,
-    playsinline: props.playsInline,
-  };
-}
 
 const videoRef = ref(null);
 let htmlLayerInstance;
@@ -69,8 +44,7 @@ onMounted(() => {
     videoRef.value,
     props.cldVid,
     props.sources,
-    props.plugins,
-    getVideoAttributes(props)
+    props.plugins
   );
 });
 
@@ -81,7 +55,11 @@ onMounted(() => {
 onUpdated(() => {
   cancelCurrentlyRunningPlugins(htmlLayerInstance.htmlPluginState);
   // call html layer to update the dom again with plugins and reset toBeCanceled
-  htmlLayerInstance.update(props.cldVid, props.plugins, SDKAnalyticsConstants);
+  htmlLayerInstance.update(
+    props.cldVid,
+    props.sources,
+    props.plugins
+  );
 });
 
 /**
