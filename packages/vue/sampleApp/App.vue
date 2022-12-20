@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>AdvancedVideo</h1>
-    <AdvancedVideo :cldVid="cldVid" />
     <h1>AdvancedImage</h1>
     <AdvancedImage :cldImg="cldImg" :plugins="plugins" />
+    <h1>AdvancedVideo</h1>
+    <AdvancedVideo :cldVid="cldVid" controls loop width="600" />
   </div>
 </template>
 
