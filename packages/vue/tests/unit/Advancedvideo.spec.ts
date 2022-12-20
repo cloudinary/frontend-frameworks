@@ -118,7 +118,7 @@ describe("AdvancedVideo", () => {
     });
     await waitTicks(1);
 
-    component.trigger("play");
+    component.find("video").trigger("play");
     await waitTicks(1);
 
     expect(component.emitted().play).toBeTruthy();
@@ -134,7 +134,7 @@ describe("AdvancedVideo", () => {
     });
     await waitTicks(1);
 
-    component.trigger("loadstart");
+    component.find("video").trigger("loadstart");
     await waitTicks(1);
 
     expect(component.emitted().loadstart).toBeTruthy();
@@ -150,7 +150,7 @@ describe("AdvancedVideo", () => {
     });
     await waitTicks(1);
 
-    component.trigger("ended");
+    component.find("video").trigger("ended");
     await waitTicks(1);
 
     expect(component.emitted().ended).toBeTruthy();
@@ -166,7 +166,7 @@ describe("AdvancedVideo", () => {
     });
     await waitTicks(1);
 
-    component.trigger("error");
+    component.find("video").trigger("error");
     await waitTicks(1);
 
     expect(component.emitted().error).toBeTruthy();
@@ -182,7 +182,7 @@ describe("AdvancedVideo", () => {
     });
     await waitTicks(1);
 
-    component.trigger("playing");
+    component.find("video").trigger("playing");
     await waitTicks(1);
 
     expect(component.emitted().playing).toBeTruthy();
