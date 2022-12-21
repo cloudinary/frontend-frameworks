@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils";
-import { AdvancedVideo } from "../../src";
 import { CloudinaryVideo } from "@cloudinary/url-gen";
 import { auto, vp9 } from "@cloudinary/url-gen/qualifiers/videoCodec";
 import { videoCodec } from "@cloudinary/url-gen/actions/transcode";
-import { waitTicks } from "./utils";
+import { AdvancedVideo } from "../../src";
+import { waitTicks } from "../unit/utils";
 
 const cloudinaryVideo = new CloudinaryVideo(
   "sample",
