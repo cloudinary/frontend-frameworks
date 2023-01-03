@@ -1,4 +1,4 @@
-import React, { Component, createRef, EventHandler, MutableRefObject, SyntheticEvent } from 'react';
+import React, { Component, createRef, EventHandler, HTMLAttributes, MutableRefObject, SyntheticEvent } from 'react';
 import { CloudinaryVideo } from '@cloudinary/url-gen';
 
 import {
@@ -10,7 +10,7 @@ import {
 
 type ReactEventHandler<T = Element> = EventHandler<SyntheticEvent<T>>;
 
-interface VideoProps {
+interface VideoProps extends HTMLAttributes<HTMLVideoElement>{
   cldVid: CloudinaryVideo,
   plugins?: Plugins,
   sources?: VideoSources,
@@ -143,10 +143,10 @@ class AdvancedVideo extends Component <VideoProps> {
       plugins,
       sources,
       innerRef,
-      ...videoEvents // Assume any other props are for the base element
+      ...videoAttrs // Assume any other props are for the base element
     } = this.props;
 
-    return <video {...videoEvents} ref={this.attachRef} />
+    return <video {...videoAttrs} ref={this.attachRef} />
   }
 }
 
