@@ -1,3 +1,18 @@
+1.8.0 / 2023-01-03
+==================
+
+Angular
+-------
+  * Add playground app
+
+React
+-------
+  * Improve video props type
+
+Vue
+-------
+  * Add the advanced video component 
+
 Html
 -------
 * fix: guard html image layer analytics options
