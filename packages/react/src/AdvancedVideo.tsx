@@ -1,5 +1,5 @@
 import React, { Component, createRef, EventHandler, HTMLAttributes, MutableRefObject, SyntheticEvent } from 'react';
-import { CloudinaryVideo } from '@cloudinary/url-gen';
+import { CloudinaryImage, CloudinaryVideo } from '@cloudinary/url-gen';
 
 import {
   HtmlVideoLayer,
@@ -12,6 +12,7 @@ type ReactEventHandler<T = Element> = EventHandler<SyntheticEvent<T>>;
 
 interface VideoProps extends HTMLAttributes<HTMLVideoElement>{
   cldVid: CloudinaryVideo,
+  cldPoster?: CloudinaryImage,
   plugins?: Plugins,
   sources?: VideoSources,
   innerRef?: ((instance: any) => void) | MutableRefObject<unknown> | null
@@ -116,6 +117,9 @@ class AdvancedVideo extends Component <VideoProps> {
         result[key] = this.props[key];
       }
     });
+    if(this.props.cldPoster) {
+      result['poster'] = this.props.cldPoster.toURL();
+    }
 
     return result;
   }
@@ -140,6 +144,7 @@ class AdvancedVideo extends Component <VideoProps> {
   render() {
     const {
       cldVid,
+      cldPoster, // This is handled by `getVideoAttributes` method so we don't want to pass it down
       plugins,
       sources,
       innerRef,
