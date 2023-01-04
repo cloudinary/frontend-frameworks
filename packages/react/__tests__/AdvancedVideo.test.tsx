@@ -81,7 +81,16 @@ describe('AdvancedVideo', () => {
     }, 0);// one tick
   });
 
-  it('should contain poster when cldPoster is passed in', function (done) {
+  it('should contain poster when "auto" is passed as cldPoster', function (done) {
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} cldPoster="auto" />);
+
+    setTimeout(() => {
+      expect(component.html()).toContain('poster="https://res.cloudinary.com/demo/video/upload/q_auto/f_auto:image/sample"');
+      done();
+    }, 0);// one tick
+  });
+
+  it('should contain poster when cloudinary image is passed as cldPoster', function (done) {
     const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} cldPoster={cloudinaryImage} />);
 
     setTimeout(() => {

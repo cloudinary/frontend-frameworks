@@ -12,7 +12,7 @@ type ReactEventHandler<T = Element> = EventHandler<SyntheticEvent<T>>;
 
 interface VideoProps extends HTMLAttributes<HTMLVideoElement>{
   cldVid: CloudinaryVideo,
-  cldPoster?: CloudinaryImage,
+  cldPoster?: CloudinaryImage | "auto",
   plugins?: Plugins,
   sources?: VideoSources,
   innerRef?: ((instance: any) => void) | MutableRefObject<unknown> | null
@@ -116,8 +116,10 @@ class AdvancedVideo extends Component <VideoProps> {
       if (key in this.props) {
         result[key] = this.props[key];
       }
-    });
-    if(this.props.cldPoster) {
+    })
+    if (this.props.cldPoster === 'auto') {
+      result['poster'] = this.props.cldVid.setAssetType('video').delivery("q_auto").format("auto:image").toURL();
+    } else if (this.props.cldPoster) {
       result['poster'] = this.props.cldPoster.toURL();
     }
 
