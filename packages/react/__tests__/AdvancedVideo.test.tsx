@@ -1,10 +1,11 @@
 import { AdvancedVideo } from '../src';
-import { CloudinaryVideo } from '@cloudinary/url-gen';
+import { CloudinaryImage, CloudinaryVideo } from '@cloudinary/url-gen';
 import { mount } from 'enzyme';
 import React from 'react';
 import { auto, vp9 } from '@cloudinary/url-gen/qualifiers/videoCodec';
 import { videoCodec } from '@cloudinary/url-gen/actions/transcode';
 
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo' }, { analytics: false });
 const cloudinaryVideoWithAnalytics = new CloudinaryVideo('sample', { cloudName: 'demo' }, { analytics: true });
 
@@ -76,6 +77,15 @@ describe('AdvancedVideo', () => {
 
     setTimeout(() => {
       expect(component.html()).toContain('poster="www.example.com"');
+      done();
+    }, 0);// one tick
+  });
+
+  it('should contain poster when cldPoster is passed in', function (done) {
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} cldPoster={cloudinaryImage} />);
+
+    setTimeout(() => {
+      expect(component.html()).toContain('poster="https://res.cloudinary.com/demo/image/upload/sample"');
       done();
     }, 0);// one tick
   });
