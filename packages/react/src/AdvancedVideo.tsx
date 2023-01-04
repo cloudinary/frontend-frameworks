@@ -118,7 +118,7 @@ class AdvancedVideo extends Component <VideoProps> {
       }
     })
     if (this.props.cldPoster === 'auto') {
-      result['poster'] = this.props.cldVid.setAssetType('video').delivery("q_auto").format("auto:image").toURL();
+      result['poster'] = this.props.cldVid.quality("auto").format("auto:image").toURL();
     } else if (this.props.cldPoster) {
       result['poster'] = this.props.cldPoster.toURL();
     }
@@ -146,7 +146,7 @@ class AdvancedVideo extends Component <VideoProps> {
   render() {
     const {
       cldVid,
-      cldPoster, // This is handled by `getVideoAttributes` method so we don't want to pass it down
+      cldPoster,
       plugins,
       sources,
       innerRef,
