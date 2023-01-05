@@ -119,7 +119,7 @@ class AdvancedVideo extends Component <VideoProps> {
     })
     if (this.props.cldPoster === 'auto') {
       result['poster'] = this.props.cldVid.quality("auto").format("auto:image").toURL();
-    } else if (this.props.cldPoster) {
+    } else if (this.props.cldPoster instanceof CloudinaryImage) {
       result['poster'] = this.props.cldPoster.toURL();
     }
 
