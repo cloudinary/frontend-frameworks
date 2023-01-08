@@ -2,6 +2,7 @@ import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {Plugins, HtmlPluginState, AnalyticsOptions} from '../types.js'
 import cloneDeep from 'lodash.clonedeep';
 import {render} from '../utils/render.js';
+import {getAnalyticsOptions} from "../../utils/analytics";
 
 export class HtmlImageLayer{
   private imgElement: any;
@@ -11,16 +12,10 @@ export class HtmlImageLayer{
     this.htmlPluginState = {cleanupCallbacks:[], pluginEventSubscription: []};
     const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
 
-    render(element, pluginCloudinaryImage, plugins, this.htmlPluginState)
+    render(element, pluginCloudinaryImage, plugins, this.htmlPluginState, analyticsOptions)
         .then(()=>{ // when resolved updates the src
           this.htmlPluginState.pluginEventSubscription.forEach(fn=>{fn()});
-            this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL({
-                ...analyticsOptions && {trackedAnalytics: {
-                    sdkCode: analyticsOptions.sdkCode,
-                    sdkSemver: analyticsOptions.sdkSemver,
-                    techVersion: analyticsOptions.techVersion,
-                }}
-            }));
+            this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL(getAnalyticsOptions(analyticsOptions)));
         });
   }
 
@@ -34,13 +29,7 @@ export class HtmlImageLayer{
     const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
     render(this.imgElement, pluginCloudinaryImage, plugins, this.htmlPluginState)
         .then(()=>{
-          this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL({
-            ...analyticsOptions && {trackedAnalytics: {
-                  sdkCode: analyticsOptions.sdkCode,
-                  sdkSemver: analyticsOptions.sdkSemver,
-                  techVersion: analyticsOptions.techVersion,
-              }}
-          }));
+          this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL(getAnalyticsOptions(analyticsOptions)));
         });
   }
 }
