@@ -2,7 +2,7 @@ import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {Plugins, HtmlPluginState, AnalyticsOptions} from '../types.js'
 import cloneDeep from 'lodash.clonedeep';
 import {render} from '../utils/render.js';
-import {getAnalyticsOptions} from "../../utils/analytics";
+import {getAnalyticsOptions} from "../utils/analytics";
 
 export class HtmlImageLayer{
   private imgElement: any;
