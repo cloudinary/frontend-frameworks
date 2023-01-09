@@ -23,16 +23,10 @@ function App() {
 
   return (
     <div>
-      <h1>AdvancedVideo</h1>
-      <AdvancedVideo
-        cldVid={cldVid}
-        controls
-        loop
-        width={600}
-      />
-
       <h1>AdvancedImage</h1>
       <AdvancedImage cldImg={img} plugins={[responsive({ steps: 100 })]} />
+      <h1>AdvancedVideo</h1>
+      <AdvancedVideo cldVid={cldVid} controls loop width={600} />
     </div>
   )
 }
