@@ -1,7 +1,7 @@
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {VideoCodecAction} from "@cloudinary/url-gen/actions/transcode/VideoCodecAction";
 
-export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState) => Promise<string | void>;
+export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState, analyticsOptions?: AnalyticsOptions) => Promise<string | void>;
 
 export type Plugins = Plugin[];
 

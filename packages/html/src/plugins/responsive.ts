@@ -1,11 +1,12 @@
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
-import {Plugin, HtmlPluginState} from "../types.js";
+import {Plugin, HtmlPluginState, AnalyticsOptions} from "../types.js";
 import {scale} from "@cloudinary/url-gen/actions/resize";
 import debounce from 'lodash.debounce';
 import {isNum} from '../utils/isNum.js';
 import {isBrowser} from "../utils/isBrowser.js";
 import {Action} from "@cloudinary/url-gen/internal/Action";
 import {isImage} from "../utils/isImage.js";
+import {getAnalyticsOptions} from '../utils/analytics'
 
 /**
  * @namespace
@@ -26,8 +27,9 @@ export function responsive({steps}:{steps?: number | number[]}={}): Plugin{
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
  * @param htmlPluginState {HtmlPluginState} holds cleanup callbacks and event subscriptions
+ * @param analyticsOptions {AnalyticsOptions} analytics options for the url to be created
  */
-function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState): Promise<void | string> | boolean {
+function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, analyticsOptions?: AnalyticsOptions): Promise<void | string> | boolean {
 
   if(!isBrowser()) return true;
 
@@ -42,12 +44,12 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
     // Use a tagged generic action that can be later searched and replaced.
     responsiveImage.addAction(new Action().setActionTag('responsive'));
     // Immediately run the resize plugin, ensuring that first render gets a responsive image.
-    onResize(steps, element, responsiveImage);
+    onResize(steps, element, responsiveImage, analyticsOptions);
 
     let resizeRef: any;
     htmlPluginState.pluginEventSubscription.push(()=>{
       window.addEventListener('resize', resizeRef = debounce(()=>{
-        onResize(steps, element, responsiveImage);
+        onResize(steps, element, responsiveImage, analyticsOptions);
       }, 100));
     });
     resolve();
@@ -60,10 +62,11 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
  * | number[] A set of image sizes in pixels.
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
+ * @param analyticsOptions {AnalyticsOptions} analytics options for the url to be created
  */
-function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage){
+function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, analyticsOptions?: AnalyticsOptions){
   updateByContainerWidth(steps, element, responsiveImage);
-  element.src = responsiveImage.toURL();
+  element.src = responsiveImage.toURL(getAnalyticsOptions(analyticsOptions));
 }
 
 /**
