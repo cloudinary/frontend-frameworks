@@ -85,7 +85,7 @@ describe('AdvancedVideo', () => {
     const component = mount(<AdvancedVideo cldVid={cloudinaryVideo} cldPoster="auto" />);
 
     setTimeout(() => {
-      expect(component.html()).toContain('poster="https://res.cloudinary.com/demo/video/upload/q_auto/f_jpg/sample"');
+      expect(component.html()).toContain('poster="https://res.cloudinary.com/demo/video/upload/q_auto/f_jpg/so_auto/sample"');
       done();
     }, 0);// one tick
   });
