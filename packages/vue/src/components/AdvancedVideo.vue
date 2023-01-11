@@ -13,6 +13,7 @@
 
 import { ref, onMounted, onUpdated, onUnmounted } from "vue";
 import { CloudinaryVideo } from "@cloudinary/url-gen/assets/CloudinaryVideo";
+import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {
   HtmlVideoLayer,
   Plugins,
@@ -24,6 +25,7 @@ interface VideoProps {
   cldVid: CloudinaryVideo;
   plugins?: Plugins;
   sources?: VideoSources;
+  cldPoster?: CloudinaryImage | 'auto';
 
   [x: string]: any;
 }
@@ -44,7 +46,9 @@ onMounted(() => {
     videoRef.value,
     props.cldVid,
     props.sources,
-    props.plugins
+    props.plugins,
+    undefined,
+    props.cldPoster
   );
 });
 
@@ -58,7 +62,9 @@ onUpdated(() => {
   htmlLayerInstance.update(
     props.cldVid,
     props.sources,
-    props.plugins
+    props.plugins,
+    undefined,
+    props.cldPoster
   );
 });
 

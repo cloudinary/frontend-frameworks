@@ -1,10 +1,15 @@
 import { mount } from "@vue/test-utils";
-import { CloudinaryVideo } from "@cloudinary/url-gen";
+import { CloudinaryImage, CloudinaryVideo } from "@cloudinary/url-gen";
 import { auto, vp9 } from "@cloudinary/url-gen/qualifiers/videoCodec";
 import { videoCodec } from "@cloudinary/url-gen/actions/transcode";
 import { AdvancedVideo } from "../../src";
 import { waitTicks } from "../unit/utils";
 
+const cloudinaryImage = new CloudinaryImage(
+  "sample",
+  { cloudName: "demo" },
+  { analytics: false }
+);
 const cloudinaryVideo = new CloudinaryVideo(
   "sample",
   { cloudName: "demo" },
@@ -108,6 +113,28 @@ describe("AdvancedVideo", () => {
     await waitTicks(1);
 
     expect(component.html()).toContain('poster="www.example.com"');
+  });
+
+  it('should contain poster when "auto" is passed as cldPoster', async function () {
+    const component = mount(AdvancedVideo, {
+      props: { cldVid: cloudinaryVideo, cldPoster: "auto" },
+    });
+    await waitTicks(1);
+
+    expect(component.html()).toContain(
+      'poster="https://res.cloudinary.com/demo/video/upload/q_auto/f_jpg/so_auto/sample"'
+    );
+  });
+
+  it("should contain poster when cloudinary image is passed as cldPoster", async function () {
+    const component = mount(AdvancedVideo, {
+      props: { cldVid: cloudinaryVideo, cldPoster: cloudinaryImage },
+    });
+    await waitTicks(1);
+
+    expect(component.html()).toContain(
+      'poster="https://res.cloudinary.com/demo/image/upload/sample"'
+    );
   });
 
   it("should emit play event", async function () {
