@@ -1,6 +1,6 @@
 import {Plugins, HtmlPluginState, VideoSources, VideoType} from '../types.js'
 import cloneDeep from 'lodash.clonedeep'
-import {CloudinaryVideo} from "@cloudinary/url-gen";
+import {CloudinaryImage, CloudinaryVideo} from "@cloudinary/url-gen";
 import {render} from '../utils/render.js';
 import {VIDEO_MIME_TYPES} from "../utils/internalConstants.js";
 
@@ -13,7 +13,7 @@ export class HtmlVideoLayer{
     mimeType = 'video';
     mimeSubTypes = VIDEO_MIME_TYPES;
 
-    constructor(element: HTMLVideoElement | null, userCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object){
+    constructor(element: HTMLVideoElement | null, userCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object, userCloudinaryPoster?: CloudinaryImage | 'auto'){
         this.videoElement = element;
         this.originalVideo = userCloudinaryVideo;
         this.htmlPluginState = {cleanupCallbacks:[], pluginEventSubscription: []};
@@ -23,7 +23,7 @@ export class HtmlVideoLayer{
             .then(()=>{ // when resolved updates sources
                 this.htmlPluginState.pluginEventSubscription.forEach(fn=>{fn()});
 
-                this.setVideoAttributes(videoAttributes);
+                this.setVideoAttributes(videoAttributes, userCloudinaryPoster);
                 this.handleSourceToVideo(pluginCloudinaryVideo, sources)
             });
 
@@ -104,14 +104,21 @@ export class HtmlVideoLayer{
      * In case of poster, sets the poster.
      * @param videoAttributes {object} Supported attributes: controls, loop, muted, poster, preload, autoplay, playsinline
      */
-    setVideoAttributes(videoAttributes: object) {
-        if (videoAttributes) {
-          for (const [key, value] of Object.entries(videoAttributes)) {
-            // Boolean attributes are considered to be true if they're present on the element at all.
-            // You should set value to the empty string ("") or the attribute's name.
-            // See https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
-            value && this.videoElement.setAttribute(key, key === 'poster' ? value : '');
-          }
+    setVideoAttributes(videoAttributes: object = {}, userCloudinaryPoster?: CloudinaryImage | 'auto') {
+        if (userCloudinaryPoster === 'auto') {
+          videoAttributes['poster'] = this.originalVideo
+           .quality('auto')
+           .format('jpg')
+           .addTransformation('so_auto')
+           .toURL()
+        } else if (userCloudinaryPoster) {
+            videoAttributes['poster'] = userCloudinaryPoster.toURL?.();
+        }
+        for (const [key, value] of Object.entries(videoAttributes)) {
+          // Boolean attributes are considered to be true if they're present on the element at all.
+          // You should set value to the empty string ("") or the attribute's name.
+          // See https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+          value && this.videoElement.setAttribute(key, key === 'poster' ? value : '');
         }
     }
 
@@ -122,14 +129,14 @@ export class HtmlVideoLayer{
      * @param plugins
      * @param videoAttributes
      */
-    update(updatedCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object){
+    update(updatedCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object, userCloudinaryPoster?: CloudinaryImage | 'auto'){
         if(updatedCloudinaryVideo !== this.originalVideo){
             const sourcesToDelete = this.videoElement.getElementsByTagName("SOURCE");
             while (sourcesToDelete[0]) sourcesToDelete[0].parentNode.removeChild(sourcesToDelete[0]);
 
             render(this.videoElement, updatedCloudinaryVideo, plugins, this.htmlPluginState)
                 .then(()=>{ // when resolved updates sources
-                    this.setVideoAttributes(videoAttributes);
+                    this.setVideoAttributes(videoAttributes, userCloudinaryPoster);
                     this.handleSourceToVideo(updatedCloudinaryVideo, sources);
                     this.videoElement.load();
                 });

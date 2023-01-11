@@ -85,7 +85,8 @@ class AdvancedVideo extends Component <VideoProps> {
       this.props.cldVid,
       this.props.sources,
       this.props.plugins,
-      this.getVideoAttributes()
+      this.getVideoAttributes(),
+      this.props.cldPoster
     )
   }
 
@@ -96,7 +97,13 @@ class AdvancedVideo extends Component <VideoProps> {
   componentDidUpdate() {
     cancelCurrentlyRunningPlugins(this.htmlVideoLayerInstance.htmlPluginState);
     // call html layer to update the dom again with plugins and reset toBeCanceled
-    this.htmlVideoLayerInstance.update(this.props.cldVid, this.props.sources, this.props.plugins, this.getVideoAttributes())
+    this.htmlVideoLayerInstance.update(
+      this.props.cldVid,
+      this.props.sources,
+      this.props.plugins,
+      this.getVideoAttributes(),
+      this.props.cldPoster
+    )
   }
 
   /**
@@ -116,16 +123,7 @@ class AdvancedVideo extends Component <VideoProps> {
       if (key in this.props) {
         result[key] = this.props[key];
       }
-    })
-    if (this.props.cldPoster === 'auto') {
-      result['poster'] = this.props.cldVid
-        .quality('auto')
-        .format('jpg')
-        .addTransformation('so_auto')
-        .toURL()
-    } else if (this.props.cldPoster instanceof CloudinaryImage) {
-      result['poster'] = this.props.cldPoster.toURL();
-    }
+    });
 
     return result;
   }
