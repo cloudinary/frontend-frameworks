@@ -13,7 +13,7 @@
  */
 
 import { ref, onMounted, onUpdated, onUnmounted } from "vue";
-import { CloudinaryImage, CloudinaryVideo } from "@cloudinary/url-gen";
+import { CloudinaryVideo } from "@cloudinary/url-gen";
 import {
   HtmlVideoLayer,
   Plugins,

@@ -74,7 +74,6 @@ describe('CloudinaryVideoComponent render', () => {
     tick(0);
     const vidElement: HTMLVideoElement = fixture.nativeElement;
     const video = vidElement.querySelector('video');
-    const defaultVideoTypes = ['webm', 'mp4', 'ogv'];
 
     expect(video.childElementCount).toBe(2);
 
@@ -101,7 +100,7 @@ describe('CloudinaryVideoComponent render', () => {
     tick(0);
   
     expect(video.attributes.getNamedItem('poster').value)
-    .toEqual( 'https://res.cloudinary.com/demo/video/upload/q_auto/f_jpg/so_auto/sample');
+      .toEqual( 'https://res.cloudinary.com/demo/video/upload/q_auto/f_jpg/so_auto/sample');
   }));
 
   it('should contain poster when cloudinary image is passed as cldPoster', fakeAsync(() => {
@@ -113,7 +112,7 @@ describe('CloudinaryVideoComponent render', () => {
     tick(0);
   
     expect(video.attributes.getNamedItem('poster').value)
-    .toEqual( 'https://res.cloudinary.com/demo/image/upload/sample');
+      .toEqual( 'https://res.cloudinary.com/demo/image/upload/sample');
   }));
 
   it('should emit playing event', fakeAsync(() => {
