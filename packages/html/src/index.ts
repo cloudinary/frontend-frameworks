@@ -9,5 +9,5 @@ export {accessibility} from './plugins/accessibility.js';
 export {placeholder} from './plugins/placeholder.js';
 export {isBrowser} from './utils/isBrowser.js';
 export {serverSideSrc} from './utils/serverSideSrc.js';
-export {Plugins, VideoSources, PictureSources} from './types.js';
+export {Plugins, VideoSources, VideoPoster, PictureSources} from './types.js';
 export {cancelCurrentlyRunningPlugins} from './utils/cancelCurrentlyRunningPlugins.js';

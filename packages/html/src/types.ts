@@ -20,3 +20,5 @@ export type PictureSources = {minWidth?: number, maxWidth?: number, image: Cloud
 export type PictureSource  = {minWidth?: number, maxWidth?: number, image: CloudinaryImage, sizes?: string};
 
 export type AnalyticsOptions = {sdkSemver: string, techVersion: string, sdkCode: string};
+
+export type VideoPoster = CloudinaryImage | 'auto';

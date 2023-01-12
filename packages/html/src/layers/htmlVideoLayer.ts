@@ -1,4 +1,4 @@
-import {Plugins, HtmlPluginState, VideoSources, VideoType} from '../types.js'
+import {Plugins, HtmlPluginState, VideoSources, VideoType, VideoPoster} from '../types.js'
 import cloneDeep from 'lodash.clonedeep'
 import {CloudinaryImage, CloudinaryVideo} from "@cloudinary/url-gen";
 import {render} from '../utils/render.js';
@@ -13,7 +13,7 @@ export class HtmlVideoLayer{
     mimeType = 'video';
     mimeSubTypes = VIDEO_MIME_TYPES;
 
-    constructor(element: HTMLVideoElement | null, userCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object, userCloudinaryPoster?: CloudinaryImage | 'auto'){
+    constructor(element: HTMLVideoElement | null, userCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object, userCloudinaryPoster?: VideoPoster){
         this.videoElement = element;
         this.originalVideo = userCloudinaryVideo;
         this.htmlPluginState = {cleanupCallbacks:[], pluginEventSubscription: []};
@@ -104,7 +104,7 @@ export class HtmlVideoLayer{
      * In case of poster, sets the poster.
      * @param videoAttributes {object} Supported attributes: controls, loop, muted, poster, preload, autoplay, playsinline
      */
-    setVideoAttributes(videoAttributes: object = {}, userCloudinaryPoster?: CloudinaryImage | 'auto') {
+    setVideoAttributes(videoAttributes: object = {}, userCloudinaryPoster?: VideoPoster) {
         if (userCloudinaryPoster === 'auto') {
           videoAttributes['poster'] = this.originalVideo
            .quality('auto')
@@ -129,7 +129,7 @@ export class HtmlVideoLayer{
      * @param plugins
      * @param videoAttributes
      */
-    update(updatedCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object, userCloudinaryPoster?: CloudinaryImage | 'auto'){
+    update(updatedCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object, userCloudinaryPoster?: VideoPoster){
         if(updatedCloudinaryVideo !== this.originalVideo){
             const sourcesToDelete = this.videoElement.getElementsByTagName("SOURCE");
             while (sourcesToDelete[0]) sourcesToDelete[0].parentNode.removeChild(sourcesToDelete[0]);

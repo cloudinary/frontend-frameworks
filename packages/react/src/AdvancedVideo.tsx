@@ -4,6 +4,7 @@ import { CloudinaryImage, CloudinaryVideo } from '@cloudinary/url-gen';
 import {
   HtmlVideoLayer,
   Plugins,
+  VideoPoster,
   VideoSources,
   cancelCurrentlyRunningPlugins
 } from '@cloudinary/html';
@@ -12,7 +13,7 @@ type ReactEventHandler<T = Element> = EventHandler<SyntheticEvent<T>>;
 
 interface VideoProps extends HTMLAttributes<HTMLVideoElement>{
   cldVid: CloudinaryVideo,
-  cldPoster?: CloudinaryImage | "auto",
+  cldPoster?: VideoPoster,
   plugins?: Plugins,
   sources?: VideoSources,
   innerRef?: ((instance: any) => void) | MutableRefObject<unknown> | null
