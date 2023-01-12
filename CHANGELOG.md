@@ -1,3 +1,10 @@
+1.8.1 / 2023-01-11
+==================
+
+Html
+-------
+  * fix: pass analytics options down to the plugins, and use it in placeholder & responsive
+
 1.8.0 / 2023-01-03
 ==================
 
