@@ -1,10 +1,11 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CloudinaryVideoComponent } from '../lib/cloudinary-video.component';
-import {CloudinaryVideo} from '@cloudinary/url-gen';
+import {CloudinaryImage, CloudinaryVideo} from '@cloudinary/url-gen';
 import { auto, vp9 } from '@cloudinary/url-gen/qualifiers/videoCodec';
 import { videoCodec } from '@cloudinary/url-gen/actions/transcode';
 import {ElementRef} from "@angular/core";
 
+const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo'}, { analytics: false });
 
 describe('CloudinaryVideoComponent render', () => {
@@ -88,6 +89,31 @@ describe('CloudinaryVideoComponent render', () => {
       .toEqual( 'https://res.cloudinary.com/demo/video/upload/vc_vp9/sample.webm');
     expect(video.children[1].attributes.getNamedItem('type').value)
       .toEqual( 'video/webm; codecs=avc1.4D401E, mp4a.40.2');
+  }));
+
+
+  it('should contain poster when "auto" is passed as cldPoster', fakeAsync(() => {
+    component.cldVid = cloudinaryVideo;
+    component.cldPoster = "auto";
+    const vidElement: HTMLVideoElement = fixture.nativeElement;
+    const video = vidElement.querySelector('video');
+    fixture.detectChanges();
+    tick(0);
+  
+    expect(video.attributes.getNamedItem('poster').value)
+    .toEqual( 'https://res.cloudinary.com/demo/video/upload/q_auto/f_jpg/so_auto/sample');
+  }));
+
+  it('should contain poster when cloudinary image is passed as cldPoster', fakeAsync(() => {
+    component.cldVid = cloudinaryVideo;
+    component.cldPoster = cloudinaryImage;
+    const vidElement: HTMLVideoElement = fixture.nativeElement;
+    const video = vidElement.querySelector('video');
+    fixture.detectChanges();
+    tick(0);
+  
+    expect(video.attributes.getNamedItem('poster').value)
+    .toEqual( 'https://res.cloudinary.com/demo/image/upload/sample');
   }));
 
   it('should emit playing event', fakeAsync(() => {
