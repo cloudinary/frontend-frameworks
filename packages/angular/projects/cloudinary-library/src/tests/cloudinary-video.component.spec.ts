@@ -92,7 +92,7 @@ describe('CloudinaryVideoComponent render', () => {
 
 
   it('should contain poster when "auto" is passed as cldPoster', fakeAsync(() => {
-    component.cldVid = cloudinaryVideo;
+    component.cldVid = new CloudinaryVideo('sample', { cloudName: 'demo'}, { analytics: false });
     component.cldPoster = "auto";
     const vidElement: HTMLVideoElement = fixture.nativeElement;
     const video = vidElement.querySelector('video');
