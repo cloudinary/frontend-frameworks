@@ -1,6 +1,6 @@
 import {Plugins, HtmlPluginState, VideoSources, VideoType, VideoPoster} from '../types.js'
 import cloneDeep from 'lodash.clonedeep'
-import {CloudinaryImage, CloudinaryVideo} from "@cloudinary/url-gen";
+import {CloudinaryVideo} from "@cloudinary/url-gen";
 import {render} from '../utils/render.js';
 import {VIDEO_MIME_TYPES} from "../utils/internalConstants.js";
 
@@ -106,7 +106,8 @@ export class HtmlVideoLayer{
      */
     setVideoAttributes(videoAttributes: object = {}, userCloudinaryPoster?: VideoPoster) {
         if (userCloudinaryPoster === 'auto') {
-          videoAttributes['poster'] = this.originalVideo
+          const posterCloudinaryVideo = cloneDeep(this.originalVideo);
+          videoAttributes['poster'] = posterCloudinaryVideo
            .quality('auto')
            .format('jpg')
            .addTransformation('so_auto')
