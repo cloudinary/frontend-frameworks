@@ -1,3 +1,19 @@
+1.9.0 / 2023-01-17
+==================
+
+Angular
+-------
+  * feature: add cldPoster property with support for auto
+
+React
+-------
+  * feature: add cldPoster property with support for auto
+
+Vue
+-------
+  * feature: add cldPoster property with support for auto
+
+
 1.8.1 / 2023-01-11
 ==================
 
