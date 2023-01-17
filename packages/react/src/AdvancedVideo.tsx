@@ -1,9 +1,10 @@
 import React, { Component, createRef, EventHandler, HTMLAttributes, MutableRefObject, SyntheticEvent } from 'react';
-import { CloudinaryVideo } from '@cloudinary/url-gen';
+import { CloudinaryImage, CloudinaryVideo } from '@cloudinary/url-gen';
 
 import {
   HtmlVideoLayer,
   Plugins,
+  VideoPoster,
   VideoSources,
   cancelCurrentlyRunningPlugins
 } from '@cloudinary/html';
@@ -12,6 +13,7 @@ type ReactEventHandler<T = Element> = EventHandler<SyntheticEvent<T>>;
 
 interface VideoProps extends HTMLAttributes<HTMLVideoElement>{
   cldVid: CloudinaryVideo,
+  cldPoster?: VideoPoster,
   plugins?: Plugins,
   sources?: VideoSources,
   innerRef?: ((instance: any) => void) | MutableRefObject<unknown> | null
@@ -84,7 +86,8 @@ class AdvancedVideo extends Component <VideoProps> {
       this.props.cldVid,
       this.props.sources,
       this.props.plugins,
-      this.getVideoAttributes()
+      this.getVideoAttributes(),
+      this.props.cldPoster
     )
   }
 
@@ -95,7 +98,13 @@ class AdvancedVideo extends Component <VideoProps> {
   componentDidUpdate() {
     cancelCurrentlyRunningPlugins(this.htmlVideoLayerInstance.htmlPluginState);
     // call html layer to update the dom again with plugins and reset toBeCanceled
-    this.htmlVideoLayerInstance.update(this.props.cldVid, this.props.sources, this.props.plugins, this.getVideoAttributes())
+    this.htmlVideoLayerInstance.update(
+      this.props.cldVid,
+      this.props.sources,
+      this.props.plugins,
+      this.getVideoAttributes(),
+      this.props.cldPoster
+    )
   }
 
   /**
@@ -140,6 +149,7 @@ class AdvancedVideo extends Component <VideoProps> {
   render() {
     const {
       cldVid,
+      cldPoster,
       plugins,
       sources,
       innerRef,
