@@ -23,7 +23,8 @@
     "core-js": "^3.23.5",
     "rollup": "^2.52.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-typescript2": "^0.30.0"
+    "rollup-plugin-typescript2": "^0.34.1",
+    "tslib": "^2.0.0"
   },
   "dependencies": {
     "@types/lodash.clonedeep": "^4.5.6",
