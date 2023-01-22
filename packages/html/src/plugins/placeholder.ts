@@ -74,7 +74,6 @@ function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, plu
 
   const featuredAnalyticsOptions = getAnalyticsOptions(analyticsOptions, {placeholder: true});
 
-
   // Set the SRC of the imageElement to the URL of the placeholder Image
   element.src = placeholderClonedImage.toURL(featuredAnalyticsOptions);
 
