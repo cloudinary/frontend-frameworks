@@ -1,5 +1,8 @@
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {VideoCodecAction} from "@cloudinary/url-gen/actions/transcode/VideoCodecAction";
+import {
+  ITrackedPropertiesThroughAnalytics
+} from "@cloudinary/url-gen/sdkAnalytics/interfaces/ITrackedPropertiesThroughAnalytics";
 
 export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState, analyticsOptions?: AnalyticsOptions) => Promise<string | void>;
 
@@ -20,5 +23,11 @@ export type PictureSources = {minWidth?: number, maxWidth?: number, image: Cloud
 export type PictureSource  = {minWidth?: number, maxWidth?: number, image: CloudinaryImage, sizes?: string};
 
 export type AnalyticsOptions = {sdkSemver: string, techVersion: string, sdkCode: string};
+
+export type FeaturedAnalyticsOptions = Parameters<CloudinaryImage['toURL']>[0];
+
+type FeatureNames = Omit<ITrackedPropertiesThroughAnalytics, 'sdkCode' | 'sdkSemver' | 'techVersion'>
+
+export type Features = Partial<Record<keyof FeatureNames, boolean>>
 
 export type VideoPoster = CloudinaryImage | 'auto';

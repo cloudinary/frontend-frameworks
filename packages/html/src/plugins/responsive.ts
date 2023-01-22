@@ -1,5 +1,5 @@
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
-import {Plugin, HtmlPluginState, AnalyticsOptions} from "../types.js";
+import {Plugin, HtmlPluginState, AnalyticsOptions, FeaturedAnalyticsOptions} from "../types.js";
 import {scale} from "@cloudinary/url-gen/actions/resize";
 import debounce from 'lodash.debounce';
 import {isNum} from '../utils/isNum.js';
@@ -41,15 +41,17 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
       resolve('canceled');
     });
 
+    const featuredAnalyticsOptions = getAnalyticsOptions(analyticsOptions, {responsive: true});
+
     // Use a tagged generic action that can be later searched and replaced.
     responsiveImage.addAction(new Action().setActionTag('responsive'));
     // Immediately run the resize plugin, ensuring that first render gets a responsive image.
-    onResize(steps, element, responsiveImage, analyticsOptions);
+    onResize(steps, element, responsiveImage, featuredAnalyticsOptions);
 
     let resizeRef: any;
     htmlPluginState.pluginEventSubscription.push(()=>{
       window.addEventListener('resize', resizeRef = debounce(()=>{
-        onResize(steps, element, responsiveImage, analyticsOptions);
+        onResize(steps, element, responsiveImage, featuredAnalyticsOptions);
       }, 100));
     });
     resolve();
@@ -64,9 +66,9 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
  * @param responsiveImage {CloudinaryImage}
  * @param analyticsOptions {AnalyticsOptions} analytics options for the url to be created
  */
-function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, analyticsOptions?: AnalyticsOptions){
+function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, featuredAnalyticsOptions?: FeaturedAnalyticsOptions){
   updateByContainerWidth(steps, element, responsiveImage);
-  element.src = responsiveImage.toURL(getAnalyticsOptions(analyticsOptions));
+  element.src = responsiveImage.toURL(featuredAnalyticsOptions);
 }
 
 /**

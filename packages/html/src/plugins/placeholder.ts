@@ -72,8 +72,11 @@ function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, plu
     }
   });
 
+  const featuredAnalyticsOptions = getAnalyticsOptions(analyticsOptions, {placeholder: true});
+
+
   // Set the SRC of the imageElement to the URL of the placeholder Image
-  element.src = placeholderClonedImage.toURL(getAnalyticsOptions(analyticsOptions));
+  element.src = placeholderClonedImage.toURL(featuredAnalyticsOptions);
 
   //Fallback, if placeholder errors, load a single transparent pixel
   element.onerror = () => {
@@ -100,7 +103,7 @@ function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, plu
       });
       // load image once placeholder is done loading
       const largeImage = new Image();
-      largeImage.src = pluginCloudinaryImage.toURL(getAnalyticsOptions(analyticsOptions));
+      largeImage.src = pluginCloudinaryImage.toURL(featuredAnalyticsOptions);
       largeImage.onload = () => {
         resolve();
       };
