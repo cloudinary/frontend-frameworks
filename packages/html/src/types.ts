@@ -4,9 +4,11 @@ import {
   ITrackedPropertiesThroughAnalytics
 } from "@cloudinary/url-gen/sdkAnalytics/interfaces/ITrackedPropertiesThroughAnalytics";
 
-export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState, analyticsOptions?: AnalyticsOptions) => Promise<string | void>;
+export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState, analyticsOptions?: AnalyticsOptions) => Promise<PluginResponse>;
 
 export type Plugins = Plugin[];
+
+export type PluginResponse = string | void | Features;
 
 export type AccessibilityMode = 'darkmode'|'brightmode'|'monochrome'|'colorblind';
 

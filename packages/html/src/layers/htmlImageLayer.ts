@@ -1,5 +1,5 @@
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
-import {Plugins, HtmlPluginState, AnalyticsOptions} from '../types.js'
+import {Plugins, HtmlPluginState, AnalyticsOptions, Features} from '../types.js'
 import cloneDeep from 'lodash.clonedeep';
 import {render} from '../utils/render.js';
 import {getAnalyticsOptions} from "../utils/analytics";
@@ -13,9 +13,10 @@ export class HtmlImageLayer{
     const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
 
     render(element, pluginCloudinaryImage, plugins, this.htmlPluginState, analyticsOptions)
-        .then(()=>{ // when resolved updates the src
+        .then((pluginResponse)=>{ // when resolved updates the src
           this.htmlPluginState.pluginEventSubscription.forEach(fn=>{fn()});
-            this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL(getAnalyticsOptions(analyticsOptions)));
+          const featuredAnalyticsOptions = getAnalyticsOptions(analyticsOptions, pluginResponse as Features);
+          this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL(featuredAnalyticsOptions));
         });
   }
 
@@ -28,8 +29,9 @@ export class HtmlImageLayer{
   update(userCloudinaryImage: CloudinaryImage, plugins: any, analyticsOptions?: AnalyticsOptions){
     const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
     render(this.imgElement, pluginCloudinaryImage, plugins, this.htmlPluginState)
-        .then(()=>{
-          this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL(getAnalyticsOptions(analyticsOptions)));
+        .then((pluginResponse)=>{
+            const featuredAnalyticsOptions = getAnalyticsOptions(analyticsOptions, pluginResponse as Features);
+            this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL(featuredAnalyticsOptions));
         });
   }
 }

@@ -16,6 +16,8 @@ export async function render(element: HTMLImageElement | HTMLVideoElement, plugi
         const response = await plugins[i](element, pluginCloudinaryAsset, pluginState, analyticsOptions);
         if(response === 'canceled'){
             break;
+        } else {
+            return response
         }
     }
 }

@@ -1,5 +1,5 @@
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
-import {Plugin, HtmlPluginState, AnalyticsOptions, FeaturedAnalyticsOptions} from "../types.js";
+import {Plugin, HtmlPluginState, AnalyticsOptions, FeaturedAnalyticsOptions, PluginResponse} from "../types.js";
 import {scale} from "@cloudinary/url-gen/actions/resize";
 import debounce from 'lodash.debounce';
 import {isNum} from '../utils/isNum.js';
@@ -29,7 +29,7 @@ export function responsive({steps}:{steps?: number | number[]}={}): Plugin{
  * @param htmlPluginState {HtmlPluginState} holds cleanup callbacks and event subscriptions
  * @param analyticsOptions {AnalyticsOptions} analytics options for the url to be created
  */
-function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, analyticsOptions?: AnalyticsOptions): Promise<void | string> | boolean {
+function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, analyticsOptions?: AnalyticsOptions): Promise<PluginResponse> | boolean {
 
   if(!isBrowser()) return true;
 
@@ -64,7 +64,7 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
  * | number[] A set of image sizes in pixels.
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
- * @param analyticsOptions {AnalyticsOptions} analytics options for the url to be created
+ * @param featuredAnalyticsOptions {FeaturedAnalyticsOptions} analytics options for the url to be created
  */
 function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, featuredAnalyticsOptions?: FeaturedAnalyticsOptions){
   updateByContainerWidth(steps, element, responsiveImage);
