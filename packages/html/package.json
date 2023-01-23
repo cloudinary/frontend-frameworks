@@ -13,7 +13,8 @@
     "build": "tsc && npm run prepare-build && rollup -c",
     "postbuild": "cp index.esm.* ./dist && cp index.umd.* ./dist",
     "prepare-build": "cp package.json ./dist",
-    "test": "jest"
+    "test": "jest --config jest.config.json",
+    "test-coverage": "jest --coverage"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.7",
