@@ -1,12 +1,19 @@
 language: node_js
 addons:
   chrome: stable
-matrix:
-  include:
-    - node_js: "12"
-      script: npm run quickstart && npm run test
-    - node_js: "14"
-      script: npm run quickstart && npm run test
+
+node_js:
+  - 14
+  - 16
+  - 18
+
+jobs:
+  allow_failures:
+    - node_js: 16
+    - node_js: 18
+
+script: npm run quickstart && npm run test
+
 notifications:
   email:
     recipients:
