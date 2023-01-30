@@ -1,9 +1,9 @@
 import cloneDeep from 'lodash.clonedeep'
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {Plugin, HtmlPluginState, AnalyticsOptions, PluginResponse} from "../types";
-import {PLACEHOLDER_IMAGE_OPTIONS, singleTransparentPixel} from '../utils/internalConstants.js';
-import {PlaceholderMode} from '../types.js';
-import {isBrowser} from "../utils/isBrowser.js";
+import {PLACEHOLDER_IMAGE_OPTIONS, singleTransparentPixel} from '../utils/internalConstants';
+import {PlaceholderMode} from '../types';
+import {isBrowser} from "../utils/isBrowser";
 import {Action} from "@cloudinary/url-gen/internal/Action";
 import {isImage} from "../utils/isImage";
 import {getAnalyticsOptions} from "../utils/analytics";
