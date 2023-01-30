@@ -1,0 +1,35 @@
+{
+  "preset": "ts-jest",
+  "bail": true,
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.ts"
+  ],
+  "transform": {
+    "^.+\\.(ts)$": "ts-jest"
+  },
+  "testEnvironment": "jsdom",
+  "moduleFileExtensions": [
+    "js",
+    "ts"
+  ],
+  "modulePaths": [
+    "node_modules",
+    "<rootDir>/src"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 95,
+      "functions": 95,
+      "lines": 95,
+      "statements": 95
+    }
+  },
+  "globals": {
+    "ts-jest": {
+      "diagnostics": false
+    }
+  },
+  "transformIgnorePatterns": [
+    "/node_modules\/(?!@cloudinary/(html|url-gen|transformation-builder-sdk))(.*)"
+  ]
+}

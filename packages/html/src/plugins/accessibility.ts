@@ -1,8 +1,8 @@
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
-import {Plugin, AccessibilityMode, HtmlPluginState} from "../types.js";
-import {ACCESSIBILITY_MODES} from '../utils/internalConstants.js';
-import {isBrowser} from "../utils/isBrowser.js";
-import {isImage} from "../utils/isImage.js";
+import {Plugin, AccessibilityMode, HtmlPluginState} from "../types";
+import {ACCESSIBILITY_MODES} from '../utils/internalConstants';
+import {isBrowser} from "../utils/isBrowser";
+import {isImage} from "../utils/isImage";
 
 /**
  * @namespace
@@ -17,7 +17,7 @@ export function accessibility({mode = 'darkmode'}: { mode?: string; }={}): Plugi
 
 /**
  * @description Accessibility plugin
- * @param mode {accessibilityMode} The accessibility mode to use. Possible modes: 'darkmode' | 'brightmode' | 'monochrome' | 'colorblind'. Default: 'darkmode'.
+ * @param mode {AccessibilityMode} The accessibility mode to use. Possible modes: 'darkmode' | 'brightmode' | 'monochrome' | 'colorblind'. Default: 'darkmode'.
  * @param element {HTMLImageElement} The image element.
  * @param pluginCloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
