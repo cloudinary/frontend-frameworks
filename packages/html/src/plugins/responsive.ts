@@ -54,7 +54,7 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
         onResize(steps, element, responsiveImage, featuredAnalyticsOptions);
       }, 100));
     });
-    resolve();
+    resolve({responsive: true});
   });
 }
 
