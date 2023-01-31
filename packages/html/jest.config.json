@@ -31,5 +31,8 @@
   },
   "transformIgnorePatterns": [
     "/node_modules\/(?!@cloudinary/(html|url-gen|transformation-builder-sdk))(.*)"
+  ],
+  "setupFilesAfterEnv": [
+    "./src/setupTests.ts"
   ]
 }
