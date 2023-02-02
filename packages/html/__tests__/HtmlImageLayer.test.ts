@@ -22,13 +22,11 @@ const flushPromises = async () => {
 describe('HtmlImageLayer tests', function () {
     const cldImage = new CloudinaryImage('sample', {cloudName: 'demo'});
 
-    it('should set image src', function () {
+    it('should set image src', async function () {
         const img = document.createElement('img');
         new HtmlImageLayer(img, cldImage, [], sdkAnalyticsTokens);
-        jest.advanceTimersByTime(100);
-        process.nextTick(() => {
-            expect(img.src).toEqualAnalyticsToken('AXAABAB0');
-        })
+        await flushPromises();
+        expect(img.src).toEqualAnalyticsToken('AXAABAB0');
     });
 
     it('should use feature flag for responsive plugin', async function () {
