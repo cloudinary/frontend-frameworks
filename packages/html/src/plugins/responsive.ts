@@ -29,7 +29,7 @@ export function responsive({steps}:{steps?: number | number[]}={}): Plugin{
  * @param htmlPluginState {HtmlPluginState} holds cleanup callbacks and event subscriptions
  * @param analyticsOptions {BaseAnalyticsOptions} analytics options for the url to be created
  */
-function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, analyticsOptions?: BaseAnalyticsOptions): Promise<PluginResponse> | boolean {
+function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions): Promise<PluginResponse> | boolean {
 
   if(!isBrowser()) return true;
 
@@ -41,17 +41,17 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
       resolve('canceled');
     });
 
-    const featuredAnalyticsOptions = getAnalyticsOptions(analyticsOptions, {responsive: true});
+    const analyticsOptions = getAnalyticsOptions(baseAnalyticsOptions, {responsive: true});
 
     // Use a tagged generic action that can be later searched and replaced.
     responsiveImage.addAction(new Action().setActionTag('responsive'));
     // Immediately run the resize plugin, ensuring that first render gets a responsive image.
-    onResize(steps, element, responsiveImage, featuredAnalyticsOptions);
+    onResize(steps, element, responsiveImage, analyticsOptions);
 
     let resizeRef: any;
     htmlPluginState.pluginEventSubscription.push(()=>{
       window.addEventListener('resize', resizeRef = debounce(()=>{
-        onResize(steps, element, responsiveImage, featuredAnalyticsOptions);
+        onResize(steps, element, responsiveImage, analyticsOptions);
       }, 100));
     });
     resolve({responsive: true});
@@ -64,11 +64,11 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
  * | number[] A set of image sizes in pixels.
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
- * @param featuredAnalyticsOptions {AnalyticsOptions} analytics options for the url to be created
+ * @param analyticsOptions {AnalyticsOptions} analytics options for the url to be created
  */
-function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, featuredAnalyticsOptions?: AnalyticsOptions){
+function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, analyticsOptions?: AnalyticsOptions){
   updateByContainerWidth(steps, element, responsiveImage);
-  element.src = responsiveImage.toURL(featuredAnalyticsOptions);
+  element.src = responsiveImage.toURL(analyticsOptions);
 }
 
 /**

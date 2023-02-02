@@ -28,7 +28,7 @@ export function placeholder({mode='vectorize'}:{mode?: string}={}): Plugin{
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  * @param analyticsOptions {BaseAnalyticsOptions} analytics options for the url to be created
  */
-function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState, analyticsOptions?: BaseAnalyticsOptions): Promise<PluginResponse> | boolean {
+function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions): Promise<PluginResponse> | boolean {
   // @ts-ignore
   // If we're using an invalid mode, we default to vectorize
   if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
@@ -72,10 +72,10 @@ function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, plu
     }
   });
 
-  const featuredAnalyticsOptions = getAnalyticsOptions(analyticsOptions, {placeholder: true});
+  const analyticsOptions = getAnalyticsOptions(baseAnalyticsOptions, {placeholder: true});
 
   // Set the SRC of the imageElement to the URL of the placeholder Image
-  element.src = placeholderClonedImage.toURL(featuredAnalyticsOptions);
+  element.src = placeholderClonedImage.toURL(analyticsOptions);
 
   //Fallback, if placeholder errors, load a single transparent pixel
   element.onerror = () => {
@@ -102,7 +102,7 @@ function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, plu
       });
       // load image once placeholder is done loading
       const largeImage = new Image();
-      largeImage.src = pluginCloudinaryImage.toURL(featuredAnalyticsOptions);
+      largeImage.src = pluginCloudinaryImage.toURL(analyticsOptions);
       largeImage.onload = () => {
         resolve();
       };
