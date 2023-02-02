@@ -1,6 +1,6 @@
 import {AnalyticsOptions, FeaturedAnalyticsOptions, Features} from "../types";
 
-export const getAnalyticsOptions = (options?: AnalyticsOptions, features: Features = {}): FeaturedAnalyticsOptions => {
+export const getAnalyticsOptions = (options?: AnalyticsOptions, features: void | Features = {}): FeaturedAnalyticsOptions => {
     return options ? {
         trackedAnalytics: {
             sdkCode: options.sdkCode,

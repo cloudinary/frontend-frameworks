@@ -8,7 +8,7 @@ export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImag
 
 export type Plugins = Plugin[];
 
-export type PluginResponse = string | void | Features;
+export type PluginResponse = 'canceled' | void | Features;
 
 export type AccessibilityMode = 'darkmode'|'brightmode'|'monochrome'|'colorblind';
 
