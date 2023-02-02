@@ -1,6 +1,6 @@
 import {CloudinaryImage} from "@cloudinary/url-gen";
 import {HtmlImageLayer} from "../src";
-import {AnalyticsOptions} from "../src/types";
+import {BaseAnalyticsOptions} from "../src/types";
 import {responsive} from "../src/plugins/responsive";
 import {placeholder} from "../src/plugins/placeholder";
 import {lazyload} from "../src/plugins/lazyload";
@@ -8,7 +8,7 @@ import {accessibility} from "../src/plugins/accessibility";
 
 jest.useFakeTimers();
 
-const sdkAnalyticsTokens: AnalyticsOptions = {
+const sdkAnalyticsTokens: BaseAnalyticsOptions = {
     sdkSemver: '1.0.0',
     techVersion: '1.0.0',
     sdkCode: 'X'

@@ -4,7 +4,7 @@ import {
   ITrackedPropertiesThroughAnalytics
 } from "@cloudinary/url-gen/sdkAnalytics/interfaces/ITrackedPropertiesThroughAnalytics";
 
-export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState, analyticsOptions?: AnalyticsOptions) => Promise<PluginResponse>;
+export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState, analyticsOptions?: BaseAnalyticsOptions) => Promise<PluginResponse>;
 
 export type Plugins = Plugin[];
 
@@ -24,9 +24,9 @@ export type PictureSources = {minWidth?: number, maxWidth?: number, image: Cloud
 
 export type PictureSource  = {minWidth?: number, maxWidth?: number, image: CloudinaryImage, sizes?: string};
 
-export type AnalyticsOptions = {sdkSemver: string, techVersion: string, sdkCode: string};
+export type BaseAnalyticsOptions = {sdkSemver: string, techVersion: string, sdkCode: string};
 
-export type FeaturedAnalyticsOptions = Parameters<CloudinaryImage['toURL']>[0];
+export type AnalyticsOptions = Parameters<CloudinaryImage['toURL']>[0];
 
 type FeatureNames = Omit<ITrackedPropertiesThroughAnalytics, 'sdkCode' | 'sdkSemver' | 'techVersion'>
 
