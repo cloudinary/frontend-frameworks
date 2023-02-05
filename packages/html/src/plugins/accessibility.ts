@@ -1,5 +1,5 @@
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
-import {Plugin, AccessibilityMode, HtmlPluginState} from "../types";
+import {Plugin, AccessibilityMode, HtmlPluginState, PluginResponse} from "../types";
 import {ACCESSIBILITY_MODES} from '../utils/internalConstants';
 import {isBrowser} from "../utils/isBrowser";
 import {isImage} from "../utils/isImage";
@@ -22,7 +22,7 @@ export function accessibility({mode = 'darkmode'}: { mode?: string; }={}): Plugi
  * @param pluginCloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
-export function accessibilityPlugin(mode: AccessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<void | string> | boolean {
+export function accessibilityPlugin(mode: AccessibilityMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<PluginResponse> | boolean {
   if(isBrowser()){
 
     if(!isImage(element)) return;
@@ -37,7 +37,7 @@ export function accessibilityPlugin(mode: AccessibilityMode, element: HTMLImageE
         mode = 'darkmode';
       }
       pluginCloudinaryImage.effect(ACCESSIBILITY_MODES[mode]);
-      resolve();
+      resolve({accessibility: true});
     });
   }else{
     pluginCloudinaryImage.effect(ACCESSIBILITY_MODES[mode]);
