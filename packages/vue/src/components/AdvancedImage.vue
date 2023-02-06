@@ -13,7 +13,7 @@
  * <caption>
  *  Please note that the order of the plugins is important. See {@link https://cloudinary.com/documentation/sdks/js/frontend-frameworks/index.html#plugin-order|Plugin Order} for more details.
  * </caption>
- * // Example
+ * // AdvancedImage
  * <template>
  *   <div>
  *     <AdvancedImage :cldImg="cldImg" :plugins="plugins" />
@@ -45,7 +45,55 @@
  *   };
  *  },
  * });
- * </script>
+ * </ script>
+ * 
+* @example
+ * <caption>
+ *  Using custom defined resources.
+ * </caption>
+ * 
+ * // AdvancedVideo
+ * <template>
+ *   <AdvancedVideo :cldVid="cldVid" :sources="sources" controls width="600" />
+ * </template>
+ *
+ * <script lang="ts">
+ * import { defineComponent } from "vue";
+ * import { auto } from "@cloudinary/url-gen/qualifiers/videoCodec";
+ * import { videoCodec } from "@cloudinary/url-gen/actions/transcode";
+ * import { AdvancedVideo } from "../dist";
+ * import { CloudinaryVideo } from "@cloudinary/url-gen/assets/CloudinaryVideo";
+ *
+ * export default defineComponent({
+ *   name: "App",
+ *   components: {
+ *     AdvancedVideo,
+ *  },
+ *   setup(props) {
+ *     const cldVid = new CloudinaryVideo(
+ *       "dog",
+ *       { cloudName: "demo" },
+ *       { analytics: false }
+ *     );
+ *
+ *     const sources = [
+ *       {
+ *         type: "mp4",
+ *         transcode: videoCodec(auto()),
+ *       },
+ *       {
+ *         type: "webm",
+ *         transcode: videoCodec(auto()),
+ *       },
+ *     ];
+ *
+ *     return {
+ *       cldVid,
+ *       sources,
+ *     };
+ *   },
+ * });
+ * </ script>
  */
 
 /**
