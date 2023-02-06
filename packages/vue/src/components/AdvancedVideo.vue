@@ -13,9 +13,6 @@
  * @vue-prop {Plugins} plugins Advanced video component plugins accessibility(), responsive(), lazyload(), placeholder()
  * @vue-prop {VideoSources} sources Optional sources to generate
  */
-export default {
-  name: "AdvancedVideo",
-}
 </script>
 
 <script setup lang="ts">
