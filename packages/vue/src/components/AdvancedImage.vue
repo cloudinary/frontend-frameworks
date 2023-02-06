@@ -47,9 +47,9 @@
  * });
  * </ script>
  * 
-* @example
+ * @example
  * <caption>
- *  Using custom defined resources.
+ *  Using `AdvancedVideo` custom defined resources.
  * </caption>
  * 
  * // AdvancedVideo
