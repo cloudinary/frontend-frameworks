@@ -4,12 +4,13 @@
     "dictionaries": ["jsdoc","closure"]
   },
   "source": {
-    "include": ["packages/html/src", "packages/react/src", "packages/angular/projects/cloudinary-library/src"],
-    "includePattern": ".+\\.ts(doc|x)?$",
+    "include": ["packages/html/src", "packages/react/src", "packages/angular/projects/cloudinary-library/src", "packages/vue/src"],
+    "includePattern": ".+\\.(ts|vue)(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_"
   },
   "plugins": [
     "plugins/markdown",
+    "node_modules/jsdoc-vuejs",
     "node_modules/better-docs/typescript"
   ],
   "typescript": {
@@ -34,7 +35,7 @@
     "systemLogo": "__DOC_RESOURCES__/navLogo.png",
     "systemSummary": "client side packages & plugins",
     "favicon": "__DOC_RESOURCES__/favico.png",
-    "copyright": "Copyright © 2020 Cloudinary.com"
+    "copyright": "Copyright © 2023 Cloudinary.com"
   },
   "opts": {
     "recurse": true,
