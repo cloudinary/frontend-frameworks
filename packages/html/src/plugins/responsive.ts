@@ -1,5 +1,5 @@
 import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
-import {Plugin, HtmlPluginState, AnalyticsOptions} from "../types";
+import {Plugin, HtmlPluginState, BaseAnalyticsOptions, AnalyticsOptions, PluginResponse} from "../types";
 import {scale} from "@cloudinary/url-gen/actions/resize";
 import debounce from 'lodash.debounce';
 import {isNum} from '../utils/isNum';
@@ -27,9 +27,9 @@ export function responsive({steps}:{steps?: number | number[]}={}): Plugin{
  * @param element {HTMLImageElement} The image element
  * @param responsiveImage {CloudinaryImage}
  * @param htmlPluginState {HtmlPluginState} holds cleanup callbacks and event subscriptions
- * @param analyticsOptions {AnalyticsOptions} analytics options for the url to be created
+ * @param analyticsOptions {BaseAnalyticsOptions} analytics options for the url to be created
  */
-function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, analyticsOptions?: AnalyticsOptions): Promise<void | string> | boolean {
+function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions): Promise<PluginResponse> | boolean {
 
   if(!isBrowser()) return true;
 
@@ -40,6 +40,8 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
       window.removeEventListener("resize", resizeRef);
       resolve('canceled');
     });
+
+    const analyticsOptions = getAnalyticsOptions(baseAnalyticsOptions, {responsive: true});
 
     // Use a tagged generic action that can be later searched and replaced.
     responsiveImage.addAction(new Action().setActionTag('responsive'));
@@ -52,7 +54,7 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
         onResize(steps, element, responsiveImage, analyticsOptions);
       }, 100));
     });
-    resolve();
+    resolve({responsive: true});
   });
 }
 
@@ -66,7 +68,7 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
  */
 function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, analyticsOptions?: AnalyticsOptions){
   updateByContainerWidth(steps, element, responsiveImage);
-  element.src = responsiveImage.toURL(getAnalyticsOptions(analyticsOptions));
+  element.src = responsiveImage.toURL(analyticsOptions);
 }
 
 /**
