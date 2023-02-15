@@ -6,7 +6,6 @@ import {placeholder} from "../src/plugins/placeholder";
 import {accessibility} from "../src/plugins/accessibility";
 import {PluginResponse} from "../types";
 import {cancelCurrentlyRunningPlugins} from "../src/utils/cancelCurrentlyRunningPlugins";
-import * as process from "process";
 
 jest.useFakeTimers();
 
@@ -54,24 +53,20 @@ describe('HtmlImageLayer tests', function () {
         expect(img.src).toEqualAnalyticsToken('AXAABABD');
     });
 
-    it('should set image src twice if HtmlImageLayer instance won\'t be destroyed', async function () {
+    it('should set image src twice if HtmlImageLayer instance won\'t be unmounted', async function () {
         const img = document.createElement('img');
         const pluginsState: any = {
             cleanupCallbacks: []
         };
         const spy = jest.spyOn(img, 'setAttribute');
-        const dummyFailingPlugin = (): Promise<PluginResponse> => {
-            return new Promise((resolve) => {
-                pluginsState.cleanupCallbacks.push(() => {
-                    resolve('canceled')
-                })
+        const dummyFailingPlugin = (): Promise<PluginResponse> => new Promise((resolve) => {
+            pluginsState.cleanupCallbacks.push(() => {
+                resolve('canceled')
             })
-        }
-        const dummyLazyLoadPlugin = (): Promise<PluginResponse> => {
-            return new Promise((resolve) => {
-                resolve({lazyload: true});
-            })
-        }
+        });
+        const dummyLazyLoadPlugin = (): Promise<PluginResponse> => new Promise((resolve) => {
+            resolve({lazyload: true});
+        });
         new HtmlImageLayer(img, cldImage, [dummyFailingPlugin]);
         new HtmlImageLayer(img, cldImage, [dummyLazyLoadPlugin]);
         cancelCurrentlyRunningPlugins(pluginsState);
@@ -79,28 +74,24 @@ describe('HtmlImageLayer tests', function () {
         expect(spy).toHaveBeenCalledTimes(2);
     });
 
-    it('should set image src only once if HtmlImageLayer instance will be destroyed', async function () {
+    it('should set image src only once if HtmlImageLayer instance will be unmounted', async function () {
         const img = document.createElement('img');
         const pluginsState: any = {
             cleanupCallbacks: []
         };
         const spy = jest.spyOn(img, 'setAttribute');
-        const dummyFailingPlugin = (): Promise<PluginResponse> => {
-            return new Promise((resolve) => {
-                pluginsState.cleanupCallbacks.push(() => {
-                    resolve('canceled')
-                })
+        const dummyFailingPlugin = (): Promise<PluginResponse> => new Promise((resolve) => {
+            pluginsState.cleanupCallbacks.push(() => {
+                resolve('canceled')
             })
-        }
-        const dummyLazyLoadPlugin = (): Promise<PluginResponse> => {
-            return new Promise((resolve) => {
-                resolve({lazyload: true});
-            })
-        }
+        });
+        const dummyLazyLoadPlugin = (): Promise<PluginResponse> => new Promise((resolve) => {
+            resolve({lazyload: true});
+        });
         const instance1 = new HtmlImageLayer(img, cldImage, [dummyFailingPlugin]);
         new HtmlImageLayer(img, cldImage, [dummyLazyLoadPlugin]);
         cancelCurrentlyRunningPlugins(pluginsState);
-        instance1.destroy();
+        instance1.unmount();
         await flushPromises();
         expect(spy).toHaveBeenCalledTimes(1);
     });
