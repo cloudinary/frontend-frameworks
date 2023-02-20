@@ -97,11 +97,12 @@ class AdvancedImage extends React.Component <ImgProps> {
   }
 
   /**
-   * On unmount, we cancel the currently running plugins.
+   * On unmount, we cancel the currently running plugins, and destroy the html layer instance
    */
   componentWillUnmount() {
     // Safely cancel running events on unmount.
     cancelCurrentlyRunningPlugins(this.htmlLayerInstance.htmlPluginState);
+    this.htmlLayerInstance.unmount();
   }
 
   render() {

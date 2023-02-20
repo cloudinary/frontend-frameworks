@@ -6,6 +6,7 @@ import {getAnalyticsOptions} from "../utils/analytics";
 
 export class HtmlImageLayer{
   private imgElement: any;
+  private isMounted = true;
   htmlPluginState: HtmlPluginState;
   constructor(element: HTMLImageElement | null, userCloudinaryImage: CloudinaryImage, plugins?: Plugins, baseAnalyticsOptions?: BaseAnalyticsOptions){
     this.imgElement = element;
@@ -14,6 +15,9 @@ export class HtmlImageLayer{
 
     render(element, pluginCloudinaryImage, plugins, this.htmlPluginState, baseAnalyticsOptions)
         .then((pluginResponse)=>{ // when resolved updates the src
+          if (!this.isMounted) {
+              return;
+          }
           this.htmlPluginState.pluginEventSubscription.forEach(fn=>{fn()});
           const analyticsOptions = getAnalyticsOptions(baseAnalyticsOptions, pluginResponse);
           this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL(analyticsOptions));
@@ -30,8 +34,14 @@ export class HtmlImageLayer{
     const pluginCloudinaryImage  = cloneDeep(userCloudinaryImage);
     render(this.imgElement, pluginCloudinaryImage, plugins, this.htmlPluginState)
         .then((pluginResponse)=>{
+            if (!this.isMounted) {
+                return;
+            }
             const featuredAnalyticsOptions = getAnalyticsOptions(baseAnalyticsOptions, pluginResponse);
             this.imgElement.setAttribute('src', pluginCloudinaryImage.toURL(featuredAnalyticsOptions));
         });
+  }
+  unmount() {
+      this.isMounted = false;
   }
 }
