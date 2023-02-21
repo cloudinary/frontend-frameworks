@@ -1,3 +1,15 @@
+1.11.0 / 2023-02-21
+==================
+
+Html
+-------
+  * test: add tests for HtmlImageLayer destroy
+  * fix: cleanup html layer on component unmount
+
+React
+-------
+  * fix: Unmount HtmlImageLayer instance on component unmount
+
 1.10.0 / 2023-02-13
 ==================
 
