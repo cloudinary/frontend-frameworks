@@ -71,7 +71,7 @@ We recommend the following order when using our plugins to achieve the best resu
 <br/><br/>
 
 ```javascript
-<AdvancedImage plugins={[lazyload(),responsive(), accessibility(), placeholder()]}/>
+<AdvancedImage plugins={[lazyload(), responsive(), accessibility(), placeholder()]}/>
 ```
 
 You can omit any plugin, but the order from above should remain.
