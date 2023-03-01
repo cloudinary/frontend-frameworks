@@ -95,4 +95,35 @@ describe('HtmlImageLayer tests', function () {
         await flushPromises();
         expect(spy).toHaveBeenCalledTimes(1);
     });
+
+    it('should verfiy no unneeded request with placeholder plugin', async function () {
+        const OriginalImage = Image;
+        // mocking Image constructor in order to simulate firing 'load' event
+        jest.spyOn(global, "Image").mockImplementation(() => {
+            const img = new OriginalImage();
+            setTimeout(() => {
+                img.dispatchEvent(new Event("load"));
+            }, 10)
+            return img;
+
+        })
+        const img = document.createElement('img');
+        const imgSrcSpy = jest.spyOn(img, 'src', 'set');
+        const imgSetAttributeSpy = jest.spyOn(img, 'setAttribute');
+
+        new HtmlImageLayer(img, cldImage, [placeholder()], sdkAnalyticsTokens);
+        expect(imgSrcSpy).toHaveBeenCalledTimes(1);
+        // test that the initial src is set to a token contains last character "B" which is the character of placeholder plugin
+        expect(imgSrcSpy.mock.calls[0][0]).toEqualAnalyticsToken('AXAABABB');
+        // trigger load event in order to resolve the 1st promise of the placeholder plugin
+        img.dispatchEvent(new Event('load'));
+        await flushPromises();
+        // resolve the 2nd promise of the placeholder plugin, which cause the placeholder plugin to create the pixelated Image
+        await flushPromises();
+        // resolve the 3rd promise of the placeholder plugin, which cause HtmlLayer to set the image attribute
+        await flushPromises();
+        expect(imgSetAttributeSpy).toHaveBeenCalledTimes(1);
+        // test that the src which set by HtmlImageLayer contains last character "B" which is the character of placeholder plugin
+        expect(imgSetAttributeSpy.mock.calls[0][1]).toEqualAnalyticsToken('AXAABABB');
+    });
 });

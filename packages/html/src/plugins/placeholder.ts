@@ -26,7 +26,7 @@ export function placeholder({mode='vectorize'}:{mode?: string}={}): Plugin{
  * @param element {HTMLImageElement} The image element.
  * @param pluginCloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
- * @param analyticsOptions {BaseAnalyticsOptions} analytics options for the url to be created
+ * @param baseAnalyticsOptions {BaseAnalyticsOptions} analytics options for the url to be created
  */
 function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions): Promise<PluginResponse> | boolean {
   // @ts-ignore
@@ -104,12 +104,12 @@ function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, plu
       const largeImage = new Image();
       largeImage.src = pluginCloudinaryImage.toURL(analyticsOptions);
       largeImage.onload = () => {
-        resolve();
+        resolve({placeholder: true});
       };
 
       // image does not load, resolve
       largeImage.onerror = () => {
-        resolve();
+        resolve({placeholder: true});
       };
     });
   });
