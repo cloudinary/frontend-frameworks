@@ -16,7 +16,7 @@ const sdkAnalyticsTokens: BaseAnalyticsOptions = {
 }
 
 const flushPromises = async () => {
-    jest.advanceTimersByTime(100);
+    jest.advanceTimersByTime(10);
     await Promise.resolve();
 }
 
