@@ -114,7 +114,8 @@ describe('HtmlImageLayer tests', function () {
         new HtmlImageLayer(img, cldImage, [placeholder()], sdkAnalyticsTokens);
         expect(imgSrcSpy).toHaveBeenCalledTimes(1);
         // test that the initial src is set to a token contains last character "B" which is the character of placeholder plugin
-        expect(imgSrcSpy.mock.calls[0][0]).toEqualAnalyticsToken('AXAABABB');
+        const imgSrcSpyAnalyticsToken = imgSrcSpy.mock.calls[0][0];
+        expect(imgSrcSpyAnalyticsToken).toEqualAnalyticsToken('AXAABABB');
         // trigger load event in order to resolve the 1st promise of the placeholder plugin
         img.dispatchEvent(new Event('load'));
         await flushPromises();
