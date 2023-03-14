@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "paths": {
+      "@angular/*": [ "node_modules/@angular/*" ],
       "core-js/es7/reflect": [
         "node_modules/core-js/proposals/reflect-metadata",
       ],

@@ -37,9 +37,12 @@ For the complete documentation, see the [Angular SDK Reference](https://cloudina
  [video](https://cloudinary.com/documentation/angular_video_manipulation#video_element) tags.
 
 ## Version Support
-| SDK Version   | ng 10.0  | ng 11.0 |
-|---------------|----------|---------|
-| 1.0.0 & up    | V        | V       
+| SDK Version   | ng 10.0 | ng 11.0 | ng 12.0 | ng 13.0 | ng 14.0 | ng 15.0 | ng 16.0 & up |
+|---------------|---------|---------|---------|---------|---------|---------|--------------|
+| 1.x.x         | V       | V       | V       | V       | V       | V       |              |
+| 2.x.x         |         |         | V       | V       | V       | V       | V            |
+
+New features will only be added to version 2.x.
 
 ## Installation
 ### Install using your favorite package manager (yarn, npm)
