@@ -1,4 +1,4 @@
-import {Plugins, HtmlPluginState, BaseAnalyticsOptions} from '../types'
+import {Plugins, HtmlPluginState, BaseAnalyticsOptions, PluginResponse} from '../types'
 import {CloudinaryVideo, CloudinaryImage} from "@cloudinary/url-gen";
 
 /**
@@ -11,13 +11,13 @@ import {CloudinaryVideo, CloudinaryImage} from "@cloudinary/url-gen";
  * @param analyticsOptions {BaseAnalyticsOptions} analytics options for the url to be created
  */
 export async function render(element: HTMLImageElement | HTMLVideoElement, pluginCloudinaryAsset: CloudinaryImage | CloudinaryVideo, plugins: Plugins, pluginState: HtmlPluginState, analyticsOptions?: BaseAnalyticsOptions) {
-    if(plugins === undefined) return;
-    for(let i = 0; i < plugins.length; i++){
-        const response = await plugins[i](element, pluginCloudinaryAsset, pluginState, analyticsOptions);
-        if(response === 'canceled'){
+    if (plugins === undefined) return;
+    let response: PluginResponse;
+    for (let i = 0; i < plugins.length; i++) {
+        response = await plugins[i](element, pluginCloudinaryAsset, pluginState, analyticsOptions);
+        if (response === 'canceled') {
             break;
-        } else {
-            return response
         }
     }
+    return response
 }
