@@ -19,5 +19,7 @@ export async function render(element: HTMLImageElement | HTMLVideoElement, plugi
             break;
         }
     }
-    return response
+    if (response !== 'canceled') {
+        return response;
+    }
 }
