@@ -76,3 +76,8 @@ We recommend the following order when using our plugins to achieve the best resu
 
 You can omit any plugin, but the order from above should remain.
 </div>
+
+
+## Contributors
+
+Repository is using [Conventional Commits](https://www.conventionalcommits.org/). To publish packages please read instructions in [sdk-scripts](https://github.com/CloudinaryLtd/sdk-scripts/blob/master/src/release/js/frontend-frameworks/README.md).
