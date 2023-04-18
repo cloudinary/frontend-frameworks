@@ -2,6 +2,7 @@
   "name": "frontend-frameworks-monorepo",
   "version": "1.0.0",
   "scripts": {
+    "postinstall": "husky install",
     "install": "lerna bootstrap --no-ci",
     "build": "lerna run build",
     "quickstart": "lerna bootstrap --no-ci && lerna run build",
@@ -11,9 +12,12 @@
     "update:urlgen": "npm install @cloudinary/url-gen@latest --prefix packages/html && npm install @cloudinary/url-gen@latest --prefix packages/react && npm install @cloudinary/url-gen@latest --prefix packages/vue && npm install @cloudinary/url-gen@latest --prefix packages/angular && npm install @cloudinary/url-gen@latest --prefix packages/angular/projects/cloudinary-library"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
     "@vue/compiler-sfc": "^3.2.47",
     "better-docs": "2.3.2",
     "foodoc": "0.0.9",
+    "husky": "^8.0.3",
     "jsdoc": "3.6.4",
     "jsdoc-plugin-typescript": "2.0.5",
     "jsdoc-vuejs": "^4.0.0",
