@@ -80,8 +80,9 @@ export default {
 </template>
 ```
 
-### Generate Image elements
+### Generate Image and Video elements
 - Use <AdvancedImage> to generate image tags
+- Use <AdvancedVideo> to generate image tags
 
 ### Advanced Plugin Features
 - [See full documentation](https://cloudinary.com/documentation/react_integration#plugins)
