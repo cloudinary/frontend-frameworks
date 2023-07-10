@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-import { AdvancedImage } from "../../src";
+import { AdvancedImage } from "../../dist";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { createSSRApp } from "vue";
 import { renderToString } from "vue/server-renderer";
@@ -12,7 +12,7 @@ const cloudinaryImage = new CloudinaryImage("sample", { cloudName: "demo" });
 
 describe("analytics", () => {
   testIf(
-    !(process.env.VUE3_TEST_ENV === "DIST"),
+    !(process.env.VUE_TEST_ENV === "DIST"),
     "creates an img with analytics using src",
     async () => {
       // Update src analytics value
@@ -28,13 +28,13 @@ describe("analytics", () => {
       });
       const html = await renderToString(app);
       expect(html).toMatch(
-        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=AL'
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=BALAABDS0'
       );
     }
   );
 
   testIf(
-    process.env.VUE3_TEST_ENV === "DIST",
+    process.env.VUE_TEST_ENV === "DIST",
     "creates an img with analytics using dist",
     async () => {
       const app = createSSRApp({
@@ -46,7 +46,7 @@ describe("analytics", () => {
       });
       const html = await renderToString(app);
       expect(html).toMatch(
-        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=AL'
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=BALFJtDL0'
       );
     }
   );

@@ -1,4 +1,4 @@
-import { AdvancedImage, lazyload, responsive } from "../../src";
+import { AdvancedImage, lazyload, responsive } from "../../dist";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { mount } from "@vue/test-utils";
 import { waitTicks } from "./utils";

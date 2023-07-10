@@ -1,5 +1,5 @@
 import { mount } from "@vue/test-utils";
-import { AdvancedImage } from "../../src";
+import { AdvancedImage } from "../../dist";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { waitTicks } from "./utils";
 

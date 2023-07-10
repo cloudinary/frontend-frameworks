@@ -1,4 +1,4 @@
-import { AdvancedImage } from "../../src";
+import { AdvancedImage } from "../../dist";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { mount } from "@vue/test-utils";
 import { testIf, waitTicks } from "./utils";
@@ -21,7 +21,7 @@ describe("analytics", () => {
       await waitTicks(1);
 
       expect(component.html()).toMatch(
-        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=AL'
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=BALAABDS0'
       );
     }
   );
@@ -36,7 +36,7 @@ describe("analytics", () => {
       await waitTicks(1);
 
       expect(component.html()).toMatch(
-        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=AL'
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=BALFJtDL0'
       );
     }
   );

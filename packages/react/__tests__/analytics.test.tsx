@@ -21,7 +21,7 @@ describe('analytics', () => {
   it('creates an img with analytics', function (done) {
     const component = mount(<AdvancedImage cldImg={cloudinaryImage} />);
     setTimeout(() => {
-      expect(component.html()).toEqual('<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=AJAABDS0">');
+      expect(component.html()).toEqual('<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=BAJAABDS0">');
       done();
     }, 0);// one tick
   });

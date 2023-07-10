@@ -27,7 +27,7 @@ describe('HtmlImageLayer tests', function () {
         const img = document.createElement('img');
         new HtmlImageLayer(img, cldImage, [], sdkAnalyticsTokens);
         await flushPromises();
-        expect(img.src).toEqualAnalyticsToken('AXAABAB0');
+        expect(img.src).toEqualAnalyticsToken('BAXAABAB0');
     });
 
     it('should use feature flag for responsive plugin', async function () {
@@ -36,21 +36,21 @@ describe('HtmlImageLayer tests', function () {
         parentElement.append(img);
         new HtmlImageLayer(img, cldImage, [responsive({steps: [100]})], sdkAnalyticsTokens);
         await flushPromises();
-        expect(img.src).toEqualAnalyticsToken('AXAABABA');
+        expect(img.src).toEqualAnalyticsToken('BAXAABABA');
     });
 
     it('should use feature flag for placeholder plugin', async function () {
         const img = document.createElement('img');
         new HtmlImageLayer(img, cldImage, [placeholder()], sdkAnalyticsTokens);
         await flushPromises();
-        expect(img.src).toEqualAnalyticsToken('AXAABABB');
+        expect(img.src).toEqualAnalyticsToken('BAXAABABB');
     });
 
     it('should use feature flag for accessibility plugin', async function () {
         const img = document.createElement('img');
         new HtmlImageLayer(img, cldImage, [accessibility()], sdkAnalyticsTokens);
         await flushPromises();
-        expect(img.src).toEqualAnalyticsToken('AXAABABD');
+        expect(img.src).toEqualAnalyticsToken('BAXAABABD');
     });
 
     it('should set image src twice if HtmlImageLayer instance won\'t be unmounted', async function () {
@@ -115,7 +115,7 @@ describe('HtmlImageLayer tests', function () {
         expect(imgSrcSpy).toHaveBeenCalledTimes(1);
         // test that the initial src is set to a token contains last character "B" which is the character of placeholder plugin
         const imgSrcSpyAnalyticsToken = imgSrcSpy.mock.calls[0][0];
-        expect(imgSrcSpyAnalyticsToken).toEqualAnalyticsToken('AXAABABB');
+        expect(imgSrcSpyAnalyticsToken).toEqualAnalyticsToken('BAXAABABB');
         // trigger load event in order to resolve the 1st promise of the placeholder plugin
         img.dispatchEvent(new Event('load'));
         await flushPromises();
@@ -125,6 +125,6 @@ describe('HtmlImageLayer tests', function () {
         await flushPromises();
         expect(imgSetAttributeSpy).toHaveBeenCalledTimes(1);
         // test that the src which set by HtmlImageLayer contains last character "B" which is the character of placeholder plugin
-        expect(imgSetAttributeSpy.mock.calls[0][1]).toEqualAnalyticsToken('AXAABABB');
+        expect(imgSetAttributeSpy.mock.calls[0][1]).toEqualAnalyticsToken('BAXAABABB');
     });
 });
