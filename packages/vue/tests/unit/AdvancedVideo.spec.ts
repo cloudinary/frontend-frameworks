@@ -2,7 +2,7 @@ import { mount } from "@vue/test-utils";
 import { CloudinaryImage, CloudinaryVideo } from "@cloudinary/url-gen";
 import { auto, vp9 } from "@cloudinary/url-gen/qualifiers/videoCodec";
 import { videoCodec } from "@cloudinary/url-gen/actions/transcode";
-import { AdvancedVideo } from "../../dist";
+import { AdvancedVideo } from "../../src";
 import { waitTicks } from "../unit/utils";
 
 const cloudinaryImage = new CloudinaryImage(

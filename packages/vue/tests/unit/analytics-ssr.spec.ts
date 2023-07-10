@@ -1,7 +1,7 @@
 /**
  * @jest-environment node
  */
-import { AdvancedImage } from "../../dist";
+import { AdvancedImage } from "../../src";
 import { CloudinaryImage } from "@cloudinary/url-gen/assets/CloudinaryImage";
 import { createSSRApp } from "vue";
 import { renderToString } from "vue/server-renderer";
