@@ -33,6 +33,6 @@ describe('analytics', () => {
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
 
-    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/sample?_a=AKAABDS0');
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/sample?_a=BAKAABDS0');
   }));
 });

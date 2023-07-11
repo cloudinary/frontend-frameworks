@@ -23,14 +23,14 @@
     "test": "npm run test:dist && npm run test:src",
     "test:src": "vue-cli-service test:unit --coverage",
     "pretest:src": "replace-in-files --string='../../dist' --replacement='../../src' tests/unit/*.spec.ts",
-    "test:dist": "npm run build && VUE_TEST_ENV_TEST_ENV=DIST vue-cli-service test:unit",
+    "test:dist": "npm run build && VUE_TEST_ENV=DIST vue-cli-service test:unit",
     "pretest:dist": "replace-in-files --string='../../src\"' --replacement='../../dist\"' tests/unit/*.spec.ts",
     "serve:coverage": "http-server coverage/lcov-report",
     "lint": "vue-cli-service lint"
   },
   "devDependencies": {
     "@cloudinary/html": "^1.0.1",
-    "@cloudinary/url-gen": "^1.8.7",
+    "@cloudinary/url-gen": "^1.10.1",
     "@rollup/plugin-replace": "^4.0.0",
     "@sinonjs/fake-timers": "^9.1.2",
     "@types/jest": "^27.0.1",

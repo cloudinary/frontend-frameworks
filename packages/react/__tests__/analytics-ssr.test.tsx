@@ -27,7 +27,7 @@ describe('ssr analytics', () => {
     )
     setTimeout(() => {
       expect(ElementImageHtml).toContain(
-        'https://res.cloudinary.com/demo/image/upload/sample?_a=AJAABDS0'
+        'https://res.cloudinary.com/demo/image/upload/sample?_a=BAJAABDS0'
       )
       done()
     }, 0) // one tick
