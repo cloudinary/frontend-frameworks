@@ -9,7 +9,7 @@ type IntersectionObserverInitRoot = IntersectionObserverInit['root'];
  * @description Loads an image once it is in a certain margin in the viewport. This includes vertical and horizontal scrolling.
  * @param rootMargin {string} The root element's bounding box before the intersection test is performed. Default: 0px.
  * @param threshold {number} The percentage of the image's visibility at which point the image should load. Default: 0.1 (10%).
- * @param root {number} The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target. Defaults to the browser viewport if not specified or if null.
+ * @param root {Element} The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target. Defaults to the browser viewport if not specified or if null.
  * @return {Plugin}
  * @example
  * <caption>
