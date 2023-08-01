@@ -18,7 +18,7 @@ This Readme provides basic installation and usage information.
     - [Install using your favorite package manager (yarn, npm)](#install-using-your-favorite-package-manager-yarn-npm)
   - [Usage Example](#usage-example)
     - [Setup](#setup)
-    - [Generate Image elements](#generate-image-elements)
+    - [Generate Image and Video elements](#generate-image-elements)
     - [Advanced Plugin Features](#advanced-plugin-features)
     - [File upload](#file-upload)
   - [Contributions](#contributions)
