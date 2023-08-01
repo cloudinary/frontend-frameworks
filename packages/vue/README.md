@@ -18,7 +18,7 @@ This Readme provides basic installation and usage information.
     - [Install using your favorite package manager (yarn, npm)](#install-using-your-favorite-package-manager-yarn-npm)
   - [Usage Example](#usage-example)
     - [Setup](#setup)
-    - [Generate Image elements](#generate-image-elements)
+    - [Generate Image and Video elements](#generate-image-elements)
     - [Advanced Plugin Features](#advanced-plugin-features)
     - [File upload](#file-upload)
   - [Contributions](#contributions)
@@ -80,8 +80,9 @@ export default {
 </template>
 ```
 
-### Generate Image elements
+### Generate Image and Video elements
 - Use <AdvancedImage> to generate image tags
+- Use <AdvancedVideo> to generate image tags
 
 ### Advanced Plugin Features
 - [See full documentation](https://cloudinary.com/documentation/react_integration#plugins)
