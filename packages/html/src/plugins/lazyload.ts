@@ -2,11 +2,14 @@ import {CloudinaryImage} from "@cloudinary/url-gen/assets/CloudinaryImage";
 import {Plugin, HtmlPluginState, PluginResponse} from '../types'
 import {isBrowser} from "../utils/isBrowser";
 
+type IntersectionObserverInitRoot = IntersectionObserverInit['root'];
+
 /**
  * @namespace
  * @description Loads an image once it is in a certain margin in the viewport. This includes vertical and horizontal scrolling.
  * @param rootMargin {string} The root element's bounding box before the intersection test is performed. Default: 0px.
  * @param threshold {number} The percentage of the image's visibility at which point the image should load. Default: 0.1 (10%).
+ * @param root {Element} The element that is used as the viewport for checking visibility of the target. Must be the ancestor of the target. Defaults to the browser viewport if not specified or if null.
  * @return {Plugin}
  * @example
  * <caption>
@@ -17,8 +20,8 @@ import {isBrowser} from "../utils/isBrowser";
  * <AdvancedImage style={{width: "400px", height: "400px"}}  cldImg={img} plugins={[lazyload({rootMargin: '0px',
  * threshold: 0.25})]} />
  */
-export function lazyload({rootMargin='0px', threshold=0.1}:{rootMargin?: string, threshold?: number}={}): Plugin{
-  return lazyloadPlugin.bind(null, rootMargin, threshold);
+export function lazyload({rootMargin='0px', threshold=0.1, root}:{rootMargin?: string, threshold?: number, root?: IntersectionObserverInitRoot}={}): Plugin{
+  return lazyloadPlugin.bind(null, rootMargin, threshold, root);
 }
 /**
  * @description lazyload plugin
@@ -29,13 +32,13 @@ export function lazyload({rootMargin='0px', threshold=0.1}:{rootMargin?: string,
  * @param cloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {HtmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
-function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement | HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<PluginResponse> | boolean {
+function lazyloadPlugin(rootMargin='0px', threshold=0.1 , root: IntersectionObserverInitRoot, element: HTMLImageElement | HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<PluginResponse> | boolean {
   // if SSR skip plugin
   if(!isBrowser()) return false;
 
   return new Promise((resolve) => {
     const onIntersect = () => (resolve({lazyload: true}));
-    const unobserve = detectIntersection(element, onIntersect, rootMargin, threshold);
+    const unobserve = detectIntersection(element, onIntersect, rootMargin, threshold, root);
 
     htmlPluginState.cleanupCallbacks.push(()=>{
       unobserve();
@@ -61,7 +64,7 @@ function isIntersectionObserverSupported() {
  * @param rootMargin {string} The root element's bounding box before the intersection test is performed. Default: 0px.
  * @param threshold {number} The percentage of the image's visibility at which point the image should load. Default: 0.1 (10%).
  */
-function detectIntersection(el: HTMLImageElement | HTMLVideoElement, onIntersect: Function, rootMargin: string, threshold: number | number[]) {
+function detectIntersection(el: HTMLImageElement | HTMLVideoElement, onIntersect: Function, rootMargin: string, threshold: number | number[], root: IntersectionObserverInitRoot) {
   try {
     if (!isIntersectionObserverSupported()) {
       // Return if there's no need or possibility to detect intersection
@@ -77,7 +80,7 @@ function detectIntersection(el: HTMLImageElement | HTMLVideoElement, onIntersect
               onIntersect();
             }
           });
-        }, {rootMargin: rootMargin, threshold: threshold});
+        }, {rootMargin, threshold, root });
     observer.observe(el);
 
     return ()=>{el && observer.observe(el)};
