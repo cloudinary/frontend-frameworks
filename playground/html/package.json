@@ -13,7 +13,7 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
-    "@cloudinary/html": "1.11.2",
+    "@cloudinary/html": "file:../../packages/html/dist",
     "@cloudinary/url-gen": "^1.8.7"
   }
 }

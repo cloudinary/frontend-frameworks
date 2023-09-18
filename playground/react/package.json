@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@cloudinary/react": "1.11.2",
+    "@cloudinary/react": "file:../../packages/react/dist",
     "@cloudinary/url-gen": "^1.10.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
