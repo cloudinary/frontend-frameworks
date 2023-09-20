@@ -29,7 +29,10 @@ export function lazyload({rootMargin='0px', threshold=0.1}:{rootMargin?: string,
  * @param cloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {HtmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
-function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement | HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<PluginResponse> | boolean {
+// TODO: We will add new argument to the function with `plugins` so it can know to to run other plugins instead of running default behavior
+// This should only be done in case we find in lazyload that responsive plugin is used
+// We also might consider delaying the placeholder and run it here instead immediately when plugin is invoked in render
+function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement | HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState, plugins): Promise<PluginResponse> | boolean {
   // if SSR skip plugin
   if(!isBrowser()) return false;
 
