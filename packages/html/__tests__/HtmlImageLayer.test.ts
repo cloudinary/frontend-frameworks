@@ -127,4 +127,28 @@ describe('HtmlImageLayer tests', function () {
         // test that the src which set by HtmlImageLayer contains last character "B" which is the character of placeholder plugin
         expect(imgSetAttributeSpy.mock.calls[0][1]).toEqualAnalyticsToken('BAXAABABB');
     });
+
+    it.only('should verfiy no responsive image request is fired with placeholder plugin', async function () {
+        const OriginalImage = Image;
+        // mocking Image constructor in order to simulate firing 'load' event
+        jest.spyOn(global, "Image").mockImplementation(() => {
+            const img = new OriginalImage();
+            setTimeout(() => {
+                img.dispatchEvent(new Event("load"));
+            }, 10)
+            return img;
+
+        })
+        const parentElement = document.createElement('div');
+        const img = document.createElement('img');
+        parentElement.append(img);
+        const imgSrcSpy = jest.spyOn(img, 'src', 'set');
+        const imgSetAttributeSpy = jest.spyOn(img, 'setAttribute');
+        new HtmlImageLayer(img, cldImage, [responsive({steps: 200}),placeholder()], sdkAnalyticsTokens);
+        await flushPromises();
+        expect(imgSrcSpy).toHaveBeenCalledTimes(1);
+        // test that the initial src is set to a token contains last character "B" which is the character of placeholder plugin
+        const imgSrcSpyAnalyticsToken = imgSrcSpy.mock.calls[0][0];
+        expect(imgSrcSpyAnalyticsToken).toEqualAnalyticsToken('BAXAABABB');
+    });
 });
