@@ -29,7 +29,9 @@ export function responsive({steps}:{steps?: number | number[]}={}): Plugin{
  * @param htmlPluginState {HtmlPluginState} holds cleanup callbacks and event subscriptions
  * @param analyticsOptions {BaseAnalyticsOptions} analytics options for the url to be created
  */
-function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions): Promise<PluginResponse> | boolean {
+function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions, plugins?: Plugin[]): Promise<PluginResponse> | boolean {
+
+  console.debug(plugins);
 
   if(!isBrowser()) return true;
 
@@ -46,7 +48,28 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
     // Use a tagged generic action that can be later searched and replaced.
     responsiveImage.addAction(new Action().setActionTag('responsive'));
     // Immediately run the resize plugin, ensuring that first render gets a responsive image.
-    onResize(steps, element, responsiveImage, analyticsOptions);
+    // If we disable initial run entirely the placeholder will load non-resposive image
+    
+    const regex = /.*placeholder.*/gm;
+    let shouldRunImmediately = true // TODO: logic to test if there is a placeholder plugin
+
+    plugins.forEach((p)=>{
+        if (regex.exec(p.name) !== null){
+            console.debug("found the placeholder plugin!!!");
+            shouldRunImmediately = false;
+        }
+    });
+
+
+    console.debug("analyticsOptions: ",analyticsOptions);
+    console.debug("analyticsOptinos name: ",analyticsOptions.trackedAnalytics);
+
+    if(shouldRunImmediately) {
+      onResize(steps, element, responsiveImage, analyticsOptions);
+    } else {
+      // Probably this has to run on else, see comments in line 83
+      updateByContainerWidth(steps, element, responsiveImage);
+    }
 
     let resizeRef: any;
     htmlPluginState.pluginEventSubscription.push(()=>{
@@ -67,8 +90,20 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
  * @param analyticsOptions {AnalyticsOptions} analytics options for the url to be created
  */
 function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, analyticsOptions?: AnalyticsOptions){
+    
   updateByContainerWidth(steps, element, responsiveImage);
+  // TODO: 1. Responsive should not load the image if placeholder is running next
+  // It has to know, the placeholder is in the plugins
+  // A. Get plugins as a new fifth argument of the `responsivePlugin` function
+  // B. Loop over plugins and check if any of plugin.name is equal to "bound placeholderPlugin"
+
+  // If we disable each onResize then placeholder will render original image (!)
+  // So this cannot be conditional because we want run it always on window resize later
   element.src = responsiveImage.toURL(analyticsOptions);
+
+  // So the magic to make sure placeholder loads large image with responsive
+  // Is done by the updateByContainerWidth function call
+  // ... and we might need to make sure it's called in line 53 if shouldRunImmediately is false
 }
 
 /**

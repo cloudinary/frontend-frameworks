@@ -1,3 +1,4 @@
+import { lazyload } from 'plugins/lazyload';
 import {Plugins, HtmlPluginState, BaseAnalyticsOptions, PluginResponse} from '../types'
 import {CloudinaryVideo, CloudinaryImage} from "@cloudinary/url-gen";
 
@@ -14,9 +15,23 @@ export async function render(element: HTMLImageElement | HTMLVideoElement, plugi
     if (plugins === undefined) return;
     let response: PluginResponse;
     for (let i = 0; i < plugins.length; i++) {
-        response = await plugins[i](element, pluginCloudinaryAsset, pluginState, analyticsOptions);
+        // TODO: We have to pass all plugins to each plugin (so that each can determine what to do)
+        // 1. Pass plugins as a fifth parameter below (after analyticsOptions)
+        // 
+        // 2. Inside each plugin we can use `name` property of the plugin functions to see what was added
+        // 
+        // Example given the plugins look like below: 
+        // const plugins = [lazyload(), responsive()]
+        // Then if you console log plugins[0].name you should get 'bound lazyloadPlugin'
+        // plugins[0].name === 'bound lazyloadPlugin'
+        const pluginResponse = await plugins[i](element, pluginCloudinaryAsset, pluginState, analyticsOptions, plugins);
         if (response === 'canceled') {
             break;
+        }
+        if(typeof pluginResponse === 'object') {
+            response = {...response, ...pluginResponse};
+        } else {
+            response = pluginResponse
         }
     }
     if (response !== 'canceled') {

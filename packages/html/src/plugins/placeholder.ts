@@ -28,7 +28,9 @@ export function placeholder({mode='vectorize'}:{mode?: string}={}): Plugin{
  * @param htmlPluginState {htmlPluginState} Holds cleanup callbacks and event subscriptions.
  * @param baseAnalyticsOptions {BaseAnalyticsOptions} analytics options for the url to be created
  */
-function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions): Promise<PluginResponse> | boolean {
+// TODO: Optionally we might want to hold of with rendering
+//       Maybe there is something in the responsive plugin already that should be moved here too?
+function placeholderPlugin(mode: PlaceholderMode, element: HTMLImageElement, pluginCloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions, plugins?: Plugin[]): Promise<PluginResponse> | boolean {
   // @ts-ignore
   // If we're using an invalid mode, we default to vectorize
   if(!PLACEHOLDER_IMAGE_OPTIONS[mode]){
