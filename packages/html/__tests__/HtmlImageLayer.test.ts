@@ -128,7 +128,7 @@ describe('HtmlImageLayer tests', function () {
         expect(imgSetAttributeSpy.mock.calls[0][1]).toEqualAnalyticsToken('BAXAABABB');
     });
 
-    it.only('should verfiy no responsive image request is fired with placeholder plugin', async function () {
+    it('should verfiy no responsive image request is fired with placeholder plugin', async function () {
         const OriginalImage = Image;
         // mocking Image constructor in order to simulate firing 'load' event
         jest.spyOn(global, "Image").mockImplementation(() => {
@@ -150,5 +150,9 @@ describe('HtmlImageLayer tests', function () {
         // test that the initial src is set to a token contains last character "B" which is the character of placeholder plugin
         const imgSrcSpyAnalyticsToken = imgSrcSpy.mock.calls[0][0];
         expect(imgSrcSpyAnalyticsToken).toEqualAnalyticsToken('BAXAABABB');
+        await flushPromises();
+        await flushPromises();
+        //TODO we want to check the second image that is loaded for the presence of a w_ paramter
+        expect(img.src).toBe("abc");
     });
 });
