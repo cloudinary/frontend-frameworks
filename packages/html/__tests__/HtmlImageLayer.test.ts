@@ -96,7 +96,7 @@ describe('HtmlImageLayer tests', function () {
         expect(spy).toHaveBeenCalledTimes(1);
     });
 
-    it('should verfiy no unneeded request with placeholder plugin', async function () {
+    it('should verifiy no unneeded request with placeholder plugin', async function () {
         const OriginalImage = Image;
         // mocking Image constructor in order to simulate firing 'load' event
         jest.spyOn(global, "Image").mockImplementation(() => {
@@ -128,31 +128,32 @@ describe('HtmlImageLayer tests', function () {
         expect(imgSetAttributeSpy.mock.calls[0][1]).toEqualAnalyticsToken('BAXAABABB');
     });
 
-    it('should verfiy no responsive image request is fired with placeholder plugin', async function () {
-        const OriginalImage = Image;
-        // mocking Image constructor in order to simulate firing 'load' event
-        jest.spyOn(global, "Image").mockImplementation(() => {
-            const img = new OriginalImage();
-            setTimeout(() => {
-                img.dispatchEvent(new Event("load"));
-            }, 10)
-            return img;
+    it('should verifiy no responsive image request is fired with placeholder plugin', async function () {
+        // Set mock screen width
+        Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 640 })
 
+        const OriginalImage = Image;
+        // mock Image constructor in order to simulate firing 'load' event
+        jest.spyOn(global, "Image").mockImplementationOnce(() => {
+            img = new OriginalImage();
+            return img;
         })
         const parentElement = document.createElement('div');
         const img = document.createElement('img');
         parentElement.append(img);
-        const imgSrcSpy = jest.spyOn(img, 'src', 'set');
-        const imgSetAttributeSpy = jest.spyOn(img, 'setAttribute');
         new HtmlImageLayer(img, cldImage, [responsive({steps: 200}),placeholder()], sdkAnalyticsTokens);
+
         await flushPromises();
-        expect(imgSrcSpy).toHaveBeenCalledTimes(1);
-        // test that the initial src is set to a token contains last character "B" which is the character of placeholder plugin
-        const imgSrcSpyAnalyticsToken = imgSrcSpy.mock.calls[0][0];
-        expect(imgSrcSpyAnalyticsToken).toEqualAnalyticsToken('BAXAABABB');
+        
+        // the initial src is set to a placeholder image
+        expect(img.src).toBe("https://res.cloudinary.com/demo/image/upload/e_vectorize/q_auto/f_svg/sample?_a=BAXAABABB");
         await flushPromises();
+        
+        // simulate placeholder image loaded
+        img.dispatchEvent(new Event("load"));
         await flushPromises();
-        //TODO we want to check the second image that is loaded for the presence of a w_ paramter
-        expect(img.src).toBe("abc");
+        
+        // the second image that is loaded should have the responsive width set
+        expect(img.src).toBe("https://res.cloudinary.com/demo/image/upload/c_scale,w_800/sample?_a=BAXAABABB");
     });
 });
