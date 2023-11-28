@@ -29,7 +29,7 @@ export function lazyload({rootMargin='0px', threshold=0.1}:{rootMargin?: string,
  * @param cloudinaryImage {CloudinaryImage}
  * @param htmlPluginState {HtmlPluginState} Holds cleanup callbacks and event subscriptions.
  */
-function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement | HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState): Promise<PluginResponse> | boolean {
+function lazyloadPlugin(rootMargin='0px', threshold=0.1 , element: HTMLImageElement | HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState: HtmlPluginState, plugins?: Plugin[]): Promise<PluginResponse> | boolean {
   // if SSR skip plugin
   if(!isBrowser()) return false;
 

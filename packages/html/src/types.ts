@@ -4,7 +4,7 @@ import {
   ITrackedPropertiesThroughAnalytics
 } from "@cloudinary/url-gen/sdkAnalytics/interfaces/ITrackedPropertiesThroughAnalytics";
 
-export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions) => Promise<PluginResponse>;
+export type Plugin = (element: HTMLImageElement|HTMLVideoElement, cloudinaryImage: CloudinaryImage, htmlPluginState?: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions,plugins?:Plugins) => Promise<PluginResponse>;
 
 export type Plugins = Plugin[];
 
