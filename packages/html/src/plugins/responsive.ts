@@ -31,6 +31,7 @@ export function responsive({steps}:{steps?: number | number[]}={}): Plugin{
  * @param analyticsOptions {BaseAnalyticsOptions} analytics options for the url to be created
  */
 function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions, plugins?: Plugin[]): Promise<PluginResponse> | boolean {
+
   if(!isBrowser()) return true;
 
   if(!isImage(element)) return;
@@ -74,7 +75,6 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
  * @param analyticsOptions {AnalyticsOptions} analytics options for the url to be created
  */
 function onResize(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, analyticsOptions?: AnalyticsOptions){
-    
   updateByContainerWidth(steps, element, responsiveImage);
   element.src = responsiveImage.toURL(analyticsOptions);
 }
