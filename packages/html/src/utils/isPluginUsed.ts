@@ -9,7 +9,7 @@ const initialPlugins = {
 
 const getPluginType = (name: string) => name.replace('bound ', '').replace('Plugin', '');
 
-export const isPluginUsed = (plugins: Plugin[], pluginType: keyof typeof initialPlugins) => {
+export const isPluginUsed = (plugins: Plugin[] = [], pluginType: keyof typeof initialPlugins) => {
   const usedPlugins = plugins.reduce(
     (used, { name }) => ({ ...used, [getPluginType(name)]: true }),
     initialPlugins
