@@ -96,7 +96,7 @@ describe('HtmlImageLayer tests', function () {
         expect(spy).toHaveBeenCalledTimes(1);
     });
 
-    it('should verfiy no unneeded request with placeholder plugin', async function () {
+    it('should verify no unneeded request with placeholder plugin', async function () {
         const OriginalImage = Image;
         // mocking Image constructor in order to simulate firing 'load' event
         jest.spyOn(global, "Image").mockImplementation(() => {
@@ -126,5 +126,33 @@ describe('HtmlImageLayer tests', function () {
         expect(imgSetAttributeSpy).toHaveBeenCalledTimes(1);
         // test that the src which set by HtmlImageLayer contains last character "B" which is the character of placeholder plugin
         expect(imgSetAttributeSpy.mock.calls[0][1]).toEqualAnalyticsToken('BAXAABABB');
+    });
+
+    it('should not request responsive image before placeholder image is loaded', async function () {
+        // Set mock screen width
+        Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 640 })
+
+        const OriginalImage = Image;
+        // mock Image constructor in order to simulate firing 'load' event
+        jest.spyOn(global, "Image").mockImplementationOnce(() => {
+            img = new OriginalImage();
+            return img;
+        })
+        const parentElement = document.createElement('div');
+        const img = document.createElement('img');
+        parentElement.append(img);
+        new HtmlImageLayer(img, cldImage, [responsive({steps: 200}),placeholder()], sdkAnalyticsTokens);
+        await flushPromises();
+        
+        // the initial src is set to a placeholder image
+        expect(img.src).toBe("https://res.cloudinary.com/demo/image/upload/e_vectorize/q_auto/f_svg/sample?_a=BAXAABABB");
+        await flushPromises();
+        
+        // simulate placeholder image loaded
+        img.dispatchEvent(new Event("load"));
+        await flushPromises();
+        
+        // the second image that is loaded should have the responsive width set
+        expect(img.src).toBe("https://res.cloudinary.com/demo/image/upload/c_scale,w_800/sample?_a=BAXAABABB");
     });
 });

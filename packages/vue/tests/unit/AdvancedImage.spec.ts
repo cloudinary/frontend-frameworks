@@ -80,8 +80,6 @@ describe("AdvancedImage.vue", () => {
 
     // trigger AdvancedImage.onUpdate
     await component.setProps({
-      cldImg: cloudinaryImage,
-      plugins: [mock],
       style: "color: blue;",
     });
 

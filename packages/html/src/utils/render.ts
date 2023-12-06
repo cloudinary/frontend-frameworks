@@ -14,7 +14,7 @@ export async function render(element: HTMLImageElement | HTMLVideoElement, plugi
     if (plugins === undefined) return;
     let response: PluginResponse;
     for (let i = 0; i < plugins.length; i++) {
-        response = await plugins[i](element, pluginCloudinaryAsset, pluginState, analyticsOptions);
+        response = await plugins[i](element, pluginCloudinaryAsset, pluginState, analyticsOptions, plugins);
         if (response === 'canceled') {
             break;
         }

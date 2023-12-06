@@ -7,6 +7,7 @@ import {isBrowser} from "../utils/isBrowser";
 import {Action} from "@cloudinary/url-gen/internal/Action";
 import {isImage} from "../utils/isImage";
 import {getAnalyticsOptions} from '../utils/analytics'
+import {isPluginUsed} from "../utils/isPluginUsed";
 
 /**
  * @namespace
@@ -29,7 +30,7 @@ export function responsive({steps}:{steps?: number | number[]}={}): Plugin{
  * @param htmlPluginState {HtmlPluginState} holds cleanup callbacks and event subscriptions
  * @param analyticsOptions {BaseAnalyticsOptions} analytics options for the url to be created
  */
-function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions): Promise<PluginResponse> | boolean {
+function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, responsiveImage?: CloudinaryImage, htmlPluginState?: HtmlPluginState, baseAnalyticsOptions?: BaseAnalyticsOptions, plugins?: Plugin[]): Promise<PluginResponse> | boolean {
 
   if(!isBrowser()) return true;
 
@@ -45,8 +46,15 @@ function responsivePlugin(steps?: number | number[], element?:HTMLImageElement, 
 
     // Use a tagged generic action that can be later searched and replaced.
     responsiveImage.addAction(new Action().setActionTag('responsive'));
-    // Immediately run the resize plugin, ensuring that first render gets a responsive image.
-    onResize(steps, element, responsiveImage, analyticsOptions);
+
+    let shouldRunImmediately = !isPluginUsed(plugins, 'placeholder');
+
+    if (shouldRunImmediately) {
+      // Immediately run the resize plugin, ensuring that first render gets a responsive image.
+      onResize(steps, element, responsiveImage, analyticsOptions);
+    } else {
+      updateByContainerWidth(steps, element, responsiveImage);
+    }
 
     let resizeRef: any;
     htmlPluginState.pluginEventSubscription.push(()=>{
@@ -99,4 +107,3 @@ function updateByContainerWidth(steps?: number | number[], element?:HTMLImageEle
     }
   });
 }
-
