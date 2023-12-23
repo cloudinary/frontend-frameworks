@@ -28,18 +28,6 @@
             "tsConfig": "projects/cloudinary-library/tsconfig.spec.json",
             "karmaConfig": "projects/cloudinary-library/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/cloudinary-library/tsconfig.lib.json",
-              "projects/cloudinary-library/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     }},
