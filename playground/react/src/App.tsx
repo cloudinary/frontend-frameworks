@@ -1,34 +1,30 @@
-import React from 'react'
-import './App.css'
-import {
-  AdvancedImage,
-  AdvancedVideo,
-  accessibility,
-  responsive,
-  lazyload,
-  placeholder
-} from '@cloudinary/react'
-import { CloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage'
-import { CloudinaryVideo } from '@cloudinary/url-gen/assets/CloudinaryVideo'
+import React from "react";
+import "./App.css";
+import { Routes, Route, useNavigate } from "react-router-dom";
+
+import AdvancedImage from "./components/AdvancedImage";
+import AdvancedVideo from "./components/AdvancedVideo";
 
 // This is our playground and can be used to test library
-function App() {
-  const img = new CloudinaryImage('sample', { cloudName: 'demo' })
 
-  const cldVid = new CloudinaryVideo(
-    'docs/walking_talking',
-    { cloudName: 'demo' },
-    { analytics: false }
-  )
+function App() {
+  const navigate = useNavigate();
+  const onClick = (path: string) => () => navigate(path);
 
   return (
-    <div>
-      <h1>AdvancedImage</h1>
-      <AdvancedImage cldImg={img} plugins={[responsive({ steps: 100 })]} />
-      <h1>AdvancedVideo</h1>
-      <AdvancedVideo cldVid={cldVid} controls loop width={600} />
-    </div>
-  )
+    <main>
+      <h1>Cloudinary React Playground</h1>
+      <nav>
+        <button onClick={onClick('/advanced-image')}>Advanced Image Demo</button>
+        <button onClick={onClick('/advanced-video')}>Advanced Video Demo</button>
+      </nav>
+      
+      <Routes>
+        <Route path="/advanced-image" element={<AdvancedImage />} />
+        <Route path="/advanced-video" element={<AdvancedVideo />} />
+      </Routes>
+    </main>
+  );
 }
 
-export default App
+export default App;
