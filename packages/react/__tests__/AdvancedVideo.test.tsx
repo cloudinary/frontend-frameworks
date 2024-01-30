@@ -2,11 +2,12 @@ import { AdvancedVideo } from '../src';
 import { CloudinaryImage, CloudinaryVideo } from '@cloudinary/url-gen';
 import { mount } from 'enzyme';
 import React from 'react';
-import { auto, vp9 } from '@cloudinary/url-gen/qualifiers/videoCodec';
+import { auto, theora, vp9 } from '@cloudinary/url-gen/qualifiers/videoCodec';
 import { videoCodec } from '@cloudinary/url-gen/actions/transcode';
 
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo' }, { analytics: false });
+const cloudinaryVideoWithExtension = new CloudinaryVideo('sample.mp4', { cloudName: 'demo' }, { analytics: false });
 const cloudinaryVideoWithAnalytics = new CloudinaryVideo('sample', { cloudName: 'demo' }, { analytics: true });
 
 describe('AdvancedVideo', () => {
@@ -55,6 +56,36 @@ describe('AdvancedVideo', () => {
         '<video>' +
         '<source src="https://res.cloudinary.com/demo/video/upload/vc_auto/sample.mp4" type="video/mp4; codecs=vp8, vorbis">' +
         '<source src="https://res.cloudinary.com/demo/video/upload/vc_vp9/sample.webm" type="video/webm; codecs=avc1.4D401E, mp4a.40.2"></video>');
+      done();
+    }, 0);// one tick
+  });
+
+  it('should render video with input sources when using useFetchFormat', function (done) {
+    const sources = [
+      {
+        type: 'mp4',
+        codecs: ['vp8', 'vorbis'],
+        transcode: videoCodec(auto())
+      },
+      {
+        type: 'webm',
+        codecs: ['avc1.4D401E', 'mp4a.40.2'],
+        transcode: videoCodec(vp9())
+      },
+      {
+        type: 'ogv',
+        codecs: ['theora'],
+        transcode: videoCodec(theora())
+      }];
+
+    const component = mount(<AdvancedVideo cldVid={cloudinaryVideoWithExtension} sources={sources} useFetchFormat />);
+
+    setTimeout(() => {
+      expect(component.html()).toContain(
+        '<video>' +
+        '<source src="https://res.cloudinary.com/demo/video/upload/vc_auto/f_mp4/sample.mp4" type="video/mp4; codecs=vp8, vorbis">' +
+        '<source src="https://res.cloudinary.com/demo/video/upload/vc_vp9/f_webm/sample.mp4" type="video/webm; codecs=avc1.4D401E, mp4a.40.2">' + 
+        '<source src="https://res.cloudinary.com/demo/video/upload/vc_theora/f_ogv/sample.mp4" type="video/ogg; codecs=theora"></video>');
       done();
     }, 0);// one tick
   });
