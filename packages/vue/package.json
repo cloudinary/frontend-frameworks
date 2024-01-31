@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@cloudinary/html": "^1.0.1",
-    "@cloudinary/url-gen": "^1.10.1",
+    "@cloudinary/url-gen": "^1.16.0",
     "@rollup/plugin-replace": "^4.0.0",
     "@sinonjs/fake-timers": "^9.1.2",
     "@types/jest": "^27.0.1",

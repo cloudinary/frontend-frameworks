@@ -28,7 +28,7 @@ export type BaseAnalyticsOptions = {sdkSemver: string, techVersion: string, sdkC
 
 export type AnalyticsOptions = Parameters<CloudinaryImage['toURL']>[0];
 
-type FeatureNames = Omit<ITrackedPropertiesThroughAnalytics, 'sdkCode' | 'sdkSemver' | 'techVersion' | 'product'>
+type FeatureNames = Pick<ITrackedPropertiesThroughAnalytics, 'accessibility' | 'lazyload' | 'responsive'| 'placeholder'>;
 
 export type Features = Partial<Record<keyof FeatureNames, boolean>>
 
