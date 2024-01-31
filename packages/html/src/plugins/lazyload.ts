@@ -66,7 +66,7 @@ function detectIntersection(el: HTMLImageElement | HTMLVideoElement, onIntersect
     if (!isIntersectionObserverSupported()) {
       // Return if there's no need or possibility to detect intersection
       onIntersect();
-      return;
+      return () => {};
     }
     // Detect intersection with given element using IntersectionObserver
     const observer = new IntersectionObserver(
