@@ -21,7 +21,7 @@ describe("analytics", () => {
       await waitTicks(1);
 
       expect(component.html()).toMatch(
-        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=BALAABDS0'
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=DALAABDSZAA0'
       );
     }
   );
@@ -36,7 +36,7 @@ describe("analytics", () => {
       await waitTicks(1);
 
       expect(component.html()).toMatch(
-        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=BALFJtDL0'
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=DALFJtDLZAA0'
       );
     }
   );
