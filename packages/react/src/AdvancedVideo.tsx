@@ -17,6 +17,7 @@ interface VideoProps extends HTMLAttributes<HTMLVideoElement>{
   plugins?: Plugins,
   sources?: VideoSources,
   innerRef?: ((instance: any) => void) | MutableRefObject<unknown> | null
+  useFetchFormat?: boolean,
 
   // supported video attributes
   controls?: boolean
@@ -87,7 +88,10 @@ class AdvancedVideo extends Component <VideoProps> {
       this.props.sources,
       this.props.plugins,
       this.getVideoAttributes(),
-      this.props.cldPoster
+      this.props.cldPoster,
+      { 
+        useFetchFormat: this.props.useFetchFormat
+      }
     )
   }
 
@@ -153,6 +157,7 @@ class AdvancedVideo extends Component <VideoProps> {
       plugins,
       sources,
       innerRef,
+      useFetchFormat,
       ...videoAttrs // Assume any other props are for the base element
     } = this.props;
 

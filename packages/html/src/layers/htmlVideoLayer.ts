@@ -1,5 +1,5 @@
-import {Plugins, HtmlPluginState, VideoSources, VideoType, VideoPoster} from '../types'
-import cloneDeep from 'lodash.clonedeep'
+import {Plugins, HtmlPluginState, VideoSources, VideoType, VideoPoster, VideoOptions} from '../types';
+import cloneDeep from 'lodash.clonedeep';
 import {CloudinaryVideo} from "@cloudinary/url-gen";
 import {render} from '../utils/render';
 import {VIDEO_MIME_TYPES} from "../utils/internalConstants";
@@ -12,10 +12,12 @@ export class HtmlVideoLayer{
     htmlPluginState: HtmlPluginState;
     mimeType = 'video';
     mimeSubTypes = VIDEO_MIME_TYPES;
+    videoOptions: VideoOptions;
 
-    constructor(element: HTMLVideoElement | null, userCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object, userCloudinaryPoster?: VideoPoster){
+    constructor(element: HTMLVideoElement | null, userCloudinaryVideo: CloudinaryVideo, sources: VideoSources,  plugins?: Plugins, videoAttributes?: object, userCloudinaryPoster?: VideoPoster, videoOptions?: VideoOptions){
         this.videoElement = element;
         this.originalVideo = userCloudinaryVideo;
+        this.videoOptions = videoOptions;
         this.htmlPluginState = {cleanupCallbacks:[], pluginEventSubscription: []};
         const pluginCloudinaryVideo  = cloneDeep(userCloudinaryVideo);
 
@@ -41,7 +43,7 @@ export class HtmlVideoLayer{
         }else {
             const defaultTypes = ['webm', 'mp4', 'ogv'];
             defaultTypes.forEach(type => {
-                this.appendSourceTag(userCloudinaryVideo, type)
+                this.appendSourceTag(cloneDeep(userCloudinaryVideo), type)
             });
         }
     }
@@ -68,6 +70,10 @@ export class HtmlVideoLayer{
      */
     appendSourceTag(userCloudinaryVideo: CloudinaryVideo, type: string, mimeType?: string){
         const source = document.createElement('source');
+        const shouldUseFetchFormat = this.videoOptions?.useFetchFormat;
+        if(shouldUseFetchFormat) {
+            userCloudinaryVideo.format(type);
+        }
         const url = userCloudinaryVideo.toURL();
 
         // Split url to get analytics string so that we can insert the file extension (type) before it
@@ -75,9 +81,9 @@ export class HtmlVideoLayer{
         // Another option could be to add a .setExtension, which will allow to do vid.setExtension(type)
         const srcParts = url.split(ANALYTICS_DELIMITER);
         const analyticsStr = srcParts[1] ? `${ANALYTICS_DELIMITER}${srcParts[1]}` :  '';
+        const ext = shouldUseFetchFormat ? '' : `.${type}`;
 
-
-        source.src = `${srcParts[0]}.${type}${analyticsStr}`;
+        source.src = `${srcParts[0]}${ext}${analyticsStr}`;
         // Ideally, we want to use the VIDEO_MIME_TYPE to detect the mime of the extension
         // For future proofing of simple formats (say .foo and mimetype of video/foo), we also fallback to the actual type
         source.type = mimeType ? mimeType :`video/${VIDEO_MIME_TYPES[type] || type}`;

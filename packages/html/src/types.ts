@@ -33,3 +33,7 @@ type FeatureNames = Pick<ITrackedPropertiesThroughAnalytics, 'accessibility' | '
 export type Features = Partial<Record<keyof FeatureNames, boolean>>
 
 export type VideoPoster = CloudinaryImage | 'auto';
+
+export type VideoOptions = {
+  useFetchFormat?: boolean;
+}
