@@ -46,7 +46,7 @@ describe("analytics", () => {
       });
       const html = await renderToString(app);
       expect(html).toMatch(
-        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=DALFJtDLZAA0'
+        '<img src="https://res.cloudinary.com/demo/image/upload/sample?_a=DALASxDLZAA0'
       );
     }
   );
