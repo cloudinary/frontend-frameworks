@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/html",
-  "version": "1.11.2",
+  "version": "1.12.0",
   "description": "An HTML wrapper for Cloudinary",
   "main": "./index.js",
   "umd": "./index.umd.js",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/angular-workspace@2.0.0...@cloudinary/angular-workspace@2.0.1) (2024-02-01)
+
+
+### Bug Fixes
+
+* bump url-gen and update analytics related tests ([4c95cce](https://github.com/cloudinary/frontend-frameworks/commit/4c95cce77f363ac9ed674f94d38c20b4e0d71f21))
+
+
+
+
+
 # 2.0.0 (2023-04-25)
 
 
