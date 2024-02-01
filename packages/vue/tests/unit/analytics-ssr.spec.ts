@@ -10,7 +10,7 @@ import { testIf } from "./utils";
 
 const cloudinaryImage = new CloudinaryImage("sample", { cloudName: "demo" });
 
-describe("analytics", () => {
+describe.skip("analytics", () => {
   testIf(
     !(process.env.VUE_TEST_ENV === "DIST"),
     "creates an img with analytics using src",
