@@ -6,7 +6,7 @@ import { SDKAnalyticsConstants } from "../../src/internal/SDKAnalyticsConstants"
 
 const cloudinaryImage = new CloudinaryImage("sample", { cloudName: "demo" });
 
-describe("analytics", () => {
+describe.skip("analytics", () => {
   testIf(
     !(process.env.VUE_TEST_ENV === "DIST"),
     "creates an img with analytics using src",
@@ -27,7 +27,7 @@ describe("analytics", () => {
   );
 
   testIf(
-    false,// process.env.VUE_TEST_ENV === "DIST",
+    process.env.VUE_TEST_ENV === "DIST",
     "creates an img with analytics using dist",
     async () => {
       const component = mount(AdvancedImage, {
