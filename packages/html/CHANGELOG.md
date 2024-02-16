@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/html@1.12.0...@cloudinary/html@1.13.0) (2024-02-16)
+
+
+### Features
+
+* add useFetchFormat prop in react sdk ([94d7fb2](https://github.com/cloudinary/frontend-frameworks/commit/94d7fb25f0da2a719f961d68923ef1bbd8ee72a2))
+
+
+
+
+
 # 1.12.0 (2024-02-01)
 
 
