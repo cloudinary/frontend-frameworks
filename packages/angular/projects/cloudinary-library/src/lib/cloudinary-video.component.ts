@@ -58,6 +58,7 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges, OnDestroy {
   @Input('plugins') plugins: Plugins;
   @Input('poster') poster: string;
   @Input('innerRef') innerRef: ElementRef;
+  @Input('useFetchFormat') useFetchFormat: boolean;
 
   // Event emitters
   @Output() play: EventEmitter<any> = new EventEmitter();
@@ -87,7 +88,8 @@ export class CloudinaryVideoComponent implements OnInit, OnChanges, OnDestroy {
       this.sources,
       this.plugins,
       this.getVideoAttributes(),
-      this.cldPoster
+      this.cldPoster,
+      { useFetchFormat: this.useFetchFormat }
       );
 
     // check if video should be muted. We need to take care of this here since Angular has a bug with binding the muted

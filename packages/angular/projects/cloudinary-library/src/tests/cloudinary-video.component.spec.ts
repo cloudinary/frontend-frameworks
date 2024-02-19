@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { CloudinaryVideoComponent } from '../lib/cloudinary-video.component';
 import {CloudinaryImage, CloudinaryVideo} from '@cloudinary/url-gen';
-import { auto, vp9 } from '@cloudinary/url-gen/qualifiers/videoCodec';
+import { auto, vp9, theora } from '@cloudinary/url-gen/qualifiers/videoCodec';
 import { videoCodec } from '@cloudinary/url-gen/actions/transcode';
 import {ElementRef} from "@angular/core";
 
@@ -90,6 +90,51 @@ describe('CloudinaryVideoComponent render', () => {
       .toEqual( 'video/webm; codecs=avc1.4D401E, mp4a.40.2');
   }));
 
+  it('should render video with input sources when using useFetchFormat', fakeAsync(() => {
+    component.cldVid = cloudinaryVideo;
+    component.useFetchFormat = true;
+    component.sources = [
+      {
+        type: 'mp4',
+        codecs: ['vp8', 'vorbis'],
+        transcode: videoCodec(auto())
+      },
+      {
+        type: 'webm',
+        codecs: ['avc1.4D401E', 'mp4a.40.2'],
+        transcode: videoCodec(vp9())
+      },
+      {
+        type: 'ogv',
+        codecs: ['theora'],
+        transcode: videoCodec(theora())
+      }];
+
+    fixture.detectChanges();
+    tick(0);
+    const vidElement: HTMLVideoElement = fixture.nativeElement;
+    const video = vidElement.querySelector('video');
+
+    expect(video.childElementCount).toBe(3);
+
+    // First source
+    expect(video.children[0].attributes.getNamedItem('src').value)
+        .toEqual( 'https://res.cloudinary.com/demo/video/upload/vc_auto/f_mp4/sample');
+    expect(video.children[0].attributes.getNamedItem('type').value)
+      .toEqual( 'video/mp4; codecs=vp8, vorbis');
+
+    // Second source
+    expect(video.children[1].attributes.getNamedItem('src').value)
+      .toEqual( 'https://res.cloudinary.com/demo/video/upload/vc_vp9/f_webm/sample');
+    expect(video.children[1].attributes.getNamedItem('type').value)
+      .toEqual( 'video/webm; codecs=avc1.4D401E, mp4a.40.2');
+
+    // Third source
+    expect(video.children[2].attributes.getNamedItem('src').value)
+      .toEqual( 'https://res.cloudinary.com/demo/video/upload/vc_theora/f_ogv/sample');
+    expect(video.children[2].attributes.getNamedItem('type').value)
+      .toEqual( 'video/ogg; codecs=theora');
+  }));
 
   it('should contain poster when "auto" is passed as cldPoster', fakeAsync(() => {
     component.cldVid = new CloudinaryVideo('sample', { cloudName: 'demo'}, { analytics: false });
