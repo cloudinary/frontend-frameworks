@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { CloudinaryImage, CloudinaryVideo } from "@cloudinary/url-gen";
-import { auto, vp9 } from "@cloudinary/url-gen/qualifiers/videoCodec";
+import { auto, vp9, theora } from "@cloudinary/url-gen/qualifiers/videoCodec";
 import { videoCodec } from "@cloudinary/url-gen/actions/transcode";
 import { AdvancedVideo } from "../../src";
 import { waitTicks } from "../unit/utils";
@@ -82,6 +82,38 @@ describe("AdvancedVideo", () => {
       "<video>\n" +
         '  <source src="https://res.cloudinary.com/demo/video/upload/vc_auto/sample.mp4" type="video/mp4; codecs=vp8, vorbis">\n' +
         '  <source src="https://res.cloudinary.com/demo/video/upload/vc_vp9/sample.webm" type="video/webm; codecs=avc1.4D401E, mp4a.40.2">\n</video>'
+    );
+  });
+
+  it("should render video with input sources when using useFetchFormat", async function () {
+    const sources = [
+      {
+        type: "mp4",
+        codecs: ["vp8", "vorbis"],
+        transcode: videoCodec(auto()),
+      },
+      {
+        type: "webm",
+        codecs: ["avc1.4D401E", "mp4a.40.2"],
+        transcode: videoCodec(vp9()),
+      },
+      {
+        type: "ogv",
+        codecs: ["theora"],
+        transcode: videoCodec(theora()),
+      },
+    ];
+
+    const component = mount(AdvancedVideo, {
+      props: { cldVid: cloudinaryVideo, sources, useFetchFormat: true },
+    });
+    await waitTicks(1);
+
+    expect(component.html()).toContain(
+      "<video>\n" +
+        '  <source src="https://res.cloudinary.com/demo/video/upload/vc_auto/f_mp4/sample" type="video/mp4; codecs=vp8, vorbis">\n' +
+        '  <source src="https://res.cloudinary.com/demo/video/upload/vc_vp9/f_webm/sample" type="video/webm; codecs=avc1.4D401E, mp4a.40.2">\n' +
+        '  <source src="https://res.cloudinary.com/demo/video/upload/vc_theora/f_ogv/sample" type="video/ogg; codecs=theora">\n</video>'
     );
   });
 

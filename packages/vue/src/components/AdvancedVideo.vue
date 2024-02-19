@@ -31,6 +31,7 @@ interface VideoProps {
   plugins?: Plugins;
   sources?: VideoSources;
   cldPoster?: VideoPoster;
+  useFetchFormat?: boolean;
 
   [x: string]: any;
 }
@@ -53,7 +54,8 @@ onMounted(() => {
     props.sources,
     props.plugins,
     undefined,
-    props.cldPoster
+    props.cldPoster,
+    { useFetchFormat: props.useFetchFormat }
   );
 });
 
