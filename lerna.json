@@ -1,6 +1,7 @@
 {
   "packages": [
-    "packages/**/!(dist|playground)*"
+    "packages/**/!(dist)*",
+    "playground/**/*"
   ],
   "version": "independent"
 }
