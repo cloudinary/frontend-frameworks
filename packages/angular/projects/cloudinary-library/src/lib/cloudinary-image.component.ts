@@ -79,7 +79,7 @@ export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy {
    */
   ngOnInit() {
     this.htmlLayerInstance = new HtmlImageLayer(this.el.nativeElement.children[0], this.cldImg, this.plugins, SDKAnalyticsConstants);
-    this.addAttributes();
+    this.syncAttributes();
   }
 
   /**
@@ -90,6 +90,7 @@ export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy {
     if (this.htmlLayerInstance) {
       cancelCurrentlyRunningPlugins(this.htmlLayerInstance.htmlPluginState);
       this.htmlLayerInstance.update(this.cldImg, this.plugins, SDKAnalyticsConstants);
+      this.syncAttributes();
     }
   }
 
@@ -104,7 +105,7 @@ export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy {
   /**
    * Add attributes to img element.
    */
-  addAttributes() {
+  syncAttributes() {
     ['alt', 'width', 'height', 'loading'].forEach(attr => {
       if (this[attr]) {
         this.el.nativeElement.children[0].setAttribute(attr, this[attr]);
