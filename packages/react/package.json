@@ -68,5 +68,8 @@
   },
   "dependencies": {
     "@cloudinary/html": "^1.13.0"
+  },
+  "overrides": {
+    "cheerio": "1.0.0-rc.12"
   }
 }
