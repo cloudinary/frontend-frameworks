@@ -1,5 +1,6 @@
 {
   "preset": "ts-jest",
+  "setupFiles": ["./setup.jest.ts"],
   "bail": true,
   "collectCoverageFrom": [
     "<rootDir>/src/**/*.ts"
