@@ -1,11 +1,14 @@
 {
   "name": "frontend-frameworks-monorepo",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=14.0.0 <19"
+  },
   "scripts": {
     "postinstall": "husky install",
-    "install": "lerna bootstrap --no-ci",
+    "install": "lerna bootstrap",
     "build": "lerna run build",
-    "quickstart": "lerna bootstrap --no-ci && lerna run build",
+    "quickstart": "lerna bootstrap && lerna run build",
     "test": "lerna run test",
     "build:docs": "node ./scripts/buildDocs.js",
     "start:docs": "live-server --open=public/docs",

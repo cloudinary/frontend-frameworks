@@ -2,9 +2,7 @@ node_modules
 .idea
 dist
 #example/src
-playground/package-lock.json
 playground/node_modules
-package-lock.json
 coverage
 src/react-app-env.d.ts
 *.tgz
