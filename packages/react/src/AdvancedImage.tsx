@@ -9,6 +9,7 @@ import {
   cancelCurrentlyRunningPlugins
 } from '@cloudinary/html'
 import { SDKAnalyticsConstants } from './internal/SDKAnalyticsConstants';
+import { warnOnOversizedImage, warnOnLazyLCP } from './internal/PerformanceWarnings';
 
 interface ImgProps {
   cldImg: CloudinaryImage;
@@ -84,6 +85,14 @@ class AdvancedImage extends React.Component <ImgProps> {
       this.props.plugins,
       SDKAnalyticsConstants
     )
+    if(NODE_ENV === 'development' && this.imageRef.current && !this.props["silence-warnings"]) {
+      warnOnLazyLCP(this.imageRef.current);
+      if(this.imageRef.current?.complete) {
+        warnOnOversizedImage(this.imageRef.current);
+      } else {
+        this.imageRef.current?.addEventListener('load', (e) => warnOnOversizedImage(e.currentTarget as HTMLImageElement));
+      }
+    }
   }
 
   /**
