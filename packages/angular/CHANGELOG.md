@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/angular-workspace@2.0.2...@cloudinary/angular-workspace@2.1.0) (2024-11-04)
+
+
+### Bug Fixes
+
+* synchronize angular image attributes on updates ([b72c855](https://github.com/cloudinary/frontend-frameworks/commit/b72c855fdea5c01eb780db20a7902766bf38ef07))
+
+
+### Features
+
+* add useFetchFormat prop in angular sdk ([bcc4d2e](https://github.com/cloudinary/frontend-frameworks/commit/bcc4d2e4f37748cfa5f17f3a7231a9a4737e65d1))
+
+
+
+
+
 ## [2.0.2](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/angular-workspace@2.0.1...@cloudinary/angular-workspace@2.0.2) (2024-02-16)
 
 **Note:** Version bump only for package @cloudinary/angular-workspace

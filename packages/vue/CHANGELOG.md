@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/vue@1.12.1...@cloudinary/vue@1.13.0) (2024-11-04)
+
+
+### Features
+
+* add useFetchFormat prop in vue sdk ([59b9da7](https://github.com/cloudinary/frontend-frameworks/commit/59b9da7ef5889363d65dfb768fd7d66cb5ee3353))
+
+
+
+
+
 ## [1.12.1](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/vue@1.12.0...@cloudinary/vue@1.12.1) (2024-02-16)
 
 **Note:** Version bump only for package @cloudinary/vue
