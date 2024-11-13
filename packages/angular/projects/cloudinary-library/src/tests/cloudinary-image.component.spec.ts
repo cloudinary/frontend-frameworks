@@ -61,5 +61,12 @@ describe('CloudinaryImageComponent render', () => {
     component.ngOnChanges();
     expect(img.outerHTML).toBe('<img _ngcontent-a-c11="" alt="updated alt text" width="800px" height="1000px"' +
       ' loading="lazy" src="https://res.cloudinary.com/demo/image/upload/sample">');
+    component.width = undefined;
+    component.height = undefined;
+    component.alt = "";
+    component.loading = "lazy";
+    component.ngOnChanges();
+    expect(img.outerHTML).toBe('<img _ngcontent-a-c11="" alt=""' +
+      ' loading="lazy" src="https://res.cloudinary.com/demo/image/upload/sample">');
   }));
 });
