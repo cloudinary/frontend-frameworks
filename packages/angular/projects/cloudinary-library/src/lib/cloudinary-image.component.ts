@@ -103,13 +103,16 @@ export class CloudinaryImageComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   /**
-   * Add attributes to img element.
+   * Sync attributes to img element.
    */
   syncAttributes() {
     ['alt', 'width', 'height', 'loading'].forEach(attr => {
-      if (this[attr]) {
+      const isAttributeSet = this[attr] !== undefined && this[attr] !== null;
+      if (isAttributeSet) {
         this.el.nativeElement.children[0].setAttribute(attr, this[attr]);
         this.el.nativeElement.removeAttribute(attr);
+      } else {
+        this.el.nativeElement.children[0].removeAttribute(attr);
       }
     });
   }
