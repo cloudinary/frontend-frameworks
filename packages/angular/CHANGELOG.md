@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/angular-workspace@2.1.0...@cloudinary/angular-workspace@2.1.1) (2024-11-14)
+
+
+### Bug Fixes
+
+* synchronize angular image empty attributes on updates ([77fafe2](https://github.com/cloudinary/frontend-frameworks/commit/77fafe2f2fefdb814b140a4da3f521e6e906938f))
+
+
+
+
+
 # [2.1.0](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/angular-workspace@2.0.2...@cloudinary/angular-workspace@2.1.0) (2024-11-04)
 
 
