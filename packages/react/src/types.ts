@@ -4,16 +4,16 @@ export type CloudinaryImageQuality =
   | 'auto:eco'
   | 'auto:low'
   | 'auto:best'
-  | 'low'
-  | 'medium'
-  | 'high'
-  | 'best'
   | 'jpegmini'
   | 'jpegmini:0'
   | 'jpegmini:1'
   | 'jpegmini:2'
+  | 'low'
+  | 'eco'
+  | 'medium'
   | 'good'
-  | 'eco';
+  | 'high'
+  | 'best';
 
 export type CloudinaryImageFormat =
   | 'auto'
