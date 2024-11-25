@@ -6,15 +6,21 @@
     "plugin:@typescript-eslint/eslint-recommended"
   ],
   "env": {
-    "node": true,
-    "jest": true
+    "node": true
   },
+  "plugins": [
+    "react",
+    "@typescript-eslint"
+  ],
   "parserOptions": {
     "ecmaVersion": 2020,
     "ecmaFeatures": {
       "legacyDecorators": true,
       "jsx": true
-    }
+    },
+    "project": [
+      "./tsconfig.json"
+    ]
   },
   "settings": {
     "react": {
@@ -29,6 +35,7 @@
     "react/no-unused-prop-types": 0,
     "import/export": 0,
     "no-unused-vars": "off",
-    "semi": "off"
+    "semi": "off",
+    "@typescript-eslint/switch-exhaustiveness-check": "error"
   }
 }
