@@ -30,6 +30,11 @@ export type CloudinaryImageFormat =
   | 'jp2'
   | 'psd'
   | 'svg'
+  | 'avif'
+  | 'heic'
+  | 'heif';
+
+export type CloudinaryVideoFormat =
   | 'webm'
   | 'mp4'
   | 'mkv'
@@ -37,9 +42,6 @@ export type CloudinaryImageFormat =
   | 'mov'
   | '3gp'
   | 'avi'
-  | 'wmv'
-  | 'avif'
-  | 'heic'
-  | 'heif';
+  | 'wmv';
 
 export type CloudinaryRemoveBackgroundOption = boolean | 'fineEdges';
