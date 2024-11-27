@@ -1,3 +1,3 @@
-import { CloudinaryImageFormat } from '../types'
+import { ImageFormat } from '../types'
 
-export const parseFormat = (format: CloudinaryImageFormat) => `f_${format}`
+export const parseFormat = (format: ImageFormat) => `f_${format}`
