@@ -1,6 +1,6 @@
 import { CloudinaryRemoveBackgroundOption } from '../types'
 
-export const parseRemoveBackgroundOption = (removeBackground: CloudinaryRemoveBackgroundOption): '' | `e_background_removal${string}` => {
+export const parseRemoveBackground = (removeBackground: CloudinaryRemoveBackgroundOption): '' | `e_background_removal${string}` => {
   switch (removeBackground) {
     case false:
       return ''
