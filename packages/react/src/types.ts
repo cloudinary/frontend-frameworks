@@ -1,10 +1,10 @@
 type RequireAtLeastOneProperty<Obj extends Record<any, any>, Keys extends keyof Obj = keyof Obj> =
-  Keys extends infer A ? {
+  Keys extends infer A extends string ? {
     [K in Exclude<keyof Obj, A>]?: Obj[K];
   } & { [K in A]: Obj[A] } : never;
 
 type PickTwoKeys<T extends Record<any, any>, Keys extends keyof T = keyof T> =
-  Keys extends infer FirstKey ? Pick<keyof T, FirstKey> extends infer SecondKey ? [FirstKey, SecondKey] : never : never;
+  Keys extends infer FirstKey extends string ? Pick<T, FirstKey> extends infer SecondKey ? [FirstKey, SecondKey] : never : never;
 
 type k = PickTwoKeys<{ name: string; age: number; weight: number; }>
 
@@ -14,17 +14,17 @@ type RequireAtLeastTwoProperties<T extends Record<any, any>> = {
   }[Exclude<keyof T, K1>]
 }[keyof T];
 
-
-type p = {
-  a: string;
-  b: string;
-  c: string;
-}
-
-
-const d: RequireAtLeastOneProperty<p> & RequireAtLeastOneProperty<p> = {
-  a: 'a'
-};
+//
+// type p = {
+//   a: string;
+//   b: string;
+//   c: string;
+// }
+//
+//
+// const d: RequireAtLeastOneProperty<p> & RequireAtLeastOneProperty<p> = {
+//   a: 'a'
+// };
 
 export type Quality =
   | 'auto'
@@ -220,6 +220,7 @@ type ImaggaScaleResizeOptions = {
   type: 'imagga_scale';
 } & RequireAtLeastOneProperty<SizeOptions & AspectRatio>;
 
+// FIXME finish the ResizeOption type
 export type ResizeOption =
   | ScaleResizeOptions
   | FitResizeOptions
@@ -234,4 +235,3 @@ export type ResizeOption =
   | ThumbResizeOptions
   | ImaggaCropResizeOptions
   | ImaggaScaleResizeOptions;
-

@@ -11,7 +11,7 @@ const NewComponentUsage = () => {
 };
 
 const Demo = () => {
-  return <CloudinaryImg />;
+  return <>icant</>;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
