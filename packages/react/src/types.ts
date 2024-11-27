@@ -106,6 +106,7 @@ export type BackgroundOption =
 
 export type CloudinaryRemoveBackgroundOption = boolean | 'fineEdges';
 
+// FIXME add custom gravity support
 export type Gravity =
   | 'north'
   | 'north_west'
