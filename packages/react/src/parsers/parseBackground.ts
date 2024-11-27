@@ -1,6 +1,6 @@
 import { BackgroundOption } from '../types';
 
-export const parseBackground = (background: BackgroundOption) => {
+export const parseBackground = (background: BackgroundOption): `b_${string}` => {
   if (background === 'auto') {
     return 'b_auto';
   }
