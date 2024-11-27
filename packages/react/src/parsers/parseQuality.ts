@@ -1,6 +1,6 @@
-import { CloudinaryImageQuality } from '../types'
+import { Quality } from '../types'
 
-export const parseQuality = (quality: CloudinaryImageQuality): `q_${string}` => {
+export const parseQuality = (quality: Quality): `q_${string}` => {
   switch (quality) {
     case 'auto':
       return 'q_auto'
