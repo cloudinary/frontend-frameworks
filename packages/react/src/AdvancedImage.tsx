@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { type CloudinaryImage as UrlGenCloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
-import { Imagev3Props, TransformationPropsKeyToParser } from './types';
+import { TransformationProps, TransformationPropsKeyToParser } from './types';
 import { parseCloudinaryUrlToParts } from './parseCloudinaryUrlToParts';
 import { parsePropsToTransformationString } from './parsePropsToTransformationString';
 import { parseFormat } from './transformationParsers/parseFormat';
@@ -12,6 +12,12 @@ import { parseBackground } from './transformationParsers/parseBackground';
 import { parseResize } from './transformationParsers/parseResize';
 
 // import { parseResize } from './transformationParsers/parseResize';
+
+type Imagev3Props = {
+  cloudName: string;
+  src: string;
+  alt: string;
+} & TransformationProps;
 
 interface Imagev2Props {
   cldImg: UrlGenCloudinaryImage;
