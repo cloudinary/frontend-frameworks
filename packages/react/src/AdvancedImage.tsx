@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { type CloudinaryImage as UrlGenCloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
-import { TransformationProps, TransformationPropsKeyToParser } from './types';
+import { TransformationProps, TransformationNameToParser } from './types';
 import { parseCloudinaryUrlToParts } from './parseCloudinaryUrlToParts';
 import { parsePropsToTransformationString } from './parsePropsToTransformationString';
 import { parseFormat } from './transformationParsers/parseFormat';
@@ -39,7 +39,7 @@ export const CloudinaryImg = forwardRef<HTMLImageElement, CldImageProps>((props,
     height: parseHeight, // DONE
     effects: parseEffects,
     resize: parseResize
-  } satisfies TransformationPropsKeyToParser;
+  } satisfies TransformationNameToParser;
 
   const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);
   const transformationString = parsePropsToTransformationString(transformationPropsKeyToParser, props);

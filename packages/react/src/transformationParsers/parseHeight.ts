@@ -1,4 +1,3 @@
-import { HeightOption } from '../types';
+import { HeightOption } from '../transformationTypes/resize';
 
 export const parseHeight = (height: HeightOption) => `h_${height}`;
-

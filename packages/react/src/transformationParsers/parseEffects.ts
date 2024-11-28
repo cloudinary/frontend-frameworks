@@ -1,4 +1,4 @@
-import { Effect } from '../types';
+import { Effect } from '../transformationTypes/effect';
 
 export const parseEffects = (effects: Effect[]): string => {
   return effects
