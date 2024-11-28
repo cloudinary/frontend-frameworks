@@ -7,34 +7,18 @@ type RequireAtLeastOneProperty<
     } & { [K in A]: Obj[A] }
   : never;
 
-type PickTwoKeys<
-  T extends Record<any, any>,
-  Keys extends keyof T = keyof T
-> = Keys extends infer FirstKey extends string
-  ? Pick<T, FirstKey> extends infer SecondKey
-    ? [FirstKey, SecondKey]
-    : never
-  : never;
-
-type k = PickTwoKeys<{ name: string; age: number; weight: number }>;
-
-type RequireAtLeastTwoProperties<T extends Record<any, any>> = {
-  [K1 in keyof T]: {
-    [K2 in Exclude<keyof T, K1>]: Required<Pick<T, K1 | K2>> & Partial<Omit<T, K1 | K2>>;
-  }[Exclude<keyof T, K1>];
-}[keyof T];
-
-//
-// type p = {
-//   a: string;
-//   b: string;
-//   c: string;
-// }
-//
-//
-// const d: RequireAtLeastOneProperty<p> & RequireAtLeastOneProperty<p> = {
-//   a: 'a'
-// };
+// type RequireAtLeastTwoProperties<
+//   Obj extends Record<any, any>,
+//   Keys extends keyof Obj = keyof Obj
+// > = Keys extends infer FirstKey extends string
+//   ? Exclude<keyof Obj, FirstKey> extends infer LimitedKeys extends string
+//     ? LimitedKeys extends infer SecondKey extends string
+//       ? {
+//           [K in FirstKey | SecondKey]: Obj[K];
+//         } & Partial<Obj>
+//       : never
+//     : never
+//   : never;
 
 export type Quality =
   | 'auto'
@@ -273,16 +257,12 @@ export type TransformationProps = {
   background?: BackgroundOption;
 } & ResizeProps;
 
-export type Imagev3Props = {
-  cloudName: string;
-  src: string;
-  alt: string;
-} & TransformationProps;
+type TransformationsWithNonStandardHandling = 'removeBackground';
 
 export type ParseTransformationProps = Partial<UnionToIntersection<TransformationProps>>;
 
 export type TransformationPropsKeyToParser = {
-  [Key in Exclude<keyof ParseTransformationProps, 'removeBackground'>]-?: (
+  [Key in Exclude<keyof ParseTransformationProps, TransformationsWithNonStandardHandling>]-?: (
     value: Required<ParseTransformationProps>[Key]
   ) => string;
 };
