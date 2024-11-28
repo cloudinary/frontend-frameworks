@@ -90,11 +90,7 @@ export type BackgroundOption =
     }
   | {
       type: 'auto';
-      mode:
-        | 'predominant-gradient'
-        | 'predominant-gradient-contrast'
-        | 'border-gradient'
-        | 'border-gradient-contrast';
+      mode: 'predominant-gradient' | 'predominant-gradient-contrast' | 'border-gradient' | 'border-gradient-contrast';
       amountOfPredominantColorsToUse?: 2 | 4;
       direction?: 'horizontal' | 'vertical' | 'diagonal-descending' | 'diagonal-ascending';
       borderPalette?: string[];
@@ -115,12 +111,17 @@ export type BackgroundOption =
 
 export type CloudinaryRemoveBackgroundOption = boolean | 'fineEdges';
 
-export type SepiaEffect = {
+type SepiaEffect = {
   type: 'sepia';
   level?: number;
 };
 
-export type Effect = SepiaEffect;
+type BackgroundRemovalEffect = {
+  type: 'backgroundRemoval';
+  mode?: 'fineEdges';
+};
+
+export type Effect = SepiaEffect | BackgroundRemovalEffect;
 
 // FIXME add custom gravity support
 export type Gravity =
@@ -259,12 +260,12 @@ type ResizeProps =
       width?: WidthOption;
     }
   | {
-      // resize?: ResizeOption;
+      resize?: ResizeOption;
     };
 
-type AllObjectKeys<T extends {}> = T extends infer Obj ? keyof Obj : never;
+type UnionToIntersection<U> = (U extends any ? (x: U) => void : never) extends (x: infer I) => void ? I : never;
 
-type TransformationProps = {
+export type TransformationProps = {
   quality?: Quality;
   format?: ImageFormat;
   removeBackground?: CloudinaryRemoveBackgroundOption;
@@ -278,8 +279,10 @@ export type Imagev3Props = {
   alt: string;
 } & TransformationProps;
 
-export type TransformationPropsKey = AllObjectKeys<TransformationProps>;
+export type ParseTransformationProps = Partial<UnionToIntersection<TransformationProps>>;
 
 export type TransformationPropsKeyToParser = {
-  [Key in TransformationPropsKey]: (value: Imagev3Props[Key]) => string;
+  [Key in Exclude<keyof ParseTransformationProps, 'removeBackground'>]-?: (
+    value: Required<ParseTransformationProps>[Key]
+  ) => string;
 };

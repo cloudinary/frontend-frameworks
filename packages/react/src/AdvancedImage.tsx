@@ -2,14 +2,14 @@ import React, { forwardRef } from 'react';
 import { type CloudinaryImage as UrlGenCloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
 import { Imagev3Props, TransformationPropsKeyToParser } from './types';
 import { parseCloudinaryUrlToParts } from './parseCloudinaryUrlToParts';
-import { parsePropsToTransformationsString } from './parsePropsToTransformationsString';
+import { parsePropsToTransformationString } from './parsePropsToTransformationString';
 import { parseFormat } from './transformationParsers/parseFormat';
 import { parseQuality } from './transformationParsers/parseQuality';
-import { parseRemoveBackground } from './transformationParsers/parseRemoveBackground';
 import { parseWidth } from './transformationParsers/parseWidth';
 import { parseHeight } from './transformationParsers/parseHeight';
 import { parseEffects } from './transformationParsers/parseEffects';
 import { parseBackground } from './transformationParsers/parseBackground';
+import { parseResize } from './transformationParsers/parseResize';
 
 // import { parseResize } from './transformationParsers/parseResize';
 
@@ -26,21 +26,17 @@ export const CloudinaryImg = forwardRef<HTMLImageElement, CldImageProps>((props,
   }
 
   const transformationPropsKeyToParser = {
-    removeBackground: parseRemoveBackground,
-    format: parseFormat,
-    quality: parseQuality,
-    background: parseBackground,
-    width: parseWidth,
-    height: parseHeight,
-    effects: parseEffects
-    // resize: parseResize
+    format: parseFormat, // DONE
+    quality: parseQuality, // DONE
+    background: parseBackground, // DONE
+    width: parseWidth, // DONE
+    height: parseHeight, // DONE
+    effects: parseEffects,
+    resize: parseResize
   } satisfies TransformationPropsKeyToParser;
 
   const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);
-  const transformationString = parsePropsToTransformationsString(
-    transformationPropsKeyToParser,
-    props
-  );
+  const transformationString = parsePropsToTransformationString(transformationPropsKeyToParser, props);
 
   return <img src={`${baseCloudUrl}/${transformationString}/${assetPath}`} ref={ref} />;
 });
