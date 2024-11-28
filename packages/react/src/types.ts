@@ -1,17 +1,26 @@
 import { UnionToIntersection } from './transformationTypes/helpers';
-import { BackgroundOption } from './transformationTypes/background';
+import { Background } from './transformationTypes/background';
 import { Effect } from './transformationTypes/effect';
 import { ImageFormat } from './transformationTypes/format';
 import { Quality } from './transformationTypes/quality';
-import { ResizeProps } from './transformationTypes/resize';
+import { HeightOption, Resize, WidthOption } from './transformationTypes/resize';
 import { Rotate } from './transformationTypes/rotate';
+
+type ResizeProps =
+  | {
+      height?: HeightOption;
+      width?: WidthOption;
+    }
+  | {
+      resize?: Resize;
+    };
 
 export type TransformationProps = {
   quality?: Quality;
   format?: ImageFormat;
   removeBackground?: boolean | 'fineEdges';
   effects?: Effect[];
-  background?: BackgroundOption;
+  background?: Background;
   rotate?: Rotate;
 } & ResizeProps;
 

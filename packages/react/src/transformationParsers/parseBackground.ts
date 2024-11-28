@@ -1,6 +1,6 @@
-import { BackgroundOption } from '../transformationTypes/background';
+import { Background } from '../transformationTypes/background';
 
-export const parseBackground = (background: BackgroundOption): `b_${string}` => {
+export const parseBackground = (background: Background): `b_${string}` => {
   if (background === 'auto') {
     return 'b_auto';
   }
