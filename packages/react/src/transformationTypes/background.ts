@@ -1,4 +1,4 @@
-export type BackgroundOption =
+export type Background =
   | 'auto'
   | {
       type: 'color';
