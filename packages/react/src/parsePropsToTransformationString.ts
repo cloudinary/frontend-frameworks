@@ -1,7 +1,7 @@
-import { ParseTransformationProps, TransformationPropsKeyToParser } from './types';
+import { ParseTransformationProps, TransformationNameToParser } from './types';
 
 export const parsePropsToTransformationString = (
-  transformationPropsKeyToParser: TransformationPropsKeyToParser,
+  transformationPropsKeyToParser: TransformationNameToParser,
   transformationProps: ParseTransformationProps
 ): string => {
   const transformationPropKeys = Object.keys(transformationProps) as (keyof ParseTransformationProps)[];

@@ -1,4 +1,4 @@
-import { BackgroundOption } from '../types';
+import { BackgroundOption } from '../transformationTypes/background';
 
 export const parseBackground = (background: BackgroundOption): `b_${string}` => {
   if (background === 'auto') {
@@ -16,7 +16,9 @@ export const parseBackground = (background: BackgroundOption): `b_${string}` => 
       }
       return 'b_blurred';
     case 'generativeAiFill': {
-      return `b_gen_fill${background.prompt ? `:prompt_${background.prompt}` : ''}${background.seed ? `:seed_${background.seed}` : ''}`;
+      return `b_gen_fill${background.prompt ? `:prompt_${background.prompt}` : ''}${
+        background.seed ? `:seed_${background.seed}` : ''
+      }`;
     }
   }
 };

@@ -1,0 +1,16 @@
+export type Quality =
+  | 'auto'
+  | 'auto:good'
+  | 'auto:eco'
+  | 'auto:low'
+  | 'auto:best'
+  | 'jpegmini'
+  | 'jpegmini:0'
+  | 'jpegmini:1'
+  | 'jpegmini:2'
+  | 'low'
+  | 'eco'
+  | 'medium'
+  | 'good'
+  | 'high'
+  | 'best';
