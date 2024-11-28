@@ -10,6 +10,7 @@ import { parseHeight } from './transformationParsers/parseHeight';
 import { parseEffects } from './transformationParsers/parseEffects';
 import { parseBackground } from './transformationParsers/parseBackground';
 import { parseResize } from './transformationParsers/parseResize';
+import { parseRotate } from './transformationParsers/parseRotate';
 
 // import { parseResize } from './transformationParsers/parseResize';
 
@@ -37,8 +38,9 @@ export const CloudinaryImg = forwardRef<HTMLImageElement, CldImageProps>((props,
     background: parseBackground, // DONE
     width: parseWidth, // DONE
     height: parseHeight, // DONE
-    effects: parseEffects,
-    resize: parseResize
+    effects: parseEffects, // DONE
+    resize: parseResize,
+    rotate: parseRotate // DONE
   } satisfies TransformationNameToParser;
 
   const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);

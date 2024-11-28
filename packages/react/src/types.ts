@@ -4,6 +4,7 @@ import { Effect } from './transformationTypes/effect';
 import { ImageFormat } from './transformationTypes/format';
 import { Quality } from './transformationTypes/quality';
 import { ResizeProps } from './transformationTypes/resize';
+import { Rotate } from './transformationTypes/rotate';
 
 export type TransformationProps = {
   quality?: Quality;
@@ -11,6 +12,7 @@ export type TransformationProps = {
   removeBackground?: boolean | 'fineEdges';
   effects?: Effect[];
   background?: BackgroundOption;
+  rotate?: Rotate;
 } & ResizeProps;
 
 type PropsTransformationWithNonStandardHandling = 'removeBackground';
