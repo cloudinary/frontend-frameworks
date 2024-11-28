@@ -33,14 +33,14 @@ export const CloudinaryImg = forwardRef<HTMLImageElement, CldImageProps>((props,
   }
 
   const transformationPropsKeyToParser = {
-    format: parseFormat, // DONE
-    quality: parseQuality, // DONE
-    background: parseBackground, // DONE
-    width: parseWidth, // DONE
-    height: parseHeight, // DONE
-    effects: parseEffects, // DONE
+    format: parseFormat,
+    quality: parseQuality,
+    background: parseBackground,
+    width: parseWidth,
+    height: parseHeight,
+    effects: parseEffects,
     resize: parseResize,
-    rotate: parseRotate // DONE
+    rotate: parseRotate
   } satisfies TransformationNameToParser;
 
   const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);
