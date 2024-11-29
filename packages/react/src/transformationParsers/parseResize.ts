@@ -13,7 +13,8 @@ interface CreateParseResizeParams {
 export const createParseResize =
   ({ parseHeight, parseWidth, parseGravity, parseAspectRatio }: CreateParseResizeParams) =>
     (resize: Resize) => {
-      const parseWhenDefined = <T>(value: T | undefined, parser: (value: T) => string) => {
+      const parseWhenDefined = <Value, MaybeValue extends Value | undefined>
+        (value: MaybeValue, parser: (value: Value) => string) => {
         if (typeof value === 'undefined') {
           return '';
         }
@@ -23,69 +24,93 @@ export const createParseResize =
 
       switch (resize.mode) {
         case 'auto':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
         case 'autoPadding':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
         case 'scale':
         case 'liquidScale':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
         case 'limited':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
         case 'padding':
         case 'limitedPadding':
         case 'minimumPadding':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
         case 'fit':
         case 'minimumFit':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
         case 'fill':
         case 'limitedFill':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
         case 'fillPadding':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
         case 'crop':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
         case 'thumb':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
         case 'imagga_crop':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
         case 'imagga_scale':
-          return `c_auto${parseWhenDefined(resize.gravity, parseGravity)}${parseWhenDefined(
-          resize.aspectRatio,
-          parseAspectRatio
-        )}${parseWhenDefined(resize.width, parseWidth)}${parseWhenDefined(resize.height, parseHeight)}`;
+          return `c_auto${
+            parseWhenDefined(resize.gravity, parseGravity)}${
+            parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
+            parseWhenDefined(resize.width, parseWidth)}${
+            parseWhenDefined(resize.height, parseHeight)
+          }`;
       }
     };
