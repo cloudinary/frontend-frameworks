@@ -24,12 +24,8 @@ type AutoPaddingResize = {
 } & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type ScaleResize = {
-  mode: 'scale' | 'scale-liquid';
+  mode: 'scale' | 'liquidScale';
   ignoreAspectRatio?: boolean;
-} & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
-
-type FitResize = {
-  mode: 'fit';
 } & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type LimitedResize = {
@@ -37,31 +33,17 @@ type LimitedResize = {
 } & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type PaddingResize = {
-  mode: 'padding';
-  gravity?: Gravity;
-  aspectRatio?: AspectRatio;
-  background?: Background;
-} & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
-
-type LimitedPaddingResize = {
-  mode: 'limitedPadding';
-  gravity?: Gravity;
-  aspectRatio?: AspectRatio;
-  background?: Background;
-} & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
-
-type MinimumPaddingResize = {
-  mode: 'minimumPadding';
+  mode: 'padding' | 'limitedPadding' | 'minimumPadding';
   gravity?: Gravity;
   background?: Background;
 } & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
 
-type MinimumFitResize = {
-  mode: 'minimumFit';
+type FitResize = {
+  mode: 'fit' | 'minimumFit';
 } & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type FillResize = {
-  mode: 'fill';
+  mode: 'fill' | 'limitedFill';
   gravity?: Gravity;
 } & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
 
@@ -69,11 +51,6 @@ type FillPaddingResize = {
   mode: 'fillPadding';
   gravity: `auto${string}`;
   background?: Background;
-} & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
-
-type LimitedFillResize = {
-  mode: 'limitedFill';
-  gravity?: Gravity;
 } & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type CropResize = {
@@ -107,11 +84,7 @@ export type Resize =
   | ScaleResize
   | FitResize
   | LimitedResize
-  | LimitedPaddingResize
   | PaddingResize
-  | MinimumPaddingResize
   | FillResize
-  | MinimumFitResize
-  | LimitedFillResize
   | AutoPaddingResize
   | FillPaddingResize;

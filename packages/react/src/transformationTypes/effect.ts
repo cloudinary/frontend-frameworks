@@ -8,4 +8,4 @@ type BackgroundRemovalEffect = {
   mode?: 'fineEdges';
 };
 
-export type Effect = SepiaEffect | BackgroundRemovalEffect;
+export type Effect = Array<SepiaEffect | BackgroundRemovalEffect>;

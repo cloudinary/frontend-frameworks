@@ -1,3 +1,1 @@
-export interface AspectRatio {
-  aspectRatio: `${number}:${number}` | number;
-}
+export type AspectRatio = `${number}:${number}` | number;
