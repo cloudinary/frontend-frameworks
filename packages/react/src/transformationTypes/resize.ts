@@ -12,6 +12,7 @@ interface SizeOptions {
   height: number;
 }
 
+// FIXME look through `mode` values and align to pattern
 type AutoResize = {
   mode: 'auto';
   gravity: Gravity;
@@ -49,7 +50,7 @@ type FillResize = {
 
 type FillPaddingResize = {
   mode: 'fillPadding';
-  gravity: `auto${string}`;
+  gravity: 'auto';
   background?: Background;
 } & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
 
@@ -67,12 +68,12 @@ type ThumbResize = {
 } & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type ImaggaCropResize = {
-  mode: 'imagga_crop';
+  mode: 'imaggaCrop';
   aspectRatio?: AspectRatio;
 } & RequireAtLeastOneProperty<SizeOptions>;
 
 type ImaggaScaleResize = {
-  mode: 'imagga_scale';
+  mode: 'imaggaScale';
 } & RequireAtLeastOneProperty<SizeOptions & AspectRatio>;
 
 export type Resize =
