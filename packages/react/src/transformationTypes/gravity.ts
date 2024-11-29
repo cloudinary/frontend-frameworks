@@ -12,6 +12,7 @@ export type Gravity =
   | 'face'
   | 'faces'
   | 'auto'
+  | `auto:${string}`
   | 'adv_face'
   | 'adv_faces'
   | 'custom'
@@ -22,5 +23,4 @@ export type Gravity =
   | 'custom:adv_faces'
   | 'ocr_text'
   | 'body'
-  | 'liquid'
-  | 'auto:subject';
+  | 'liquid';
