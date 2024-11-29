@@ -9,8 +9,10 @@ import { parseWidth } from './transformationParsers/parseWidth';
 import { parseHeight } from './transformationParsers/parseHeight';
 import { parseEffects } from './transformationParsers/parseEffects';
 import { parseBackground } from './transformationParsers/parseBackground';
-import { parseResize } from './transformationParsers/parseResize';
+import { createParseResize } from './transformationParsers/parseResize';
 import { parseRotate } from './transformationParsers/parseRotate';
+import { parseGravity } from './transformationParsers/parseGravity';
+import { parseAspectRatio } from './transformationParsers/parseAspectRatio';
 
 // import { parseResize } from './transformationParsers/parseResize';
 
@@ -39,7 +41,12 @@ export const CloudinaryImg = forwardRef<HTMLImageElement, CldImageProps>((props,
     width: parseWidth,
     height: parseHeight,
     effects: parseEffects,
-    resize: parseResize,
+    resize: createParseResize({
+      parseHeight,
+      parseAspectRatio,
+      parseGravity,
+      parseWidth
+    }),
     rotate: parseRotate
   } satisfies TransformationNameToParser;
 
