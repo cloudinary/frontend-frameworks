@@ -10,10 +10,11 @@ export interface CreateParseResizeParams {
   parseAspectRatio: (aspectRatio: AspectRatio) => string;
   parseBackground: (background: Background) => string;
   parseIgnoreAspectRatio: (ignoreAspectRatio: boolean) => string;
+  parseZoom: (zoom: number) => string;
 }
 
 export const createParseResize =
-  ({ parseHeight, parseWidth, parseGravity, parseAspectRatio, parseBackground, parseIgnoreAspectRatio }: CreateParseResizeParams) =>
+  ({ parseHeight, parseWidth, parseGravity, parseAspectRatio, parseBackground, parseIgnoreAspectRatio, parseZoom }: CreateParseResizeParams) =>
     (resize: Resize) => {
       const parseWhenDefined = <Value, MaybeValue extends Value | undefined>
         (value: MaybeValue, parser: (value: Value) => string) => {
@@ -112,7 +113,8 @@ export const createParseResize =
             parseWhenDefined(resize.gravity, parseGravity)}${
             parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
             parseWhenDefined(resize.width, parseWidth)}${
-            parseWhenDefined(resize.height, parseHeight)
+            parseWhenDefined(resize.height, parseHeight)}${
+            parseWhenDefined(resize.height, parseZoom)
           }`;
         case 'imaggaCrop':
           return `c_imagga_crop${
