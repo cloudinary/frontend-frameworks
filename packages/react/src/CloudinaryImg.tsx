@@ -16,17 +16,16 @@ import { parseAspectRatio } from './transformationParsers/parseAspectRatio';
 import { parseIgnoreAspectRatio } from './transformationParsers/parseIgnoreAspectRatio';
 import { parseZoom } from './transformationParsers/parseZoom';
 
-type Imagev3Props = {
-  cloudName: string;
+type ImageV3Props = {
   src: string;
   alt: string;
 } & TransformationProps;
 
-interface Imagev2Props {
+interface ImageV2Props {
   cldImg: UrlGenCloudinaryImage;
 }
 
-export type CldImageProps = Imagev3Props | Imagev2Props;
+export type CldImageProps = ImageV3Props | ImageV2Props;
 
 export const CloudinaryImg = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
   if ('cldImg' in props) {
