@@ -28,6 +28,10 @@ export const parseEffects = (effects: Effect[]): string => {
           return `e_blur_faces${effect.strength ? `:${effect.strength}` : ''}`;
         case 'autoBrightness':
           return `e_auto_brightness${effect.blendPercentage ? `:${effect.blendPercentage}` : ''}`;
+        case 'autoColor':
+          return `e_auto_color${effect.blendPercentage ? `:${effect.blendPercentage}` : ''}`;
+        case 'autoContrast':
+          return `e_auto_contrast${effect.blendPercentage ? `:${effect.blendPercentage}` : ''}`;
       }
     })
     .join('');

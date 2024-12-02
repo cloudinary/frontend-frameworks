@@ -62,13 +62,18 @@ type Blur = {
   strength?: number
 }
 
-type AutoBrightness = {
-  type: 'autoBrightness';
+type Auto = {
+  type: 'autoBrightness' | 'autoColor' | 'autoContrast';
   /**
    * @description 0 to 100
    * @default 100
    */
   blendPercentage?: number;
+}
+
+type AutoColor = {
+  type: 'autoColor';
+
 }
 
 export type Effect =
@@ -82,4 +87,4 @@ export type Effect =
   | Noise
   | Pixelate
   | Blur
-  | AutoBrightness;
+  | Auto;
