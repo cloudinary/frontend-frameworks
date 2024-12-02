@@ -62,6 +62,15 @@ type Blur = {
   strength?: number
 }
 
+type AutoBrightness = {
+  type: 'autoBrightness';
+  /**
+   * @description 0 to 100
+   * @default 100
+   */
+  blendPercentage?: number;
+}
+
 export type Effect =
   | Sepia
   | BackgroundRemoval
@@ -72,4 +81,5 @@ export type Effect =
   | Negate
   | Noise
   | Pixelate
-  | Blur;
+  | Blur
+  | AutoBrightness;

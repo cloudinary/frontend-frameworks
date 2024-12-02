@@ -25,7 +25,9 @@ export const parseEffects = (effects: Effect[]): string => {
         case 'blur':
           return `e_blur${effect.strength ? `:${effect.strength}` : ''}`
         case 'blurFaces':
-          return `e_blur_faces${effect.strength ? `:${effect.strength}` : ''}`
+          return `e_blur_faces${effect.strength ? `:${effect.strength}` : ''}`;
+        case 'autoBrightness':
+          return `e_auto_brightness${effect.blendPercentage ? `:${effect.blendPercentage}` : ''}`;
       }
     })
     .join('');
