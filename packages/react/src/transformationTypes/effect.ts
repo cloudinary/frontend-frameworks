@@ -1,11 +1,16 @@
-type SepiaEffect = {
+type Sepia = {
   type: 'sepia';
   level?: number;
 };
 
-type BackgroundRemovalEffect = {
+type BackgroundRemoval = {
   type: 'backgroundRemoval';
   mode?: 'fineEdges';
 };
 
-export type Effect = Array<SepiaEffect | BackgroundRemovalEffect>;
+type Fade = {
+  type: 'fade';
+  duration: number;
+}
+
+export type Effect = Sepia | BackgroundRemoval | Fade;
