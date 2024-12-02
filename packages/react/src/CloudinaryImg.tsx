@@ -15,6 +15,7 @@ import { parseGravity } from './transformationParsers/parseGravity';
 import { parseAspectRatio } from './transformationParsers/parseAspectRatio';
 import { parseIgnoreAspectRatio } from './transformationParsers/parseIgnoreAspectRatio';
 import { parseZoom } from './transformationParsers/parseZoom';
+import { parseRoundCorners } from './transformationParsers/parseRoundCorners';
 
 type ImageV3Props = {
   src: string;
@@ -49,7 +50,8 @@ export const CloudinaryImg = forwardRef<HTMLImageElement, CldImageProps>((props,
       parseIgnoreAspectRatio,
       parseZoom
     }),
-    rotate: parseRotate
+    rotate: parseRotate,
+    roundCorners: parseRoundCorners
   } satisfies TransformationNameToParser;
 
   const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);
