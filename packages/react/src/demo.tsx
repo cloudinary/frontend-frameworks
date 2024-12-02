@@ -38,9 +38,8 @@ const NewComponentUsage = () => (
     <div>New Component Usage</div>
     <div>
       <CloudinaryImg
-        cloudName='demo'
         src='https://res.cloudinary.com/demo/image/upload/front_face?_a=DATAg1AAZAA0'
-        alt='proboscis monkey'
+        alt='front face'
         removeBackground
         format='auto'
         quality='auto'
