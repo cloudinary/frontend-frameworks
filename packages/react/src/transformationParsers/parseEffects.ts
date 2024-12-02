@@ -2,7 +2,7 @@ import { Effect } from '../transformationTypes/effect';
 
 export const parseEffects = (effects: Effect[]): string => {
   return effects
-    .map((effect) => {
+    .map((effect):`e_${string}` => {
       switch (effect.type) {
         case 'sepia':
           return `e_sepia${effect.level ? `:${effect.level}` : ''}`;
