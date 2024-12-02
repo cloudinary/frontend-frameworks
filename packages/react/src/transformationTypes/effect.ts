@@ -54,6 +54,14 @@ type Pixelate = {
   squareSize?: number;
 }
 
+type Blur = {
+  type: 'blur' | 'blurFaces';
+  /**
+   * @description 1 to 2000
+   */
+  strength?: number
+}
+
 export type Effect =
   | Sepia
   | BackgroundRemoval
@@ -63,4 +71,5 @@ export type Effect =
   | Light
   | Negate
   | Noise
-  | Pixelate;
+  | Pixelate
+  | Blur;

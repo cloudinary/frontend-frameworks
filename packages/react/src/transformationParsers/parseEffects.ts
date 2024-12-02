@@ -21,7 +21,11 @@ export const parseEffects = (effects: Effect[]): string => {
         case 'noise':
           return `e_noise${effect.level ? `:${effect.level}` : ''}`;
         case 'pixelate':
-          return `e_pixelate${effect.squareSize ? `:${effect.squareSize}` : ''}`
+          return `e_pixelate${effect.squareSize ? `:${effect.squareSize}` : ''}`;
+        case 'blur':
+          return `e_blur${effect.strength ? `:${effect.strength}` : ''}`
+        case 'blurFaces':
+          return `e_blur_faces${effect.strength ? `:${effect.strength}` : ''}`
       }
     })
     .join('');
