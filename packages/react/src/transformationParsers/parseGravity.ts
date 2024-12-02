@@ -5,7 +5,7 @@ type SimpleGravity = Gravity extends infer GravityValue ? GravityValue extends s
 // FIXME fill in missing gravity parsing
 export const parseGravity = (gravity: Gravity) => {
   const camelCaseToSnakeCase = <Str extends string>(str: Str) => str.replace(/([A-Z]{1})/g, (value) => `_${value.toLowerCase()}`);
-  const simpleGravityParser = (gravity: SimpleGravity) => `g_${camelCaseToSnakeCase(gravity)}`;
+  const simpleGravityParser = <G extends SimpleGravity>(gravity: G): `g_${string}` => `g_${camelCaseToSnakeCase(gravity)}`;
 
   const gravityToUrlComponent = {
     auto: simpleGravityParser,
@@ -18,7 +18,7 @@ export const parseGravity = (gravity: Gravity) => {
     southWest: simpleGravityParser,
     southEast: simpleGravityParser,
     west: simpleGravityParser
-  } satisfies Record<Gravity, <G extends SimpleGravity>(gravity: G) => `g_${string}`>;
+  } satisfies Record<SimpleGravity, (gravity: SimpleGravity) => `g_${string}`>;
 
   if (typeof gravity === 'string') {
     return gravityToUrlComponent[gravity](gravity);
