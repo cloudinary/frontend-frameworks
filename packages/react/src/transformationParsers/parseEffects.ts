@@ -16,6 +16,12 @@ export const parseEffects = (effects: Effect[]): string => {
           return 'e_grayscale';
         case 'light':
           return `e_light${effect.intensity ? `:shadowintensity_${effect.intensity}` : ''}`;
+        case 'negate':
+          return 'e_negate';
+        case 'noise':
+          return `e_noise${effect.level ? `:${effect.level}` : ''}`;
+        case 'pixelate':
+          return `e_pixelate${effect.squareSize ? `:${effect.squareSize}` : ''}`
       }
     })
     .join('');

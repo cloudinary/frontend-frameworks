@@ -33,4 +33,34 @@ type Light = {
   intensity?: number;
 }
 
-export type Effect = Sepia | BackgroundRemoval | Fade | Gamma | Grayscale | Light;
+type Negate = {
+  type: 'negate';
+}
+
+type Noise = {
+  type: 'noise';
+  /**
+   * @description 0 - 100
+   */
+  level: number;
+}
+
+type Pixelate = {
+  type: 'pixelate';
+  /**
+   * @description 1 - 200
+   * @default algorithm based
+   */
+  squareSize?: number;
+}
+
+export type Effect =
+  | Sepia
+  | BackgroundRemoval
+  | Fade
+  | Gamma
+  | Grayscale
+  | Light
+  | Negate
+  | Noise
+  | Pixelate;
