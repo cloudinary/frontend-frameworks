@@ -5,6 +5,7 @@ import { ImageFormat } from './transformationTypes/format';
 import { Quality } from './transformationTypes/quality';
 import { HeightOption, Resize, WidthOption } from './transformationTypes/resize';
 import { Rotate } from './transformationTypes/rotate';
+import { RoundCorners } from './transformationTypes/roundCorners';
 
 type ResizeProps =
   | {
@@ -22,6 +23,7 @@ export type TransformationProps = {
   effects?: Effect[];
   background?: Background;
   rotate?: Rotate;
+  roundCorners?: RoundCorners;
 } & ResizeProps;
 
 type PropsTransformationWithNonStandardHandling = 'removeBackground';
