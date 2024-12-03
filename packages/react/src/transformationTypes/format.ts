@@ -17,4 +17,4 @@ export type ImageFormat =
   | 'heic'
   | 'heif';
 
-export type VideoFormat = 'webm' | 'mp4' | 'mkv' | 'flv' | 'mov' | '3gp' | 'avi' | 'wmv';
+export type VideoFormat = 'auto' | 'webm' | 'mp4' | 'mkv' | 'flv' | 'mov' | '3gp' | 'avi' | 'wmv';
