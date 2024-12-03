@@ -28,9 +28,8 @@
     "isolatedModules": true,
     "emitDeclarationOnly": true,
     "types": ["node"],
-    "baseUrl": "src",
+    "baseUrl": ".",
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": [
     "node_modules",
     "dist",
