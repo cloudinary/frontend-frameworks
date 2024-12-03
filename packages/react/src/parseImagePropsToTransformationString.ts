@@ -1,10 +1,10 @@
-import { ParseTransformationProps, TransformationNameToParser } from './types';
+import { ImageParseTransformationProps, ImageTransformationNameToParser } from './types';
 
-export const parsePropsToTransformationString = (
-  transformationPropsKeyToParser: TransformationNameToParser,
-  transformationProps: ParseTransformationProps
+export const parseImagePropsToTransformationString = (
+  transformationPropsKeyToParser: ImageTransformationNameToParser,
+  transformationProps: ImageParseTransformationProps
 ): string => {
-  const transformationPropKeys = Object.keys(transformationProps) as (keyof ParseTransformationProps)[];
+  const transformationPropKeys = Object.keys(transformationProps) as (keyof typeof transformationProps)[];
 
   const transformationStringList = transformationPropKeys
     .map((transformationName) => {

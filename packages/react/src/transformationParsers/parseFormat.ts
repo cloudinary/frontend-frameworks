@@ -1,3 +1,3 @@
-import { ImageFormat } from '../transformationTypes/format';
+import { ImageFormat, VideoFormat } from '../transformationTypes/format';
 
-export const parseFormat = (format: ImageFormat) => `f_${format}`;
+export const parseFormat = (format: ImageFormat | VideoFormat) => `f_${format}`;

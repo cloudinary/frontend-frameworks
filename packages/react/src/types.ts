@@ -1,7 +1,7 @@
 import { UnionToIntersection } from './transformationTypes/helpers';
 import { Background } from './transformationTypes/background';
 import { Effect } from './transformationTypes/effect';
-import { ImageFormat } from './transformationTypes/format';
+import { ImageFormat, VideoFormat } from './transformationTypes/format';
 import { Quality } from './transformationTypes/quality';
 import { HeightOption, Resize, WidthOption } from './transformationTypes/resize';
 import { Rotate } from './transformationTypes/rotate';
@@ -17,7 +17,7 @@ type ResizeProps =
       resize?: Resize;
     };
 
-export type TransformationProps = {
+export type ImageTransformationProps = {
   quality?: Quality;
   format?: ImageFormat;
   removeBackground?: boolean | 'fineEdges';
@@ -28,12 +28,29 @@ export type TransformationProps = {
   opacity?: Opacity;
 } & ResizeProps;
 
+export type VideoTransformationProps = {
+  quality?: Quality;
+  format?: VideoFormat;
+  height?: HeightOption;
+  width?: WidthOption;
+  // removeBackground?: boolean | 'fineEdges';
+  // effects?: Effect[];
+  // background?: Background;
+  // rotate?: Rotate;
+  // roundCorners?: RoundCorners;
+  // opacity?: Opacity;
+};
+
 type PropsTransformationWithNonStandardHandling = 'removeBackground';
 
-export type ParseTransformationProps = Partial<UnionToIntersection<TransformationProps>>;
+export type ImageParseTransformationProps = Partial<UnionToIntersection<ImageTransformationProps>>;
+export type VideoParseTransformationProps = Partial<UnionToIntersection<VideoTransformationProps>>;
 
-export type TransformationNameToParser = {
-  [Key in keyof Omit<ParseTransformationProps, PropsTransformationWithNonStandardHandling>]-?: (
-    value: Required<ParseTransformationProps>[Key]
+type TransformationNameToParser<Props> = {
+  [Key in keyof Omit<Props, PropsTransformationWithNonStandardHandling>]-?: (
+    value: Required<Props>[Key]
   ) => string;
 };
+
+export type ImageTransformationNameToParser = TransformationNameToParser<ImageParseTransformationProps>;
+export type VideoTransformationNameToParser = TransformationNameToParser<VideoParseTransformationProps>;
