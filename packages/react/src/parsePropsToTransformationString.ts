@@ -41,6 +41,12 @@ export const parsePropsToTransformationString = (
             return transformationPropsKeyToParser.height(transformationProps[transformationName]);
           case 'resize':
             return transformationPropsKeyToParser.resize(transformationProps[transformationName]);
+          case 'roundCorners':
+            return transformationPropsKeyToParser.roundCorners(transformationProps[transformationName]);
+          case 'opacity':
+            return transformationPropsKeyToParser.opacity(transformationProps[transformationName]);
+          case 'rotate':
+            return transformationPropsKeyToParser.rotate(transformationProps[transformationName]);
         }
       }
 
