@@ -1,18 +1,18 @@
 module.exports = {
-  "parser": "@typescript-eslint/parser",
-  "extends": [
+  parser: "@typescript-eslint/parser",
+  extends: [
     "standard",
     "standard-react",
     "plugin:@typescript-eslint/eslint-recommended"
   ],
-  "env": {
+  env: {
     "node": true
   },
-  "plugins": [
+  plugins: [
     "react",
     "@typescript-eslint"
   ],
-  "parserOptions": {
+  parserOptions: {
     "ecmaVersion": 2020,
     "ecmaFeatures": {
       "legacyDecorators": true,
@@ -22,7 +22,7 @@ module.exports = {
       "./tsconfig.json"
     ]
   },
-  "settings": {
+  settings: {
     "react": {
       "version": "16"
     }
@@ -36,6 +36,8 @@ module.exports = {
     "import/export": 0,
     "no-unused-vars": "off",
     "semi": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
     "@typescript-eslint/switch-exhaustiveness-check": "error"
   }
 }
