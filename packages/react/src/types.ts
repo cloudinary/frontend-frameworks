@@ -35,7 +35,7 @@ export type VideoTransformationProps = {
   width?: WidthOption;
   // removeBackground?: boolean | 'fineEdges';
   // effects?: Effect[];
-  // background?: Background;
+  background?: Background;
   rotate?: Rotate;
   roundCorners?: RoundCorners;
   opacity?: Opacity;

@@ -12,6 +12,7 @@ import {
 } from './parsePropsToTransformationString';
 import { parseRotate } from './transformationParsers/parseRotate';
 import { parseRoundCorners } from './transformationParsers/parseRoundCorners';
+import { parseBackground } from './transformationParsers/parseBackground';
 
 type VideoV3Props = {
   src: string;
@@ -33,7 +34,7 @@ export const CloudinaryVideo = forwardRef<HTMLImageElement, CloudinaryVideoProps
   const transformationPropsKeyToParser = {
     format: parseFormat,
     quality: parseQuality,
-    // background: parseBackground,
+    background: parseBackground,
     width: parseWidth,
     height: parseHeight,
     // effects: parseEffects,
