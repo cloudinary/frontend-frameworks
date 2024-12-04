@@ -22,6 +22,8 @@ import { Opacity } from './transformationTypes/opacity';
 import { TransformationMap } from './types';
 import { Duration } from './transformationTypes/duration';
 import { parseDuration } from './transformationParsers/parseDuration';
+import { StartOffset } from './transformationTypes/startOffset';
+import { parseStartOffset } from './transformationParsers/parseStartOffset';
 
 export type VideoTransformationProps = {
   quality?: Quality;
@@ -35,6 +37,7 @@ export type VideoTransformationProps = {
   roundCorners?: RoundCorners;
   opacity?: Opacity;
   duration?: Duration;
+  startOffset?: StartOffset;
 };
 
 type VideoV3Props = {
@@ -73,7 +76,8 @@ export const CloudinaryVideo = forwardRef<HTMLImageElement, CloudinaryVideoProps
     rotate: parseRotate,
     roundCorners: parseRoundCorners,
     opacity: parseOpacity,
-    duration: parseDuration
+    duration: parseDuration,
+    startOffset: parseStartOffset
   } satisfies TransformationMap<VideoTransformationProps>;
   const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);
   const { src, alt, children, ...rest } = props
