@@ -11,6 +11,7 @@ import {
   parsePropsToTransformationString
 } from './parsePropsToTransformationString';
 import { parseRotate } from './transformationParsers/parseRotate';
+import { parseRoundCorners } from './transformationParsers/parseRoundCorners';
 
 type VideoV3Props = {
   src: string;
@@ -46,7 +47,7 @@ export const CloudinaryVideo = forwardRef<HTMLImageElement, CloudinaryVideoProps
     //   parseZoom
     // }),
     rotate: parseRotate,
-    // roundCorners: parseRoundCorners,
+    roundCorners: parseRoundCorners,
     opacity: parseOpacity
   } satisfies VideoTransformationNameToParser;
   const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);
