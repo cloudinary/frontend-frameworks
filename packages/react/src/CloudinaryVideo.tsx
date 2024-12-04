@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import { type CloudinaryVideo as UrlGenCloudinaryVideo } from '@cloudinary/url-gen/assets/CloudinaryVideo';
-import { VideoTransformationNameToParser, VideoTransformationProps } from './types';
 import { parseCloudinaryUrlToParts } from './parseCloudinaryUrlToParts';
 import { parseFormat } from './transformationParsers/parseFormat';
 import { parseQuality } from './transformationParsers/parseQuality';
@@ -13,6 +12,27 @@ import {
 import { parseRotate } from './transformationParsers/parseRotate';
 import { parseRoundCorners } from './transformationParsers/parseRoundCorners';
 import { parseBackground } from './transformationParsers/parseBackground';
+import { Quality } from './transformationTypes/quality';
+import { VideoFormat } from './transformationTypes/format';
+import { HeightOption, WidthOption } from './transformationTypes/resize';
+import { Background } from './transformationTypes/background';
+import { Rotate } from './transformationTypes/rotate';
+import { RoundCorners } from './transformationTypes/roundCorners';
+import { Opacity } from './transformationTypes/opacity';
+import { TransformationMap } from './types';
+
+export type VideoTransformationProps = {
+  quality?: Quality;
+  format?: VideoFormat;
+  height?: HeightOption;
+  width?: WidthOption;
+  // removeBackground?: boolean | 'fineEdges';
+  // effects?: Effect[];
+  background?: Background;
+  rotate?: Rotate;
+  roundCorners?: RoundCorners;
+  opacity?: Opacity;
+};
 
 type VideoV3Props = {
   src: string;
@@ -31,7 +51,7 @@ export const CloudinaryVideo = forwardRef<HTMLImageElement, CloudinaryVideoProps
     return <img src={cldVid.toURL()} {...rest} ref={ref} />;
   }
 
-  const transformationPropsKeyToParser = {
+  const transformationMap = {
     format: parseFormat,
     quality: parseQuality,
     background: parseBackground,
@@ -50,10 +70,10 @@ export const CloudinaryVideo = forwardRef<HTMLImageElement, CloudinaryVideoProps
     rotate: parseRotate,
     roundCorners: parseRoundCorners,
     opacity: parseOpacity
-  } satisfies VideoTransformationNameToParser;
+  } satisfies TransformationMap<VideoTransformationProps>;
   const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);
   const { src, alt, children, ...rest } = props
-  const transformationString = parsePropsToTransformationString(rest, transformationPropsKeyToParser);
+  const transformationString = parsePropsToTransformationString(rest, transformationMap);
 
   return <img src={`${baseCloudUrl}/${transformationString}/${assetPath}`} ref={ref} />;
 });
