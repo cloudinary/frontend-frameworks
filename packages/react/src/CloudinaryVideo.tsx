@@ -10,6 +10,7 @@ import { parseOpacity } from './transformationParsers/parseOpacity';
 import {
   parsePropsToTransformationString
 } from './parsePropsToTransformationString';
+import { parseRotate } from './transformationParsers/parseRotate';
 
 type VideoV3Props = {
   src: string;
@@ -44,7 +45,7 @@ export const CloudinaryVideo = forwardRef<HTMLImageElement, CloudinaryVideoProps
     //   parseIgnoreAspectRatio,
     //   parseZoom
     // }),
-    // rotate: parseRotate,
+    rotate: parseRotate,
     // roundCorners: parseRoundCorners,
     opacity: parseOpacity
   } satisfies VideoTransformationNameToParser;
