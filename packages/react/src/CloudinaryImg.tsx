@@ -1,6 +1,8 @@
 import React, { ForwardedRef, forwardRef } from 'react';
 import { type CloudinaryImage as UrlGenCloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
-import { ImageTransformationProps, ImageTransformationNameToParser } from './types';
+import {
+  ResizeProps, TransformationMap
+} from './types';
 import { parseCloudinaryUrlToParts } from './parseCloudinaryUrlToParts';
 import {
   parsePropsToTransformationString
@@ -20,6 +22,26 @@ import { parseZoom } from './transformationParsers/parseZoom';
 import { parseRoundCorners } from './transformationParsers/parseRoundCorners';
 import { parseOpacity } from './transformationParsers/parseOpacity';
 import { parseRemoveBackground } from './transformationParsers/parseRemoveBackground';
+import { Quality } from './transformationTypes/quality';
+import { ImageFormat } from './transformationTypes/format';
+import { RemoveBackground } from './transformationTypes/removeBackground';
+import { Effect } from './transformationTypes/effect';
+import { Background } from './transformationTypes/background';
+import { Rotate } from './transformationTypes/rotate';
+import { RoundCorners } from './transformationTypes/roundCorners';
+import { Opacity } from './transformationTypes/opacity';
+import { UnionToIntersection } from './transformationTypes/helpers';
+
+export type ImageTransformationProps = {
+  quality?: Quality;
+  format?: ImageFormat;
+  removeBackground?: RemoveBackground;
+  effects?: Effect[];
+  background?: Background;
+  rotate?: Rotate;
+  roundCorners?: RoundCorners;
+  opacity?: Opacity;
+} & ResizeProps;
 
 type ImageV3Props = {
   src: string;
@@ -30,15 +52,15 @@ interface ImageV2Props {
   cldImg: UrlGenCloudinaryImage;
 }
 
-export type CldImageProps = ImageV3Props | ImageV2Props;
+export type CloudinaryImgProps = ImageV3Props | ImageV2Props;
 
 export const CloudinaryImg = forwardRef(
-  (props: CldImageProps, ref: ForwardedRef<typeof props extends ImageV2Props ? never : never>) => {
+  (props: CloudinaryImgProps, ref: ForwardedRef<typeof props extends ImageV2Props ? never : never>) => {
     if ('cldImg' in props) {
       const { cldImg, ...rest } = props;
       return <img src={cldImg.toURL()} {...rest} ref={ref} />;
     }
-    const transformationPropsKeyToParser = {
+    const transformationMap = {
       format: parseFormat,
       quality: parseQuality,
       background: parseBackground,
@@ -58,10 +80,10 @@ export const CloudinaryImg = forwardRef(
       roundCorners: parseRoundCorners,
       opacity: parseOpacity,
       removeBackground: parseRemoveBackground(parseEffects)
-    } satisfies ImageTransformationNameToParser;
+    } satisfies TransformationMap<ImageTransformationProps>;
     const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);
     const { src, alt, ...rest } = props;
-    const transformationString = parsePropsToTransformationString(rest, transformationPropsKeyToParser);
+    const transformationString = parsePropsToTransformationString(rest, transformationMap);
 
     return <img src={`${baseCloudUrl}/${transformationString}/${assetPath}`} ref={ref} />;
   });
