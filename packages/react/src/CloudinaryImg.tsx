@@ -30,7 +30,6 @@ import { Background } from './transformationTypes/background';
 import { Rotate } from './transformationTypes/rotate';
 import { RoundCorners } from './transformationTypes/roundCorners';
 import { Opacity } from './transformationTypes/opacity';
-import { UnionToIntersection } from './transformationTypes/helpers';
 
 export type ImageTransformationProps = {
   quality?: Quality;
