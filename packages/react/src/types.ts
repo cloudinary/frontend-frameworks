@@ -7,6 +7,7 @@ import { HeightOption, Resize, WidthOption } from './transformationTypes/resize'
 import { Rotate } from './transformationTypes/rotate';
 import { RoundCorners } from './transformationTypes/roundCorners';
 import { Opacity } from './transformationTypes/opacity';
+import { RemoveBackground } from './transformationTypes/removeBackground';
 
 type ResizeProps =
   | {
@@ -20,7 +21,7 @@ type ResizeProps =
 export type ImageTransformationProps = {
   quality?: Quality;
   format?: ImageFormat;
-  removeBackground?: boolean | 'fineEdges';
+  removeBackground?: RemoveBackground;
   effects?: Effect[];
   background?: Background;
   rotate?: Rotate;
@@ -52,5 +53,3 @@ type TransformationNameToParser<Props> = {
 
 export type ImageTransformationNameToParser = TransformationNameToParser<ImageParseTransformationProps>;
 export type VideoTransformationNameToParser = TransformationNameToParser<VideoParseTransformationProps>;
-
-export type AllTransformationNameToParser = ImageTransformationNameToParser | VideoTransformationNameToParser;

@@ -1,7 +1,7 @@
-import { ImageTransformationProps } from '../types';
 import { parseEffects as ParseEffects } from './parseEffects';
+import { RemoveBackground } from '../transformationTypes/removeBackground';
 
-export const parseRemoveBackground = (parseEffects: typeof ParseEffects) => (removeBackground: Exclude<ImageTransformationProps['removeBackground'], undefined>) => {
+export const parseRemoveBackground = (parseEffects: typeof ParseEffects) => (removeBackground: RemoveBackground) => {
   if (!removeBackground) {
     return '';
   }
