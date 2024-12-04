@@ -2,7 +2,9 @@ import React, { ForwardedRef, forwardRef } from 'react';
 import { type CloudinaryImage as UrlGenCloudinaryImage } from '@cloudinary/url-gen/assets/CloudinaryImage';
 import { ImageTransformationProps, ImageTransformationNameToParser } from './types';
 import { parseCloudinaryUrlToParts } from './parseCloudinaryUrlToParts';
-import { parseImagePropsToTransformationString } from './parseImagePropsToTransformationString';
+import {
+  parsePropsToTransformationString
+} from './parsePropsToTransformationString';
 import { parseFormat } from './transformationParsers/parseFormat';
 import { parseQuality } from './transformationParsers/parseQuality';
 import { parseWidth } from './transformationParsers/parseWidth';
@@ -53,10 +55,12 @@ export const CloudinaryImg = forwardRef(
       }),
       rotate: parseRotate,
       roundCorners: parseRoundCorners,
-      opacity: parseOpacity
+      opacity: parseOpacity,
+      removeBackground: () => ''
     } satisfies ImageTransformationNameToParser;
     const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);
-    const transformationString = parseImagePropsToTransformationString(transformationPropsKeyToParser, props);
+    const { src, alt, ...rest } = props;
+    const transformationString = parsePropsToTransformationString(rest, transformationPropsKeyToParser);
 
     return <img src={`${baseCloudUrl}/${transformationString}/${assetPath}`} ref={ref} />;
   });
