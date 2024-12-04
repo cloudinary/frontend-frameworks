@@ -6,20 +6,23 @@ import { parseFormat } from './transformationParsers/parseFormat';
 import { parseQuality } from './transformationParsers/parseQuality';
 import { parseWidth } from './transformationParsers/parseWidth';
 import { parseHeight } from './transformationParsers/parseHeight';
-import { parseVideoPropsToTransformationString } from './parseVideoPropsToTransformationString';
+import { parseOpacity } from './transformationParsers/parseOpacity';
+import {
+  parsePropsToTransformationString
+} from './parsePropsToTransformationString';
 
-type ImageV3Props = {
+type VideoV3Props = {
   src: string;
   alt: string;
 } & VideoTransformationProps;
 
-interface ImageV2Props {
+interface VideoV2Props {
   cldVid: UrlGenCloudinaryVideo;
 }
 
-export type CldImageProps = ImageV3Props | ImageV2Props;
+export type CloudinaryVideoProps = VideoV3Props | VideoV2Props;
 
-export const CloudinaryImg = forwardRef<HTMLImageElement, CldImageProps>((props, ref) => {
+export const CloudinaryVideo = forwardRef<HTMLImageElement, CloudinaryVideoProps>((props, ref) => {
   if ('cldVid' in props) {
     const { cldVid, ...rest } = props;
     return <img src={cldVid.toURL()} {...rest} ref={ref} />;
@@ -30,7 +33,7 @@ export const CloudinaryImg = forwardRef<HTMLImageElement, CldImageProps>((props,
     quality: parseQuality,
     // background: parseBackground,
     width: parseWidth,
-    height: parseHeight
+    height: parseHeight,
     // effects: parseEffects,
     // resize: createParseResize({
     //   parseHeight,
@@ -43,10 +46,11 @@ export const CloudinaryImg = forwardRef<HTMLImageElement, CldImageProps>((props,
     // }),
     // rotate: parseRotate,
     // roundCorners: parseRoundCorners,
-    // opacity: parseOpacity
+    opacity: parseOpacity
   } satisfies VideoTransformationNameToParser;
   const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);
-  const transformationString = parseVideoPropsToTransformationString(transformationPropsKeyToParser, props);
+  const { src, alt, children, ...rest } = props
+  const transformationString = parsePropsToTransformationString(rest, transformationPropsKeyToParser);
 
   return <img src={`${baseCloudUrl}/${transformationString}/${assetPath}`} ref={ref} />;
 });

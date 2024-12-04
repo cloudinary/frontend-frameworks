@@ -38,19 +38,19 @@ export type VideoTransformationProps = {
   // background?: Background;
   // rotate?: Rotate;
   // roundCorners?: RoundCorners;
-  // opacity?: Opacity;
+  opacity?: Opacity;
 };
-
-type PropsTransformationWithNonStandardHandling = 'removeBackground';
 
 export type ImageParseTransformationProps = Partial<UnionToIntersection<ImageTransformationProps>>;
 export type VideoParseTransformationProps = Partial<UnionToIntersection<VideoTransformationProps>>;
 
 type TransformationNameToParser<Props> = {
-  [Key in keyof Omit<Props, PropsTransformationWithNonStandardHandling>]-?: (
+  [Key in keyof Props]-?: (
     value: Required<Props>[Key]
   ) => string;
 };
 
 export type ImageTransformationNameToParser = TransformationNameToParser<ImageParseTransformationProps>;
 export type VideoTransformationNameToParser = TransformationNameToParser<VideoParseTransformationProps>;
+
+export type AllTransformationNameToParser = ImageTransformationNameToParser | VideoTransformationNameToParser;
