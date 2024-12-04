@@ -7,6 +7,7 @@ export const parsePropsToTransformationString = <Props extends Record<string, an
   const transformationStringList = transformationPropKeys
     .map((transformationName) => {
       if (transformationName in transformationProps) {
+        // FIXME this type guard seems to be too much for TS
         if (transformationProps[transformationName] === undefined) {
           return undefined;
         }
