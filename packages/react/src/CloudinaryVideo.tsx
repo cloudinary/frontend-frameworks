@@ -52,19 +52,23 @@ export type VideoTransformationProps = {
 };
 
 type VideoV3Props = {
+  cldVid?: never;
   src: string;
+  videoProps?: React.HTMLProps<HTMLVideoElement>
 } & VideoTransformationProps;
 
-interface VideoV2Props {
+
+interface VideoV2Props extends React.HTMLProps<HTMLVideoElement> {
+  src?: never;
   cldVid: UrlGenCloudinaryVideo;
 }
 
 export type CloudinaryVideoProps = VideoV3Props | VideoV2Props;
 
 export const CloudinaryVideo = forwardRef<HTMLVideoElement, CloudinaryVideoProps>((props, ref) => {
-  if ('cldVid' in props) {
+  if (props.cldVid) {
     const { cldVid, ...rest } = props;
-    return <video src={cldVid.toURL()} {...rest} ref={ref} />;
+    return <video src={cldVid.toURL()} ref={ref} {...rest} />;
   }
 
   const transformationMap = {
@@ -89,12 +93,12 @@ export const CloudinaryVideo = forwardRef<HTMLVideoElement, CloudinaryVideoProps
     startOffset: parseStartOffset,
     videoCodec: parseVideoCodec
   } satisfies TransformationMap<VideoTransformationProps>;
-  const { src, children, ...rest } = props
+  const { src, children, cldVid, videoProps, ...rest } = props
   const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(props.src);
   const transformationString = parsePropsToTransformationString({
     transformationProps: rest,
     transformationMap
   });
 
-  return <video src={`${baseCloudUrl}/${transformationString}/${assetPath}`} ref={ref} />;
+  return <video src={`${baseCloudUrl}/${transformationString}/${assetPath}`} ref={ref} {...videoProps} />;
 });
