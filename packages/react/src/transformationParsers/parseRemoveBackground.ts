@@ -1,14 +1,9 @@
-import { parseEffects as ParseEffects } from './parseEffects';
 import { RemoveBackground } from '../transformationTypes/removeBackground';
 
-export const parseRemoveBackground = (parseEffects: typeof ParseEffects) => (removeBackground: RemoveBackground) => {
+export const parseRemoveBackground = (removeBackground: RemoveBackground) => {
   if (!removeBackground) {
     return '';
   }
 
-  return parseEffects([
-    removeBackground === 'fineEdges' ? {
-      type: 'backgroundRemoval',
-      mode: 'fineEdges'
-    } : { type: 'backgroundRemoval' }])
+  return removeBackground === 'fineEdges' ? 'e_background_removal:fineedges_y' : 'e_background_removal';
 }

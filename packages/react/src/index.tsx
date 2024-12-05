@@ -1,3 +1,2 @@
-export { CloudinaryImg } from './CloudinaryImg';
-// FIXME bring back AdvancedVideo; consider merging with AdvancedImage
-// export { AdvancedVideo } from './AdvancedVideo';
+export { CloudinaryImage } from './CloudinaryImage';
+export { CloudinaryVideo } from './CloudinaryVideo';

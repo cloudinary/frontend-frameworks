@@ -8,8 +8,8 @@ export type WidthOption = 'auto' | 'initial-width' | number;
 export type HeightOption = 'auto' | 'initial-height' | number;
 
 interface SizeOptions {
-  width: number;
-  height: number;
+  width: WidthOption;
+  height: HeightOption;
 }
 
 // FIXME look through `mode` values and align to pattern
@@ -24,42 +24,43 @@ type AutoPaddingResize = {
   background?: Background;
 } & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
-type ScaleResize = {
-  mode: 'scale' | 'liquidScale';
+export type ScaleResize = {
+  mode: 'scale';
+  gravity?: 'liquid';
   ignoreAspectRatio?: boolean;
 } & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type LimitedResize = {
   mode: 'limited';
-} & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
+} & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type PaddingResize = {
   mode: 'padding' | 'limitedPadding' | 'minimumPadding';
   gravity?: Gravity;
   background?: Background;
-} & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
+} & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type FitResize = {
   mode: 'fit' | 'minimumFit';
-} & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
+} & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type FillResize = {
   mode: 'fill' | 'limitedFill';
   gravity?: Gravity;
-} & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
+} & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type FillPaddingResize = {
   mode: 'fillPadding';
   gravity: 'auto';
   background?: Background;
-} & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
+} & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type CropResize = {
   mode: 'crop';
   gravity?: Gravity;
   x?: number;
   y?: number;
-} & RequireAtLeastOneProperty<SizeOptions & { aspectRatio: AspectRatio }>;
+} & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type ThumbResize = {
   mode: 'thumb';
@@ -74,9 +75,10 @@ type ImaggaCropResize = {
 
 type ImaggaScaleResize = {
   mode: 'imaggaScale';
-} & RequireAtLeastOneProperty<SizeOptions & AspectRatio>;
+} & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
 export type Resize =
+  | (RequireAtLeastOneProperty<SizeOptions> & { mode?: never })
   | ImaggaScaleResize
   | ImaggaCropResize
   | CropResize

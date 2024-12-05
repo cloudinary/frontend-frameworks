@@ -1,13 +1,15 @@
 import { Effect } from '../transformationTypes/effect';
+import { parseRemoveBackground as ParseRemoveBackground } from './parseRemoveBackground';
 
-export const parseEffects = (effects: Effect[]): string => {
+export const parseEffects = (parseRemoveBackground: typeof ParseRemoveBackground) => (effects: Effect[]): string => {
   return effects
     .map((effect):`e_${string}` => {
       switch (effect.type) {
         case 'sepia':
           return `e_sepia${effect.level ? `:${effect.level}` : ''}`;
         case 'backgroundRemoval':
-          return effect.mode === 'fineEdges' ? 'e_background_removal:fineedges_y' : 'e_background_removal';
+        // FIXME
+          return parseRemoveBackground(effect.mode ?? true) as any;
         case 'fade':
           return `e_fade:${effect.duration}`;
         case 'gamma':
@@ -34,5 +36,5 @@ export const parseEffects = (effects: Effect[]): string => {
           return `e_auto_contrast${effect.blendPercentage ? `:${effect.blendPercentage}` : ''}`;
       }
     })
-    .join('');
+    .join('/');
 };
