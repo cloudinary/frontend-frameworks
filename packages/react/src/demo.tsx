@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { scale } from '@cloudinary/url-gen/actions/resize';
+import { videoCodec } from '@cloudinary/url-gen/actions/transcode';
+import { h264 } from '@cloudinary/url-gen/qualifiers/videoCodec';
+import { baseline } from '@cloudinary/url-gen/qualifiers/videoCodecProfile';
+import { vcl31 } from '@cloudinary/url-gen/qualifiers/videoCodecLevel'
 import { sepia, backgroundRemoval } from '@cloudinary/url-gen/actions/effect';
 import { format, quality } from '@cloudinary/url-gen/actions/delivery';
-import { CloudinaryImage } from './index';
+import { CloudinaryImage, CloudinaryVideo } from './index';
 
 const LegacyComponentUsage = () => {
   const cloudinary = new Cloudinary({
@@ -15,17 +19,30 @@ const LegacyComponentUsage = () => {
   const cloudinaryImageObject = cloudinary
     .image('front_face')
     .effect(backgroundRemoval())
-    .backgroundColor('lightblue')
     .effect(sepia())
     .resize(scale().height(333))
     .delivery(format('auto'))
     .delivery(quality('auto'));
 
+  const cloudinaryVideoObject = cloudinary.video('dog.mp4')
+    .effect(sepia())
+    .transcode(
+      videoCodec(
+        h264()
+          .profile(baseline())
+          .level(vcl31())
+      )
+    );
+
   return (
     <>
       <div>Legacy Component Usage</div>
-      <div>
-        <CloudinaryImage  cldImg={cloudinaryImageObject}    />
+      <div style={{
+        display: 'flex'
+      }}
+      >
+        <CloudinaryImage cldImg={cloudinaryImageObject} />
+        <CloudinaryVideo cldVid={cloudinaryVideoObject} autoPlay muted />
       </div>
     </>
   );
@@ -34,10 +51,14 @@ const LegacyComponentUsage = () => {
 const NewComponentUsage = () => (
   <>
     <div>New Component Usage</div>
-    <div>
+    <div style={{
+      display: 'flex'
+    }}
+    >
       <CloudinaryImage
-        src='https://res.cloudinary.com/demo/image/upload/front_face?_a=DATAg1AAZAA0'
+        src='https://res.cloudinary.com/demo/image/upload/front_face'
         alt='front face'
+        removeBackground
         background={{ type: 'color', color: 'lightblue' }}
         effects={[{ type: 'sepia' }]}
         resize={{
@@ -45,6 +66,23 @@ const NewComponentUsage = () => (
         }}
         format='auto'
         quality='auto'
+      />
+      <CloudinaryVideo
+        src='https://res.cloudinary.com/demo/video/upload/dog.mp4'
+        removeBackground
+        videoProps={{
+          autoPlay: true,
+          muted: true
+        }}
+        videoCodec={{
+          use: 'h264',
+          profile: 'baseline',
+          level: 3.1
+        }}
+        effects={[
+          { type: 'sepia' },
+          { type: 'blur' }
+        ]}
       />
     </div>
   </>
