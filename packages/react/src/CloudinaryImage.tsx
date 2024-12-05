@@ -45,11 +45,13 @@ type ImageTransformationProps = {
 };
 
 type ImageV3Props = {
+  cldImg?: never
   src: string;
   alt: string;
 } & ImageTransformationProps;
 
 interface ImageV2Props {
+  src?: never;
   cldImg: UrlGenCloudinaryImage;
 }
 
@@ -57,7 +59,7 @@ export type CloudinaryImageProps = ImageV3Props | ImageV2Props;
 
 export const CloudinaryImage = forwardRef<HTMLImageElement, CloudinaryImageProps>(
   (props, ref) => {
-    if ('cldImg' in props) {
+    if (props.cldImg) {
       const { cldImg, ...rest } = props;
       return <img src={cldImg.toURL()} {...rest} ref={ref} />;
     }
@@ -80,7 +82,7 @@ export const CloudinaryImage = forwardRef<HTMLImageElement, CloudinaryImageProps
       roundCorners: parseRoundCorners,
       opacity: parseOpacity
     } satisfies TransformationMap<ImageTransformationProps>;
-    const { src, alt, children, ...rest } = props;
+    const { src, alt, children, cldImg, ...rest } = props;
     const { baseCloudUrl, assetPath } = parseCloudinaryUrlToParts(src);
     const transformationString = parsePropsToTransformationString({
       transformationProps: rest,

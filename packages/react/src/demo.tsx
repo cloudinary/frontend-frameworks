@@ -25,7 +25,7 @@ const LegacyComponentUsage = () => {
     <>
       <div>Legacy Component Usage</div>
       <div>
-        <CloudinaryImage cldImg={cloudinaryImageObject} />
+        <CloudinaryImage  cldImg={cloudinaryImageObject}    />
       </div>
     </>
   );
@@ -38,7 +38,6 @@ const NewComponentUsage = () => (
       <CloudinaryImage
         src='https://res.cloudinary.com/demo/image/upload/front_face?_a=DATAg1AAZAA0'
         alt='front face'
-        removeBackground
         background={{ type: 'color', color: 'lightblue' }}
         effects={[{ type: 'sepia' }]}
         resize={{
