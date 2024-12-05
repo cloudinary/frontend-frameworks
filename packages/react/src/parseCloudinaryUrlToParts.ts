@@ -4,6 +4,6 @@ export interface CloudinaryUrlParts {
 }
 
 export const parseCloudinaryUrlToParts = (url: string): CloudinaryUrlParts => {
-  const [assetDomainWithCloud, assetType, assetPath] = url.split(/\/(image|video)\/upload\//);
-  return { baseCloudUrl: `${assetDomainWithCloud}/${assetType}/upload`, assetPath };
+  const [domainWithCloud, assetType, assetPath] = url.split(/\/(image|video)\/upload\//);
+  return { baseCloudUrl: `${domainWithCloud}/${assetType}/upload`, assetPath };
 };
