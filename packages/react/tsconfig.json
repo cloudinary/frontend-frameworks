@@ -29,19 +29,19 @@
     "isolatedModules": false,
     "emitDeclarationOnly": true,
     "types": ["node"],
-    "baseUrl": ".",
   },
+  "include": ["./src/**/*.*", "./.eslintrc.js"],
   "exclude": [
     "node_modules",
     "dist",
-    "playground",
+    "playground"
   ],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS",
       "target": "es5",
       "esModuleInterop": true,
-      "moduleResolution": "node",
+      "moduleResolution": "node"
     }
   }
 }
