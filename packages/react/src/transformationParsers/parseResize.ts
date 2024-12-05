@@ -17,7 +17,7 @@ export const createParseResize =
   ({ parseHeight, parseWidth, parseGravity, parseAspectRatio, parseBackground, parseIgnoreAspectRatio, parseZoom }: CreateParseResizeParams) =>
     (resize: Resize): `c_${string}` => {
       const parseWhenDefined = <Value, MaybeValue extends Value | undefined>
-        (value: MaybeValue, parser: (value: Value) => string) => {
+        (value: MaybeValue, parser: (value: Value) => string): string => {
         if (typeof value === 'undefined') {
           return '';
         }
