@@ -8,11 +8,9 @@ export const parsePropsToTransformationString = <Props extends Record<string, an
   const transformationStringList: Array<string | undefined> = transformationPropKeys
     .map((transformationName): undefined | string => {
       // FIXME this type guard seems to be too much for TS
-      if (transformationProps[transformationName] === undefined || !transformationMap[transformationName]) {
+      if (transformationProps[transformationName] === undefined) {
         return undefined;
       }
-
-      console.info(transformationName);
 
       return transformationMap[transformationName](transformationProps[transformationName]);
     });
