@@ -1,23 +1,21 @@
-export const parsePropsToTransformationString = <Props extends Record<string, any>>(
+export const parsePropsToTransformationString = <Props extends Record<string, any>>
+  ({ transformationProps, transformationMap }: {
   transformationProps: Props,
-  transformationMap: { [K in keyof Props]: (value: Exclude<Props[K], undefined>) => string}
-): string => {
+  transformationMap: { [K in keyof Required<Props>]: (value: Exclude<Props[K], undefined>) => string}
+}): string => {
   const transformationPropKeys = Object.keys(transformationProps) as (keyof typeof transformationProps)[];
 
-  const transformationStringList = transformationPropKeys
-    .map((transformationName) => {
-      if (transformationName in transformationProps) {
-        // FIXME this type guard seems to be too much for TS
-        if (transformationProps[transformationName] === undefined) {
-          return undefined;
-        }
-
-        return transformationMap[transformationName](transformationProps[transformationName])
+  const transformationStringList: Array<string | undefined> = transformationPropKeys
+    .map((transformationName): undefined | string => {
+      // FIXME this type guard seems to be too much for TS
+      if (transformationProps[transformationName] === undefined || !transformationMap[transformationName]) {
+        return undefined;
       }
 
-      return undefined;
-    })
-    .filter(Boolean);
+      console.info(transformationName);
 
-  return transformationStringList.join('/');
+      return transformationMap[transformationName](transformationProps[transformationName]);
+    });
+
+  return transformationStringList.filter(Boolean).join('/');
 };

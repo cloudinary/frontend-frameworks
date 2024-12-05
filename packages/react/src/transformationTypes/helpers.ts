@@ -1,3 +1,5 @@
+// FIXME currently this type allow for passing
+//  { height: number } | { height: undefined } instead of { height: number } | { height?: never }
 export type RequireAtLeastOneProperty<
   Obj extends Record<any, any>,
   Keys extends keyof Obj = keyof Obj

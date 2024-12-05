@@ -4,7 +4,7 @@ import { Cloudinary } from '@cloudinary/url-gen';
 import { scale } from '@cloudinary/url-gen/actions/resize';
 import { sepia, backgroundRemoval } from '@cloudinary/url-gen/actions/effect';
 import { format, quality } from '@cloudinary/url-gen/actions/delivery';
-import { CloudinaryImg } from './index';
+import { CloudinaryImage } from './index';
 
 const LegacyComponentUsage = () => {
   const cloudinary = new Cloudinary({
@@ -25,27 +25,27 @@ const LegacyComponentUsage = () => {
     <>
       <div>Legacy Component Usage</div>
       <div>
-        <CloudinaryImg cldImg={cloudinaryImageObject} />
+        <CloudinaryImage cldImg={cloudinaryImageObject} />
       </div>
     </>
   );
 };
-// https://res.cloudinary.com/dzi6ifrzp/image/upload/Proboscis_Monkey_%28Nasalis_larvatus%29_male_%286707344031%29_jahicx.jpg
-// https://asset.cloudinary.com/dzi6ifrzp/2de2f0efe1c963abdd612eb6a6714cf5
 
 const NewComponentUsage = () => (
   <>
     <div>New Component Usage</div>
     <div>
-      <CloudinaryImg
+      <CloudinaryImage
         src='https://res.cloudinary.com/demo/image/upload/front_face?_a=DATAg1AAZAA0'
         alt='front face'
         removeBackground
+        background={{ type: 'color', color: 'lightblue' }}
+        effects={[{ type: 'sepia' }]}
+        resize={{
+          height: 333
+        }}
         format='auto'
         quality='auto'
-        background={{ type: 'color', color: 'lightblue' }}
-        height={333}
-        effects={[{ type: 'sepia' }]}
       />
     </div>
   </>
