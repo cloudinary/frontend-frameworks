@@ -31,7 +31,7 @@ export const parseGravity = (gravity: Gravity) => {
       }
       return '';
     case 'object':
-      return '';
+      return `g_${gravity.focus}`;
     case 'auto':
       return '';
     case 'clippingPath':
