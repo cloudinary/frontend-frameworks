@@ -75,10 +75,10 @@ const NewComponentUsage = () => (
           muted: true,
           loop: true
         }}
-        duration={1}
+        duration='1%'
         resize={{
           height: 200,
-          width: 200,
+          width: 200
         }}
         videoCodec={{
           use: 'h264',
@@ -92,7 +92,6 @@ const NewComponentUsage = () => (
         ]}
         roundCorners={100}
         rotate={50}
-        startOffset={1}
       />
     </div>
   </>
