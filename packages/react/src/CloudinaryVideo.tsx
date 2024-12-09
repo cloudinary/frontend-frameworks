@@ -48,7 +48,7 @@ export type VideoTransformationProps = {
   duration?: Duration;
   startOffset?: StartOffset;
   videoCodec?: VideoCodec;
-  resize?: Resize;
+  resize?: Exclude<Resize, { mode: 'thumbnail' }>;
 };
 
 type VideoV3Props = {
@@ -56,7 +56,6 @@ type VideoV3Props = {
   src: string;
   videoProps?: React.HTMLProps<HTMLVideoElement>
 } & VideoTransformationProps;
-
 
 interface VideoV2Props extends React.HTMLProps<HTMLVideoElement> {
   src?: never;

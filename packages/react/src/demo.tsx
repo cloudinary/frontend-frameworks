@@ -77,10 +77,8 @@ const NewComponentUsage = () => (
         }}
         duration={1}
         resize={{
-          mode: 'thumbnail',
           height: 200,
           width: 200,
-          gravity: 'auto'
         }}
         videoCodec={{
           use: 'h264',
