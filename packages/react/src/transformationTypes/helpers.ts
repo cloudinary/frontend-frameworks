@@ -1,4 +1,4 @@
-// FIXME currently this type allow for passing
+// FIXME currently this type allows for passing
 //  { height: number } | { height: undefined } instead of { height: number } | { height?: never }
 export type RequireAtLeastOneProperty<
   Obj extends Record<any, any>,
