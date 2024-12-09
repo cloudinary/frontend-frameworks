@@ -8,8 +8,7 @@ export const parseEffects = (parseRemoveBackground: typeof ParseRemoveBackground
         case 'sepia':
           return `e_sepia${effect.level ? `:${effect.level}` : ''}`;
         case 'backgroundRemoval':
-        // FIXME
-          return parseRemoveBackground(effect.mode ?? true) as any;
+          return parseRemoveBackground(effect.mode ?? true);
         case 'fade':
           return `e_fade:${effect.duration}`;
         case 'gamma':
