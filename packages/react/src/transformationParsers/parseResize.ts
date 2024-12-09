@@ -27,8 +27,8 @@ export const createParseResize =
 
       if (!resize.mode) {
         return `c_scale${
-          parseWhenDefined(resize.width, (width) => `w_${width}`)}${
-          parseWhenDefined(resize.height, (height) => `h_${height}`)
+          parseWhenDefined(resize.width, parseWidth)}${
+          parseWhenDefined(resize.height, parseHeight)
         }`;
       }
 
@@ -52,7 +52,7 @@ export const createParseResize =
           return `c_scale${
               parseWhenDefined(resize.ignoreAspectRatio, parseIgnoreAspectRatio)}${
               parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${
-              resize.gravity ? 'g_liquid' : ''}${
+              parseWhenDefined(resize.gravity, () => parseGravity({ mode: 'special', position: 'liquid' }))}${
               parseWhenDefined(resize.width, parseWidth)}${
               parseWhenDefined(resize.height, parseHeight)
             }`;

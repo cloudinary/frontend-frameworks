@@ -74,6 +74,9 @@ const NewComponentUsage = () => (
           autoPlay: true,
           muted: true
         }}
+        resize={{
+          height: 200
+        }}
         videoCodec={{
           use: 'h264',
           profile: 'baseline',
