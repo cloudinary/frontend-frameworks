@@ -1,5 +1,0 @@
-import 'mocha';
-
-describe('parseResizeOptions', () => {
-
-});
