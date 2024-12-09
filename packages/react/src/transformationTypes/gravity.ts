@@ -36,7 +36,7 @@ type Auto = 'auto' | {
   /**
    * @default faces
    */
-  focus?: string | string[];
+  priority?: string | string[];
   /**
    * @description 0 - 100
    */
