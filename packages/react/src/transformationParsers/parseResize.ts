@@ -109,7 +109,7 @@ export const createParseResize =
               parseWhenDefined(resize.width, parseWidth)}${
               parseWhenDefined(resize.height, parseHeight)
             }`;
-        case 'thumb':
+        case 'thumbnail':
           return `c_thumb${
               parseWhenDefined(resize.gravity, parseGravity)}${
               parseWhenDefined(resize.aspectRatio, parseAspectRatio)}${

@@ -63,7 +63,7 @@ type CropResize = {
 } & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
 type ThumbResize = {
-  mode: 'thumb';
+  mode: 'thumbnail';
   gravity: Gravity;
   zoom?: number;
 } & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
@@ -77,6 +77,7 @@ type ImaggaScaleResize = {
   mode: 'imaggaScale';
 } & RequireAtLeastTwoProperties<SizeOptions & { aspectRatio: AspectRatio }>;
 
+// FIXME improve error reporting (misinferring in tsc)
 export type Resize =
   | (RequireAtLeastOneProperty<SizeOptions> & { mode?: never })
   | ImaggaScaleResize
