@@ -5,5 +5,5 @@ export const parseRemoveBackground = <Value extends RemoveBackground>(removeBack
     return '' as Value extends false ? '' : `e_${string}`;
   }
 
-  return removeBackground === 'fineEdges' ? 'e_background_removal:fineedges_y' : 'e_background_removal';
+  return (removeBackground === 'fineEdges' ? 'e_background_removal:fineedges_y' : 'e_background_removal') as Value extends false ? '' : `e_${string}`;
 }

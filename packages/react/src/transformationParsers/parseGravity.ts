@@ -3,7 +3,7 @@ import { Gravity } from '../transformationTypes/gravity';
 type SimpleGravity = Gravity extends infer GravityValue ? GravityValue extends string ? GravityValue : never : never;
 
 // FIXME fill in missing gravity parsing
-export const parseGravity = (gravity: Gravity) => {
+export const parseGravity = (gravity: Gravity): `g_${string}` | '' => {
   const camelCaseToSnakeCase = <Str extends string>(str: Str) => str.replace(/([A-Z]{1})/g, (value) => `_${value.toLowerCase()}`);
   const simpleGravityParser = <G extends SimpleGravity>(gravity: G): `g_${string}` => `g_${camelCaseToSnakeCase(gravity)}`;
 
@@ -31,7 +31,7 @@ export const parseGravity = (gravity: Gravity) => {
       }
       return '';
     case 'object':
-      return `g_${gravity.focus}`;
+      return `g_${gravity.focus}` as const;
     case 'auto':
       return '';
     case 'clippingPath':
