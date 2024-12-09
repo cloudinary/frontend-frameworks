@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "esnext",
+    "target": "esnext",
     "declarationDir" : "./dist",
     "lib": [
       "dom",
@@ -16,11 +17,9 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es5",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -28,14 +27,20 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "emitDeclarationOnly": true,
-    "types": ["jest", "node"],
-    "baseUrl": "src"
+    "types": ["node"],
   },
-  "include": ["src/index.tsx"],
+  "include": ["./src/**/*.*", "./.eslintrc.js"],
   "exclude": [
     "node_modules",
     "dist",
-    "playground",
-    "__tests__"
-  ]
+    "playground"
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "target": "es5",
+      "esModuleInterop": true,
+      "moduleResolution": "node"
+    }
+  }
 }
