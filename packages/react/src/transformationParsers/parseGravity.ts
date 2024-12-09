@@ -26,6 +26,9 @@ export const parseGravity = (gravity: Gravity) => {
 
   switch (gravity.mode) {
     case 'special':
+      if (gravity.position === 'liquid') {
+        return 'g_liquid';
+      }
       return '';
     case 'object':
       return '';
