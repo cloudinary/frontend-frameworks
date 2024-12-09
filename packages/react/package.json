@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "npm run build --prefix ../html &&  tsc && rollup -c && cp package.json ./dist",
-    "serve": "rollup -c rollup-serve.config.js",
+    "serve": "rollup -w -c rollup-serve.config.js",
     "lint": "eslint ./src",
     "typecheck": "tsc --noEmit --skipLibCheck --project ./tsconfig.json",
     "test": "mocha src/**/*.test.*",
