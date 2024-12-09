@@ -6,7 +6,7 @@ import { videoCodec } from '@cloudinary/url-gen/actions/transcode';
 import { h264 } from '@cloudinary/url-gen/qualifiers/videoCodec';
 import { baseline } from '@cloudinary/url-gen/qualifiers/videoCodecProfile';
 import { vcl31 } from '@cloudinary/url-gen/qualifiers/videoCodecLevel'
-import { sepia, backgroundRemoval } from '@cloudinary/url-gen/actions/effect';
+import { sepia, backgroundRemoval, blackwhite } from '@cloudinary/url-gen/actions/effect';
 import { format, quality } from '@cloudinary/url-gen/actions/delivery';
 import { CloudinaryImage, CloudinaryVideo } from './index';
 
@@ -25,7 +25,7 @@ const LegacyComponentUsage = () => {
     .delivery(quality('auto'));
 
   const cloudinaryVideoObject = cloudinary.video('dog.mp4')
-    .effect(sepia())
+    .effect(blackwhite())
     .transcode(
       videoCodec(
         h264()
@@ -42,7 +42,7 @@ const LegacyComponentUsage = () => {
       }}
       >
         <CloudinaryImage cldImg={cloudinaryImageObject} />
-        <CloudinaryVideo cldVid={cloudinaryVideoObject} autoPlay muted />
+        <CloudinaryVideo cldVid={cloudinaryVideoObject} autoPlay muted loop />
       </div>
     </>
   );
@@ -72,10 +72,15 @@ const NewComponentUsage = () => (
         removeBackground
         videoProps={{
           autoPlay: true,
-          muted: true
+          muted: true,
+          loop: true
         }}
+        duration={1}
         resize={{
-          height: 200
+          mode: 'thumbnail',
+          height: 200,
+          width: 200,
+          gravity: 'auto'
         }}
         videoCodec={{
           use: 'h264',
@@ -84,8 +89,12 @@ const NewComponentUsage = () => (
         }}
         effects={[
           { type: 'sepia' },
+          { type: 'noise', level: 100 },
           { type: 'blur' }
         ]}
+        roundCorners={100}
+        rotate={50}
+        startOffset={1}
       />
     </div>
   </>

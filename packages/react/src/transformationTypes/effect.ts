@@ -1,8 +1,9 @@
+// FIXME image only
 type Sepia = {
   type: 'sepia';
   level?: number;
 };
-
+// FIXME image only
 type BackgroundRemoval = {
   type: 'backgroundRemoval';
   mode?: 'fineEdges';
@@ -20,7 +21,7 @@ type Gamma = {
    */
   duration: number;
 }
-
+// FIXME image only
 type Grayscale = {
   type: 'grayscale'
 }
