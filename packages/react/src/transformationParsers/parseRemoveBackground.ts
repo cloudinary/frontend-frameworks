@@ -1,8 +1,8 @@
 import { RemoveBackground } from '../transformationTypes/removeBackground';
 
-export const parseRemoveBackground = (removeBackground: RemoveBackground) => {
+export const parseRemoveBackground = <Value extends RemoveBackground>(removeBackground: Value): Value extends false ? '' : `e_${string}` => {
   if (!removeBackground) {
-    return '';
+    return '' as Value extends false ? '' : `e_${string}`;
   }
 
   return removeBackground === 'fineEdges' ? 'e_background_removal:fineedges_y' : 'e_background_removal';
