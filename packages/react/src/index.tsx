@@ -1,2 +1,2 @@
-export { CloudinaryImage } from './CloudinaryImage';
-export { CloudinaryVideo } from './CloudinaryVideo';
+export { CloudinaryImage, type CloudinaryImageProps } from './CloudinaryImage';
+export { CloudinaryVideo, type CloudinaryVideoProps } from './CloudinaryVideo';
