@@ -1,6 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: ['standard', 'standard-react', 'plugin:@typescript-eslint/eslint-recommended'],
+  extends: ['standard', 'standard-react', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:storybook/recommended'],
   env: {
     node: true
   },
