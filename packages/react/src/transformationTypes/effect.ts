@@ -5,7 +5,7 @@ type Sepia = {
 };
 // FIXME image only
 type BackgroundRemoval = {
-  type: 'backgroundRemoval';
+  type: 'removeBackground';
   mode?: 'fineEdges';
 };
 

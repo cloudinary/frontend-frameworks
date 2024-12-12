@@ -7,8 +7,7 @@ export const parseEffects = (parseRemoveBackground: typeof ParseRemoveBackground
       switch (effect.type) {
         case 'sepia':
           return `e_sepia${effect.level ? `:${effect.level}` : ''}`;
-          // FIXME naming incosistency with inline prop / parser
-        case 'backgroundRemoval':
+        case 'removeBackground':
           return parseRemoveBackground(effect.mode ?? true);
         case 'fade':
           return `e_fade:${effect.duration}`;
