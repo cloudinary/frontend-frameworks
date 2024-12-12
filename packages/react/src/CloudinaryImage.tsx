@@ -48,11 +48,13 @@ type ImageV3Props = {
   cldImg?: never
   src: string;
   alt: string;
+  children?: never;
 } & ImageTransformationProps;
 
 interface ImageV2Props {
   src?: never;
   cldImg: UrlGenCloudinaryImage;
+  children?: never;
 }
 
 export type CloudinaryImageProps = ImageV3Props | ImageV2Props;

@@ -1,21 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import type { ComponentType } from 'react';
-import { CloudinaryImage, CloudinaryImageProps } from './CloudinaryImage';
+import { CloudinaryImage } from './CloudinaryImage';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { backgroundRemoval, sepia } from '@cloudinary/url-gen/actions/effect';
 import { scale } from '@cloudinary/url-gen/actions/resize';
 import { format, quality } from '@cloudinary/url-gen/actions/delivery';
 
-// FIXME `Meta` cant handle discriminated union or `forwardRef`
-const meta: Meta<ComponentType<CloudinaryImageProps>>= {
+const meta: Meta<typeof CloudinaryImage>= {
   component: CloudinaryImage,
 };
 
 export default meta;
-// FIXME `StoryObj` cant handle discriminated union
-type V3Story = StoryObj<ComponentType<Extract<CloudinaryImageProps, {src: string}>>>;
+type Story = StoryObj<typeof CloudinaryImage>;
 
-export const VersionV3: V3Story = {
+export const VersionV3: Story = {
   args: {
     src: 'https://res.cloudinary.com/demo/image/upload/front_face',
     alt: 'front face',
@@ -23,7 +20,11 @@ export const VersionV3: V3Story = {
     effects: [{ type: 'sepia' }],
     resize: { height: 333 },
     format: 'auto',
-    quality: 'auto'
+    quality: 'auto',
+    opacity: 100,
+    background: { type: 'color', color: 'white' },
+    roundCorners: 0,
+    rotate: 0,
   }
 };
 
@@ -40,7 +41,7 @@ const cloudinaryImageObject = cloudinary
   .delivery(format('auto'))
   .delivery(quality('auto'));
 
-export const VersionV2 = {
+export const VersionV2: Story = {
   args: {
     cldImg: cloudinaryImageObject,
   }
