@@ -1,0 +1,38 @@
+name: Pull Request
+
+on: [pull_request_target] #To ensure better security and avoid running on forks
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [14, 16, 18]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.version }}
+          cache: 'npm'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ matrix.version }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.version }}-
+
+      - name: Installing dependencies
+        run: npm ci
+
+      - name: Running tests
+        run: npm run test
+
+      - name: Running lint
+        run: npm run lint
+
+      - name: Running typecheck
+        run: npm run typecheck
