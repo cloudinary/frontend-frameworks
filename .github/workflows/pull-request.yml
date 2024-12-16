@@ -27,13 +27,13 @@ jobs:
             ${{ runner.os }}-node-${{ matrix.version }}-
 
       - name: Installing dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Running tests
-        run: npm run test
+        run: pnpm -r test
 
       - name: Running lint
-        run: npm run lint
+        run: pnpm -r lint
 
       - name: Running typecheck
-        run: npm run typecheck
+        run: pnpm -r typecheck
