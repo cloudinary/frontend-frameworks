@@ -16,15 +16,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.version }}
-          cache: 'npm'
-
-      - name: Cache Node.js modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ matrix.version }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ matrix.version }}-
+          cache: 'pnpm'
 
       - name: Installing dependencies
         run: pnpm install --frozen-lockfile
