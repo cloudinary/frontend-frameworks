@@ -6,7 +6,7 @@
   },
   "scripts": {
     "postinstall": "husky install",
-    "install": "lerna bootstrap --ci",
+    "install": "lerna bootstrap --ci --hoist @cloudinary/url-gen",
     "build": "lerna run build",
     "quickstart": "lerna bootstrap && lerna run build",
     "test": "lerna run test",
@@ -15,6 +15,7 @@
     "update:urlgen": "npm install @cloudinary/url-gen@latest --prefix packages/html && npm install @cloudinary/url-gen@latest --prefix packages/react && npm install @cloudinary/url-gen@latest --prefix packages/vue && npm install @cloudinary/url-gen@latest --prefix packages/angular && npm install @cloudinary/url-gen@latest --prefix packages/angular/projects/cloudinary-library"
   },
   "devDependencies": {
+    "@cloudinary/url-gen": "^1.21.0",
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
     "@vue/compiler-sfc": "^3.2.47",
