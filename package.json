@@ -4,6 +4,7 @@
   "engines": {
     "node": ">=14.0.0 <19"
   },
+  "packageManager": "pnpm@9.7.1",
   "scripts": {
     "postinstall": "husky install",
     "build": "pnpm -r build",
@@ -40,6 +41,7 @@
     }
   },
   "volta": {
-    "node": "18.20.5"
+    "node": "18.20.5",
+    "pnpm": "9.7.1"
   }
 }
