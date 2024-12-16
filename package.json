@@ -2,7 +2,7 @@
   "name": "frontend-frameworks-monorepo",
   "version": "1.0.0",
   "engines": {
-    "node": ">=16.0.0 <19"
+    "node": ">=16.0.0"
   },
   "scripts": {
     "postinstall": "husky install",
