@@ -43,7 +43,7 @@ importers:
       '@angular/platform-browser': ~12.2.16
       '@angular/platform-browser-dynamic': ~12.2.16
       '@angular/router': ~12.2.16
-      '@cloudinary/html': ^1.13.1
+      '@cloudinary/html': workspace:^
       '@cloudinary/url-gen': ^1.16.0
       '@types/jasmine': ~3.5.0
       '@types/jasminewd2': ~2.0.3
@@ -105,7 +105,7 @@ importers:
     specifiers:
       '@angular/common': ~12.2.16
       '@angular/core': ~12.2.16
-      '@cloudinary/html': ^1.13.1
+      '@cloudinary/html': workspace:^
       '@cloudinary/url-gen': ^1.16.0
     dependencies:
       '@cloudinary/html': link:../../../html
@@ -163,7 +163,7 @@ importers:
     specifiers:
       '@babel/preset-env': ^7.12.10
       '@babel/preset-typescript': ^7.12.7
-      '@cloudinary/html': ^1.13.1
+      '@cloudinary/html': workspace:^
       '@cloudinary/url-gen': ^1.16.0
       '@rollup/plugin-commonjs': ^21.0.1
       '@rollup/plugin-json': ^4.1.0
@@ -5983,7 +5983,9 @@ packages:
       source-map: 0.6.1
       string-length: 2.0.0
     transitivePeerDependencies:
+      - bufferutil
       - supports-color
+      - utf-8-validate
     dev: true
 
   /@jest/reporters/27.5.1:
@@ -6345,7 +6347,7 @@ packages:
     dependencies:
       convert-source-map: 1.9.0
       istanbul-lib-instrument: 4.0.3
-      loader-utils: 2.0.0
+      loader-utils: 2.0.4
       merge-source-map: 1.1.0
       schema-utils: 2.7.1
     transitivePeerDependencies:
@@ -9803,7 +9805,7 @@ packages:
     resolution: {integrity: sha512-OXwN5b9pCUXNQHJpwwD2qP40byEmSgzj8B4ydSN0uMNYWiFmJ6x6KwUllMmfk8Rwu/HJDFR7U8ubsWBoN0Xp0A==}
     engines: {node: '>=8.9'}
     dependencies:
-      loader-utils: 2.0.0
+      loader-utils: 2.0.4
       regex-parser: 2.3.0
     dev: true
 
@@ -19540,9 +19542,7 @@ packages:
       pretty-format: 24.9.0
       throat: 4.1.0
     transitivePeerDependencies:
-      - bufferutil
       - supports-color
-      - utf-8-validate
     dev: true
 
   /jest-jasmine2/27.5.1:
@@ -22721,7 +22721,7 @@ packages:
 
   /npm-lifecycle/3.1.5:
     resolution: {integrity: sha512-lDLVkjfZmvmfvpvBzA4vzee9cn+Me4orq0QF8glbswJVEbIcSNWib7qGOffolysc3teCqbbPZZkzbr3GQZTL1g==}
-    deprecated: The lifecycle script runner used in npm is now @npmcli/run-script. Please use that module moving forward
+    deprecated: The lifecycle script runner used in pnpm is now @npmcli/run-script. Please use that module moving forward
     dependencies:
       byline: 5.0.0
       graceful-fs: 4.2.11
@@ -26565,7 +26565,7 @@ packages:
     dependencies:
       adjust-sourcemap-loader: 4.0.0
       convert-source-map: 1.9.0
-      loader-utils: 2.0.0
+      loader-utils: 2.0.4
       postcss: 7.0.39
       source-map: 0.6.1
     dev: true

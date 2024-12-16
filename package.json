@@ -14,7 +14,7 @@
     "typecheck": "pnpm -r typecheck",
     "build:docs": "node ./scripts/buildDocs.js",
     "start:docs": "live-server --open=public/docs",
-    "update:urlgen": "pnpm install @cloudinary/url-gen@latest --prefix packages/html && pnpm install @cloudinary/url-gen@latest --prefix packages/react && pnpm install @cloudinary/url-gen@latest --prefix packages/vue && pnpm install @cloudinary/url-gen@latest --prefix packages/angular && pnpm install @cloudinary/url-gen@latest --prefix packages/angular/projects/cloudinary-library"
+    "update:urlgen": "pnpm --filter @cloudinary/html install @cloudinary/url-gen@latest && pnpm install @cloudinary/url-gen@latest --filter @cloudinary/react && pnpm install @cloudinary/url-gen@latest --filter @cloudinary/vue && pnpm install @cloudinary/url-gen@latest --filter @cloudinarys/angular && pnpm install @cloudinary/url-gen@latest --filter @cloudinary/cloudinary-library"
   },
   "devDependencies": {
     "@cloudinary/url-gen": "^1.21.0",

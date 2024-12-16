@@ -12,7 +12,7 @@
     "@cloudinary/url-gen": "^1.21.0"
   },
   "dependencies": {
-    "@cloudinary/html": "^1.13.1"
+    "@cloudinary/html": "workspace:^"
   },
   "publishConfig": {
     "access": "public"

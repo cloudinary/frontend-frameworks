@@ -15,7 +15,7 @@ jobs:
   allow_failures:
     - node_js: 18
 
-script: npm run quickstart && npm run test
+script: pnpm run quickstart && pnpm run test
 
 notifications:
   email:
