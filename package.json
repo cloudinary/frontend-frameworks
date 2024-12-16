@@ -20,6 +20,8 @@
     "@cloudinary/url-gen": "^1.21.0",
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
+    "@types/body-parser": "^1.19.5",
+    "@types/bonjour": "^3.5.13",
     "@vue/compiler-sfc": "^3.2.47",
     "better-docs": "2.3.2",
     "core-js": "^3.39.0",
