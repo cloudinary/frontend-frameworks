@@ -5,7 +5,8 @@
   "author": "cloudinary",
   "license": "MIT",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": ["package.json", "dist"],
   "repository": {
     "type": "git",
     "url": "https://github.com/cloudinary/frontend-frameworks.git",

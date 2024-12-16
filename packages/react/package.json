@@ -5,9 +5,10 @@
   "author": "cloudinary",
   "license": "MIT",
   "repository": "https://github.com/cloudinary/frontend-frameworks",
-  "main": "index.umd.js",
-  "module": "index.js",
-  "types": "index.d.ts",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["package.json", "dist"],
   "sideEffects": false,
   "engines": {
     "node": ">=10"
