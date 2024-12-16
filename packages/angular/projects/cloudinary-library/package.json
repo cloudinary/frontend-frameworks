@@ -9,7 +9,7 @@
   "devDependencies": {
     "@angular/common": "~12.2.16",
     "@angular/core": "~12.2.16",
-    "@cloudinary/url-gen": "^1.16.0"
+    "@cloudinary/url-gen": "^1.21.0"
   },
   "dependencies": {
     "@cloudinary/html": "^1.13.1"
