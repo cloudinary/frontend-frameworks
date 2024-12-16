@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "module": "esnext",
-    "target": "esnext",
+    "target": "ES2022",
     "declarationDir" : "./dist",
     "lib": [
       "dom",
@@ -28,9 +28,9 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "emitDeclarationOnly": true,
-    "types": ["node"],
+    "types": ["node"]
   },
-  "include": ["./src/**/*.*", "./.eslintrc.js"],
+  "include": ["./src/**/*.*"],
   "exclude": [
     "node_modules",
     "dist",
