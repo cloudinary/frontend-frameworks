@@ -10,8 +10,8 @@
     "build": "lerna run build",
     "quickstart": "lerna bootstrap && lerna run build",
     "test": "lerna run test",
-    "lint": "lerna run lint",
     "typecheck": "lerna run typecheck",
+    "lint": "lerna run lint",
     "build:docs": "node ./scripts/buildDocs.js",
     "start:docs": "live-server --open=public/docs",
     "update:urlgen": "npm install @cloudinary/url-gen@latest --prefix packages/html && npm install @cloudinary/url-gen@latest --prefix packages/react && npm install @cloudinary/url-gen@latest --prefix packages/vue && npm install @cloudinary/url-gen@latest --prefix packages/angular && npm install @cloudinary/url-gen@latest --prefix packages/angular/projects/cloudinary-library"
