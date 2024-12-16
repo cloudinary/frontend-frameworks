@@ -11,7 +11,7 @@ module.exports = {
       legacyDecorators: true,
       jsx: true
     },
-    project: ['./tsconfig.json']
+    project: './tsconfig.json',
   },
   settings: {
     react: {

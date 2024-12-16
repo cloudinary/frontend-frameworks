@@ -3,4 +3,4 @@ dist/
 node_modules/
 .snapshots/
 *.min.js
-./eslintrc.js
+.eslintrc.js

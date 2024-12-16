@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { CloudinaryVideo } from './CloudinaryVideo';
 import { Cloudinary } from '@cloudinary/url-gen';
-import { byRadius } from "@cloudinary/url-gen/actions/roundCorners";
-import { trim } from "@cloudinary/url-gen/actions/videoEdit";
+import { byRadius } from '@cloudinary/url-gen/actions/roundCorners';
+import { trim } from '@cloudinary/url-gen/actions/videoEdit';
 import { blackwhite } from '@cloudinary/url-gen/actions/effect';
 import { videoCodec } from '@cloudinary/url-gen/actions/transcode';
 import { h264 } from '@cloudinary/url-gen/qualifiers/videoCodec';
@@ -10,8 +10,8 @@ import { baseline } from '@cloudinary/url-gen/qualifiers/videoCodecProfile';
 import { vcl31 } from '@cloudinary/url-gen/qualifiers/videoCodecLevel';
 import { scale } from '@cloudinary/url-gen/actions/resize';
 
-const meta: Meta<typeof CloudinaryVideo>= {
-  component: CloudinaryVideo,
+const meta: Meta<typeof CloudinaryVideo> = {
+  component: CloudinaryVideo
 };
 
 export default meta;
@@ -41,7 +41,7 @@ const cloudinary = new Cloudinary({
 const cloudinaryVideoObject = cloudinary.video('dog.mp4')
   .effect(blackwhite())
   .resize(scale().height(333))
-  .videoEdit(trim().duration("1p"))
+  .videoEdit(trim().duration('1p'))
   .roundCorners(byRadius(20))
   .transcode(
     videoCodec(

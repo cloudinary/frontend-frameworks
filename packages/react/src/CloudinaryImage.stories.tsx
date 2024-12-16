@@ -5,8 +5,8 @@ import { backgroundRemoval, sepia } from '@cloudinary/url-gen/actions/effect';
 import { scale } from '@cloudinary/url-gen/actions/resize';
 import { format, quality } from '@cloudinary/url-gen/actions/delivery';
 
-const meta: Meta<typeof CloudinaryImage>= {
-  component: CloudinaryImage,
+const meta: Meta<typeof CloudinaryImage> = {
+  component: CloudinaryImage
 };
 
 export default meta;
@@ -24,7 +24,7 @@ export const VersionV3: Story = {
     opacity: 100,
     background: { type: 'color', color: 'white' },
     roundCorners: 0,
-    rotate: 0,
+    rotate: 0
   }
 };
 
@@ -43,6 +43,6 @@ const cloudinaryImageObject = cloudinary
 
 export const VersionV2: Story = {
   args: {
-    cldImg: cloudinaryImageObject,
+    cldImg: cloudinaryImageObject
   }
 }

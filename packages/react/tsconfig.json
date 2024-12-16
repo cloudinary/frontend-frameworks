@@ -34,7 +34,8 @@
   "exclude": [
     "node_modules",
     "dist",
-    "playground"
+    "playground",
+    ".eslintrc.js"
   ],
   "ts-node": {
     "compilerOptions": {
