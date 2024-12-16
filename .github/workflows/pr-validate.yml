@@ -27,7 +27,7 @@ jobs:
             ${{ runner.os }}-node-${{ matrix.version }}-
 
       - name: Installing dependencies
-        run: npm ci
+        run: npm install
 
       - name: Running tests
         run: npm run test
