@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "module": "esnext",
     "declarationDir" : "./dist",
@@ -26,7 +27,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "emitDeclarationOnly": true,
     "types": ["jest", "node"],
     "baseUrl": "src"

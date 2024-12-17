@@ -3,25 +3,23 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
 
-import packageJson from "./package.json";
-
 export default {
   input: "src/index.ts",
   output: [
     {
       format: "cjs",
-      file: packageJson.main,
+      file: "./dist/index.js",
       sourcemap: true
     },
     {
       format: 'umd',
-      file: packageJson.umd,
+      file: "./dist/index.umd.js",
       name: 'CloudinaryHtml',
       sourcemap: true,
     },
     {
       format: "esm",
-      file: packageJson.module,
+      file: "./dist/index.esm.js",
       sourcemap: true
     }
   ],

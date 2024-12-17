@@ -5,7 +5,8 @@
   "author": "cloudinary",
   "license": "MIT",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": ["package.json", "dist"],
   "repository": {
     "type": "git",
     "url": "https://github.com/cloudinary/frontend-frameworks.git",
@@ -14,9 +15,8 @@
   "scripts": {
     "build": "rollup -c",
     "prebuild": "rm -rf dist && npm run build --prefix ../html",
-    "postbuild": "replace-in-files --string='.vue' --replacement='' dist/index.d.ts && npm run copy:dts && npm run copy:pkg",
+    "postbuild": "replace-in-files --string='.vue' --replacement='' dist/index.d.ts && npm run copy:dts",
     "copy:dts": "cp dist/index.d.ts dist/index.umd.d.ts && cp dist/index.d.ts dist/index.ssr.d.ts",
-    "copy:pkg": "cp package.json ./dist",
     "prepublishOnly": "npm run build",
     "start": "vue-cli-service serve sampleApp/main.ts",
     "build:app": "vue-cli-service build",
