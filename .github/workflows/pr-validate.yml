@@ -29,6 +29,10 @@ jobs:
       - name: Installing dependencies
         run: npm ci
 
+        # necessary due to the package.json/main setup
+      - name: Running build
+        run: npm run build
+
       - name: Running tests
         run: npm run test
 
