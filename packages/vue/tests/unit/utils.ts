@@ -20,7 +20,7 @@ export const waitTicks = async (ticks: number) => {
  * @param args
  */
 export const testIf = (condition: boolean, ...args: [string, () => void]) =>
-    condition ? test(...args) : {};
+  condition ? test(...args) : {};
 
 export const setAnalyticsConstants = () => {
   SDKAnalyticsConstants.sdkSemver = "1.0.0";

@@ -3,7 +3,7 @@ import { CloudinaryVideoComponent } from '../lib/cloudinary-video.component';
 import {CloudinaryImage, CloudinaryVideo} from '@cloudinary/url-gen';
 import { auto, vp9, theora } from '@cloudinary/url-gen/qualifiers/videoCodec';
 import { videoCodec } from '@cloudinary/url-gen/actions/transcode';
-import {ElementRef} from "@angular/core";
+import {ElementRef} from '@angular/core';
 
 const cloudinaryImage = new CloudinaryImage('sample', { cloudName: 'demo' }, { analytics: false });
 const cloudinaryVideo = new CloudinaryVideo('sample', { cloudName: 'demo'}, { analytics: false });
@@ -138,12 +138,12 @@ describe('CloudinaryVideoComponent render', () => {
 
   it('should contain poster when "auto" is passed as cldPoster', fakeAsync(() => {
     component.cldVid = new CloudinaryVideo('sample', { cloudName: 'demo'}, { analytics: false });
-    component.cldPoster = "auto";
+    component.cldPoster = 'auto';
     const vidElement: HTMLVideoElement = fixture.nativeElement;
     const video = vidElement.querySelector('video');
     fixture.detectChanges();
     tick(0);
-  
+
     expect(video.attributes.getNamedItem('poster').value)
       .toEqual( 'https://res.cloudinary.com/demo/video/upload/q_auto/f_jpg/so_auto/sample');
   }));
@@ -155,7 +155,7 @@ describe('CloudinaryVideoComponent render', () => {
     const video = vidElement.querySelector('video');
     fixture.detectChanges();
     tick(0);
-  
+
     expect(video.attributes.getNamedItem('poster').value)
       .toEqual( 'https://res.cloudinary.com/demo/image/upload/sample');
   }));

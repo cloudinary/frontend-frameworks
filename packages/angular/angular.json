@@ -12,7 +12,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/cloudinary-library/tsconfig.lib.json",
+            "tsConfig": "projects/cloudinary-library/tsconfig.lib.prod.json",
             "project": "projects/cloudinary-library/ng-package.json"
           },
           "configurations": {
@@ -33,7 +33,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/cloudinary-library/tsconfig.lib.json",
+              "projects/cloudinary-library/tsconfig.lib.prod.json",
               "projects/cloudinary-library/tsconfig.spec.json"
             ],
             "exclude": [
