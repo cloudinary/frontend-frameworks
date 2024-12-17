@@ -55,6 +55,8 @@
   "overrides": {
     "protractor": {
       "minimist": "1.2.6"
-    }
+    },
+    "webpack": "5.65.0",
+    "babel-loader": "8.4.1"
   }
 }
