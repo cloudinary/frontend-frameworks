@@ -51,10 +51,6 @@ interface ImgProps {
  *   )
  * };
  *
- *
- *
- *
- *
  */
 
 /**
