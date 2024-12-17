@@ -15,7 +15,8 @@ import {SDKAnalyticsConstants} from '../internal/SDKAnalyticsConstants';
  *
  * @example
  * <caption>
- *  Please note that the order of the plugins is important. See {@link https://cloudinary.com/documentation/sdks/js/frontend-frameworks/index.html#plugin-order|Plugin Order} for more details.
+ *  Please note that the order of the plugins is important.
+ *  See {@link https://cloudinary.com/documentation/sdks/js/frontend-frameworks/index.html#plugin-order|Plugin Order} for more details.
  * </caption>
  * // In your app.module.ts inject the library.
  * import { CloudinaryModule} from '@cloudinary/angular';
@@ -57,6 +58,7 @@ import {SDKAnalyticsConstants} from '../internal/SDKAnalyticsConstants';
  * @prop imageAttributes Optional attributes include alt, width, height, loading
  */
 @Component({
+  /* tslint:disable:component-selector */
   selector: 'advanced-image',
   template: `
     <img />
