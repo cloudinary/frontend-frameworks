@@ -22,7 +22,7 @@ describe('CloudinaryImageComponent render', () => {
     tick(0);
     const imgElement: HTMLImageElement = fixture.nativeElement;
     const img = imgElement.querySelector('img');
-    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/sample')
+    expect(img.src).toBe('https://res.cloudinary.com/demo/image/upload/sample');
   }));
 
   it('ngOnChanges should trigger plugin rerun', fakeAsync(() => {
@@ -54,17 +54,17 @@ describe('CloudinaryImageComponent render', () => {
     const img = imgElement.querySelector('img');
     expect(img.outerHTML).toBe('<img _ngcontent-a-c11="" alt="text text text" width="400px" height="500px"' +
       ' loading="eager" src="https://res.cloudinary.com/demo/image/upload/sample">');
-    component.width = "800px";
-    component.alt = "updated alt text";
-    component.height = "1000px";
-    component.loading = "lazy";
+    component.width = '800px';
+    component.alt = 'updated alt text';
+    component.height = '1000px';
+    component.loading = 'lazy';
     component.ngOnChanges();
     expect(img.outerHTML).toBe('<img _ngcontent-a-c11="" alt="updated alt text" width="800px" height="1000px"' +
       ' loading="lazy" src="https://res.cloudinary.com/demo/image/upload/sample">');
     component.width = undefined;
     component.height = undefined;
-    component.alt = "";
-    component.loading = "lazy";
+    component.alt = '';
+    component.loading = 'lazy';
     component.ngOnChanges();
     expect(img.outerHTML).toBe('<img _ngcontent-a-c11="" alt=""' +
       ' loading="lazy" src="https://res.cloudinary.com/demo/image/upload/sample">');

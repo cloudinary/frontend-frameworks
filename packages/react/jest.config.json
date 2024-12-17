@@ -24,6 +24,9 @@
   "testPathIgnorePatterns": [
     "./__tests__/testUtils"
   ],
+  "moduleNameMapper": {
+    "^@cloudinary/html": "<rootDir>/../html/src"
+  },
   "snapshotSerializers": ["enzyme-to-json/serializer"],
   "coverageThreshold": {
     "global": {

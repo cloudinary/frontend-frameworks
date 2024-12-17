@@ -5,15 +5,19 @@ import { sepia } from "@cloudinary/url-gen/actions/effect";
 import { mount } from "@vue/test-utils";
 import { waitTicks } from "./utils";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {};
+
 describe("placeholder", () => {
   let cloudinaryImage: CloudinaryImage;
 
   const mockImage = {
     src: null,
-    onload: () => {},
-    onerror: () => {},
+    onload: noop,
+    onerror: noop,
   };
   beforeEach(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     window.Image = function () {
       return mockImage;
@@ -124,6 +128,7 @@ describe("placeholder", () => {
     const component = mount(AdvancedImage, {
       props: { cldImg: cloudinaryImage, plugins: [placeholder()] },
     });
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     component.element.onload(); // simulate element onload
     mockImage.onerror(); // simulate image onerror

@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@cloudinary/html": "^1.0.1",
-    "@cloudinary/url-gen": "^1.16.0",
+    "@cloudinary/url-gen": "^1.21.0",
     "@rollup/plugin-replace": "^4.0.0",
     "@sinonjs/fake-timers": "^9.1.2",
     "@types/jest": "^27.0.1",
@@ -61,7 +61,7 @@
     "rollup-plugin-vue": "^6.0.0",
     "ts-jest": "^27.0.4",
     "typescript": "^4.7.4",
-    "vue": "^3.2.37",
+    "vue": "^3.5.13",
     "vue-tsc": "^0.38.5"
   },
   "dependencies": {
