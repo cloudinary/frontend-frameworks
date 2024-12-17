@@ -19,6 +19,7 @@
       "dom"
     ],
     "paths": {
+      "@cloudinary/html": ["html/src"],
       "cloudinary-library": [
         "projects/cloudinary-library/dist"
       ],
