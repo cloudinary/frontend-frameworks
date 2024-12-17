@@ -1,8 +1,9 @@
 node_modules
 .idea
 dist
-#example/src
 playground/node_modules
 coverage
 src/react-app-env.d.ts
 *.tgz
+
+*storybook.log
