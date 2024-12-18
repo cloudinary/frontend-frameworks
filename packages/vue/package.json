@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "prebuild": "rm -rf dist && --filter @cloudinary/html build",
+    "prebuild": "rm -rf dist",
     "postbuild": "replace-in-files --string='.vue' --replacement='' dist/index.d.ts && npm run copy:dts",
     "copy:dts": "cp dist/index.d.ts dist/index.umd.d.ts && cp dist/index.d.ts dist/index.ssr.d.ts",
     "prepublishOnly": "pnpm run build",
