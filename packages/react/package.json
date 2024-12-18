@@ -17,7 +17,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "pnpm --filter @cloudinary/html && tsc && rollup -c && cp package.json ./dist",
+    "build": "tsc && rollup -c && cp package.json ./dist",
     "test": "jest --config jest.config.json",
     "test-coverage": "jest --coverage"
   },
