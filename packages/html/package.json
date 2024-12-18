@@ -7,7 +7,10 @@
   "module": "./dist/index.esm.js",
   "types": "./dist/index.d.ts",
   "type": "module",
-  "files": ["package.json", "dist"],
+  "files": [
+    "package.json",
+    "dist"
+  ],
   "sideEffects": false,
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "scripts": {
@@ -33,6 +36,7 @@
     "tslib": "^2.0.0"
   },
   "dependencies": {
+    "@cloudinary/transformation-builder-sdk": "^1.16.1",
     "@types/lodash.clonedeep": "^4.5.6",
     "@types/lodash.debounce": "^4.0.6",
     "@types/node": "^14.14.10",
