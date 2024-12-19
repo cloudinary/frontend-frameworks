@@ -217,6 +217,7 @@ importers:
       eslint-plugin-standard: ^4.0.1
       gh-pages: ^2.2.0
       jest: 27.5.1
+      jest-environment-jsdom: 27.5.1
       npm-run-all: ^4.1.5
       prettier: ^2.0.4
       react: ^16.13.1
@@ -265,103 +266,7 @@ importers:
       eslint-plugin-standard: 4.1.0_eslint@6.8.0
       gh-pages: 2.2.0
       jest: 27.5.1
-      npm-run-all: 4.1.5
-      prettier: 2.8.8
-      react: 16.14.0
-      react-dom: 16.14.0_react@16.14.0
-      react-scripts: 3.4.4_ebqptqp72ihqwoqsa5gxnn2lfq
-      rollup: 2.79.2
-      ts-jest: 27.1.5_d2mmrsvyyvbldr7nqg6fthb2py
-      typescript: 3.9.10
-
-  packages/react/dist:
-    specifiers:
-      '@babel/preset-env': ^7.12.10
-      '@babel/preset-typescript': ^7.12.7
-      '@cloudinary/html': workspace:^
-      '@cloudinary/url-gen': ^1.21.0
-      '@rollup/plugin-commonjs': ^21.0.1
-      '@rollup/plugin-json': ^4.1.0
-      '@rollup/plugin-node-resolve': ^13.1.3
-      '@rollup/plugin-replace': ^3.0.1
-      '@rollup/plugin-typescript': ^8.3.0
-      '@sinonjs/fake-timers': ^6.0.1
-      '@testing-library/jest-dom': ^4.2.4
-      '@types/enzyme': ^3.10.8
-      '@types/enzyme-adapter-react-16': ^1.0.6
-      '@types/jest': ^27.5.2
-      '@types/node': ^12.12.38
-      '@types/react': ^16.9.27
-      '@types/react-dom': ^16.9.7
-      '@types/sinonjs__fake-timers': ^6.0.2
-      '@typescript-eslint/eslint-plugin': ^2.26.0
-      '@typescript-eslint/parser': ^2.26.0
-      babel-eslint: ^10.0.3
-      cheerio: 1.0.0-rc.12
-      cross-env: ^7.0.2
-      enzyme: ^3.11.0
-      enzyme-adapter-react-16: ^1.15.5
-      enzyme-to-json: ^3.6.1
-      eslint: ^6.8.0
-      eslint-config-prettier: ^6.7.0
-      eslint-config-standard: ^14.1.0
-      eslint-config-standard-react: ^9.2.0
-      eslint-plugin-import: ^2.18.2
-      eslint-plugin-node: ^11.0.0
-      eslint-plugin-prettier: ^3.1.1
-      eslint-plugin-promise: ^4.2.1
-      eslint-plugin-react: ^7.17.0
-      eslint-plugin-standard: ^4.0.1
-      gh-pages: ^2.2.0
-      jest: 27.5.1
-      npm-run-all: ^4.1.5
-      prettier: ^2.0.4
-      react: ^16.13.1
-      react-dom: ^16.13.1
-      react-scripts: ^3.4.1
-      rollup: ^2.66.1
-      ts-jest: ^27.1.5
-      typescript: ^3.7.5
-    dependencies:
-      '@cloudinary/html': link:../../html
-    devDependencies:
-      '@babel/preset-env': 7.26.0
-      '@babel/preset-typescript': 7.26.0
-      '@cloudinary/url-gen': 1.21.0
-      '@rollup/plugin-commonjs': 21.1.0_rollup@2.79.2
-      '@rollup/plugin-json': 4.1.0_rollup@2.79.2
-      '@rollup/plugin-node-resolve': 13.3.0_rollup@2.79.2
-      '@rollup/plugin-replace': 3.1.0_rollup@2.79.2
-      '@rollup/plugin-typescript': 8.5.0_bdvhfumslnbo5cdsi26pmmed5m
-      '@sinonjs/fake-timers': 6.0.1
-      '@testing-library/jest-dom': 4.2.4
-      '@types/enzyme': 3.10.18
-      '@types/enzyme-adapter-react-16': 1.0.9
-      '@types/jest': 27.5.2
-      '@types/node': 12.20.55
-      '@types/react': 16.14.62
-      '@types/react-dom': 16.9.25_@types+react@16.14.62
-      '@types/sinonjs__fake-timers': 6.0.4
-      '@typescript-eslint/eslint-plugin': 2.34.0_fmavwhclprfd5wnbs7ocgoy2gu
-      '@typescript-eslint/parser': 2.34.0_z6m2zvrkqxyghb4a2ijhravsdi
-      babel-eslint: 10.1.0_eslint@6.8.0
-      cheerio: 1.0.0-rc.12
-      cross-env: 7.0.3
-      enzyme: 3.11.0
-      enzyme-adapter-react-16: 1.15.8_j6bpv5pizkyfppcg2tmva6pmii
-      enzyme-to-json: 3.6.2_enzyme@3.11.0
-      eslint: 6.8.0
-      eslint-config-prettier: 6.15.0_eslint@6.8.0
-      eslint-config-standard: 14.1.1_h46dytk74ta3t77x7ct3vdgsqm
-      eslint-config-standard-react: 9.2.0_eeaywkjelouyh25ujeiiulucmm
-      eslint-plugin-import: 2.31.0_tbglwmj7t2rhd43mvxmptakoay
-      eslint-plugin-node: 11.1.0_eslint@6.8.0
-      eslint-plugin-prettier: 3.4.1_hjndhktjeqm5xgu5gllcjbouzq
-      eslint-plugin-promise: 4.3.1
-      eslint-plugin-react: 7.37.2_eslint@6.8.0
-      eslint-plugin-standard: 4.1.0_eslint@6.8.0
-      gh-pages: 2.2.0
-      jest: 27.5.1
+      jest-environment-jsdom: 27.5.1
       npm-run-all: 4.1.5
       prettier: 2.8.8
       react: 16.14.0
@@ -6096,7 +6001,9 @@ packages:
       source-map: 0.6.1
       string-length: 2.0.0
     transitivePeerDependencies:
+      - bufferutil
       - supports-color
+      - utf-8-validate
     dev: true
 
   /@jest/reporters/27.5.1:
@@ -6458,7 +6365,7 @@ packages:
     dependencies:
       convert-source-map: 1.9.0
       istanbul-lib-instrument: 4.0.3
-      loader-utils: 2.0.0
+      loader-utils: 2.0.4
       merge-source-map: 1.1.0
       schema-utils: 2.7.1
     transitivePeerDependencies:
@@ -9916,7 +9823,7 @@ packages:
     resolution: {integrity: sha512-OXwN5b9pCUXNQHJpwwD2qP40byEmSgzj8B4ydSN0uMNYWiFmJ6x6KwUllMmfk8Rwu/HJDFR7U8ubsWBoN0Xp0A==}
     engines: {node: '>=8.9'}
     dependencies:
-      loader-utils: 2.0.0
+      loader-utils: 2.0.4
       regex-parser: 2.3.0
     dev: true
 
@@ -19658,9 +19565,7 @@ packages:
       pretty-format: 24.9.0
       throat: 4.1.0
     transitivePeerDependencies:
-      - bufferutil
       - supports-color
-      - utf-8-validate
     dev: true
 
   /jest-jasmine2/27.5.1:
@@ -26687,7 +26592,7 @@ packages:
     dependencies:
       adjust-sourcemap-loader: 4.0.0
       convert-source-map: 1.9.0
-      loader-utils: 2.0.0
+      loader-utils: 2.0.4
       postcss: 7.0.39
       source-map: 0.6.1
     dev: true
