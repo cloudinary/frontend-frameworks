@@ -1,4 +1,4 @@
-import {colorize, grayscale, assistColorBlind, vectorize, pixelate, blur} from "@cloudinary/url-gen/actions/effect";
+import {colorize, grayscale, assistColorBlind, vectorize, pixelate, blur } from "@cloudinary/url-gen/actions/effect";
 import {Transformation} from "@cloudinary/url-gen/transformation/Transformation";
 import {pad, crop, fill} from "@cloudinary/url-gen/actions/resize";
 import {Background} from "@cloudinary/url-gen/qualifiers/background";
@@ -6,8 +6,8 @@ import {compass} from "@cloudinary/url-gen/qualifiers/gravity";
 import {northEast} from "@cloudinary/url-gen/qualifiers/compass";
 import {format, quality} from "@cloudinary/url-gen/actions/delivery";
 import {auto, svg} from "@cloudinary/url-gen/qualifiers/format";
-import {VideoCodec} from "@cloudinary/url-gen/qualifiers/videoCodec";
-import {videoCodec} from "@cloudinary/url-gen/actions/transcode";
+// Has to be imported to resolve inferred types on ACCESSIBILITY_MODES
+import '@cloudinary/transformation-builder-sdk';
 
 /**
  * Predefined accessibility transformations

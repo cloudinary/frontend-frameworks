@@ -12,28 +12,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.version }}
-          cache: 'npm'
-
-      - name: Cache Node.js modules
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ matrix.version }}-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ matrix.version }}-
+          cache: 'pnpm'
 
       - name: Installing dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm -r build
 
       - name: Running tests
-        run: npm run test
+        run: pnpm -r test
 
       - name: Running lint
-        run: npm run lint
+        run: pnpm -r lint
 
       - name: Running typecheck
-        run: npm run typecheck
+        run: pnpm -r typecheck

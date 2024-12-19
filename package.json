@@ -4,22 +4,24 @@
   "engines": {
     "node": ">=14.0.0 <19"
   },
+  "packageManager": "pnpm@7",
   "scripts": {
     "postinstall": "husky install",
-    "install": "lerna bootstrap --ci --hoist @cloudinary/url-gen",
-    "build": "lerna run build",
-    "quickstart": "lerna bootstrap && lerna run build",
-    "test": "lerna run test",
-    "lint": "lerna run lint",
-    "typecheck": "lerna run typecheck",
+    "build": "pnpm -r build",
+    "quickstart": "pnpm i && pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
     "build:docs": "node ./scripts/buildDocs.js",
     "start:docs": "live-server --open=public/docs",
-    "update:urlgen": "npm install @cloudinary/url-gen@latest --prefix packages/html && npm install @cloudinary/url-gen@latest --prefix packages/react && npm install @cloudinary/url-gen@latest --prefix packages/vue && npm install @cloudinary/url-gen@latest --prefix packages/angular && npm install @cloudinary/url-gen@latest --prefix packages/angular/projects/cloudinary-library"
+    "update:urlgen": "pnpm --filter @cloudinary/html install @cloudinary/url-gen@latest && pnpm install @cloudinary/url-gen@latest --filter @cloudinary/react && pnpm install @cloudinary/url-gen@latest --filter @cloudinary/vue && pnpm install @cloudinary/url-gen@latest --filter @cloudinarys/angular && pnpm install @cloudinary/url-gen@latest --filter @cloudinary/cloudinary-library"
   },
   "devDependencies": {
     "@cloudinary/url-gen": "^1.21.0",
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
+    "@types/body-parser": "^1.19.5",
+    "@types/bonjour": "^3.5.13",
     "@vue/compiler-sfc": "^3.2.47",
     "better-docs": "2.3.2",
     "core-js": "^3.39.0",
@@ -39,5 +41,9 @@
       },
       "sanitize-html": "2.9.0"
     }
+  },
+  "volta": {
+    "node": "18.20.5",
+    "pnpm": "7"
   }
 }

@@ -294,7 +294,7 @@ Other changes
 
 Other changes
 -----------------
-  * Fix svelte npm package file contents
+  * Fix svelte pnpm package file contents
 
 
 1.0.0-beta.6 / 2021-05-11
