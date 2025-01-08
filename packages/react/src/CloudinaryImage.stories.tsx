@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { CloudinaryImage } from './CloudinaryImage';
 import { Cloudinary } from '@cloudinary/url-gen';
@@ -6,7 +7,8 @@ import { scale } from '@cloudinary/url-gen/actions/resize';
 import { format, quality } from '@cloudinary/url-gen/actions/delivery';
 
 const meta: Meta<typeof CloudinaryImage> = {
-  component: CloudinaryImage
+  component: CloudinaryImage,
+  tags: ['autodocs']
 };
 
 export default meta;
@@ -28,21 +30,22 @@ export const VersionV3: Story = {
   }
 };
 
-const cloudinary = new Cloudinary({
-  cloud: {
-    cloudName: 'demo'
-  }
-});
-const cloudinaryImageObject = cloudinary
-  .image('front_face')
-  .effect(backgroundRemoval())
-  .effect(sepia())
-  .resize(scale().height(333))
-  .delivery(format('auto'))
-  .delivery(quality('auto'));
-
 export const VersionV2: Story = {
-  args: {
-    cldImg: cloudinaryImageObject
+  render: () => {
+    const cloudinary = new Cloudinary({
+      cloud: {
+        cloudName: 'demo'
+      }
+    });
+
+    const cloudinaryImageObject = cloudinary
+      .image('front_face')
+      .effect(backgroundRemoval())
+      .effect(sepia())
+      .resize(scale().height(333))
+      .delivery(format('auto'))
+      .delivery(quality('auto'));
+
+    return <CloudinaryImage cldImg={cloudinaryImageObject} alt='' />
   }
 }

@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from 'react';
+import React, { forwardRef } from 'react';
 import { type CloudinaryVideo as UrlGenCloudinaryVideo } from '@cloudinary/url-gen/assets/CloudinaryVideo';
 import { parseCloudinaryUrlToParts } from './parseCloudinaryUrlToParts';
 import { parseFormat } from './transformationParsers/parseFormat';
@@ -58,9 +58,10 @@ type VideoV3Props = {
   children?: never;
 } & VideoTransformationProps;
 
-interface VideoV2Props extends React.HTMLProps<HTMLVideoElement> {
+interface VideoV2Props {
   src?: never;
   cldVid: UrlGenCloudinaryVideo;
+  videoProps?: React.HTMLProps<HTMLVideoElement>
   children?: never;
 }
 

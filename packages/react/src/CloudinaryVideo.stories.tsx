@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { CloudinaryVideo } from './CloudinaryVideo';
 import { Cloudinary } from '@cloudinary/url-gen';
@@ -11,13 +12,14 @@ import { vcl31 } from '@cloudinary/url-gen/qualifiers/videoCodecLevel';
 import { scale } from '@cloudinary/url-gen/actions/resize';
 
 const meta: Meta<typeof CloudinaryVideo> = {
-  component: CloudinaryVideo
+  component: CloudinaryVideo,
+  tags: ['autodocs']
 };
 
 export default meta;
 type Story = StoryObj<typeof CloudinaryVideo>;
 
-export const VersionV3: Story = {
+export const Version_v3: Story = {
   args: {
     src: 'https://res.cloudinary.com/demo/video/upload/dog.mp4',
     resize: { height: 333 },
@@ -38,24 +40,31 @@ const cloudinary = new Cloudinary({
     cloudName: 'demo'
   }
 });
-const cloudinaryVideoObject = cloudinary.video('dog.mp4')
-  .effect(blackwhite())
-  .resize(scale().height(333))
-  .videoEdit(trim().duration('1p'))
-  .roundCorners(byRadius(20))
-  .transcode(
-    videoCodec(
-      h264()
-        .profile(baseline())
-        .level(vcl31())
-    )
-  );
 
-export const VersionV2: Story = {
-  args: {
-    cldVid: cloudinaryVideoObject,
-    loop: true,
-    autoPlay: true,
-    muted: true
+export const Version_v2: Story = {
+  render: () => {
+    const cloudinaryVideoObject = cloudinary.video('dog.mp4')
+      .effect(blackwhite())
+      .resize(scale().height(333))
+      .videoEdit(trim().duration('1p'))
+      .roundCorners(byRadius(20))
+      .transcode(
+        videoCodec(
+          h264()
+            .profile(baseline())
+            .level(vcl31())
+        )
+      );
+
+    return (
+      <CloudinaryVideo
+        cldVid={cloudinaryVideoObject}
+        videoProps={{
+          loop: true,
+          autoPlay: true,
+          muted: true
+        }}
+      />
+    )
   }
 }
