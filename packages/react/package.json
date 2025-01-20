@@ -5,7 +5,7 @@
   "author": "cloudinary",
   "license": "MIT",
   "repository": "https://github.com/cloudinary/frontend-frameworks",
-  "main": "dist/index.esm.js",
+  "main": "dist/index.js",
   "files": [
     "package.json",
     "dist"
@@ -15,7 +15,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "node ./esbuild.mjs && tsc && cp package.json ./dist",
+    "build": "node ./esbuild.mjs && tsc",
     "lint": "eslint ./src",
     "typecheck": "tsc --noEmit --skipLibCheck --project ./tsconfig.json",
     "test": "mocha src/**/*.test.*",
