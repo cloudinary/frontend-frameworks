@@ -5,6 +5,7 @@
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "sideEffects": false,
   "scripts": {
+    "postinstall": "npm run prepare-version",
     "ng": "ng",
     "start": "ng serve",
     "build": "npm run prepare-version && npm run build --prefix ../html && ng build cloudinary-library --prod",

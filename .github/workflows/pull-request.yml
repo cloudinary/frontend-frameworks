@@ -29,11 +29,14 @@ jobs:
       - name: Installing dependencies
         run: npm ci
 
-      - name: Running tests
-        run: npm run test
+      - name: Running typecheck
+        run: npm run typecheck
 
       - name: Running lint
         run: npm run lint
 
-      - name: Running typecheck
-        run: npm run typecheck
+      - name: Running tests
+        run: npm run test
+
+      - name: Running build
+        run: npm run build
