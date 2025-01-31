@@ -24,7 +24,7 @@ import { parseOpacity } from './transformationParsers/parseOpacity';
 import { Quality } from './transformationTypes/quality';
 import { ImageFormat } from './transformationTypes/format';
 import { RemoveBackground } from './transformationTypes/removeBackground';
-import { Effect } from './transformationTypes/effect';
+import { ImageEffect } from './transformationTypes/effect';
 import { Background } from './transformationTypes/background';
 import { Rotate } from './transformationTypes/rotate';
 import { RoundCorners } from './transformationTypes/roundCorners';
@@ -36,7 +36,7 @@ type ImageTransformationProps = {
   quality?: Quality;
   format?: ImageFormat;
   removeBackground?: RemoveBackground;
-  effects?: Effect[];
+  effects?: ImageEffect[];
   background?: Background;
   rotate?: Rotate;
   roundCorners?: RoundCorners;

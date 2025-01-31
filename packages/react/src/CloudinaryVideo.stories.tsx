@@ -20,18 +20,22 @@ export default meta;
 type Story = StoryObj<typeof CloudinaryVideo>;
 
 export const Version_v3: Story = {
-  args: {
-    src: 'https://res.cloudinary.com/demo/video/upload/dog.mp4',
-    resize: { height: 333 },
-    roundCorners: 20,
-    duration: '1%',
-    startOffset: 0,
-    videoCodec: 'h264',
-    videoProps: {
-      loop: true,
-      autoPlay: true,
-      muted: true
-    }
+  render: () => {
+    return (
+      <CloudinaryVideo
+        src='https://res.cloudinary.com/demo/video/upload/dog.mp4'
+        videoProps={{
+          loop: true,
+          autoPlay: true,
+          muted: true
+        }}
+        resize={{ height: 333 }}
+        roundCorners={20}
+        duration='1%'
+        startOffset={0}
+        videoCodec='h264'
+      />
+    )
   }
 };
 

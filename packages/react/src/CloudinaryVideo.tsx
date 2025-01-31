@@ -32,7 +32,7 @@ import { parseIgnoreAspectRatio } from './transformationParsers/parseIgnoreAspec
 import { parseZoom } from './transformationParsers/parseZoom';
 import { RemoveBackground } from './transformationTypes/removeBackground';
 import { parseEffects } from './transformationParsers/parseEffects';
-import { Effect } from './transformationTypes/effect';
+import { VideoEffect } from './transformationTypes/effect';
 import { parseRemoveBackground } from './transformationParsers/parseRemoveBackground';
 import { Resize } from './transformationTypes/resize';
 
@@ -40,7 +40,7 @@ export type VideoTransformationProps = {
   quality?: Quality;
   format?: VideoFormat;
   removeBackground?: RemoveBackground;
-  effects?: Effect[];
+  effects?: VideoEffect[];
   background?: Background;
   rotate?: Rotate;
   roundCorners?: RoundCorners;

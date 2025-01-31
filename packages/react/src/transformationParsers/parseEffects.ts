@@ -1,7 +1,7 @@
-import { Effect } from '../transformationTypes/effect';
+import { AnyEffect } from '../transformationTypes/effect';
 import { parseRemoveBackground as ParseRemoveBackground } from './parseRemoveBackground';
 
-export const parseEffects = (parseRemoveBackground: typeof ParseRemoveBackground) => (effects: Effect[]): string => {
+export const parseEffects = (parseRemoveBackground: typeof ParseRemoveBackground) => (effects: AnyEffect[]): string => {
   return effects
     .map((effect):`e_${string}` => {
       switch (effect.type) {
@@ -12,7 +12,7 @@ export const parseEffects = (parseRemoveBackground: typeof ParseRemoveBackground
         case 'fade':
           return `e_fade:${effect.duration}`;
         case 'gamma':
-          return `e_gamma:${effect.duration}`;
+          return `e_gamma:${effect.level}`;
         case 'grayscale':
           return 'e_grayscale';
         case 'light':

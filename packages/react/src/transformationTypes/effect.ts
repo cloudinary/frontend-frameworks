@@ -19,7 +19,7 @@ type Gamma = {
   /**
    * @description -50 to 150
    */
-  duration: number;
+  level: number;
 }
 // FIXME image only
 type Grayscale = {
@@ -72,20 +72,21 @@ type Auto = {
   blendPercentage?: number;
 }
 
-type AutoColor = {
-  type: 'autoColor';
-
-}
-
-export type Effect =
+export type ImageEffect =
   | Sepia
   | BackgroundRemoval
-  | Fade
   | Gamma
   | Grayscale
   | Light
   | Negate
-  | Noise
   | Pixelate
   | Blur
   | Auto;
+
+export type VideoEffect =
+  | Fade
+  | Gamma
+  | Noise
+  | Blur;
+
+export type AnyEffect = ImageEffect | VideoEffect;

@@ -15,18 +15,22 @@ export default meta;
 type Story = StoryObj<typeof CloudinaryImage>;
 
 export const VersionV3: Story = {
-  args: {
-    src: 'https://res.cloudinary.com/demo/image/upload/front_face',
-    alt: 'front face',
-    removeBackground: true,
-    effects: [{ type: 'sepia' }],
-    resize: { height: 333 },
-    format: 'auto',
-    quality: 'auto',
-    opacity: 100,
-    background: { type: 'color', color: 'white' },
-    roundCorners: 0,
-    rotate: 0
+  render: () => {
+    return (
+      <CloudinaryImage
+        src='https://res.cloudinary.com/demo/image/upload/front_face'
+        alt='front face'
+        removeBackground
+        effects={[{ type: 'sepia' }]}
+        resize={{ height: 333 }}
+        format='auto'
+        quality='auto'
+        opacity={100}
+        background={{ type: 'color', color: 'white' }}
+        roundCorners={0}
+        rotate={0}
+      />
+    );
   }
 };
 
