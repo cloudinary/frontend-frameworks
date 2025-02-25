@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/react@1.13.1...@cloudinary/react@1.14.0) (2025-02-25)
+
+
+### Bug Fixes
+
+* changed added package.json - files ([dd47314](https://github.com/cloudinary/frontend-frameworks/commit/dd473142dadfc332cf79d129fa6196d0aaf6180b))
+
+
+### Features
+
+* added react 19 to peerDependencies ([a70e7d1](https://github.com/cloudinary/frontend-frameworks/commit/a70e7d1f50bd6c33b5b2948a6c8e79d65c4d9330))
+
+
+
+
+
 ## [1.13.1](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/react@1.13.0...@cloudinary/react@1.13.1) (2024-11-04)
 
 **Note:** Version bump only for package @cloudinary/react

@@ -1,13 +1,16 @@
 {
   "name": "@cloudinary/html",
-  "version": "1.13.1",
+  "version": "1.13.2",
   "description": "An HTML wrapper for Cloudinary",
   "main": "./dist/index.js",
   "umd": "./dist/index.umd.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/index.d.ts",
   "type": "module",
-  "files": ["package.json", "dist"],
+  "files": [
+    "package.json",
+    "dist"
+  ],
   "sideEffects": false,
   "repository": "https://github.com/cloudinary/frontend-frameworks",
   "scripts": {

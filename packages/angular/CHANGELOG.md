@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/angular-workspace@2.1.1...@cloudinary/angular-workspace@2.1.2) (2025-02-25)
+
+
+### Bug Fixes
+
+* added missing path to html project ([d420a20](https://github.com/cloudinary/frontend-frameworks/commit/d420a205f1d54aaf61d09be5623dbc9dfd1780e0))
+* added missing script to angular workspace ([3c665bb](https://github.com/cloudinary/frontend-frameworks/commit/3c665bb0eb5174b7b78eced7b7d66861c0338fd7))
+* lint adjustments ([c72b84d](https://github.com/cloudinary/frontend-frameworks/commit/c72b84d4d420818e40928b91d4d57cb1f48510b5))
+* lint adjustments ([edb67ad](https://github.com/cloudinary/frontend-frameworks/commit/edb67ade6cd3dc1b2b379ad326c981b9dcf2a660))
+
+
+
+
+
 ## [2.1.1](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/angular-workspace@2.1.0...@cloudinary/angular-workspace@2.1.1) (2024-11-14)
 
 

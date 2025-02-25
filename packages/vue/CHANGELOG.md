@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.1](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/vue@1.13.0...@cloudinary/vue@1.13.1) (2025-02-25)
+
+
+### Bug Fixes
+
+* changed added package.json - files ([dd47314](https://github.com/cloudinary/frontend-frameworks/commit/dd473142dadfc332cf79d129fa6196d0aaf6180b))
+* lint adjustments ([edb67ad](https://github.com/cloudinary/frontend-frameworks/commit/edb67ade6cd3dc1b2b379ad326c981b9dcf2a660))
+
+
+
+
+
 # [1.13.0](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/vue@1.12.1...@cloudinary/vue@1.13.0) (2024-11-04)
 
 

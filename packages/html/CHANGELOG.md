@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.2](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/html@1.13.1...@cloudinary/html@1.13.2) (2025-02-25)
+
+
+### Bug Fixes
+
+* changed added package.json - files ([dd47314](https://github.com/cloudinary/frontend-frameworks/commit/dd473142dadfc332cf79d129fa6196d0aaf6180b))
+* changed rollup/tsc config to prevent generating ignored files locally ([db82303](https://github.com/cloudinary/frontend-frameworks/commit/db823033a85a5bd5391d98292d297d3f3c1b89e6))
+
+
+
+
+
 ## [1.13.1](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/html@1.13.0...@cloudinary/html@1.13.1) (2024-11-04)
 
 **Note:** Version bump only for package @cloudinary/html

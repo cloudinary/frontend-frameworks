@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.2](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/ng@2.1.1...@cloudinary/ng@2.1.2) (2025-02-25)
+
+
+### Bug Fixes
+
+* lint adjustments ([c72b84d](https://github.com/cloudinary/frontend-frameworks/commit/c72b84d4d420818e40928b91d4d57cb1f48510b5))
+* lint adjustments ([edb67ad](https://github.com/cloudinary/frontend-frameworks/commit/edb67ade6cd3dc1b2b379ad326c981b9dcf2a660))
+
+
+
+
+
 ## [2.1.1](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/ng@2.1.0...@cloudinary/ng@2.1.1) (2024-11-14)
 
 
