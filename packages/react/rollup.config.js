@@ -6,6 +6,7 @@ import { version } from './package.json';
 
 export default [
   {
+    external: 'react',
     input: 'src/index.tsx',
     output: [
       {
