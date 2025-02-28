@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.1](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/react@1.14.0...@cloudinary/react@1.14.1) (2025-02-28)
+
+
+### Bug Fixes
+
+* react as external library ([30132d2](https://github.com/cloudinary/frontend-frameworks/commit/30132d2bb2cd7c44b8b7cfdcd11628d6cd1926ee))
+
+
+
+
+
 # [1.14.0](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/react@1.13.1...@cloudinary/react@1.14.0) (2025-02-25)
 
 
