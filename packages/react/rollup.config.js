@@ -31,6 +31,7 @@ export default [
       }),
       typescript({ target: 'es5' }),
       commonjs()
-    ]
+    ],
+    external: ['react']
   }
 ];
