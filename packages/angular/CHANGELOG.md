@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/angular-workspace@2.1.2...@cloudinary/angular-workspace@2.1.3) (2025-05-12)
+
+
+### Bug Fixes
+
+* **angular:** fixed publish configuration for angular workspace ([768b503](https://github.com/cloudinary/frontend-frameworks/commit/768b503bceefb364e734796332d73aa77970a7ee))
+* **angular:** moved back to dist publish with corrections to package.json ([0d62cc2](https://github.com/cloudinary/frontend-frameworks/commit/0d62cc28e741a7574137cac276382eec1f2d48e2))
+
+
+
+
+
 ## [2.1.2](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/angular-workspace@2.1.1...@cloudinary/angular-workspace@2.1.2) (2025-02-25)
 
 
