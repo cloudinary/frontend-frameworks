@@ -18,12 +18,14 @@
     "access": "public"
   },
   "files": [
-    "bundles",
-    "esm2015",
-    "fesm2015",
-    "internal",
-    "lib",
-    "*.d.ts",
+    "dist",
     "*.md"
-  ]
+  ],
+  "main": "dist/bundles/cloudinary-ng.umd.js",
+  "module": "dist/fesm2015/cloudinary-ng.js",
+  "es2015": "dist/fesm2015/cloudinary-ng.js",
+  "esm2015": "dist/esm2015/cloudinary-ng.js",
+  "fesm2015": "dist/fesm2015/cloudinary-ng.js",
+  "typings": "dist/cloudinary-ng.d.ts",
+  "sideEffects": false
 }
