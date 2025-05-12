@@ -16,5 +16,14 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "bundles",
+    "esm2015",
+    "fesm2015",
+    "internal",
+    "lib",
+    "*.d.ts",
+    "*.md"
+  ]
 }
