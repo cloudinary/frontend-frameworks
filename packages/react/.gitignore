@@ -6,3 +6,5 @@ playground/node_modules
 coverage
 src/react-app-env.d.ts
 *.tgz
+
+LICENSE
