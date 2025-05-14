@@ -10,7 +10,8 @@
   "types": "dist/index.d.ts",
   "files": [
     "package.json",
-    "dist"
+    "dist",
+    "*.md"
   ],
   "sideEffects": false,
   "engines": {

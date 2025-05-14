@@ -9,7 +9,8 @@
   "type": "module",
   "files": [
     "package.json",
-    "dist"
+    "dist",
+    "*.md"
   ],
   "sideEffects": false,
   "repository": "https://github.com/cloudinary/frontend-frameworks",

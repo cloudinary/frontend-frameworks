@@ -8,7 +8,8 @@
   "main": "dist/index.js",
   "files": [
     "package.json",
-    "dist"
+    "dist",
+    "*.md"
   ],
   "repository": {
     "type": "git",
