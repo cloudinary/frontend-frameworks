@@ -127,7 +127,7 @@ This SDK does not provide file upload functionality, however there are [several 
 
 ## Contributions
 - Ensure tests run locally (```npm run test```)
-- Open a PR and ensure Travis tests pass
+- Open a PR and ensure GitHub actions tests pass
 
 ## Get Help
 If you run into an issue or have a question, you can either:
