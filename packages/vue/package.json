@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/vue",
-  "version": "1.13.2",
+  "version": "1.13.3",
   "description": "Cloudinary Vue SDK",
   "author": "cloudinary",
   "license": "MIT",
@@ -69,7 +69,7 @@
     "vue-tsc": "^0.38.5"
   },
   "dependencies": {
-    "@cloudinary/html": "^1.13.3"
+    "@cloudinary/html": "^1.13.4"
   },
   "eslintConfig": {
     "root": true,
