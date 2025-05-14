@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.4](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/ng@2.1.3...@cloudinary/ng@2.1.4) (2025-05-14)
+
+
+### Bug Fixes
+
+* restructure files commited during publish stage ([914a23a](https://github.com/cloudinary/frontend-frameworks/commit/914a23aba63dcb12cc4541b7b1ecbeaa52843a91))
+
+
+
+
+
 ## [2.1.3](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/ng@2.1.2...@cloudinary/ng@2.1.3) (2025-05-12)
 
 

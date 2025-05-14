@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.2](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/react@1.14.1...@cloudinary/react@1.14.2) (2025-05-14)
+
+
+### Bug Fixes
+
+* restructure files commited during publish stage ([914a23a](https://github.com/cloudinary/frontend-frameworks/commit/914a23aba63dcb12cc4541b7b1ecbeaa52843a91))
+
+
+
+
+
 ## [1.14.1](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/react@1.14.0...@cloudinary/react@1.14.1) (2025-02-28)
 
 

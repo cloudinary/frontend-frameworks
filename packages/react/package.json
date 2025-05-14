@@ -1,6 +1,6 @@
 {
   "name": "@cloudinary/react",
-  "version": "1.14.1",
+  "version": "1.14.2",
   "description": "Cloudinary React SDK",
   "author": "cloudinary",
   "license": "MIT",
@@ -73,6 +73,6 @@
     "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@cloudinary/html": "^1.13.2"
+    "@cloudinary/html": "^1.13.3"
   }
 }
