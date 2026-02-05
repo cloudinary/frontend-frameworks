@@ -24,7 +24,7 @@ export type PictureSources = {minWidth?: number, maxWidth?: number, image: Cloud
 
 export type PictureSource  = {minWidth?: number, maxWidth?: number, image: CloudinaryImage, sizes?: string};
 
-export type BaseAnalyticsOptions = {sdkSemver: string, techVersion: string, sdkCode: string};
+export type BaseAnalyticsOptions = {sdkSemver: string, techVersion: string, sdkCode: string, feature?: string};
 
 export type AnalyticsOptions = Parameters<CloudinaryImage['toURL']>[0];
 
