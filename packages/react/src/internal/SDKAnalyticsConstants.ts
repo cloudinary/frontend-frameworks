@@ -1,19 +1,19 @@
 import React from 'react'
 
-// Detect if this project was created via create-cloudinary-react CLI
-function getCLIFeatureCode(): string {
+// Detect if this project was created via create-cloudinary-react CLI (Integrations)
+function isCLI(): boolean {
   if (typeof process !== 'undefined' && process.env) {
-    if (process.env.CLOUDINARY_SOURCE === 'cli' || process.env.CLD_CLI === 'true') {
-      return 'B'; // CLI feature code
-    }
+    return process.env.CLOUDINARY_SOURCE === 'cli' || process.env.CLD_CLI === 'true';
   }
-  return '0'; // Default (no specific feature)
+  return false;
 }
 
+// When CLI: use Algorithm B with Product B (Integrations) and sdkCode H (React CLI). Otherwise React SDK: sdkCode J.
+const isCLIDetected = isCLI();
 
 export const SDKAnalyticsConstants = {
   sdkSemver: 'PACKAGE_VERSION_INJECTED_DURING_BUILD',
   techVersion: React.version,
-  sdkCode: 'J',
-  feature: getCLIFeatureCode()
+  sdkCode: isCLIDetected ? 'H' : 'J',
+  ...(isCLIDetected && { product: 'B' as const })
 };

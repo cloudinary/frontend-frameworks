@@ -7,6 +7,7 @@ export const getAnalyticsOptions = (options?: BaseAnalyticsOptions, features: vo
             sdkSemver: options.sdkSemver,
             techVersion: options.techVersion,
             ...(options.feature !== undefined && { feature: options.feature }),
+            ...(options.product !== undefined && { product: options.product }),
             ...features
         }
     } : null
