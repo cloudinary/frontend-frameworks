@@ -26,3 +26,40 @@ describe('analytics', () => {
     }, 0);// one tick
   });
 });
+
+describe('analytics when created via CLI', () => {
+  let AdvancedImageCLI: typeof AdvancedImage;
+  let CloudinaryImageCLI: typeof CloudinaryImage;
+
+  beforeAll(() => {
+    process.env.CLOUDINARY_SOURCE = 'cli';
+    jest.resetModules();
+    const src = require('../src');
+    const constants = require('../src/internal/SDKAnalyticsConstants');
+    AdvancedImageCLI = src.AdvancedImage;
+    CloudinaryImageCLI = require('@cloudinary/url-gen/assets/CloudinaryImage').CloudinaryImage;
+    const SDKAnalyticsConstantsCLI = constants.SDKAnalyticsConstants;
+    SDKAnalyticsConstantsCLI.sdkSemver = '1.0.0';
+    SDKAnalyticsConstantsCLI.techVersion = '10.2.5';
+  });
+
+  afterAll(() => {
+    delete process.env.CLOUDINARY_SOURCE;
+    jest.resetModules();
+  });
+
+  it('generates analytics with Product B (Integrations) and sdkCode H (React CLI)', function (done) {
+    const cldImg = new CloudinaryImageCLI('sample', { cloudName: 'demo' });
+    const component = mount(<AdvancedImageCLI cldImg={cldImg} />);
+    setTimeout(() => {
+      const html = component.html();
+      const match = html.match(/_a=([A-Za-z0-9]+)/);
+      expect(match).toBeTruthy();
+      const token = match![1];
+      // Algorithm B: 1st = algo, 2nd = product (B = Integrations), 3rd = sdkCode (H = React CLI)
+      expect(token[1]).toBe('B');
+      expect(token[2]).toBe('H');
+      done();
+    }, 0);
+  });
+});
