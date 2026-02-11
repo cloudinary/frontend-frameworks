@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.4](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/vue@1.13.3...@cloudinary/vue@1.13.4) (2026-02-11)
+
+**Note:** Version bump only for package @cloudinary/vue
+
+
+
+
+
 ## [1.13.3](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/vue@1.13.2...@cloudinary/vue@1.13.3) (2025-05-14)
 
 

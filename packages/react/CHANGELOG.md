@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.14.4](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/react@1.14.3...@cloudinary/react@1.14.4) (2026-02-11)
+
+**Note:** Version bump only for package @cloudinary/react
+
+
+
+
+
 ## [1.14.3](https://github.com/cloudinary/frontend-frameworks/compare/@cloudinary/react@1.14.2...@cloudinary/react@1.14.3) (2025-05-14)
 
 
