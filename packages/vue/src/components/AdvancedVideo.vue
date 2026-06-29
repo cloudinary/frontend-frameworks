@@ -64,6 +64,7 @@ onMounted(() => {
  * cloudinaryVideo and the state of plugins.
  */
 onUpdated(() => {
+  if (!htmlLayerInstance) return;
   cancelCurrentlyRunningPlugins(htmlLayerInstance.htmlPluginState);
   // call html layer to update the dom again with plugins and reset toBeCanceled
   htmlLayerInstance.update(
@@ -79,7 +80,7 @@ onUpdated(() => {
  * On unmount, we cancel the currently running plugins.
  */
 onUnmounted(() => {
-  // Safely cancel running events on unmount.
+  if (!htmlLayerInstance) return;
   cancelCurrentlyRunningPlugins(htmlLayerInstance.htmlPluginState);
 });
 </script>
